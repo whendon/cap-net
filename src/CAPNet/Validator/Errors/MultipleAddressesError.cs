@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public class AddressesRequiredWhenScopeError : Error
+    public class MultipleAddressesError:Error
     {
     }
 }
