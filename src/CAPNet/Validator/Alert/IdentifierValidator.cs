@@ -34,7 +34,7 @@ namespace CAPNet
         {
             get
             {
-                return !(new[] { ",", ":", ">", "<", "-", "+", "=", "]", "[", ")", "(", "*", "&", "^", "%", "$", "#", "@", "!" }.Any(c => Entity.Identifier.Contains(c)));
+                return !(new[] { ",", ":", ">", "<", "-", "+", "=", "]", "[", ")", "(", "*", "&", "^", "%", "$", "#", "@", "!" }.Any(restrictiveCharacter => Entity.Identifier.Contains(restrictiveCharacter)));
             }
         }
     }
