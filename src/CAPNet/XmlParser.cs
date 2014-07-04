@@ -54,6 +54,7 @@ namespace CAPNet
             Alert alert = new Alert();
 
             var capNamespace = alertElement.Name.Namespace;
+            alert.Namespace = capNamespace;
 
             var infoNode = alertElement.Element(capNamespace + "info");
             if (infoNode != null)

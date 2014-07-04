@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using CAPNet.Models;
 
 using Xunit;
+using System.Xml.Linq;
 
 namespace CAPNet.Tests
 {
@@ -115,20 +116,30 @@ namespace CAPNet.Tests
 
             //<circle>32.9525,-115.5527 0</circle>
             Assert.Equal("32.9525,-115.5527 0", circles.First().ToString());
-            
+
         }
 
         [Fact]
         public void CanGetCircleValues()
         {
             var alert = XmlParser.Parse(Xml.circleXml).First();
-            Circle circle =  alert.Info.First().Areas.First().Circles.First();
+            Circle circle = alert.Info.First().Areas.First().Circles.First();
             Coordinate centralPoint = circle.Center;
             var radius = circle.Radius;
             //<circle>32.9525,-115.5527 0</circle>  
             Assert.Equal(centralPoint.X, 32.9525);
             Assert.Equal(centralPoint.Y, -115.5527);
             Assert.Equal(radius, 0);
+        }
+
+        [Fact]
+        public void CanGetAlertNamespace()
+        {
+            var alert = XmlParser.Parse(Xml.circleXml).First();
+            XDocument document = XDocument.Parse(Xml.circleXml);
+            var documentNamespace = document.Descendants(XmlCreator.CAP12Namespace + "alert").First().Name.Namespace;
+
+            Assert.Equal(alert.Namespace, documentNamespace);
         }
 
         [Fact]
@@ -241,7 +252,7 @@ namespace CAPNet.Tests
             //    <category>Safety</category>
             Assert.Contains(Category.Safety, info.Categories);
         }
-        
+
         [Fact]
         public void CanParseXmlWithMultipleResources()
         {

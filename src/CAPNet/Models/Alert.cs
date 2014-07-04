@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace CAPNet.Models
 {
@@ -15,6 +16,11 @@ namespace CAPNet.Models
         {
             info = new List<Info>();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public XNamespace Namespace { get; set; } 
 
         /// <summary>
         /// The identifier of the alert message 
