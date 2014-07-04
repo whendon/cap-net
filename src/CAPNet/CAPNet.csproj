@@ -73,6 +73,7 @@
     <Compile Include="Validator\Alert\SenderValidator.cs" />
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
     <Compile Include="Validator\Errors\InvalidIdentifierError.cs" />
+    <Compile Include="Validator\Errors\MsgTypeRejectionError.cs" />
     <Compile Include="Validator\Errors\Required\AreaDescriptionRequiredError.cs" />
     <Compile Include="Validator\Errors\Required\ResourceDescriptionRequiredError.cs" />
     <Compile Include="Validator\Alert\Resource\ResourceValidator.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Validator\Alert\Info\SeverityRequiredValidator.cs" />
     <Compile Include="Validator\Errors\Required\UrgencyRequiredError.cs" />
     <Compile Include="Validator\Alert\Info\UrgencyRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\MsgTypeRejectionValidator.cs" />
     <Compile Include="Validator\RestrictiveCharacters.cs" />
     <Compile Include="Validator\Validator.cs" />
     <Compile Include="Version.cs" />
