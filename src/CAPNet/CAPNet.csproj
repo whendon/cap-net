@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ResponseType.cs" />
+    <Compile Include="Validator\Alert\AddressesRequiredWhenScopeValidator.cs" />
     <Compile Include="Validator\Alert\Area\AreaDescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Area\CeilingExistanceValidator.cs" />
     <Compile Include="Validator\Alert\Info\InvalidCategoryValidator.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Validator\Alert\Resource\SizeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\IdentifierValidator.cs" />
     <Compile Include="Validator\Alert\SenderValidator.cs" />
+    <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
     <Compile Include="Validator\Errors\InvalidIdentifierError.cs" />
     <Compile Include="Validator\Errors\MsgTypeRejectionError.cs" />
