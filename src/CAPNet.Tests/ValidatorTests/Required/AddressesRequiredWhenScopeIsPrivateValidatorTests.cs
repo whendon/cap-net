@@ -9,7 +9,7 @@ using CAPNet.Models;
 
 namespace CAPNet
 {
-    public class AddressesRequiredWhenScopeValidatorTests
+    public class AddressesRequiredWhenScopeIsPrivateValidatorTests
     {
         [Fact]
         public void AlertWithAddressAndNoScopeIsValid()
@@ -17,7 +17,7 @@ namespace CAPNet
             var alert = new Alert();
             alert.Addresses = "list1 list2 list3";
 
-            var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopeValidator(alert);
+            var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopePrivateValidator(alert);
             Assert.True(addressesRequiredWhenScopeValidator.IsValid);
         }
 
@@ -28,7 +28,7 @@ namespace CAPNet
             alert.Addresses = "list1 list2 list3";
             alert.Scope = Scope.Private;
 
-            var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopeValidator(alert);
+            var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopePrivateValidator(alert);
             Assert.True(addressesRequiredWhenScopeValidator.IsValid);
         }
 
@@ -39,7 +39,7 @@ namespace CAPNet
             alert.Addresses = "list1 list2 list3";
             alert.Scope = Scope.Public;
 
-            var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopeValidator(alert);
+            var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopePrivateValidator(alert);
             Assert.True(addressesRequiredWhenScopeValidator.IsValid);
         }
 
@@ -50,7 +50,7 @@ namespace CAPNet
             alert.Addresses = string.Empty;
             alert.Scope = Scope.Private;
 
-            var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopeValidator(alert);
+            var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopePrivateValidator(alert);
             Assert.False(addressesRequiredWhenScopeValidator.IsValid);
         }
     }

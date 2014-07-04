@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ResponseType.cs" />
-    <Compile Include="Validator\Alert\AddressesRequiredWhenScopeValidator.cs" />
+    <Compile Include="Validator\Alert\AddressesRequiredWhenScopePrivateValidator.cs" />
     <Compile Include="Validator\Alert\Area\AreaDescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Area\CeilingExistanceValidator.cs" />
     <Compile Include="Validator\Alert\Info\InvalidCategoryValidator.cs" />

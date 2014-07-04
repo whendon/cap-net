@@ -7,13 +7,13 @@ namespace CAPNet
     /// <summary>
     /// 
     /// </summary>
-    public class AddressesRequiredWhenScopeValidator : Validator<Alert>
+    public class AddressesRequiredWhenScopePrivateValidator : Validator<Alert>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="alert"></param>
-        public AddressesRequiredWhenScopeValidator(Alert alert) : base(alert) { }
+        public AddressesRequiredWhenScopePrivateValidator(Alert alert) : base(alert) { }
 
         /// <summary>
         /// 
