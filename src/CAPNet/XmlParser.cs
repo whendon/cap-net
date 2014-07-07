@@ -54,13 +54,13 @@ namespace CAPNet
             Alert alert = new Alert();
             var capNamespace = alertElement.Name.Namespace;
             var infoNodes = alertElement.Elements(capNamespace + "info");
-     
+
             var infos = from info in infoNodes
                         where info != null
                         select ParseInfo(info);
 
             alert.Info.AddRange(infos);
-            
+
 
             var incidentsNode = alertElement.Element(capNamespace + "incidents");
             if (incidentsNode != null)
@@ -158,7 +158,7 @@ namespace CAPNet
                              select (Category)Enum.Parse(typeof(Category), categoryNode.Value, true);
 
             info.Categories.AddRange(categories);
-            
+
 
             var eventNode = infoElement.Element(capNamespace + "event");
             if (eventNode != null)
@@ -167,11 +167,11 @@ namespace CAPNet
             }
 
             var responseTypes = from responseTypeNode in infoElement.Elements(capNamespace + "responseType")
-                                    where responseTypeNode != null
-                                    select (ResponseType)Enum.Parse(typeof(ResponseType), responseTypeNode.Value, true);
+                                where responseTypeNode != null
+                                select (ResponseType)Enum.Parse(typeof(ResponseType), responseTypeNode.Value, true);
 
             info.ResponseTypes.AddRange(responseTypes);
-            
+
             var urgencyNode = infoElement.Element(capNamespace + "urgency");
             if (urgencyNode != null)
             {
@@ -273,21 +273,21 @@ namespace CAPNet
                              select new Parameter(valueNameNode.Value, valueNode.Value);
 
             info.Parameters.AddRange(parameters);
-            
+
 
             var resources = from resourceNode in infoElement.Elements(capNamespace + "resource")
                             where resourceNode != null
                             select ParseResource(resourceNode);
 
             info.Resources.AddRange(resources);
-           
+
 
             var areas = from areaNode in infoElement.Elements(capNamespace + "area")
                         where areaNode != null
                         select ParseArea(areaNode);
 
             info.Areas.AddRange(areas);
-      
+
             return info;
         }
 
