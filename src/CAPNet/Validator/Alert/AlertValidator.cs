@@ -55,13 +55,9 @@ namespace CAPNet
         /// <returns></returns>
         private IEnumerable<Error> GetErrors(Info info)
         {
-            var infoValidators = new List<Validator<Info>>();
-
-            infoValidators.Add(new UrgencyRequiredValidator(info));
-            infoValidators.Add(new SeverityRequiredValidator(info));
-            infoValidators.Add(new EventRequiredValidator(info));
-            infoValidators.Add(new CertaintyRequiredValidator(info));
-            infoValidators.Add(new CategoryRequiredValidator(info));
+            var infoValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
+                                 where typeof(IValidator<Info>).IsAssignableFrom(type)
+                                 select (IValidator<Info>)Activator.CreateInstance(type, info);
 
             return from validator in infoValidators
                    from error in validator.Errors
