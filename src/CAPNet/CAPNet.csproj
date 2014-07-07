@@ -73,6 +73,7 @@
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Urgency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validator\Alert\Info\ResponseTypesValidator.cs" />
     <Compile Include="Validator\Alert\Info\ResponseTypeValidator.cs" />
     <Compile Include="Validator\Alert\MultipleAddressesValidator.cs" />
     <Compile Include="Validator\Alert\Resource\DescriptionRequiredValidator.cs" />

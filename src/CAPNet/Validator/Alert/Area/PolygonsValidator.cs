@@ -24,7 +24,7 @@ namespace CAPNet
         /// </summary>
         public override IEnumerable<Error> Errors
         {
-            get 
+            get
             {
                 return from polygon in Entity.Polygons
                        from error in GetErrors(polygon)
@@ -51,8 +51,8 @@ namespace CAPNet
         private IEnumerable<Error> GetErrors(Polygon polygon)
         {
             var polygonValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
-                                 where typeof(IValidator<Polygon>).IsAssignableFrom(type)
-                                 select (IValidator<Polygon>)Activator.CreateInstance(type, polygon);
+                                    where typeof(IValidator<Polygon>).IsAssignableFrom(type)
+                                    select (IValidator<Polygon>)Activator.CreateInstance(type, polygon);
 
             return from validator in polygonValidators
                    from error in validator.Errors
