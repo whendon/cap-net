@@ -26,9 +26,7 @@ namespace CAPNet
         {
             get
             {
-                Regex r = new Regex(" ");
-                bool containsAnyWhiteSpace = r.IsMatch(Entity.Addresses);
-                return  (!containsAnyWhiteSpace || (Entity.Addresses[0] == '\"' && Entity.Addresses[Entity.Addresses.Length - 1] == '\"'));
+                return  (!Entity.Addresses.Contains(" ") || (Entity.Addresses[0] == '\"' && Entity.Addresses[Entity.Addresses.Length - 1] == '\"'));
             }
         }
 
