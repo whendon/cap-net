@@ -13,6 +13,7 @@ namespace CAPNet.Tests.ValidatorTests
             alert.Identifier = "KSTO1055887203";
             alert.Sender = "Sender";
             alert.Status = Status.Draft;
+            alert.MessageType = MessageType.Alert;
 
             var alertValidator = new AlertValidator(alert);
             Assert.True(alertValidator.IsValid);
