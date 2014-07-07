@@ -30,8 +30,8 @@ namespace CAPNet
             Assert.False(polygonMinCoordinatesValidator.IsValid);
 
             var minCoordinatesErrors = from error in polygonMinCoordinatesValidator.Errors
-                                      where error.GetType() == typeof(PolygonMinCoordinatesError)
-                                      select error;
+                                       where error.GetType() == typeof(PolygonMinCoordinatesError)
+                                       select error;
             Assert.NotEmpty(minCoordinatesErrors);
         }
     }
