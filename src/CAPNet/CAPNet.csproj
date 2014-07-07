@@ -79,9 +79,10 @@
     <Compile Include="Validator\Alert\Resource\DescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Resource\MimeTypeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Resource\SizeRequiredValidator.cs" />
-    <Compile Include="Validator\Alert\IdentifierValidator.cs" />
-    <Compile Include="Validator\Alert\SenderValidator.cs" />
+    <Compile Include="Validator\Alert\IdentifierRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\SenderRequiredValidator.cs" />
     <Compile Include="Validator\Alert\SentRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\StatusRequiredValidator.cs" />
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
     <Compile Include="Validator\Errors\InvalidIdentifierError.cs" />

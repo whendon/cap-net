@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Reflection;
 
 using CAPNet.Models;
 
@@ -11,24 +10,13 @@ namespace CAPNet
     /// <summary>
     /// 
     /// </summary>
-    public class StatusRequiredValidator : Validator<Alert>
+    public class SenderRequiredValidator : Validator<Alert>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="alert"></param>
-        public StatusRequiredValidator(Alert alert) : base(alert) { }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override bool IsValid
-        {
-            get 
-            {
-                return Enum.IsDefined(typeof(Status), this.Entity.Status);
-            }
-        }
+        public SenderRequiredValidator(Alert alert) : base(alert) { }
 
         /// <summary>
         /// 
@@ -38,7 +26,18 @@ namespace CAPNet
             get
             {
                 if (!IsValid)
-                    yield return new StatusRequiredError();
+                    yield return new SenderError();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override bool IsValid
+        {
+            get
+            {
+                return !RestrictiveCharacters.restrictiveCharacters.Any(restrictiveCharacter => Entity.Sender.Contains(restrictiveCharacter.ToString()));
             }
         }
     }

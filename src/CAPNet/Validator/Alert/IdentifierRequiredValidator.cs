@@ -7,13 +7,13 @@ namespace CAPNet
     /// <summary>
     /// 
     /// </summary>
-    public class IdentifierValidator : Validator<Alert>
+    public class IdentifierRequiredValidator : Validator<Alert>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="alert"></param>
-        public IdentifierValidator(Alert alert) : base(alert) { }
+        public IdentifierRequiredValidator(Alert alert) : base(alert) { }
 
         /// <summary>
         /// 
