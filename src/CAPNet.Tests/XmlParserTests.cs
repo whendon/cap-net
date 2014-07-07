@@ -148,6 +148,15 @@ namespace CAPNet.Tests
             Assert.Equal("62.9525,-55.5527 0", circles.Last().ToString());
         }
 
+        [Fact] 
+        public void CanParseXmlWithMultipleInfo()
+        {
+            var alert = XmlParser.Parse(Xml.MultipleInfoThunderstorm).First();
+            var infos = alert.Info;
+
+            Assert.Equal(infos.Count, 2);
+        }
+
         [Fact]
         public void CanParseXmlWithPolygon()
         {
