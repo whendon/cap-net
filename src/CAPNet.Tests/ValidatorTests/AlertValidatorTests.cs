@@ -14,6 +14,7 @@ namespace CAPNet.Tests.ValidatorTests
             alert.Sender = "Sender";
             alert.Status = Status.Draft;
             alert.MessageType = MessageType.Alert;
+            alert.Scope = Scope.Public;
 
             var alertValidator = new AlertValidator(alert);
             Assert.True(alertValidator.IsValid);
