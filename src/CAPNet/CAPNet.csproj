@@ -110,6 +110,7 @@
     <Compile Include="Validator\Errors\ResponseTypeError.cs" />
     <Compile Include="Validator\Errors\SenderError.cs" />
     <Compile Include="Validator\Errors\SentRequiredError.cs" />
+    <Compile Include="Validator\Errors\StatusRequiredError.cs" />
     <Compile Include="Validator\IValidator.cs" />
     <Compile Include="Validator\Errors\Required\RequiredFieldError.cs" />
     <Compile Include="Validator\Errors\Required\SeverityRequiredError.cs" />
