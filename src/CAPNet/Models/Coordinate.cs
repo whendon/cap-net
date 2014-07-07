@@ -59,5 +59,28 @@ namespace CAPNet.Models
             return X.ToString() + "," + Y.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+            Coordinate p = (Coordinate)obj;
+            if (this.X == p.X && this.Y == p.Y)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
