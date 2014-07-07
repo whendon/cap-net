@@ -133,16 +133,6 @@ namespace CAPNet.Tests
         }
 
         [Fact]
-        public void CanGetAlertNamespace()
-        {
-            var alert = XmlParser.Parse(Xml.circleXml).First();
-            XDocument document = XDocument.Parse(Xml.circleXml);
-            var documentNamespace = document.Descendants(XmlCreator.CAP12Namespace + "alert").First().Name.Namespace;
-
-            Assert.Equal(alert.Namespace, documentNamespace);
-        }
-
-        [Fact]
         public void CanParseXmlWithMultipleCircles()
         {
             var alert = XmlParser.Parse(Xml.MultipleCircleXml).First();

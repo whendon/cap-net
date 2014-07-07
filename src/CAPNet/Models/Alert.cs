@@ -18,11 +18,6 @@ namespace CAPNet.Models
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        public XNamespace Namespace { get; set; } 
-
-        /// <summary>
         /// The identifier of the alert message 
         /// </summary>
         /// <remarks>
