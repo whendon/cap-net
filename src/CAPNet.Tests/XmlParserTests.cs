@@ -36,7 +36,7 @@ namespace CAPNet.Tests
         public void SentTimeHasTimeZone()
         {
             var alert = XmlParser.Parse(Xml.Thunderstorm12Xml).First();
-            Assert.Equal(TimeSpan.FromHours(-7), alert.Sent.Offset);
+            Assert.Equal(TimeSpan.FromHours(-7), alert.Sent.Value.Offset);
         }
 
         [Fact]

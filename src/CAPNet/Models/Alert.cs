@@ -71,7 +71,7 @@ namespace CAPNet.Models
         ///     </item>
         ///     </list>
         /// </remarks>
-        public DateTimeOffset Sent { get; set; }
+        public DateTimeOffset? Sent { get; set; }
 
         /// <summary>
         /// 

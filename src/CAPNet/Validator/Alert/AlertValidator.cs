@@ -31,8 +31,7 @@ namespace CAPNet
         {
             get
             {
-                return from info in Entity.Info
-                       from error in GetErrors(info)
+                return from error in GetErrors(Entity)
                        select error;
             }
         }
@@ -51,15 +50,15 @@ namespace CAPNet
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="info"></param>
+        /// <param name="alert"></param>
         /// <returns></returns>
-        private IEnumerable<Error> GetErrors(Info info)
+        private IEnumerable<Error> GetErrors(Alert alert)
         {
-            var infoValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
-                                 where typeof(IValidator<Info>).IsAssignableFrom(type)
-                                 select (IValidator<Info>)Activator.CreateInstance(type, info);
+            var alertValidators = new List<Validator<Alert>>();
+            alertValidators.Add(new IdentifierValidator(alert));
+            alertValidators.Add(new SenderValidator(alert));
 
-            return from validator in infoValidators
+            return from validator in alertValidators
                    from error in validator.Errors
                    select error;
         }

@@ -81,6 +81,7 @@
     <Compile Include="Validator\Alert\Resource\SizeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\IdentifierValidator.cs" />
     <Compile Include="Validator\Alert\SenderValidator.cs" />
+    <Compile Include="Validator\Alert\SentRequiredValidator.cs" />
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
     <Compile Include="Validator\Errors\InvalidIdentifierError.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Validator\Errors\Required\SizeRequiredError.cs" />
     <Compile Include="Validator\Errors\ResponseTypeError.cs" />
     <Compile Include="Validator\Errors\SenderError.cs" />
+    <Compile Include="Validator\Errors\SentRequiredError.cs" />
     <Compile Include="Validator\IValidator.cs" />
     <Compile Include="Validator\Errors\Required\RequiredFieldError.cs" />
     <Compile Include="Validator\Errors\Required\SeverityRequiredError.cs" />

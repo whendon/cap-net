@@ -125,7 +125,12 @@ namespace CAPNet
             var sentNode = alertElement.Element(capNamespace + "sent");
             if (sentNode != null)
             {
-                alert.Sent = DateTimeOffset.Parse(sentNode.Value, CultureInfo.InvariantCulture);
+                DateTimeOffset parseResult;
+                var isDateTimeOffset = DateTimeOffset.TryParse(sentNode.Value, out parseResult);
+                if (isDateTimeOffset)
+                {
+                    alert.Sent = parseResult;
+                }
             }
 
             var senderNode = alertElement.Element(capNamespace + "sender");
@@ -170,7 +175,7 @@ namespace CAPNet
 
             var responseTypeQuery = from responseTypeNode in infoElement.Elements(capNamespace + "responseType")
                                     where responseTypeNode != null
-                                    select (ResponseType)Enum.Parse(typeof(ResponseType), responseTypeNode.Value,true);
+                                    select (ResponseType)Enum.Parse(typeof(ResponseType), responseTypeNode.Value, true);
 
             foreach (var responseType in responseTypeQuery)
             {
