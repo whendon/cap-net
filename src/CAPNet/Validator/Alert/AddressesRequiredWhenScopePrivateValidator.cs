@@ -20,7 +20,7 @@ namespace CAPNet
         /// </summary>
         public override bool IsValid
         {
-            get 
+            get
             {
                 return !(Entity.Scope == Scope.Private && string.IsNullOrEmpty(Entity.Addresses));
             }
@@ -33,7 +33,8 @@ namespace CAPNet
         {
             get
             {
-                yield return new AddressesRequiredWhenScopeError();
+                if (!IsValid)
+                    yield return new AddressesRequiredWhenScopeError();
             }
         }
     }
