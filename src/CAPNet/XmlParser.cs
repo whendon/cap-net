@@ -53,7 +53,7 @@ namespace CAPNet
         {
             Alert alert = new Alert();
             var capNamespace = alertElement.Name.Namespace;
-           
+
             var infoNodes = alertElement.Elements(capNamespace + "info");
             var infos = from info in infoNodes
                         where info != null
@@ -100,7 +100,7 @@ namespace CAPNet
             var scopeNode = alertElement.Element(capNamespace + "scope");
             if (scopeNode != null)
             {
-                alert.Scope = (Scope)Enum.Parse(typeof(Scope), scopeNode.Value, true);
+                alert.Scope = EnumParse<Scope>(scopeNode.Value);
             }
 
             var sourceNode = alertElement.Element(capNamespace + "source");
@@ -112,13 +112,13 @@ namespace CAPNet
             var msgTypeNode = alertElement.Element(capNamespace + "msgType");
             if (msgTypeNode != null)
             {
-                alert.MessageType = (MessageType)Enum.Parse(typeof(MessageType), msgTypeNode.Value, true);
+                alert.MessageType = EnumParse<MessageType>(msgTypeNode.Value);
             }
 
             var statusNode = alertElement.Element(capNamespace + "status");
             if (statusNode != null)
             {
-                alert.Status = (Status)Enum.Parse(typeof(Status), statusNode.Value, true);
+                alert.Status = EnumParse<Status>(statusNode.Value);
             }
 
             var sentNode = alertElement.Element(capNamespace + "sent");
@@ -142,6 +142,11 @@ namespace CAPNet
             return alert;
         }
 
+        private static T EnumParse<T>(string nodeValue)
+        {
+            return (T)Enum.Parse(typeof(T), nodeValue, true);
+        }
+
         private static Info ParseInfo(XElement infoElement)
         {
             var info = new Info();
@@ -155,10 +160,9 @@ namespace CAPNet
             var categoryNodes = infoElement.Elements(capNamespace + "category");
             var categories = from categoryNode in categoryNodes
                              where categoryNode != null
-                             select (Category)Enum.Parse(typeof(Category), categoryNode.Value, true);
+                             select EnumParse<Category>(categoryNode.Value);
 
             info.Categories.AddRange(categories);
-
 
             var eventNode = infoElement.Element(capNamespace + "event");
             if (eventNode != null)
@@ -169,14 +173,14 @@ namespace CAPNet
             var responseTypeNodes = infoElement.Elements(capNamespace + "responseType");
             var responseTypes = from responseTypeNode in responseTypeNodes
                                 where responseTypeNode != null
-                                select (ResponseType)Enum.Parse(typeof(ResponseType), responseTypeNode.Value, true);
+                                select EnumParse<ResponseType>(responseTypeNode.Value);
 
             info.ResponseTypes.AddRange(responseTypes);
 
             var urgencyNode = infoElement.Element(capNamespace + "urgency");
             if (urgencyNode != null)
             {
-                info.Urgency = (Urgency)Enum.Parse(typeof(Urgency), urgencyNode.Value, true);
+                info.Urgency = EnumParse<Urgency>(urgencyNode.Value);
             }
 
             var certaintyNode = infoElement.Element(capNamespace + "certainty");
@@ -188,7 +192,7 @@ namespace CAPNet
                 }
                 else
                 {
-                    info.Certainty = (Certainty)Enum.Parse(typeof(Certainty), certaintyNode.Value, true);
+                    info.Certainty = EnumParse<Certainty>(certaintyNode.Value);
                 }
             }
 
@@ -217,7 +221,7 @@ namespace CAPNet
             var severityNode = infoElement.Element(capNamespace + "severity");
             if (severityNode != null)
             {
-                info.Severity = (Severity)Enum.Parse(typeof(Severity), severityNode.Value, true);
+                info.Severity = EnumParse<Severity>(severityNode.Value);
             }
 
             var onsetNode = infoElement.Element(capNamespace + "onset");
@@ -276,7 +280,7 @@ namespace CAPNet
                              select new Parameter(valueNameNode.Value, valueNode.Value);
 
             info.Parameters.AddRange(parameters);
-            
+
             var resourceNodes = infoElement.Elements(capNamespace + "resource");
             var resources = from resourceNode in resourceNodes
                             where resourceNode != null
