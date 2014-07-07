@@ -13,11 +13,11 @@ namespace CAPNet
         /// <summary>
         /// 
         /// </summary>
-        public static readonly ICollection<string> restrictiveCharacters =
-                                               new[] { ",", ":", ">", "<",
-                                                       "-", "+", "=", "]", 
-                                                       "[", ")", "(", "*", 
-                                                       "&", "^", "%", "$", 
-                                                       "#", "!" };
+        public static readonly IEnumerable<char> restrictiveCharacters =
+                                               new[] { ',', ':', '>', '<',
+                                                       '-', '+', '=', ']', 
+                                                       '[', ')', '(', '*', 
+                                                       '&', '^', '%', '$', 
+                                                       '#', '!' };
     }
 }

@@ -37,7 +37,7 @@ namespace CAPNet
         {
             get
             {
-                return !(RestrictiveCharacters.restrictiveCharacters.Any(restrictiveCharacter => Entity.Sender.Contains(restrictiveCharacter)));
+                return !RestrictiveCharacters.restrictiveCharacters.Any(restrictiveCharacter => Entity.Sender.Contains(restrictiveCharacter.ToString()));
             }
         }
     }
