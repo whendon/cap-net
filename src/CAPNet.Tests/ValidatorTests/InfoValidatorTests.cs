@@ -50,5 +50,29 @@ namespace CAPNet.Tests.ValidatorTests
                              select error;
             Assert.NotEmpty(infoErrors);
         }
+
+        [Fact]
+        public void InfoWithRequiredFieldsAndInvalidResponseTypeIsInvalid()
+        {
+            Info info = new Info();
+            //Required Fields : Categories,Event,Urgency,Severity,Certainty
+            info.Categories.Add(Category.CBRNE);
+            info.Event = "Event";
+            info.Urgency = Urgency.Expected;
+            info.Severity = Severity.Extreme;
+            info.Certainty = Certainty.Likely;
+            info.ResponseTypes.Add((ResponseType)123);
+
+            Alert alert = new Alert();
+            alert.Info.Add(info);
+            var infoValidator = new InfoValidator(alert);
+            Assert.False(infoValidator.IsValid);
+
+            var infoErrors = from error in infoValidator.Errors
+                             where error.GetType() == typeof(ResponseTypeError)
+                             select error;
+            Assert.NotEmpty(infoErrors);
+        }
+
     }
 }
