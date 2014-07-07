@@ -53,14 +53,13 @@ namespace CAPNet
         {
             Alert alert = new Alert();
             var capNamespace = alertElement.Name.Namespace;
+           
             var infoNodes = alertElement.Elements(capNamespace + "info");
-
             var infos = from info in infoNodes
                         where info != null
                         select ParseInfo(info);
 
             alert.Info.AddRange(infos);
-
 
             var incidentsNode = alertElement.Element(capNamespace + "incidents");
             if (incidentsNode != null)
@@ -153,7 +152,8 @@ namespace CAPNet
             if (languageNode != null)
                 info.Language = languageNode.Value;
 
-            var categories = from categoryNode in infoElement.Elements(capNamespace + "category")
+            var categoryNodes = infoElement.Elements(capNamespace + "category");
+            var categories = from categoryNode in categoryNodes
                              where categoryNode != null
                              select (Category)Enum.Parse(typeof(Category), categoryNode.Value, true);
 
@@ -166,7 +166,8 @@ namespace CAPNet
                 info.Event = eventNode.Value;
             }
 
-            var responseTypes = from responseTypeNode in infoElement.Elements(capNamespace + "responseType")
+            var responseTypeNodes = infoElement.Elements(capNamespace + "responseType");
+            var responseTypes = from responseTypeNode in responseTypeNodes
                                 where responseTypeNode != null
                                 select (ResponseType)Enum.Parse(typeof(ResponseType), responseTypeNode.Value, true);
 
@@ -197,8 +198,9 @@ namespace CAPNet
                 info.Audience = audienceNode.Value;
             }
 
+            var eventCodeNodes = infoElement.Elements(capNamespace + "eventCode");
             var eventCodes =
-                from ev in infoElement.Elements(capNamespace + "eventCode")
+                from ev in eventCodeNodes
                 where ev != null
                 let value = ev.Element(capNamespace + "value").Value
                 let valueName = ev.Element(capNamespace + "valueName").Value
@@ -266,23 +268,24 @@ namespace CAPNet
                 info.Contact = contactNode.Value;
             }
 
-            var parameters = from parameter in infoElement.Elements(capNamespace + "parameter")
+            var parameterNodes = infoElement.Elements(capNamespace + "parameter");
+            var parameters = from parameter in parameterNodes
                              let valueNameNode = parameter.Element(capNamespace + "valueName")
                              let valueNode = parameter.Element(capNamespace + "value")
                              where valueNameNode != null && valueNode != null
                              select new Parameter(valueNameNode.Value, valueNode.Value);
 
             info.Parameters.AddRange(parameters);
-
-
-            var resources = from resourceNode in infoElement.Elements(capNamespace + "resource")
+            
+            var resourceNodes = infoElement.Elements(capNamespace + "resource");
+            var resources = from resourceNode in resourceNodes
                             where resourceNode != null
                             select ParseResource(resourceNode);
 
             info.Resources.AddRange(resources);
 
-
-            var areas = from areaNode in infoElement.Elements(capNamespace + "area")
+            var areaNodes = infoElement.Elements(capNamespace + "area");
+            var areas = from areaNode in areaNodes
                         where areaNode != null
                         select ParseArea(areaNode);
 
@@ -307,13 +310,15 @@ namespace CAPNet
 
             area.Polygons.AddRange(polygons);
 
-            var circles = from circleNode in areaElement.Elements(capNamespace + "circle")
+            var circleNodes = areaElement.Elements(capNamespace + "circle");
+            var circles = from circleNode in circleNodes
                           where circleNode != null
                           select new Circle(circleNode.Value);
 
             area.Circles.AddRange(circles);
 
-            var geoCodes = from geoCodeNode in areaElement.Elements(capNamespace + "geocode")
+            var geoCodeNodes = areaElement.Elements(capNamespace + "geocode");
+            var geoCodes = from geoCodeNode in geoCodeNodes
                            where geoCodeNode != null
                            let value = geoCodeNode.Element(capNamespace + "value").Value
                            let valueName = geoCodeNode.Element(capNamespace + "valueName").Value
