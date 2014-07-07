@@ -20,7 +20,6 @@ namespace CAPNet
             var polygon = new Polygon("38.47,-120.14 38.52,-119.74 38.62,-119.89 38.47,-120.14");
             var polygonMinCoordinatesValidator = new PolygonMinCoordinatesValidator(polygon);
             Assert.True(polygonMinCoordinatesValidator.IsValid);
-            Assert.Empty(polygonMinCoordinatesValidator.Errors);
         }
 
         [Fact]
@@ -29,7 +28,11 @@ namespace CAPNet
             var polygon = new Polygon("38.47,-120.14 38.47,-120.14");
             var polygonMinCoordinatesValidator = new PolygonMinCoordinatesValidator(polygon);
             Assert.False(polygonMinCoordinatesValidator.IsValid);
-            Assert.NotEmpty(polygonMinCoordinatesValidator.Errors);
+
+            var minCoordinatesErrors = from error in polygonMinCoordinatesValidator.Errors
+                                      where error.GetType() == typeof(PolygonMinCoordinatesError)
+                                      select error;
+            Assert.NotEmpty(minCoordinatesErrors);
         }
     }
 }
