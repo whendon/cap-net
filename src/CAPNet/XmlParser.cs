@@ -125,7 +125,7 @@ namespace CAPNet
             var sentNode = alertElement.Element(capNamespace + "sent");
             if (sentNode != null)
             {
-                alert.Sent = DateTimeOffset.Parse(sentNode.Value, CultureInfo.InvariantCulture);
+                alert.Sent = TryParseDateTime(sentNode.Value);
             }
 
             var senderNode = alertElement.Element(capNamespace + "sender");
@@ -216,7 +216,7 @@ namespace CAPNet
             var effectiveNode = infoElement.Element(capNamespace + "effective");
             if (effectiveNode != null)
             {
-                info.Effective = DateTimeOffset.Parse(effectiveNode.Value, CultureInfo.InvariantCulture);
+                info.Effective = TryParseDateTime(effectiveNode.Value);
             }
 
             var severityNode = infoElement.Element(capNamespace + "severity");
@@ -228,13 +228,13 @@ namespace CAPNet
             var onsetNode = infoElement.Element(capNamespace + "onset");
             if (onsetNode != null)
             {
-                info.Onset = DateTimeOffset.Parse(onsetNode.Value, CultureInfo.InvariantCulture);
+                info.Onset = TryParseDateTime(onsetNode.Value);
             }
 
             var expiresNode = infoElement.Element(capNamespace + "expires");
             if (expiresNode != null)
             {
-                info.Expires = DateTimeOffset.Parse(expiresNode.Value, CultureInfo.InvariantCulture);
+                info.Expires = TryParseDateTime(expiresNode.Value);
             }
 
             var senderNameNode = infoElement.Element(capNamespace + "senderName");
@@ -390,6 +390,13 @@ namespace CAPNet
             string decoded = encoding.GetString(bites, 0, bites.Count());
 
             return decoded;
+        }
+
+        private static DateTimeOffset TryParseDateTime(string dateTime)
+        {
+            DateTimeOffset parsed;
+            DateTimeOffset.TryParse(dateTime, out parsed);
+            return parsed;
         }
     }
 }

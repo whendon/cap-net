@@ -132,6 +132,7 @@
     <Content Include="Resources\SevereThundertromCap11.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Resources\WrongDateXml.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

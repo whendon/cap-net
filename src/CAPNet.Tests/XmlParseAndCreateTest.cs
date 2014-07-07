@@ -183,6 +183,21 @@ namespace CAPNet.Tests
 
             Assert.Equal(createdDocument.ToString(), originalDocument.ToString());
         }
-        
+
+        [Fact]
+        public void WrongDateParseAndCreate()
+        {
+            string xmlContent = Xml.MultipleAlertAndInfoThunderstorm;
+            string xmlContentDateChanged = xmlContent.Replace("2003-04-02T14", DateTimeOffset.MinValue.ToString());
+            XDocument originalDocument = XDocument.Parse(xmlContentDateChanged);
+
+            IEnumerable<Alert> alerts = XmlParser.Parse(xmlContent);
+            IEnumerable<XElement> createdElements = XmlCreator.Create(alerts);
+
+            XDocument createdDocument = new XDocument();
+            createdDocument.Add(new XElement(originalDocument.Root.Name.ToString(), createdElements));
+
+            Assert.Equal(createdDocument.ToString(), originalDocument.ToString());
+        } 
     }
 }
