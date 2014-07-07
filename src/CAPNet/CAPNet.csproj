@@ -81,6 +81,7 @@
     <Compile Include="Validator\Alert\Resource\MimeTypeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Resource\SizeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\IdentifierRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\ScopeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\SenderRequiredValidator.cs" />
     <Compile Include="Validator\Alert\SentRequiredValidator.cs" />
     <Compile Include="Validator\Alert\StatusRequiredValidator.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Validator\Errors\InvalidCategoryError.cs" />
     <Compile Include="Validator\Errors\Required\MimeTypeRequiredError.cs" />
     <Compile Include="Validator\Errors\Required\ResourceRequiredError.cs" />
+    <Compile Include="Validator\Errors\Required\ScopeRequiredError.cs" />
     <Compile Include="Validator\Errors\Required\SizeRequiredError.cs" />
     <Compile Include="Validator\Errors\ResponseTypeError.cs" />
     <Compile Include="Validator\Errors\SenderError.cs" />

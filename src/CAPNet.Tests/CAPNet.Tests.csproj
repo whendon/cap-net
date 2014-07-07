@@ -74,6 +74,7 @@
     <Compile Include="ValidatorTests\Required\Resource\MimeTypeRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\InvalidCategoryValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\Resource\SizeRequiredValidatorTests.cs" />
+    <Compile Include="ValidatorTests\Required\ScopeRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\SentRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\ResponseTypesValidatorTests.cs" />
     <Compile Include="ValidatorTests\SenderValidatorTests.cs" />
