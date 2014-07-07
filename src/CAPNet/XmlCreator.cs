@@ -143,7 +143,8 @@ namespace CAPNet
             AddElementIfHasContent(resourceElement, "mimeType", resource.MimeType);
             AddElementIfHasContent(resourceElement, "size", resource.Size);
             AddElementIfHasContent(resourceElement, "uri", resource.Uri);
-            AddElementIfHasContent(resourceElement, "derefUri", resource.DereferencedUri);
+            string encoded = EncodeToBase64(resource.DereferencedUri);
+            AddElementIfHasContent(resourceElement, "derefUri", encoded);
             AddElementIfHasContent(resourceElement, "digest", resource.Digest);
 
             return resourceElement;
@@ -214,6 +215,18 @@ namespace CAPNet
         {
             if (content != DateTimeOffset.MinValue)
                 element.Add(new XElement(CAP12Namespace + name, content));
+        }
+
+        private static string EncodeToBase64(string utfData)
+        {
+            if (!string.IsNullOrEmpty(utfData))
+            {
+                var bytes = System.Text.Encoding.UTF8.GetBytes(utfData);
+                return Convert.ToBase64String(bytes);
+            }
+
+            return null;
+
         }
 
     }

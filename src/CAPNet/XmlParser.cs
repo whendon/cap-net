@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 
 namespace CAPNet
@@ -373,13 +374,22 @@ namespace CAPNet
 
             var derefUriNode = resourceElement.Element(capNamespace + "derefUri");
             if (derefUriNode != null)
-                resource.DereferencedUri = derefUriNode.Value;
+                resource.DereferencedUri = Base64Decode(derefUriNode.Value);
 
             var digestNode = resourceElement.Element(capNamespace + "digest");
             if (digestNode != null)
                 resource.Digest = digestNode.Value;
 
             return resource;
+        }
+
+        private static string Base64Decode(string base64EncodedData)
+        { 
+            var bites = Convert.FromBase64String(base64EncodedData);
+            UTF8Encoding encoding = new UTF8Encoding();
+            string decoded = encoding.GetString(bites, 0, bites.Count());
+
+            return decoded;
         }
     }
 }

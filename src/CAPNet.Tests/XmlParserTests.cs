@@ -389,7 +389,7 @@ namespace CAPNet.Tests
             Assert.Equal(1, resource.Size);
             //      <uri>http://www.dhs.gov/dhspublic/getAdvisoryImage</uri>
             Assert.Equal(new Uri("http://www.dhs.gov/dhspublic/getAdvisoryImage"), resource.Uri);
-            //      <derefUri>derefUri</derefUri>
+            //      <derefUri>ZGVyZWZVcmk=</derefUri>
             Assert.Equal("derefUri", resource.DereferencedUri);
             //      <digest>digest</digest>
             Assert.Equal("digest", resource.Digest);
