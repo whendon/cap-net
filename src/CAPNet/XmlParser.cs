@@ -154,8 +154,8 @@ namespace CAPNet
                 info.Language = languageNode.Value;
 
             var categories = from categoryNode in infoElement.Elements(capNamespace + "category")
-                            where categoryNode != null
-                            select (Category)Enum.Parse(typeof(Category), categoryNode.Value, true);
+                             where categoryNode != null
+                             select (Category)Enum.Parse(typeof(Category), categoryNode.Value, true);
 
             info.Categories.AddRange(categories);
             
