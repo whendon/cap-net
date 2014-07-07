@@ -56,12 +56,15 @@ namespace CAPNet
             var capNamespace = alertElement.Name.Namespace;
             alert.Namespace = capNamespace;
 
-            var infoNode = alertElement.Element(capNamespace + "info");
-            if (infoNode != null)
-            {
-                var info = ParseInfo(infoNode);
-                alert.Info.Add(info);
-            }
+
+            var infoNodes = alertElement.Elements(capNamespace + "info");
+     
+            var infos = from info in infoNodes
+                        where info != null
+                        select ParseInfo(info);
+
+            alert.Info.AddRange(infos);
+            
 
             var incidentsNode = alertElement.Element(capNamespace + "incidents");
             if (incidentsNode != null)
@@ -154,14 +157,12 @@ namespace CAPNet
             if (languageNode != null)
                 info.Language = languageNode.Value;
 
-            var categoryQuery = from categoryNode in infoElement.Elements(capNamespace + "category")
-                                where categoryNode != null
-                                select (Category)Enum.Parse(typeof(Category), categoryNode.Value, true);
+            var categorys = from categoryNode in infoElement.Elements(capNamespace + "category")
+                            where categoryNode != null
+                            select (Category)Enum.Parse(typeof(Category), categoryNode.Value, true);
 
-            foreach (var category in categoryQuery)
-            {
-                info.Categories.Add(category);
-            }
+            info.Categories.AddRange(categorys);
+            
 
             var eventNode = infoElement.Element(capNamespace + "event");
             if (eventNode != null)
@@ -169,14 +170,12 @@ namespace CAPNet
                 info.Event = eventNode.Value;
             }
 
-            var responseTypeQuery = from responseTypeNode in infoElement.Elements(capNamespace + "responseType")
+            var responseTypes = from responseTypeNode in infoElement.Elements(capNamespace + "responseType")
                                     where responseTypeNode != null
-                                    select (ResponseType)Enum.Parse(typeof(ResponseType), responseTypeNode.Value,true);
+                                    select (ResponseType)Enum.Parse(typeof(ResponseType), responseTypeNode.Value, true);
 
-            foreach (var responseType in responseTypeQuery)
-            {
-                info.ResponseTypes.Add(responseType);
-            }
+            info.ResponseTypes.AddRange(responseTypes);
+            
 
             var urgencyNode = infoElement.Element(capNamespace + "urgency");
             if (urgencyNode != null)
@@ -203,17 +202,14 @@ namespace CAPNet
                 info.Audience = audienceNode.Value;
             }
 
-            IEnumerable<XElement> eventCodesQuerry =
+            var eventCodes =
                 from ev in infoElement.Elements(capNamespace + "eventCode")
                 where ev != null
-                select ev;
+                let value = ev.Element(capNamespace + "value").Value
+                let valueName = ev.Element(capNamespace + "valueName").Value
+                select new EventCode(valueName, value);
 
-            foreach (XElement eventCode in eventCodesQuerry)
-            {
-                string valueName = eventCode.Element(capNamespace + "valueName").Value;
-                string value = eventCode.Element(capNamespace + "value").Value; ;
-                info.EventCodes.Add(new EventCode(valueName, value));
-            }
+            info.EventCodes.AddRange(eventCodes);
 
             var effectiveNode = infoElement.Element(capNamespace + "effective");
             if (effectiveNode != null)
@@ -275,35 +271,28 @@ namespace CAPNet
                 info.Contact = contactNode.Value;
             }
 
-            var parameterQuery = from parameter in infoElement.Elements(capNamespace + "parameter")
-                                 let valueNameNode = parameter.Element(capNamespace + "valueName")
-                                 let valueNode = parameter.Element(capNamespace + "value")
-                                 where valueNameNode != null && valueNode != null
-                                 select new Parameter(valueNameNode.Value, valueNode.Value);
+            var parameters = from parameter in infoElement.Elements(capNamespace + "parameter")
+                             let valueNameNode = parameter.Element(capNamespace + "valueName")
+                             let valueNode = parameter.Element(capNamespace + "value")
+                             where valueNameNode != null && valueNode != null
+                             select new Parameter(valueNameNode.Value, valueNode.Value);
 
-            foreach (var parameter in parameterQuery)
-            {
-                info.Parameters.Add(parameter);
-            }
+            info.Parameters.AddRange(parameters);
+            
 
-            var resourceQuery = from resourceNode in infoElement.Elements(capNamespace + "resource")
-                                where resourceNode != null
-                                select ParseResource(resourceNode);
+            var resources = from resourceNode in infoElement.Elements(capNamespace + "resource")
+                            where resourceNode != null
+                            select ParseResource(resourceNode);
 
-            foreach (var resource in resourceQuery)
-            {
-                info.Resources.Add(resource);
-            }
+            info.Resources.AddRange(resources);
+           
 
-            var areaQuery = from areaNode in infoElement.Elements(capNamespace + "area")
-                            where areaNode != null
-                            select ParseArea(areaNode);
+            var areas = from areaNode in infoElement.Elements(capNamespace + "area")
+                        where areaNode != null
+                        select ParseArea(areaNode);
 
-            foreach (var area in areaQuery)
-            {
-                info.Areas.Add(area);
-            }
-
+            info.Areas.AddRange(areas);
+      
             return info;
         }
 
@@ -317,23 +306,25 @@ namespace CAPNet
             if (areaDescNode != null)
                 area.Description = areaDescNode.Value;
 
-            var polygonQuery = from polygonNode in areaElement.Elements(capNamespace + "polygon")
-                               where polygonNode != null
-                               select polygonNode.Value;
+            var polygons = from polygonNode in areaElement.Elements(capNamespace + "polygon")
+                           where polygonNode != null
+                           select new Polygon(polygonNode.Value);
 
-            foreach (var polygonValue in polygonQuery)
-                area.Polygons.Add(new Polygon(polygonValue));
+            area.Polygons.AddRange(polygons);
 
-            var circleQuery = from circleNode in areaElement.Elements(capNamespace + "circle")
-                              where circleNode != null
-                              select circleNode.Value;
+            var circles = from circleNode in areaElement.Elements(capNamespace + "circle")
+                          where circleNode != null
+                          select new Circle(circleNode.Value);
 
-            foreach (var circleValue in circleQuery)
-                area.Circles.Add(new Circle(circleValue));
+            area.Circles.AddRange(circles);
 
-            var geoCodeQuery = from geoCodeNode in areaElement.Elements(capNamespace + "geocode")
-                               where geoCodeNode != null
-                               select geoCodeNode;
+            var geoCodes = from geoCodeNode in areaElement.Elements(capNamespace + "geocode")
+                           where geoCodeNode != null
+                           let value = geoCodeNode.Element(capNamespace + "value").Value
+                           let valueName = geoCodeNode.Element(capNamespace + "valueName").Value
+                           select new GeoCode(valueName, value);
+
+            area.GeoCodes.AddRange(geoCodes);
 
             var altitudeNode = areaElement.Element(capNamespace + "altitude");
             if (altitudeNode != null)
@@ -342,14 +333,6 @@ namespace CAPNet
             var ceilingNode = areaElement.Element(capNamespace + "ceiling");
             if (ceilingNode != null)
                 area.Ceiling = int.Parse(ceilingNode.Value);
-
-            foreach (XElement geoCodeValue in geoCodeQuery)
-            {
-                string valueName = geoCodeValue.Element(capNamespace + "valueName").Value;
-                string value = geoCodeValue.Element(capNamespace + "value").Value;
-
-                area.GeoCodes.Add(new GeoCode(valueName, value));
-            }
             return area;
         }
 
