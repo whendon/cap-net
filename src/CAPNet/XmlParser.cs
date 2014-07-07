@@ -176,7 +176,6 @@ namespace CAPNet
 
             info.ResponseTypes.AddRange(responseTypes);
             
-
             var urgencyNode = infoElement.Element(capNamespace + "urgency");
             if (urgencyNode != null)
             {
