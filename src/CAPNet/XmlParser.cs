@@ -153,11 +153,11 @@ namespace CAPNet
             if (languageNode != null)
                 info.Language = languageNode.Value;
 
-            var categorys = from categoryNode in infoElement.Elements(capNamespace + "category")
+            var categories = from categoryNode in infoElement.Elements(capNamespace + "category")
                             where categoryNode != null
                             select (Category)Enum.Parse(typeof(Category), categoryNode.Value, true);
 
-            info.Categories.AddRange(categorys);
+            info.Categories.AddRange(categories);
             
 
             var eventNode = infoElement.Element(capNamespace + "event");
