@@ -20,7 +20,7 @@ namespace CAPNet
         }
 
         [Fact]
-        public void PolygonWithFirstCoordinatePairEqualToLastCoordinatePairsIsValid()
+        public void PolygonWithFirstCoordinatePairEqualToLastCoordinatePairIsValid()
         {
             var polygon = new Polygon("38.47,-120.14 38.34,-119.95 38.52,-119.74 38.62,-119.89 38.47,-120.14");
             var polygonCoordinatePairsFirstLastValidator = new PolygonCoordinatePairsFirstLastValidator(polygon);
