@@ -45,7 +45,5 @@ namespace CAPNet.Models
         {
             return string.Join(" ", coordinates);
         }
-
-        
     }
 }
