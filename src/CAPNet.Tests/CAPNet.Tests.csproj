@@ -118,7 +118,9 @@
     <None Include="Resources\MultipleParameterTestXml.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MultipleThunderstorm12Xml.xml" />
+    <None Include="Resources\MultipleThunderstorm12Xml.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\AllElementsFilledAlert.xml" />
