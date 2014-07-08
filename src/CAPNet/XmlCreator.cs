@@ -224,10 +224,5 @@ namespace CAPNet
                 element.Add(new XElement(CAP12Namespace + name, content));
         }
 
-        private static void AddElementIfHasContent(XElement element, string name, DateTimeOffset? content)
-        {
-            if (content != null)
-                element.Add(new XElement(CAP12Namespace + name, content));
-        }
     }
 }
