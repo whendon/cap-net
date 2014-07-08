@@ -123,7 +123,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\AllElementsFilledAlert.xml" />
+    <Content Include="Resources\AllElementsFilledAlert.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Resources\AmberAlertCap11.xml" />
     <Content Include="Resources\EarthquakeCap11.xml" />
     <Content Include="Resources\HomeLandSecurityAlertCap11.xml">

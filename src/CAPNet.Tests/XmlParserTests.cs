@@ -336,9 +336,9 @@ namespace CAPNet.Tests
             var altitude = area.Altitude;
             var ceiling = area.Ceiling;
 
-            Assert.Equal(altitude, null);
-            Assert.Equal(ceiling, null);
-            Assert.Equal(size, null);
+            Assert.Null(altitude);
+            Assert.Null(ceiling);
+            Assert.Null(size);
         }
 
         [Fact]
@@ -351,10 +351,10 @@ namespace CAPNet.Tests
             var onset = info.Onset;
             var expires = info.Expires;
 
-            Assert.Equal(sent, null);
-            Assert.Equal(effective, null);
-            Assert.Equal(expires, null);
-            Assert.Equal(onset, null);
+            Assert.Null(sent);
+            Assert.Null(effective);
+            Assert.Null(expires);
+            Assert.Null(onset);
         }
 
         [Fact]
@@ -363,7 +363,7 @@ namespace CAPNet.Tests
             //<derefUri>abc123</derefUri> not a valid base64
             var alert = XmlParser.Parse(Xml.WrongData).First();
             var derefUri = alert.Info.First().Resources.First().DereferencedUri;
-            Assert.Equal(derefUri, null);
+            Assert.Null(derefUri);
         }
         
         [Fact]
