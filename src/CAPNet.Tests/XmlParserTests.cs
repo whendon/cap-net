@@ -47,9 +47,9 @@ namespace CAPNet.Tests
 
             var info = alert.Info.ElementAt(0);
 
-            Assert.Equal(TimeSpan.FromHours(-7), info.Effective.Offset);
-            Assert.Equal(TimeSpan.FromHours(-7), info.Onset.Offset);
-            Assert.Equal(TimeSpan.FromHours(-7), info.Expires.Offset);
+            Assert.Equal(TimeSpan.FromHours(-7), info.Effective.Value.Offset);
+            Assert.Equal(TimeSpan.FromHours(-7), info.Onset.Value.Offset);
+            Assert.Equal(TimeSpan.FromHours(-7), info.Expires.Value.Offset);
         }
 
         [Fact]
@@ -328,6 +328,45 @@ namespace CAPNet.Tests
         }
 
         [Fact]
+        public void CanParseWithStringInsteadOfInt()
+        {
+            var alert = XmlParser.Parse(Xml.WrongData).First();
+            var size = alert.Info.First().Resources.First().Size;
+            var area = alert.Info.First().Areas.First();
+            var altitude = area.Altitude;
+            var ceiling = area.Ceiling;
+
+            Assert.Null(altitude);
+            Assert.Null(ceiling);
+            Assert.Null(size);
+        }
+
+        [Fact]
+        public void CanParseWithWrongDateTime()
+        {
+            var alert = XmlParser.Parse(Xml.WrongData).First();
+            var sent = alert.Sent;
+            var info = alert.Info.First();
+            var effective = info.Effective;
+            var onset = info.Onset;
+            var expires = info.Expires;
+
+            Assert.Null(sent);
+            Assert.Null(effective);
+            Assert.Null(expires);
+            Assert.Null(onset);
+        }
+
+        [Fact]
+        public void CanParseWithWrongDerefUri()
+        {
+            //<derefUri>abc123</derefUri> not a valid base64
+            var alert = XmlParser.Parse(Xml.WrongData).First();
+            var derefUri = alert.Info.First().Resources.First().DereferencedUri;
+            Assert.Null(derefUri);
+        }
+        
+        [Fact]
         public void MultipleAlertXmlIsParsedCorrectly()
         {
             var alert = XmlParser.Parse(Xml.MultipleAlertXml).First();
@@ -389,8 +428,9 @@ namespace CAPNet.Tests
             Assert.Equal(1, resource.Size);
             //      <uri>http://www.dhs.gov/dhspublic/getAdvisoryImage</uri>
             Assert.Equal(new Uri("http://www.dhs.gov/dhspublic/getAdvisoryImage"), resource.Uri);
-            //      <derefUri>derefUri</derefUri>
-            Assert.Equal("derefUri", resource.DereferencedUri);
+            //      <derefUri>ZGVyZWZVcmk=</derefUri>
+            var bites = Convert.FromBase64String("ZGVyZWZVcmk=");
+            Assert.Equal(bites, resource.DereferencedUri);
             //      <digest>digest</digest>
             Assert.Equal("digest", resource.Digest);
             //    </resource>

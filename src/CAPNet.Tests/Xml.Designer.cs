@@ -450,5 +450,52 @@ namespace CAPNet.Tests {
                 return ResourceManager.GetString("VeryLikelyOrangeAlertXml", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;alert xmlns=&quot;urn:oasis:names:tc:emergency:cap:1.2&quot;&gt;
+        ///  &lt;identifier&gt;43b080713727&lt;/identifier&gt;
+        ///  &lt;sender&gt;hsas@dhs.gov&lt;/sender&gt;
+        ///  &lt;sent&gt;2003-04-02T14:39:01-05:00&lt;/sent&gt;
+        ///  &lt;status&gt;Actual&lt;/status&gt;
+        ///  &lt;msgType&gt;Alert&lt;/msgType&gt;
+        ///  &lt;source&gt;source&lt;/source&gt;
+        ///  &lt;scope&gt;Public&lt;/scope&gt;
+        ///  &lt;restriction&gt;restriction&lt;/restriction&gt;
+        ///  &lt;addresses&gt;addresses&lt;/addresses&gt;
+        ///  &lt;code&gt;code&lt;/code&gt;
+        ///  &lt;note&gt;note&lt;/note&gt;
+        ///  &lt;references&gt;references&lt;/references&gt;
+        ///  &lt;incidents&gt;incidents&lt;/incidents&gt;
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string WrongData {
+            get {
+                return ResourceManager.GetString("WrongData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;alert xmlns=&quot;urn:oasis:names:tc:emergency:cap:1.2&quot;&gt;
+        ///  &lt;identifier&gt;43b080713727&lt;/identifier&gt;
+        ///  &lt;sender&gt;hsas@dhs.gov&lt;/sender&gt;
+        ///  &lt;sent&gt;2003-04-02T14&lt;/sent&gt;
+        ///  &lt;status&gt;Actual&lt;/status&gt;
+        ///  &lt;msgType&gt;Alert&lt;/msgType&gt;
+        ///  &lt;scope&gt;Public&lt;/scope&gt;
+        ///  &lt;info&gt;
+        ///    &lt;category&gt;Security&lt;/category&gt;
+        ///    &lt;event&gt;Homeland Security Advisory System Update&lt;/event&gt;
+        ///    &lt;urgency&gt;Immediate&lt;/urgency&gt;
+        ///    &lt;severity&gt;Severe&lt;/severity&gt;
+        ///    &lt;certainty&gt;Likely&lt;/certainty&gt;
+        ///    &lt;senderName&gt;U.S. Gover [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string WrongDateXml {
+            get {
+                return ResourceManager.GetString("WrongDateXml", resourceCulture);
+            }
+        }
     }
 }

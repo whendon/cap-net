@@ -48,7 +48,7 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "identifier", alert.Identifier);
             AddElementIfHasContent(alertElement, "sender", alert.Sender);
             // set milliseconds to 0
-            AddElementIfHasContent(alertElement, "sent", alert.Sent.Value.AddMilliseconds(-alert.Sent.Value.Millisecond));
+            AddElementIfHasContent(alertElement, "sent", AddMilliseconds(alert.Sent));
             AddElementIfHasContent(alertElement, "status", alert.Status);
             AddElementIfHasContent(alertElement, "msgType", alert.MessageType);
             AddElementIfHasContent(alertElement, "source", alert.Source);
@@ -64,9 +64,14 @@ namespace CAPNet
             return alertElement;
         }
 
+        private static DateTimeOffset AddMilliseconds(DateTimeOffset? date)
+        {
+            return date.Value.AddMilliseconds(-date.Value.Millisecond);
+        }
+
         private static IEnumerable<XElement> Create(IEnumerable<Info> infos)
         {
-            IEnumerable<XElement> infoElements =
+            var infoElements =
                 from info in infos
                 select Create(info);
 
@@ -104,7 +109,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<EventCode> codes)
         {
-            IEnumerable<XElement> eventCodesElements =
+            var eventCodesElements =
                 from e in codes
                 select new XElement(
                     CAP12Namespace + "eventCode",
@@ -116,7 +121,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<Parameter> parameters)
         {
-            IEnumerable<XElement> parameterElements =
+            var parameterElements =
                 from parameter in parameters
                 select new XElement(
                     CAP12Namespace + "parameter",
@@ -128,7 +133,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<Resource> resources)
         {
-            IEnumerable<XElement> resourceElements =
+            var resourceElements =
                 from resource in resources
                 select Create(resource);
 
@@ -151,7 +156,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<GeoCode> geoCodes)
         {
-            IEnumerable<XElement> geoCodeElements =
+            var geoCodeElements =
                 from geoCode in geoCodes
                 select new XElement(
                     CAP12Namespace + "geocode",
@@ -163,7 +168,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<Area> areas)
         {
-            IEnumerable<XElement> areaElements =
+            var areaElements =
                 from area in areas
                 select Create(area);
 
@@ -192,6 +197,15 @@ namespace CAPNet
             return areaElement;
         }
 
+        private static void AddElementIfHasContent(XElement parent, string name, byte[] content)
+        {
+            if (content != null)
+            {
+                string base64DerefUri = Convert.ToBase64String(content);
+                parent.Add(new XElement(CAP12Namespace + name, base64DerefUri));
+            }
+        }
+
         private static void AddElementIfHasContent<T>(XElement element, string name, T content)
         {
             if (content != null)
@@ -207,12 +221,6 @@ namespace CAPNet
         private static void AddElementIfHasContent(XElement element, string name, string content)
         {
             if (!string.IsNullOrEmpty(content))
-                element.Add(new XElement(CAP12Namespace + name, content));
-        }
-
-        private static void AddElementIfHasContent(XElement element, string name, DateTimeOffset content)
-        {
-            if (content != DateTimeOffset.MinValue)
                 element.Add(new XElement(CAP12Namespace + name, content));
         }
 
