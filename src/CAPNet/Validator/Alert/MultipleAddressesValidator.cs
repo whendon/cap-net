@@ -26,7 +26,9 @@ namespace CAPNet
         {
             get
             {
-                return  (!Entity.Addresses.Contains(" ") || (Entity.Addresses[0] == '\"' && Entity.Addresses[Entity.Addresses.Length - 1] == '\"'));
+                if (Entity.Addresses != null)
+                    return (!Entity.Addresses.Contains(" ") || (Entity.Addresses[0] == '\"' && Entity.Addresses[Entity.Addresses.Length - 1] == '\"'));
+                else return true;
             }
         }
 

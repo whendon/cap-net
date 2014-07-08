@@ -25,7 +25,8 @@ namespace CAPNet
         {
             get
             {
-                yield return new MsgTypeRejectionError();
+                if (!IsValid)
+                    yield return new MsgTypeRejectionError();
             }
         }
 
@@ -34,7 +35,7 @@ namespace CAPNet
         /// </summary>
         public override bool IsValid
         {
-            get 
+            get
             {
                 return !Entity.MessageType.Equals(MessageType.Error) || (!string.IsNullOrEmpty(Entity.Note));
             }

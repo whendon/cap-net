@@ -131,6 +131,7 @@
     <Compile Include="Validator\Alert\MsgTypeRejectionValidator.cs" />
     <Compile Include="Validator\RestrictiveCharacters.cs" />
     <Compile Include="Validator\Validator.cs" />
+    <Compile Include="Validator\ValidatorRoot.cs" />
     <Compile Include="Version.cs" />
     <Compile Include="XmlCreator.cs" />
     <Compile Include="XmlParser.cs" />
