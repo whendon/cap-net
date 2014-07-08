@@ -328,6 +328,20 @@ namespace CAPNet.Tests
         }
 
         [Fact]
+        public void CanParseWithStringInsteadOfInt()
+        {
+            var alert = XmlParser.Parse(Xml.WrongData).First();
+            var size = alert.Info.First().Resources.First().Size;
+            var area = alert.Info.First().Areas.First();
+            var altitude = area.Altitude;
+            var ceiling = area.Ceiling;
+
+            Assert.Equal(altitude, null);
+            Assert.Equal(ceiling, null);
+            Assert.Equal(size, null);
+        }
+
+        [Fact]
         public void MultipleAlertXmlIsParsedCorrectly()
         {
             var alert = XmlParser.Parse(Xml.MultipleAlertXml).First();

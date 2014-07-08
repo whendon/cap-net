@@ -383,18 +383,20 @@ namespace CAPNet
             return resource;
         }
 
-        private static DateTimeOffset TryParseDateTime(string dateTime)
+        private static DateTimeOffset TryParseDateTime(string tested)
         {
             DateTimeOffset parsed;
-            DateTimeOffset.TryParse(dateTime, out parsed);
+            DateTimeOffset.TryParse(tested, out parsed);
             return parsed;
         }
 
-        private static int TryParseInt(string tested)
+        private static int? TryParseInt(string tested)
         {
-            int number;
-            int.TryParse(tested, out number);
-            return number;
+            int parsed;
+            bool canBeParsed = int.TryParse(tested, out parsed);
+            if(canBeParsed)
+                return parsed;
+            return null;
         }
 
     }
