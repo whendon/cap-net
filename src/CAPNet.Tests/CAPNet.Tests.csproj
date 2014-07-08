@@ -77,6 +77,7 @@
     <Compile Include="ValidatorTests\Required\ScopeRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\SentRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\ResponseTypesValidatorTests.cs" />
+    <Compile Include="ValidatorTests\RestrictionValidatorTests.cs" />
     <Compile Include="ValidatorTests\SenderValidatorTests.cs" />
     <Compile Include="ValidatorTests\ResponseTypeValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\StatusRequiredValidatorTests.cs" />
