@@ -402,10 +402,6 @@ namespace CAPNet
 
         private static bool IsBase64(string base64)
         {
-            if (base64.Replace(" ", "").Length % 4 != 0)
-            {
-                return false;
-            }
             try
             {
                 Convert.FromBase64String(base64);
