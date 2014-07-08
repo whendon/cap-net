@@ -59,9 +59,18 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "note", alert.Note);
             AddElementIfHasContent(alertElement, "references", alert.References);
             AddElementIfHasContent(alertElement, "incidents", alert.Incidents);
-            alertElement.Add(alert.Info.Select(Create));
+            AddElements(alertElement, Create(alert.Info));
 
             return alertElement;
+        }
+
+        private static IEnumerable<XElement> Create(IEnumerable<Info> infos)
+        {
+            IEnumerable<XElement> infoElements =
+                from info in infos
+                select Create(info);
+
+            return infoElements;
         }
 
         private static XElement Create(Info info)

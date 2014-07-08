@@ -1,0 +1,32 @@
+﻿Merge remote-tracking branch 'upstream/master'
+
+Conflicts:
+	src/CAPNet/XmlParser.cs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	modified:   src/CAPNet.Tests/CAPNet.Tests.csproj
+#	new file:   src/CAPNet.Tests/Resources/MultipleAlertAndInfoThunderstorm.xml
+#	new file:   src/CAPNet.Tests/Resources/MultipleInfoThunderstorm.xml
+#	modified:   src/CAPNet.Tests/Xml.Designer.cs
+#	modified:   src/CAPNet.Tests/Xml.resx
+#	modified:   src/CAPNet.Tests/XmlParseAndCreateTest.cs
+#	modified:   src/CAPNet.Tests/XmlParserTests.cs
+#	modified:   src/CAPNet/CAPNet.csproj
+#	new file:   src/CAPNet/CollectionExtensions.cs
+#	modified:   src/CAPNet/XmlCreator.cs
+#	modified:   src/CAPNet/XmlParser.cs
+#
+
