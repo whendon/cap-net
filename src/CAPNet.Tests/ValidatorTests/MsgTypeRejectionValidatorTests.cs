@@ -1,5 +1,4 @@
-﻿
-using CAPNet.Models;
+﻿using CAPNet.Models;
 using Xunit;
 
 namespace CAPNet.Tests.ValidatorTests

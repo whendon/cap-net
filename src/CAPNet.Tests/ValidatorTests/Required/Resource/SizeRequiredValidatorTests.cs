@@ -1,7 +1,5 @@
-﻿using System.Linq;
-
+﻿using CAPNet.Models;
 using Xunit;
-using CAPNet.Models;
 
 namespace CAPNet
 {
