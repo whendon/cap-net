@@ -143,8 +143,7 @@ namespace CAPNet
             AddElementIfHasContent(resourceElement, "mimeType", resource.MimeType);
             AddElementIfHasContent(resourceElement, "size", resource.Size);
             AddElementIfHasContent(resourceElement, "uri", resource.Uri);
-            string encoded = EncodeToBase64(resource.DereferencedUri);
-            AddElementIfHasContent(resourceElement, "derefUri", encoded);
+            AddElementIfHasContent(resourceElement, "derefUri", resource.DereferencedUri);
             AddElementIfHasContent(resourceElement, "digest", resource.Digest);
 
             return resourceElement;
@@ -191,6 +190,15 @@ namespace CAPNet
             AddElementIfHasContent(areaElement, "ceiling", area.Ceiling);
 
             return areaElement;
+        }
+
+        private static void AddElementIfHasContent(XElement parent, string name, byte[] content)
+        {
+            if (content != null)
+            {
+                string base64DerefUri = Convert.ToBase64String(content);
+                parent.Add(new XElement(CAP12Namespace + name, base64DerefUri));
+            }
         }
 
         private static void AddElementIfHasContent<T>(XElement element, string name, T content)

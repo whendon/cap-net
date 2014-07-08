@@ -390,7 +390,8 @@ namespace CAPNet.Tests
             //      <uri>http://www.dhs.gov/dhspublic/getAdvisoryImage</uri>
             Assert.Equal(new Uri("http://www.dhs.gov/dhspublic/getAdvisoryImage"), resource.Uri);
             //      <derefUri>ZGVyZWZVcmk=</derefUri>
-            Assert.Equal("derefUri", resource.DereferencedUri);
+            var bites = Convert.FromBase64String("ZGVyZWZVcmk=");
+            Assert.Equal(bites, resource.DereferencedUri);
             //      <digest>digest</digest>
             Assert.Equal("digest", resource.Digest);
             //    </resource>

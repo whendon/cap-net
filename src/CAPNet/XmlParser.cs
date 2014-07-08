@@ -374,7 +374,7 @@ namespace CAPNet
 
             var derefUriNode = resourceElement.Element(capNamespace + "derefUri");
             if (derefUriNode != null)
-                resource.DereferencedUri = Base64Decode(derefUriNode.Value);
+                resource.DereferencedUri = Convert.FromBase64String(derefUriNode.Value);
 
             var digestNode = resourceElement.Element(capNamespace + "digest");
             if (digestNode != null)
@@ -383,20 +383,12 @@ namespace CAPNet
             return resource;
         }
 
-        private static string Base64Decode(string base64EncodedData)
-        { 
-            var bites = Convert.FromBase64String(base64EncodedData);
-            UTF8Encoding encoding = new UTF8Encoding();
-            string decoded = encoding.GetString(bites, 0, bites.Count());
-
-            return decoded;
-        }
-
         private static DateTimeOffset TryParseDateTime(string dateTime)
         {
             DateTimeOffset parsed;
             DateTimeOffset.TryParse(dateTime, out parsed);
             return parsed;
         }
+
     }
 }

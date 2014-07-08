@@ -30,7 +30,7 @@ namespace CAPNet.Models
         /// <summary>
         /// 
         /// </summary>
-        public string DereferencedUri { get; set; }
+        public byte[] DereferencedUri { get; set; }
 
         /// <summary>
         /// 
