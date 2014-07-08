@@ -55,11 +55,13 @@ namespace CAPNet
         private IEnumerable<Error> GetErrors(Alert alert)
         {
             var alertValidators = new List<Validator<Alert>>();
+            
             alertValidators.Add(new IdentifierRequiredValidator(alert));
             alertValidators.Add(new SenderRequiredValidator(alert));
             alertValidators.Add(new StatusRequiredValidator(alert));
             alertValidators.Add(new MessageTypeRequiredValidator(alert));
             alertValidators.Add(new ScopeRequiredValidator(alert));
+            alertValidators.Add(new RestrictionValidator(alert));
 
             return from validator in alertValidators
                    from error in validator.Errors
