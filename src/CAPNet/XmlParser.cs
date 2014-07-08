@@ -367,7 +367,7 @@ namespace CAPNet
             var sizeNode = resourceElement.Element(capNamespace + "size");
             if (sizeNode != null)
                 resource.Size = int.Parse(sizeNode.Value);
-
+            
             var uriNode = resourceElement.Element(capNamespace + "uri");
             if (uriNode != null)
                 resource.Uri = new Uri(uriNode.Value);

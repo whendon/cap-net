@@ -66,7 +66,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<Info> infos)
         {
-            IEnumerable<XElement> infoElements =
+            var infoElements =
                 from info in infos
                 select Create(info);
 
@@ -104,7 +104,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<EventCode> codes)
         {
-            IEnumerable<XElement> eventCodesElements =
+            var eventCodesElements =
                 from e in codes
                 select new XElement(
                     CAP12Namespace + "eventCode",
@@ -116,7 +116,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<Parameter> parameters)
         {
-            IEnumerable<XElement> parameterElements =
+            var parameterElements =
                 from parameter in parameters
                 select new XElement(
                     CAP12Namespace + "parameter",
@@ -128,7 +128,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<Resource> resources)
         {
-            IEnumerable<XElement> resourceElements =
+            var resourceElements =
                 from resource in resources
                 select Create(resource);
 
@@ -151,7 +151,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<GeoCode> geoCodes)
         {
-            IEnumerable<XElement> geoCodeElements =
+            var geoCodeElements =
                 from geoCode in geoCodes
                 select new XElement(
                     CAP12Namespace + "geocode",
@@ -163,7 +163,7 @@ namespace CAPNet
 
         private static IEnumerable<XElement> Create(IEnumerable<Area> areas)
         {
-            IEnumerable<XElement> areaElements =
+            var areaElements =
                 from area in areas
                 select Create(area);
 
@@ -224,18 +224,5 @@ namespace CAPNet
             if (content != DateTimeOffset.MinValue)
                 element.Add(new XElement(CAP12Namespace + name, content));
         }
-
-        private static string EncodeToBase64(string utfData)
-        {
-            if (!string.IsNullOrEmpty(utfData))
-            {
-                var bytes = System.Text.Encoding.UTF8.GetBytes(utfData);
-                return Convert.ToBase64String(bytes);
-            }
-
-            return null;
-
-        }
-
     }
 }
