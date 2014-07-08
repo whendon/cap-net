@@ -12,7 +12,7 @@ namespace CAPNet.Tests.ValidatorTests
             var alert = new Alert();
             alert.Identifier = "KSTO1055887203";
             alert.Sender = "Sender";
-            alert.Status = Status.Draft; 
+            alert.Status = Status.Draft;
             alert.MessageType = MessageType.Error;
             alert.Note = "DescriptiveError";
             alert.Scope = Scope.Restricted;
@@ -68,8 +68,31 @@ namespace CAPNet.Tests.ValidatorTests
             var alertValidator = new AlertValidator(alert);
             Assert.False(alertValidator.IsValid);
             var categoryErrors = from error in alertValidator.Errors
-                                where typeof(InvalidCategoryError) == error.GetType()
-                                select error;
+                                 where typeof(InvalidCategoryError) == error.GetType()
+                                 select error;
+            Assert.NotEmpty(categoryErrors);
+        }
+
+        [Fact]
+        public void GeneralAlertWithNoInfoIsInvalid()
+        {
+            var alert = new Alert();
+            alert.Identifier = "KSTO1055887203";
+            alert.Sender = "Sender";
+            alert.Status = Status.Draft;
+            alert.MessageType = MessageType.Error;
+            alert.Note = "DescriptiveError";
+            alert.Scope = Scope.Restricted;
+            alert.Restriction = "Draft";
+            alert.Sent = new System.DateTimeOffset();
+
+            var info = new Info();
+            alert.Info.Add(info);
+            var alertValidator = new AlertValidator(alert);
+            Assert.False(alertValidator.IsValid);
+            var categoryErrors = from error in alertValidator.Errors
+                                 where typeof(CategoryRequiredError) == error.GetType() || typeof(CertaintyRequiredError) == error.GetType() || typeof(EventRequiredError) == error.GetType() || typeof(SeverityRequiredError) == error.GetType() || typeof(UrgencyRequiredError) == error.GetType()
+                                 select error;
             Assert.NotEmpty(categoryErrors);
         }
     }
