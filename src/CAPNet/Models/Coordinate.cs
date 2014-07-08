@@ -8,7 +8,7 @@ namespace CAPNet.Models
     /// <summary>
     /// 
     /// </summary>
-    public class Coordinate
+    public sealed class Coordinate
     {
         /// <summary>
         /// 
@@ -69,9 +69,7 @@ namespace CAPNet.Models
             if (obj == null || GetType() != obj.GetType())
                 return false;
             Coordinate p = (Coordinate)obj;
-            if (this.X == p.X && this.Y == p.Y)
-                return true;
-            return false;
+            return (this.X == p.X && this.Y == p.Y);
         }
 
         /// <summary>
@@ -80,7 +78,7 @@ namespace CAPNet.Models
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return Convert.ToInt32(X) ^ Convert.ToInt32(Y);
         }
     }
 }
