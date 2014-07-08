@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidatorTests\AlertValidatorTests.cs" />
     <Compile Include="ValidatorTests\AreaValidatorTests.cs" />
+    <Compile Include="ValidatorTests\IdentifierRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\InfoValidatorTests.cs" />
     <Compile Include="ValidatorTests\IncidentsValidatorTests.cs" />
     <Compile Include="ValidatorTests\MsgTypeRejectionValidatorTests.cs" />
@@ -80,7 +81,7 @@
     <Compile Include="ValidatorTests\Required\SentRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\ResponseTypesValidatorTests.cs" />
     <Compile Include="ValidatorTests\RestrictionValidatorTests.cs" />
-    <Compile Include="ValidatorTests\SenderValidatorTests.cs" />
+    <Compile Include="ValidatorTests\SenderRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\ResponseTypeValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\StatusRequiredValidatorTests.cs" />
     <Compile Include="Xml.Designer.cs">

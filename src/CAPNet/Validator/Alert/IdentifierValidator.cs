@@ -1,19 +1,19 @@
 ﻿using CAPNet.Models;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CAPNet
 {
     /// <summary>
     /// 
     /// </summary>
-    public class IdentifierRequiredValidator : Validator<Alert>
+    public class IdentifierValidator : Validator<Alert>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="alert"></param>
-        public IdentifierRequiredValidator(Alert alert) : base(alert) { }
+        public IdentifierValidator(Alert alert) : base(alert) { }
 
         /// <summary>
         /// 
@@ -23,7 +23,7 @@ namespace CAPNet
             get
             {
                 if (!IsValid)
-                    yield return new IdentifierRequiredError();
+                    yield return new IdentifierError();
             }
         }
 
@@ -34,7 +34,7 @@ namespace CAPNet
         {
             get
             {
-                return !string.IsNullOrEmpty(Entity.Identifier);
+                return !RestrictiveCharacters.restrictiveCharacters.Any(restrictiveCharacter => Entity.Identifier.Contains(restrictiveCharacter.ToString()));
             }
         }
     }

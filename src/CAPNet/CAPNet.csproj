@@ -55,6 +55,7 @@
     <Compile Include="Validator\Alert\Area\PolygonCoordinatePairsFirstLastValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonMinCoordinatesValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonsValidator.cs" />
+    <Compile Include="Validator\Alert\IdentifierRequiredValidator.cs" />
     <Compile Include="Validator\Alert\IncidentsValidator.cs" />
     <Compile Include="Validator\Alert\Info\InfoValidator.cs" />
     <Compile Include="Validator\Alert\Info\InvalidCategoryValidator.cs" />
@@ -82,7 +83,7 @@
     <Compile Include="Validator\Alert\Resource\DescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Resource\MimeTypeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Resource\SizeRequiredValidator.cs" />
-    <Compile Include="Validator\Alert\IdentifierRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\IdentifierValidator.cs" />
     <Compile Include="Validator\Alert\RestrictionValidator.cs" />
     <Compile Include="Validator\Alert\ScopeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\SenderRequiredValidator.cs" />
@@ -91,7 +92,7 @@
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
     <Compile Include="Validator\Errors\IncidentsError.cs" />
-    <Compile Include="Validator\Errors\InvalidIdentifierError.cs" />
+    <Compile Include="Validator\Errors\IdentifierError.cs" />
     <Compile Include="Validator\Errors\MessageTypeRequiredError.cs" />
     <Compile Include="Validator\Errors\MsgTypeRejectionError.cs" />
     <Compile Include="Validator\Errors\MultipleAddressesError.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Validator\Errors\PolygonCoordinatePairsFirstLastError.cs" />
     <Compile Include="Validator\Errors\PolygonMinCoordinatesError.cs" />
     <Compile Include="Validator\Errors\Required\AreaDescriptionRequiredError.cs" />
+    <Compile Include="Validator\Errors\Required\IdentifierRequiredError.cs" />
     <Compile Include="Validator\Errors\Required\ResourceDescriptionRequiredError.cs" />
     <Compile Include="Validator\Alert\Resource\ResourceValidator.cs" />
     <Compile Include="Validator\Errors\AlertError.cs" />

@@ -4,7 +4,7 @@ using Xunit;
 
 namespace CAPNet
 {
-    public class SenderValidatorTests
+    public class SendeRequiredrValidatorTests
     {
         [Fact]
         public void SenderWithValidNameIsValid()

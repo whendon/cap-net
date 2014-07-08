@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public class InvalidIdentifierError:Error
+    public class IdentifierRequiredError : Error
     {
     }
 }
