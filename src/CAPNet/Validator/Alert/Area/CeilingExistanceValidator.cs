@@ -33,7 +33,10 @@ namespace CAPNet
         {
             get
             {
-                return (Entity.Altitude.HasValue && Entity.Ceiling.HasValue) || (!Entity.Altitude.HasValue && !Entity.Ceiling.HasValue);
+                var altitudeAndCeilingHasValue = Entity.Altitude.HasValue && Entity.Ceiling.HasValue;
+                var norAltitudeAndNorCeilingHasValue = !Entity.Altitude.HasValue && !Entity.Ceiling.HasValue;
+
+                return altitudeAndCeilingHasValue || norAltitudeAndNorCeilingHasValue;
             }
         }
     }
