@@ -62,6 +62,7 @@ namespace CAPNet
             alertValidators.Add(new MessageTypeRequiredValidator(alert));
             alertValidators.Add(new ScopeRequiredValidator(alert));
             alertValidators.Add(new RestrictionValidator(alert));
+            alertValidators.Add(new NoteValidator(alert));
 
             return from validator in alertValidators
                    from error in validator.Errors

@@ -16,7 +16,7 @@ namespace CAPNet.Tests.ValidatorTests
             alert.MessageType = MessageType.Alert;
             alert.Scope = Scope.Restricted;
             alert.Restriction = "Draft";
-
+ 
             var alertValidator = new AlertValidator(alert);
             Assert.True(alertValidator.IsValid);
         }
