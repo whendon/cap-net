@@ -48,7 +48,7 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "identifier", alert.Identifier);
             AddElementIfHasContent(alertElement, "sender", alert.Sender);
             // set milliseconds to 0
-            AddElementIfHasContent(alertElement, "sent", alert.Sent.Value.AddMilliseconds(-alert.Sent.Value.Millisecond));
+            AddElementIfHasContent(alertElement, "sent", AddMilliseconds(alert.Sent));
             AddElementIfHasContent(alertElement, "status", alert.Status);
             AddElementIfHasContent(alertElement, "msgType", alert.MessageType);
             AddElementIfHasContent(alertElement, "source", alert.Source);
@@ -62,6 +62,11 @@ namespace CAPNet
             AddElements(alertElement, Create(alert.Info));
 
             return alertElement;
+        }
+
+        private static DateTimeOffset AddMilliseconds(DateTimeOffset? date)
+        {
+            return date.Value.AddMilliseconds(-date.Value.Millisecond);
         }
 
         private static IEnumerable<XElement> Create(IEnumerable<Info> infos)
