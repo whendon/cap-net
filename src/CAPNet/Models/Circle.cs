@@ -19,7 +19,6 @@ namespace CAPNet.Models
             var circleCenterAndRadius = stringRepresentation.Split(' ');
             this.Center = new Coordinate(circleCenterAndRadius[0]);
             this.Radius = double.Parse(circleCenterAndRadius[1]);
-
         }
 
         /// <summary>

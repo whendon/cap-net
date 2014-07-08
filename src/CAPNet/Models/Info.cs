@@ -96,17 +96,17 @@ namespace CAPNet.Models
         /// <summary>
         /// 
         /// </summary>
-        public DateTimeOffset Effective { get; set; }
+        public DateTimeOffset? Effective { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public DateTimeOffset Onset { get; set; }
+        public DateTimeOffset? Onset { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public DateTimeOffset Expires { get; set; }
+        public DateTimeOffset? Expires { get; set; }
 
         /// <summary>
         /// 

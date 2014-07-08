@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 
 namespace CAPNet
@@ -124,7 +125,7 @@ namespace CAPNet
             var sentNode = alertElement.Element(capNamespace + "sent");
             if (sentNode != null)
             {
-                alert.Sent = DateTimeOffset.Parse(sentNode.Value, CultureInfo.InvariantCulture);
+                alert.Sent = TryParseDateTime(sentNode.Value);
             }
 
             var senderNode = alertElement.Element(capNamespace + "sender");
@@ -203,19 +204,18 @@ namespace CAPNet
             }
 
             var eventCodeNodes = infoElement.Elements(capNamespace + "eventCode");
-            var eventCodes =
-                from ev in eventCodeNodes
-                where ev != null
-                let value = ev.Element(capNamespace + "value").Value
-                let valueName = ev.Element(capNamespace + "valueName").Value
-                select new EventCode(valueName, value);
+            var eventCodes = from ev in eventCodeNodes
+                             where ev != null
+                             let value = ev.Element(capNamespace + "value").Value
+                             let valueName = ev.Element(capNamespace + "valueName").Value
+                             select new EventCode(valueName, value);
 
             info.EventCodes.AddRange(eventCodes);
 
             var effectiveNode = infoElement.Element(capNamespace + "effective");
             if (effectiveNode != null)
             {
-                info.Effective = DateTimeOffset.Parse(effectiveNode.Value, CultureInfo.InvariantCulture);
+                info.Effective = TryParseDateTime(effectiveNode.Value);
             }
 
             var severityNode = infoElement.Element(capNamespace + "severity");
@@ -227,13 +227,13 @@ namespace CAPNet
             var onsetNode = infoElement.Element(capNamespace + "onset");
             if (onsetNode != null)
             {
-                info.Onset = DateTimeOffset.Parse(onsetNode.Value, CultureInfo.InvariantCulture);
+                info.Onset = TryParseDateTime(onsetNode.Value);
             }
 
             var expiresNode = infoElement.Element(capNamespace + "expires");
             if (expiresNode != null)
             {
-                info.Expires = DateTimeOffset.Parse(expiresNode.Value, CultureInfo.InvariantCulture);
+                info.Expires = TryParseDateTime(expiresNode.Value);
             }
 
             var senderNameNode = infoElement.Element(capNamespace + "senderName");
@@ -332,11 +332,11 @@ namespace CAPNet
 
             var altitudeNode = areaElement.Element(capNamespace + "altitude");
             if (altitudeNode != null)
-                area.Altitude = int.Parse(altitudeNode.Value);
+                area.Altitude = TryParseInt(altitudeNode.Value);
 
             var ceilingNode = areaElement.Element(capNamespace + "ceiling");
             if (ceilingNode != null)
-                area.Ceiling = int.Parse(ceilingNode.Value);
+                area.Ceiling = TryParseInt(ceilingNode.Value);
             return area;
         }
 
@@ -365,15 +365,15 @@ namespace CAPNet
 
             var sizeNode = resourceElement.Element(capNamespace + "size");
             if (sizeNode != null)
-                resource.Size = int.Parse(sizeNode.Value);
+                resource.Size = TryParseInt(sizeNode.Value);
 
             var uriNode = resourceElement.Element(capNamespace + "uri");
             if (uriNode != null)
                 resource.Uri = new Uri(uriNode.Value);
 
             var derefUriNode = resourceElement.Element(capNamespace + "derefUri");
-            if (derefUriNode != null)
-                resource.DereferencedUri = derefUriNode.Value;
+            if (derefUriNode != null && IsBase64(derefUriNode.Value))
+                resource.DereferencedUri = Convert.FromBase64String(derefUriNode.Value);
 
             var digestNode = resourceElement.Element(capNamespace + "digest");
             if (digestNode != null)
@@ -381,5 +381,42 @@ namespace CAPNet
 
             return resource;
         }
+
+        private static DateTimeOffset? TryParseDateTime(string tested)
+        {
+            DateTimeOffset parsed;
+            bool canBeParsed = DateTimeOffset.TryParse(tested, out parsed);
+            if (canBeParsed)
+                return parsed;
+            return null;
+        }
+
+        private static int? TryParseInt(string tested)
+        {
+            int parsed;
+            bool canBeParsed = int.TryParse(tested, out parsed);
+            if (canBeParsed)
+                return parsed;
+            return null;
+        }
+
+        private static bool IsBase64(string base64)
+        {
+            if (base64.Replace(" ", "").Length % 4 != 0)
+            {
+                return false;
+            }
+            try
+            {
+                Convert.FromBase64String(base64);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+        }
+
     }
 }

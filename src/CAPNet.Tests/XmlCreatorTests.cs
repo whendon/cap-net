@@ -103,7 +103,6 @@ namespace CAPNet.Tests
 
         }
 
-
         private static Alert CreateMultipleAlertXmlAlert()
         {
             var orangeAlert = new Alert
@@ -198,8 +197,8 @@ namespace CAPNet.Tests
                 Size = 1,
                 //      <uri>http://www.dhs.gov/dhspublic/getAdvisoryImage</uri>
                 Uri = new Uri("http://www.dhs.gov/dhspublic/getAdvisoryImage"),
-                //      <derefUri>derefUri</derefUri>
-                DereferencedUri = "derefUri",
+                //      <derefUri>ZGVyZWZVcmk=</derefUri>
+                DereferencedUri = Convert.FromBase64String("ZGVyZWZVcmk="),
                 //      <digest>digest</digest>
                 Digest = "digest",
             //    </resource>
