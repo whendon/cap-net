@@ -358,6 +358,15 @@ namespace CAPNet.Tests
         }
 
         [Fact]
+        public void CanParseWithWrongDerefUri()
+        {
+            //<derefUri>abc123</derefUri> not a valid base64
+            var alert = XmlParser.Parse(Xml.WrongData).First();
+            var derefUri = alert.Info.First().Resources.First().DereferencedUri;
+            Assert.Equal(derefUri, null);
+        }
+        
+        [Fact]
         public void MultipleAlertXmlIsParsedCorrectly()
         {
             var alert = XmlParser.Parse(Xml.MultipleAlertXml).First();

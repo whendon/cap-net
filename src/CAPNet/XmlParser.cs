@@ -204,12 +204,11 @@ namespace CAPNet
             }
 
             var eventCodeNodes = infoElement.Elements(capNamespace + "eventCode");
-            var eventCodes =
-                from ev in eventCodeNodes
-                where ev != null
-                let value = ev.Element(capNamespace + "value").Value
-                let valueName = ev.Element(capNamespace + "valueName").Value
-                select new EventCode(valueName, value);
+            var eventCodes = from ev in eventCodeNodes
+                             where ev != null
+                             let value = ev.Element(capNamespace + "value").Value
+                             let valueName = ev.Element(capNamespace + "valueName").Value
+                             select new EventCode(valueName, value);
 
             info.EventCodes.AddRange(eventCodes);
 
@@ -367,13 +366,13 @@ namespace CAPNet
             var sizeNode = resourceElement.Element(capNamespace + "size");
             if (sizeNode != null)
                 resource.Size = TryParseInt(sizeNode.Value);
-            
+
             var uriNode = resourceElement.Element(capNamespace + "uri");
             if (uriNode != null)
                 resource.Uri = new Uri(uriNode.Value);
 
             var derefUriNode = resourceElement.Element(capNamespace + "derefUri");
-            if (derefUriNode != null)
+            if (derefUriNode != null && IsBase64(derefUriNode.Value))
                 resource.DereferencedUri = Convert.FromBase64String(derefUriNode.Value);
 
             var digestNode = resourceElement.Element(capNamespace + "digest");
@@ -387,7 +386,7 @@ namespace CAPNet
         {
             DateTimeOffset parsed;
             bool canBeParsed = DateTimeOffset.TryParse(tested, out parsed);
-            if(canBeParsed)
+            if (canBeParsed)
                 return parsed;
             return null;
         }
@@ -396,9 +395,27 @@ namespace CAPNet
         {
             int parsed;
             bool canBeParsed = int.TryParse(tested, out parsed);
-            if(canBeParsed)
+            if (canBeParsed)
                 return parsed;
             return null;
+        }
+
+        private static bool IsBase64(string base64)
+        {
+            if (base64.Replace(" ", "").Length % 4 != 0)
+            {
+                return false;
+            }
+            try
+            {
+                Convert.FromBase64String(base64);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
         }
 
     }

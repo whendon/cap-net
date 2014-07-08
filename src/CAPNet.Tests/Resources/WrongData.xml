@@ -48,7 +48,7 @@
       <mimeType>image/gif</mimeType>
       <size>size</size>
       <uri>http://www.dhs.gov/dhspublic/getAdvisoryImage</uri>
-      <derefUri>ZGVyZWZVcmk=</derefUri>
+      <derefUri>abc123</derefUri>
       <digest>digest</digest>
     </resource>
     <area>
