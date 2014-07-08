@@ -333,11 +333,11 @@ namespace CAPNet
 
             var altitudeNode = areaElement.Element(capNamespace + "altitude");
             if (altitudeNode != null)
-                area.Altitude = int.Parse(altitudeNode.Value);
+                area.Altitude = TryParseInt(altitudeNode.Value);
 
             var ceilingNode = areaElement.Element(capNamespace + "ceiling");
             if (ceilingNode != null)
-                area.Ceiling = int.Parse(ceilingNode.Value);
+                area.Ceiling = TryParseInt(ceilingNode.Value);
             return area;
         }
 
@@ -366,7 +366,7 @@ namespace CAPNet
 
             var sizeNode = resourceElement.Element(capNamespace + "size");
             if (sizeNode != null)
-                resource.Size = int.Parse(sizeNode.Value);
+                resource.Size = TryParseInt(sizeNode.Value);
             
             var uriNode = resourceElement.Element(capNamespace + "uri");
             if (uriNode != null)
@@ -388,6 +388,13 @@ namespace CAPNet
             DateTimeOffset parsed;
             DateTimeOffset.TryParse(dateTime, out parsed);
             return parsed;
+        }
+
+        private static int TryParseInt(string tested)
+        {
+            int number;
+            int.TryParse(tested, out number);
+            return number;
         }
 
     }
