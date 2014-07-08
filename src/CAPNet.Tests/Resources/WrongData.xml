@@ -2,7 +2,7 @@
 <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
   <identifier>43b080713727</identifier>
   <sender>hsas@dhs.gov</sender>
-  <sent>2003-04-02T14:39:01-05:00</sent>
+  <sent>date</sent>
   <status>Actual</status>
   <msgType>Alert</msgType>
   <source>source</source>
@@ -30,9 +30,9 @@
       <valueName>valN1</valueName>
       <value>val1</value>
     </eventCode>
-    <effective>2003-04-02T14:39:01-05:00</effective>
-    <onset>2003-04-02T14:39:01-05:00</onset>
-    <expires>2003-04-02T14:39:01-05:00</expires>
+    <effective>date</effective>
+    <onset>date</onset>
+    <expires>date</expires>
     <senderName>U.S. Government, Department of Homeland Security</senderName>
     <headline>Homeland Security Sets Code ORANGE</headline>
     <description>The Department of Homeland Security has elevated the Homeland Security Advisory System threat level to ORANGE / High in response to intelligence which may indicate a heightened threat of terrorism.</description>

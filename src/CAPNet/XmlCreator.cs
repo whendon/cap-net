@@ -48,7 +48,8 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "identifier", alert.Identifier);
             AddElementIfHasContent(alertElement, "sender", alert.Sender);
             // set milliseconds to 0
-            AddElementIfHasContent(alertElement, "sent", alert.Sent.AddMilliseconds(-alert.Sent.Millisecond));
+            if(alert.Sent!=null)
+                AddElementIfHasContent(alertElement, "sent", alert.Sent.Value.AddMilliseconds(-alert.Sent.Value.Millisecond));
             AddElementIfHasContent(alertElement, "status", alert.Status);
             AddElementIfHasContent(alertElement, "msgType", alert.MessageType);
             AddElementIfHasContent(alertElement, "source", alert.Source);
@@ -219,9 +220,9 @@ namespace CAPNet
                 element.Add(new XElement(CAP12Namespace + name, content));
         }
 
-        private static void AddElementIfHasContent(XElement element, string name, DateTimeOffset content)
+        private static void AddElementIfHasContent(XElement element, string name, DateTimeOffset? content)
         {
-            if (content != DateTimeOffset.MinValue)
+            if (content != null)
                 element.Add(new XElement(CAP12Namespace + name, content));
         }
     }

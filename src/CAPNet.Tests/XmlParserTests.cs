@@ -37,7 +37,7 @@ namespace CAPNet.Tests
         public void SentTimeHasTimeZone()
         {
             var alert = XmlParser.Parse(Xml.Thunderstorm12Xml).First();
-            Assert.Equal(TimeSpan.FromHours(-7), alert.Sent.Offset);
+            Assert.Equal(TimeSpan.FromHours(-7), alert.Sent.Value.Offset);
         }
 
         [Fact]
@@ -47,9 +47,9 @@ namespace CAPNet.Tests
 
             var info = alert.Info.ElementAt(0);
 
-            Assert.Equal(TimeSpan.FromHours(-7), info.Effective.Offset);
-            Assert.Equal(TimeSpan.FromHours(-7), info.Onset.Offset);
-            Assert.Equal(TimeSpan.FromHours(-7), info.Expires.Offset);
+            Assert.Equal(TimeSpan.FromHours(-7), info.Effective.Value.Offset);
+            Assert.Equal(TimeSpan.FromHours(-7), info.Onset.Value.Offset);
+            Assert.Equal(TimeSpan.FromHours(-7), info.Expires.Value.Offset);
         }
 
         [Fact]
@@ -339,6 +339,22 @@ namespace CAPNet.Tests
             Assert.Equal(altitude, null);
             Assert.Equal(ceiling, null);
             Assert.Equal(size, null);
+        }
+
+        [Fact]
+        public void CanParseWithWrongDateTime()
+        {
+            var alert = XmlParser.Parse(Xml.WrongData).First();
+            var sent = alert.Sent;
+            var info = alert.Info.First();
+            var effective = info.Effective;
+            var onset = info.Onset;
+            var expires = info.Expires;
+
+            Assert.Equal(sent, null);
+            Assert.Equal(effective, null);
+            Assert.Equal(expires, null);
+            Assert.Equal(onset, null);
         }
 
         [Fact]
