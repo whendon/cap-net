@@ -74,52 +74,52 @@ namespace CAPNet.Models
         public DateTimeOffset? Sent { get; set; }
 
         /// <summary>
-        /// 
+        /// The code denoting the appropriate handling of the alert message 
         /// </summary>
         public Status Status { get; set; }
 
         /// <summary>
-        /// 
+        /// The code denoting the nature of the alert message 
         /// </summary>
         public MessageType MessageType { get; set; }
 
         /// <summary>
-        /// 
+        /// The text identifying the source of the alert message 
         /// </summary>
         public string Source { get; set; }
 
         /// <summary>
-        /// 
+        /// The code denoting the intended distribution of the alert message 
         /// </summary>
         public Scope Scope { get; set; }
 
         /// <summary>
-        /// 
+        /// The text describing the rule for limiting distribution of the restricted alert message 
         /// </summary>
         public string Restriction { get; set; }
 
         /// <summary>
-        /// 
+        /// The group listing of intended recipients of the alert message 
         /// </summary>
         public string Addresses { get; set; }
 
         /// <summary>
-        /// 
+        /// The code denoting the special handling of the alert message 
         /// </summary>
         public string Code { get; set; }
 
         /// <summary>
-        /// 
+        /// The text describing the purpose or significance of the alert message 
         /// </summary>
         public string Note { get; set; }
 
         /// <summary>
-        /// 
+        /// The group listing identifying earlier message(s) referenced by the alert message 
         /// </summary>
         public string References { get; set; }
 
         /// <summary>
-        /// 
+        /// The group listing naming the referent incident(s) of the alert message 
         /// </summary>
         public string Incidents { get; set; }
 
