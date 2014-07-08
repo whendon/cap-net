@@ -18,14 +18,14 @@ namespace CAPNet
         }
 
         [Fact]
-        public void SenderWithCommaIsInvalid()
+        public void SenderWithNullNameIsInvalid()
         {
             var alert = new Alert();
-            alert.Sender = "hsas@dhs.gov,";
+            alert.Sender = null;
 
             var senderValidator = new SenderRequiredValidator(alert);
             Assert.False(senderValidator.IsValid);
-            Assert.Equal(1, senderValidator.Errors.Count());
+            Assert.Equal(typeof(SenderRequiredError), senderValidator.Errors.ElementAt(0).GetType());
         }
     }
 }

@@ -7,13 +7,13 @@ namespace CAPNet
     /// <summary>
     /// 
     /// </summary>
-    public class SenderRequiredValidator : Validator<Alert>
+    public class SenderValidator : Validator<Alert>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="alert"></param>
-        public SenderRequiredValidator(Alert alert) : base(alert) { }
+        public SenderValidator(Alert alert) : base(alert) { }
 
         /// <summary>
         /// 
@@ -23,7 +23,7 @@ namespace CAPNet
             get
             {
                 if (!IsValid)
-                    yield return new SenderRequiredError();
+                    yield return new SenderError();
             }
         }
 
@@ -34,7 +34,7 @@ namespace CAPNet
         {
             get
             {
-                return !string.IsNullOrEmpty(Entity.Sender);
+                return !RestrictiveCharacters.restrictiveCharacters.Any(restrictiveCharacter => Entity.Sender.Contains(restrictiveCharacter.ToString()));
             }
         }
     }

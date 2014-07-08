@@ -1,9 +1,9 @@
 ﻿namespace CAPNet
-{   
+{
     /// <summary>
     /// 
     /// </summary>
-    public class SenderError : Error
+    public class SenderRequiredError:RequiredFieldError
     {
     }
 }

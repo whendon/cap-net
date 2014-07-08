@@ -87,6 +87,7 @@
     <Compile Include="Validator\Alert\RestrictionValidator.cs" />
     <Compile Include="Validator\Alert\ScopeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\SenderRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\SenderValidator.cs" />
     <Compile Include="Validator\Alert\SentRequiredValidator.cs" />
     <Compile Include="Validator\Alert\StatusRequiredValidator.cs" />
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Validator\Errors\ResponseTypeError.cs" />
     <Compile Include="Validator\Errors\RestrictionError.cs" />
     <Compile Include="Validator\Errors\SenderError.cs" />
+    <Compile Include="Validator\Errors\SenderRequiredError.cs" />
     <Compile Include="Validator\Errors\SentRequiredError.cs" />
     <Compile Include="Validator\Errors\StatusRequiredError.cs" />
     <Compile Include="Validator\IValidator.cs" />
