@@ -6,7 +6,7 @@ using System.Text;
 namespace CAPNet.Models
 {
     /// <summary>
-    /// 
+    ///  [WGS 84] coordinate pair 
     /// </summary>
     public sealed class Coordinate
     {

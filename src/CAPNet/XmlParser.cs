@@ -65,7 +65,8 @@ namespace CAPNet
             var incidentsNode = alertElement.Element(capNamespace + "incidents");
             if (incidentsNode != null)
             {
-                alert.Incidents = incidentsNode.Value;
+                var incidents = incidentsNode.Value.Split(' ').ToList();
+                alert.Incidents.AddRange(incidents);
             }
 
             var referencesNode = alertElement.Element(capNamespace + "references");
@@ -89,7 +90,8 @@ namespace CAPNet
             var addressesNode = alertElement.Element(capNamespace + "addresses");
             if (addressesNode != null)
             {
-                alert.Addresses = addressesNode.Value;
+                var addresses = addressesNode.Value.Split(' ').ToList();
+                alert.Addresses.AddRange(addresses);
             }
 
             var restrictionNode = alertElement.Element(capNamespace + "restriction");
@@ -402,10 +404,6 @@ namespace CAPNet
 
         private static bool IsBase64(string base64)
         {
-            if (base64.Replace(" ", "").Length % 4 != 0)
-            {
-                return false;
-            }
             try
             {
                 Convert.FromBase64String(base64);

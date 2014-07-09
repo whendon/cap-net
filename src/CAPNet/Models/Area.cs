@@ -70,7 +70,7 @@ namespace CAPNet.Models
         }
 
         /// <summary>
-        /// 
+        /// The paired values of a point and radius delineating the affected area of the alert message
         /// </summary>
         public ICollection<Circle> Circles
         {

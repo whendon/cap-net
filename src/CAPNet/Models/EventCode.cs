@@ -1,7 +1,7 @@
 ﻿namespace CAPNet.Models
 {
     /// <summary>
-    /// 
+    /// A system-specific code identifying the event type of the alert message 
     /// </summary>
     public class EventCode : NamedValue
     {
