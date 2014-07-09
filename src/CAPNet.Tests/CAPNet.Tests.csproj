@@ -88,6 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Xml.resx</DependentUpon>
     </Compile>
+    <Compile Include="XmlContentTests\AddressTests.cs" />
     <Compile Include="XmlCreatorTests.cs" />
     <Compile Include="XmlParseAndCreateTest.cs" />
     <Compile Include="XmlParserTests.cs" />

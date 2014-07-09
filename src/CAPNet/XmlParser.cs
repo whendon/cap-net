@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace CAPNet
@@ -90,8 +91,14 @@ namespace CAPNet
             var addressesNode = alertElement.Element(capNamespace + "addresses");
             if (addressesNode != null)
             {
-                var addresses = addressesNode.Value.Split(' ').ToList();
-                alert.Addresses.AddRange(addresses);
+                var adressNodeValue = addressesNode.Value.Trim();
+                if(!string.IsNullOrEmpty(adressNodeValue))
+                {
+                    var addresses = FillAddresses(adressNodeValue);
+                    alert.Addresses.AddRange(addresses);
+                }
+
+                
             }
 
             var restrictionNode = alertElement.Element(capNamespace + "restriction");
@@ -414,6 +421,56 @@ namespace CAPNet
                 return false;
             }
 
+        }
+
+        private static List<string> FillAddresses(string representation)
+        {
+            string pattern = "\"[\\w ]*\"";
+            var spaceContainingElements = GetSpaceContainingElements(representation, pattern);
+            representation = RemoveSpaceContainingElements(representation, spaceContainingElements);
+
+            var elementsWithNoSpaceQuery = from address in representation.Split(' ')
+                                           select address;
+
+            var addresses = FillSpaceContainingElements(spaceContainingElements, elementsWithNoSpaceQuery);
+
+            return addresses;
+    
+        }
+
+        private static string RemoveSpaceContainingElements(string representation, IEnumerable<string> spaceContainingElements)
+        {
+            foreach (var element in spaceContainingElements)
+                representation = representation.Replace(element.ToString(), "\"\"");
+
+            return representation;
+        }
+
+        private static IEnumerable<string> GetSpaceContainingElements(string representation, string pattern)
+        {
+            Regex regexObject = new Regex(pattern);
+            var spaceContainingElements = from Match match in regexObject.Matches(representation)
+                                          select match.Value;
+
+            return spaceContainingElements;
+        }
+
+        private static List<string> FillSpaceContainingElements(IEnumerable<string> spaceContainingElements, IEnumerable<string> elementsWithNoSpace)
+        {
+            var addresses = elementsWithNoSpace.ToList();
+
+            int indexOfSpaceContainingElement = 0;
+            for (int index = 0; index < addresses.Count(); index++)
+            {
+                var currentAddress = addresses.ElementAt(index);
+                if (currentAddress.Equals("\"\""))
+                {
+                    addresses[index] = spaceContainingElements.ElementAt(indexOfSpaceContainingElement).Replace("\"", "");
+                    indexOfSpaceContainingElement++;
+                }
+
+            }
+            return addresses;
         }
 
     }

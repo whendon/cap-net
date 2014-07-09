@@ -365,6 +365,39 @@ namespace CAPNet.Tests
             var derefUri = alert.Info.First().Resources.First().DereferencedUri;
             Assert.Null(derefUri);
         }
+
+        [Fact]
+        public void CanParseWithEmptyAddress()
+        {
+            string usedXml = Xml.WrongData.Replace("<addresses>addresses</addresses>", "<addresses> </addresses>");
+            var alert = XmlParser.Parse(usedXml).First();
+            var addresses = alert.Addresses;
+            Assert.Equal(0, addresses.Count);
+        }
+
+        [Fact]
+        public void CanParseAddressesWithNoQuotes()
+        {
+            string usedXml = Xml.WrongData.Replace("<addresses>addresses</addresses>", "<addresses>address1 address2 address3</addresses>");
+            var alert = XmlParser.Parse(usedXml).First();
+            var addresses = alert.Addresses;
+            Assert.Equal(3, addresses.Count);
+            Assert.Equal(addresses.ElementAt(0), "address1");
+            Assert.Equal(addresses.ElementAt(1), "address2");
+            Assert.Equal(addresses.ElementAt(2), "address3");
+        }
+
+        [Fact]
+        public void CanParseAddressesWithQuotes()
+        {
+            string usedXml = Xml.WrongData.Replace("<addresses>addresses</addresses>", "<addresses>address1 \"address 2\" address3 \"address4\"</addresses>");
+            var alert = XmlParser.Parse(usedXml).First();
+            var addresses = alert.Addresses;
+            Assert.Equal("address1", addresses.ElementAt(0));
+            Assert.Equal("address 2", addresses.ElementAt(1));
+            Assert.Equal("address3", addresses.ElementAt(2));
+            Assert.Equal("address4", addresses.ElementAt(3));
+        }
         
         [Fact]
         public void MultipleAlertXmlIsParsedCorrectly()
