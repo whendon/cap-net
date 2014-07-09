@@ -34,9 +34,7 @@ namespace CAPNet
         {
             get
             {
-                var restrictedChars = new[] { ' ', ',', '<', '&' };
-
-                return !restrictedChars.Any( wrongChar => Entity.Identifier.Contains(wrongChar.ToString()));
+                return !RestrictiveCharacters.restrictiveCharacters.Any(restrictiveCharacter => Entity.Identifier.Contains(restrictiveCharacter.ToString()));
             }
         }
     }
