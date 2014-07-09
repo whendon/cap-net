@@ -66,8 +66,12 @@ namespace CAPNet
             var incidentsNode = alertElement.Element(capNamespace + "incidents");
             if (incidentsNode != null)
             {
-                var incidents = incidentsNode.Value.Split(' ').ToList();
-                alert.Incidents.AddRange(incidents);
+                var incidentsNodeValue = incidentsNode.Value.Trim();
+                if (!string.IsNullOrEmpty(incidentsNodeValue))
+                {
+                    var addresses = incidentsNodeValue.GetElements();
+                    alert.Incidents.AddRange(addresses);
+                }
             }
 
             var referencesNode = alertElement.Element(capNamespace + "references");
@@ -91,14 +95,12 @@ namespace CAPNet
             var addressesNode = alertElement.Element(capNamespace + "addresses");
             if (addressesNode != null)
             {
-                var adressNodeValue = addressesNode.Value.Trim();
-                if(!string.IsNullOrEmpty(adressNodeValue))
+                var addressNodeValue = addressesNode.Value.Trim();
+                if(!string.IsNullOrEmpty(addressNodeValue))
                 {
-                    var addresses = FillAddresses(adressNodeValue);
+                    var addresses = addressNodeValue.GetElements();
                     alert.Addresses.AddRange(addresses);
                 }
-
-                
             }
 
             var restrictionNode = alertElement.Element(capNamespace + "restriction");
@@ -423,11 +425,11 @@ namespace CAPNet
 
         }
 
-        private static List<string> FillAddresses(string representation)
+        private static List<string> GetElements(this string representation)
         {
             string pattern = "\"[\\w ]*\"";
             var spaceContainingElements = GetSpaceContainingElements(representation, pattern);
-            representation = RemoveSpaceContainingElements(representation, spaceContainingElements);
+            representation = representation.RemoveSpaceContainingElements(spaceContainingElements);
 
             var elementsWithNoSpaceQuery = from address in representation.Split(' ')
                                            select address;
@@ -438,7 +440,7 @@ namespace CAPNet
     
         }
 
-        private static string RemoveSpaceContainingElements(string representation, IEnumerable<string> spaceContainingElements)
+        private static string RemoveSpaceContainingElements(this string representation, IEnumerable<string> spaceContainingElements)
         {
             foreach (var element in spaceContainingElements)
                 representation = representation.Replace(element.ToString(), "\"\"");
@@ -457,6 +459,7 @@ namespace CAPNet
 
         private static List<string> FillSpaceContainingElements(IEnumerable<string> spaceContainingElements, IEnumerable<string> elementsWithNoSpace)
         {
+
             var addresses = elementsWithNoSpace.ToList();
 
             int indexOfSpaceContainingElement = 0;

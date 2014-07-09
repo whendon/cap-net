@@ -398,6 +398,17 @@ namespace CAPNet.Tests
             Assert.Equal("address3", addresses.ElementAt(2));
             Assert.Equal("address4", addresses.ElementAt(3));
         }
+
+        [Fact]
+        public void CanParseIncidentsWithQuotes()
+        {
+            string usedXml = Xml.WrongData.Replace("<incidents></incidents>", "<incidents>\"nasty incident \" incident \"another incident\"</incidents>");
+            var alert = XmlParser.Parse(usedXml).First();
+            var incidents = alert.Incidents;
+            Assert.Equal("nasty incident ", incidents.ElementAt(0));
+            Assert.Equal("incident", incidents.ElementAt(1));
+            Assert.Equal("another incident", incidents.ElementAt(2));
+        }
         
         [Fact]
         public void MultipleAlertXmlIsParsedCorrectly()
