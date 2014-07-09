@@ -57,6 +57,7 @@
     <Compile Include="Validator\Alert\Area\PolygonMinCoordinatesValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonsValidator.cs" />
     <Compile Include="Validator\Alert\IdentifierRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\Info\EventCodeValidator.cs" />
     <Compile Include="Validator\Alert\Info\InfoValidator.cs" />
     <Compile Include="Validator\Alert\Info\InvalidCategoryValidator.cs" />
     <Compile Include="Models\Alert.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Validator\Alert\StatusRequiredValidator.cs" />
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
+    <Compile Include="Validator\Errors\EventCodeError.cs" />
     <Compile Include="Validator\Errors\IdentifierError.cs" />
     <Compile Include="Validator\Errors\MessageTypeRequiredError.cs" />
     <Compile Include="Validator\Errors\MsgTypeRejectionError.cs" />
