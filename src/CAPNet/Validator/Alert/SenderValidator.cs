@@ -1,6 +1,5 @@
 ﻿using CAPNet.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CAPNet
 {
@@ -34,7 +33,7 @@ namespace CAPNet
         {
             get
             {
-                return !RestrictiveCharacters.restrictiveCharacters.Any(restrictiveCharacter => Entity.Sender.Contains(restrictiveCharacter.ToString()));
+                return Entity.Sender.DoesNotContainsRestrictedChars();
             }
         }
     }

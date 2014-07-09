@@ -132,7 +132,7 @@
     <Compile Include="Validator\Errors\Required\UrgencyRequiredError.cs" />
     <Compile Include="Validator\Alert\Info\UrgencyRequiredValidator.cs" />
     <Compile Include="Validator\Alert\MsgTypeRejectionValidator.cs" />
-    <Compile Include="Validator\RestrictiveCharacters.cs" />
+    <Compile Include="Validator\RestrictedCharacters.cs" />
     <Compile Include="Validator\Validator.cs" />
     <Compile Include="Validator\ValidatorRoot.cs" />
     <Compile Include="Version.cs" />
