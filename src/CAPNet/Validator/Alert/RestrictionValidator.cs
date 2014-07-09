@@ -35,7 +35,13 @@ namespace CAPNet
         {
             get
             {
-                return ((Entity.Scope == Scope.Restricted && Entity.Restriction != null) || (Entity.Scope != Scope.Restricted && string.IsNullOrEmpty(Entity.Restriction)));
+                var scopeIsRestricted = Entity.Scope == Scope.Restricted;
+                var scopeIsNotRestricted = !scopeIsRestricted;
+
+                var restrictionIsNull = Entity.Restriction == null;
+                var restrictionIsNotNull = !restrictionIsNull;
+
+                return (scopeIsRestricted && restrictionIsNotNull) || (scopeIsNotRestricted && restrictionIsNull);
             }
         }
     }
