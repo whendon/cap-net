@@ -426,8 +426,7 @@ namespace CAPNet
         }
 
         private static List<string> GetElementsDelimitedBySpace(this string representation)
-        {
-            
+        { 
             var spaceContainingElements = GetSpaceContainingElements(representation);
             string representationWithSpaceContainingElementsMarked = representation.MarkElements(spaceContainingElements);
 
@@ -437,7 +436,6 @@ namespace CAPNet
             var addresses = FillSpaceContainingElements(spaceContainingElements, elementsWithNoSpace);
 
             return addresses;
-
         }
 
         private static string MarkElements(this string representation, IEnumerable<string> spaceContainingElements)
