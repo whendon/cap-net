@@ -9,39 +9,48 @@ namespace CAPNet
     /// <summary>
     /// 
     /// </summary>
-    public class AlertValidator : ValidatorRoot<Alert>
+    public class AlertValidator
     {
+
+        private readonly Alert alert;
+
         /// <summary>
         /// 
         /// </summary>
-        public AlertValidator() : base(new Alert()) { }
+        public Alert Alert
+        {
+            get { return alert; }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="alert"></param>
-        public AlertValidator(Alert alert) : base(alert) { }
+        public AlertValidator(Alert alert)
+        {
+            this.alert = alert;
+        }
 
         /// <summary>
         /// 
         /// </summary>
-        public override IEnumerable<Error> Errors
+        public bool IsValid
         {
             get
             {
-                return from error in GetErrors(Entity)
-                       select error;
+                return !Errors.Any();
             }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public override bool IsValid
+        public IEnumerable<Error> Errors
         {
             get
             {
-                return !Errors.Any();
+                return from error in GetErrors(alert)
+                       select error;
             }
         }
 
