@@ -49,13 +49,25 @@
   <ItemGroup>
     <Compile Include="Models\InfoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidatorTests\AlertValidatorTests.cs" />
+    <Compile Include="ValidatorTests\AreaValidatorTests.cs" />
+    <Compile Include="ValidatorTests\IdentifierRequiredValidatorTests.cs" />
+    <Compile Include="ValidatorTests\InfoValidatorTests.cs" />
+    <Compile Include="ValidatorTests\MsgTypeRejectionValidatorTests.cs" />
+    <Compile Include="ValidatorTests\NoteValidatorTests.cs" />
+    <Compile Include="ValidatorTests\PolygonCoordinatePairsFirstLastValidatorTests.cs" />
+    <Compile Include="ValidatorTests\PolygonMinCoordinatesValidatorTests.cs" />
+    <Compile Include="ValidatorTests\PolygonsValidatorTests.cs" />
+    <Compile Include="ValidatorTests\Required\AddressesRequiredWhenScopeIsPrivateValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\Area\AreaDescriptionRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\Area\CeilingExistanceValidatorTests.cs" />
+    <Compile Include="ValidatorTests\IdentifierValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\Info\RequiredCategoriesTests.cs" />
     <Compile Include="ValidatorTests\Required\Info\RequiredCertaintyTests.cs" />
     <Compile Include="ValidatorTests\Required\Info\RequiredEventTests.cs" />
     <Compile Include="ValidatorTests\Required\Info\RequiredSeverityTests.cs" />
     <Compile Include="ValidatorTests\Required\Info\RequiredUrgencyTests.cs" />
+    <Compile Include="ValidatorTests\Required\MessageTypeRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\RequiredInfoTests.cs" />
     <Compile Include="ValidatorTests\InfoCreator.cs" />
     <Compile Include="ValidatorTests\Required\ResourceValidatorTests.cs" />
@@ -63,7 +75,14 @@
     <Compile Include="ValidatorTests\Required\Resource\MimeTypeRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\InvalidCategoryValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\Resource\SizeRequiredValidatorTests.cs" />
+    <Compile Include="ValidatorTests\Required\ScopeRequiredValidatorTests.cs" />
+    <Compile Include="ValidatorTests\Required\SentRequiredValidatorTests.cs" />
+    <Compile Include="ValidatorTests\ResponseTypesValidatorTests.cs" />
+    <Compile Include="ValidatorTests\RestrictionValidatorTests.cs" />
+    <Compile Include="ValidatorTests\SenderRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\ResponseTypeValidatorTests.cs" />
+    <Compile Include="ValidatorTests\Required\StatusRequiredValidatorTests.cs" />
+    <Compile Include="ValidatorTests\SenderValidatorTests.cs" />
     <Compile Include="Xml.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

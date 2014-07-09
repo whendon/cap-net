@@ -24,7 +24,7 @@ namespace CAPNet.Models
             private set { coordinates = value; }
         }
 
-        
+
         /// <summary>
         /// 
         /// </summary>
