@@ -78,6 +78,7 @@
     <Compile Include="Models\Urgency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator\Alert\Info\EventCodesValidator.cs" />
+    <Compile Include="Validator\Alert\Info\LanguageValidator.cs" />
     <Compile Include="Validator\Alert\Info\ParametersValidator.cs" />
     <Compile Include="Validator\Alert\Info\ResponseTypesValidator.cs" />
     <Compile Include="Validator\Alert\Info\ResponseTypeValidator.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Validator\Errors\EventCodeError.cs" />
     <Compile Include="Validator\Errors\HeadlineError.cs" />
     <Compile Include="Validator\Errors\IdentifierError.cs" />
+    <Compile Include="Validator\Errors\LanguageError.cs" />
     <Compile Include="Validator\Errors\MessageTypeRequiredError.cs" />
     <Compile Include="Validator\Errors\MsgTypeRejectionError.cs" />
     <Compile Include="Validator\Errors\NoteError.cs" />
