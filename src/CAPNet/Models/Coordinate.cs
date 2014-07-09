@@ -78,7 +78,7 @@ namespace CAPNet.Models
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return Convert.ToInt32(X) ^ Convert.ToInt32(Y);
+            return X.GetHashCode() ^ Y.GetHashCode();
         }
     }
 }
