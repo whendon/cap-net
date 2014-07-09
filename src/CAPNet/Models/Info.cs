@@ -50,7 +50,7 @@ namespace CAPNet.Models
         }
 
         /// <summary>
-        /// 
+        /// The codes denoting the type of action recommended for the target audience 
         /// </summary>
         public ICollection<ResponseType> ResponseTypes
         {
@@ -61,7 +61,7 @@ namespace CAPNet.Models
         }
 
         /// <summary>
-        /// 
+        /// The codes denoting the category of the subject event of the alert message
         /// </summary>
         public ICollection<Category> Categories
         {

@@ -1,7 +1,7 @@
 ﻿namespace CAPNet.Models
 {
     /// <summary>
-    /// 
+    /// A system-specific additional parameter associated with the alert message 
     /// </summary>
     public class Parameter : NamedValue
     {

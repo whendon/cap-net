@@ -6,17 +6,15 @@ using System.Text;
 namespace CAPNet.Models
 {
     /// <summary>
-    /// 
+    /// The paired values of points defining a polygon that delineates the affected area of the alert message 
     /// </summary>
     public class Polygon
     {
-        /// <summary>
-        /// 
-        /// </summary>
+
         private IEnumerable<Coordinate> coordinates;
 
         /// <summary>
-        /// 
+        /// list of [WGS 84] coordinate pairs
         /// </summary>
         public IEnumerable<Coordinate> Coordinates
         {
@@ -40,7 +38,7 @@ namespace CAPNet.Models
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>whitespace-delimited list of [WGS 84] coordinate pairs</returns>
         public override string ToString()
         {
             return string.Join(" ", coordinates);
