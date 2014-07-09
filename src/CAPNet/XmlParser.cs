@@ -65,7 +65,8 @@ namespace CAPNet
             var incidentsNode = alertElement.Element(capNamespace + "incidents");
             if (incidentsNode != null)
             {
-                alert.Incidents = incidentsNode.Value;
+                var incidents = incidentsNode.Value.Split(' ').ToList();
+                alert.Incidents.AddRange(incidents);
             }
 
             var referencesNode = alertElement.Element(capNamespace + "references");
@@ -89,7 +90,8 @@ namespace CAPNet
             var addressesNode = alertElement.Element(capNamespace + "addresses");
             if (addressesNode != null)
             {
-                alert.Addresses.AddRange(addressesNode.Value.Split(' ').ToList());
+                var addresses = addressesNode.Value.Split(' ').ToList();
+                alert.Addresses.AddRange(addresses);
             }
 
             var restrictionNode = alertElement.Element(capNamespace + "restriction");

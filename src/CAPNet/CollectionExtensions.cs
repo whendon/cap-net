@@ -32,5 +32,6 @@ namespace CAPNet
         {
             return string.Join(" ", collection);
         }
+
     }
 }

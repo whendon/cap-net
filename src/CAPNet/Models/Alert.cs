@@ -15,6 +15,7 @@ namespace CAPNet.Models
         {
             info = new List<Info>();
             addresses = new List<string>();
+            incidents = new List<string>();
         }
 
         /// <summary>
@@ -128,10 +129,17 @@ namespace CAPNet.Models
         /// <summary>
         /// The group listing naming the referent incident(s) of the alert message 
         /// </summary>
-        public string Incidents { get; set; }
+        public ICollection<string> Incidents 
+        {
+            get
+            {
+                return incidents;
+            }
+        }
 
         private readonly ICollection<Info> info;
         private readonly ICollection<string> addresses;
+        private readonly ICollection<string> incidents;
 
         /// <summary>
         /// 
