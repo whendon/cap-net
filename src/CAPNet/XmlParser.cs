@@ -69,7 +69,7 @@ namespace CAPNet
                 var incidentsNodeValue = incidentsNode.Value.Trim();
                 if (!string.IsNullOrEmpty(incidentsNodeValue))
                 {
-                    var addresses = incidentsNodeValue.GetElementsDelimitedBySpace();
+                    var addresses = incidentsNodeValue.GetElements();
                     alert.Incidents.AddRange(addresses);
                 }
             }
@@ -98,7 +98,7 @@ namespace CAPNet
                 var addressNodeValue = addressesNode.Value.Trim();
                 if (!string.IsNullOrEmpty(addressNodeValue))
                 {
-                    var addresses = addressNodeValue.GetElementsDelimitedBySpace();
+                    var addresses = addressNodeValue.GetElements();
                     alert.Addresses.AddRange(addresses);
                 }
             }
@@ -425,12 +425,12 @@ namespace CAPNet
 
         }
 
-        private static List<string> GetElementsDelimitedBySpace(this string representation)
+        private static List<string> GetElements(this string representation)
         { 
             var spaceContainingElements = GetSpaceContainingElements(representation);
-            string representationWithSpaceContainingElementsMarked = representation.MarkElements(spaceContainingElements);
+            string spaceContainingElementsMarked = representation.MarkElements(spaceContainingElements);
 
-            var elementsWithNoSpace = from address in representationWithSpaceContainingElementsMarked.Split(' ')
+            var elementsWithNoSpace = from address in spaceContainingElementsMarked.Split(' ')
                                       select address;
 
             var addresses = FillSpaceContainingElements(spaceContainingElements, elementsWithNoSpace);
