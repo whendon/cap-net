@@ -471,8 +471,8 @@ namespace CAPNet
                     addresses[index] = spaceContainingElements.ElementAt(indexOfSpaceContainingElement).Replace("\"", "");
                     indexOfSpaceContainingElement++;
                 }
-
             }
+
             return addresses;
         }
 

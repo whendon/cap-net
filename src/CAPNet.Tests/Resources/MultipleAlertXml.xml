@@ -12,7 +12,7 @@
   <code>code</code>
   <note>note</note>
   <references>references</references>
-  <incidents>incident1 incident2</incidents>
+  <incidents>" incident0" incident1 incident2 "bad incident" "another bad incident"</incidents>
   <info>
     <category>Security</category>
     <event>Homeland Security Advisory System Update</event>

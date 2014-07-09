@@ -138,10 +138,13 @@ namespace CAPNet.Tests
             orangeAlert.Addresses.Add("address2");
             orangeAlert.Addresses.Add(" address 3");
             orangeAlert.Addresses.Add("address4");
-            
-            //<incidents>incident1 incident2</incidents>
+
+            //<incidents>" incident0" incident1 incident2 "bad incident" "another bad incident"</incidents>
+            orangeAlert.Incidents.Add(" incident0");
             orangeAlert.Incidents.Add("incident1");
             orangeAlert.Incidents.Add("incident2");
+            orangeAlert.Incidents.Add("bad incident");
+            orangeAlert.Incidents.Add("another bad incident");
 
             //  <info>
             var info = new Info();
