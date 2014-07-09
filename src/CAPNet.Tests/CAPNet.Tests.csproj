@@ -53,7 +53,6 @@
     <Compile Include="ValidatorTests\AreaValidatorTests.cs" />
     <Compile Include="ValidatorTests\IdentifierRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\InfoValidatorTests.cs" />
-    <Compile Include="ValidatorTests\IncidentsValidatorTests.cs" />
     <Compile Include="ValidatorTests\MsgTypeRejectionValidatorTests.cs" />
     <Compile Include="ValidatorTests\MultipleAddressesValidatorTests.cs" />
     <Compile Include="ValidatorTests\NoteValidatorTests.cs" />
