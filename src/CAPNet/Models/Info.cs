@@ -153,11 +153,10 @@ namespace CAPNet.Models
         public ICollection<EventCode> EventCodes
         {
             get { return eventCodes; }
-
         }
 
         /// <summary>
-        /// Refers to additional files with supplemental information related to this <info> element
+        /// Refers to additional files with supplemental information related to this info element
         /// </summary>
         public ICollection<Resource> Resources
         {

@@ -89,7 +89,7 @@ namespace CAPNet
             var addressesNode = alertElement.Element(capNamespace + "addresses");
             if (addressesNode != null)
             {
-                alert.Addresses = addressesNode.Value;
+                alert.Addresses.AddRange(addressesNode.Value.Split(' ').ToList());
             }
 
             var restrictionNode = alertElement.Element(capNamespace + "restriction");

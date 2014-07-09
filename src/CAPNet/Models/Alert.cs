@@ -14,6 +14,7 @@ namespace CAPNet.Models
         public Alert()
         {
             info = new List<Info>();
+            addresses = new List<string>();
         }
 
         /// <summary>
@@ -101,7 +102,13 @@ namespace CAPNet.Models
         /// <summary>
         /// The group listing of intended recipients of the alert message 
         /// </summary>
-        public string Addresses { get; set; }
+        public ICollection<string> Addresses 
+        {
+            get
+            {
+                return addresses;
+            }  
+        }
 
         /// <summary>
         /// The code denoting the special handling of the alert message 
@@ -124,6 +131,7 @@ namespace CAPNet.Models
         public string Incidents { get; set; }
 
         private readonly ICollection<Info> info;
+        private readonly ICollection<string> addresses;
 
         /// <summary>
         /// 

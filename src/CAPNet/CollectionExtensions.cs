@@ -23,5 +23,14 @@ namespace CAPNet
                 collection.Add(item);
             }
         }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns></returns>
+        public static string ElementsDelimitedBySpace(this ICollection<string> collection)
+        {
+            return string.Join(" ", collection);
+        }
     }
 }
