@@ -22,7 +22,7 @@ namespace CAPNet
         /// 
         /// </summary>
         /// <param name="entity"></param>
-        public Validator(T entity)
+        protected Validator(T entity)
         {
             this.entity = entity;
         }

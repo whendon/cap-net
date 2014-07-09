@@ -35,7 +35,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="info"></param>
         /// <returns></returns>
-        public IEnumerable<Error> GetErrors(Info info)
+        private static IEnumerable<Error> GetErrors(Info info)
         {
             var infoValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
                                  where typeof(IValidator<Info>).IsAssignableFrom(type)
