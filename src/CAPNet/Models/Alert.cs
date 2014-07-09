@@ -6,6 +6,21 @@ namespace CAPNet.Models
     /// <summary>
     /// The container for all component parts of the alert message.
     /// </summary>
+    /// <remarks>
+    ///   <list type="number">
+    ///     <item>
+    ///       <description>
+    ///         Used to collate multiple messages referring to different aspects of the same incident.
+    ///       </description>
+    ///     </item>
+    ///     <item>
+    ///       <description>
+    ///          If multiple incident identifiers are referenced, they SHALL be separated by whitespace. 
+    ///          Incident names including whitespace SHALL be surrounded by double-quotes.
+    ///       </description>
+    ///     </item>
+    ///     </list>
+    /// </remarks>
     public class Alert
     {
         /// <summary>
@@ -71,7 +86,7 @@ namespace CAPNet.Models
         ///         Alphabetic timezone designators such as "Z" MUST NOT be used. The timezone for UTC MUST be represented as "-00:00".
         ///       </description>
         ///     </item>
-        ///     </list>
+        ///   </list>
         /// </remarks>
         public DateTimeOffset? Sent { get; set; }
 
@@ -104,6 +119,25 @@ namespace CAPNet.Models
         /// <summary>
         /// The group listing of intended recipients of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///         Required when &lt;scope> is “Private”, optional when &lt;scope> is “Public” or “Restricted”.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///         Each recipient SHALL be identified by an identifier or an address.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          Multiple space-delimited addresses MAY be included.  Addresses including whitespace MUST be enclosed in double-quotes.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public ICollection<string> Addresses 
         {
             get
@@ -115,21 +149,70 @@ namespace CAPNet.Models
         /// <summary>
         /// The code denoting the special handling of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Any user-defined flag or special code used to flag the alert message for special handling.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///         Multiple instances MAY occur.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public string Code { get; set; }
 
         /// <summary>
         /// The text describing the purpose or significance of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <item>
+        ///     <description>
+        ///        The message note is primarily intended for use with &lt;status> “Exercise” and &lt;msgType> “Error”.
+        ///     </description>
+        ///   </item>
+        /// </remarks>
         public string Note { get; set; }
 
         /// <summary>
         /// The group listing identifying earlier message(s) referenced by the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          The extended message identifier(s) (in the form sender,identifier,sent) of an earlier CAP message or messages referenced by this one.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///         If multiple messages are referenced, they SHALL be separated by whitespace.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public string References { get; set; }
 
         /// <summary>
         /// The group listing naming the referent incident(s) of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Used to collate multiple messages referring to different aspects of the same incident.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///           If multiple incident identifiers are referenced, they SHALL be separated by whitespace.  Incident names including whitespace SHALL be surrounded by double-quotes.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public ICollection<string> Incidents 
         {
             get

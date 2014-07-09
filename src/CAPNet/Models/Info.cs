@@ -6,6 +6,22 @@ namespace CAPNet.Models
     /// <summary>
     /// The container for all component parts of the info sub-element of the alert message.
     /// </summary>
+    /// <remarks>
+    ///   <list type="number">
+    ///     <item>
+    ///       <description>
+    ///          Multiple occurrences are permitted within a single &lt;alert>.
+    ///          If targeting of multiple &lt;info> blocks in the same language overlaps, information in later blocks may expand but may not override the corresponding values in earlier ones. 
+    ///          Each set of &lt;info> blocks containing the same language identifier SHALL be treated as a separate sequence.
+    ///       </description>
+    ///     </item>
+    ///     <item>
+    ///       <description>
+    ///         In addition to the specified sub-elements, MAY contain one or more &lt;resource> blocks and/or one or more &lt;area> blocks.
+    ///       </description>
+    ///     </item>
+    ///   </list>
+    /// </remarks>
     public class Info
     {
         private string language;
@@ -43,6 +59,25 @@ namespace CAPNet.Models
         /// <summary>
         /// Gets or sets the code denoting the language of the info sub-element of the alert message.
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Code Values: Natural language identifier per [RFC 3066].
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          If not present, an implicit default value of "en-US" SHALL be assumed. 
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          A null value in this element SHALL be considered equivalent to “en-US.”
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public string Language
         {
             get { return String.IsNullOrWhiteSpace(language) ? DefaultLanguage : language; }
@@ -52,6 +87,29 @@ namespace CAPNet.Models
         /// <summary>
         /// The codes denoting the type of action recommended for the target audience 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///           Code Values:
+        ///             “Shelter” – Take shelter in place or per &lt;instruction>
+        ///             “Evacuate” – Relocate as instructed in the &lt;instruction>
+        ///             “Prepare” – Make preparations per the &lt;instruction>
+        ///             “Execute” – Execute a pre-planned activity identified in &lt;instruction>
+        ///             “Avoid” – Avoid the subject event as per the &lt;instruction>
+        ///             “Monitor” – Attend to information sources as described in &lt;instruction>
+        ///             “Assess” – Evaluate the information in this message.  (This value SHOULD NOT be used in public warning applications.)
+        ///             “AllClear” – The subject event no longer poses a threat or concern and any follow on action is described in &lt;instruction>
+        ///             “None” – No action recommended
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///           Multiple instances MAY occur within an &lt;info> block.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public ICollection<ResponseType> ResponseTypes
         {
             get
@@ -63,6 +121,33 @@ namespace CAPNet.Models
         /// <summary>
         /// The codes denoting the category of the subject event of the alert message
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Code Values:
+        ///             “Geo” - Geophysical (inc. landslide)
+        ///             “Met” - Meteorological (inc. flood)
+        ///             “Safety” - General emergency and public safety
+        ///             “Security” - Law enforcement, military, homeland and local/private security
+        ///             “Rescue” - Rescue and recovery
+        ///             “Fire” - Fire suppression and rescue
+        ///             “Health” - Medical and public health
+        ///             “Env” - Pollution and other environmental
+        ///             “Transport” - Public and private transportation
+        ///             “Infra” - Utility, telecommunication, other non-transport infrastructure
+        ///             “CBRNE” – Chemical, Biological, Radiological, Nuclear or High-Yield Explosive threat or attack
+        ///             “Other” - Other events
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///            Multiple instances MAY occur within an &lt;info> block.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
+        
         public ICollection<Category> Categories
         {
             get { return categories; }

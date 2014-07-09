@@ -425,7 +425,7 @@ namespace CAPNet
 
         }
 
-        private static List<string> GetElements(this string representation)
+        private static IEnumerable<string> GetElements(this string representation)
         { 
             var spaceContainingElements = GetSpaceContainingElements(representation);
             string spaceContainingElementsMarked = representation.MarkElements(spaceContainingElements);
