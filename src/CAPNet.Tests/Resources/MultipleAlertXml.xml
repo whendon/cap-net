@@ -8,7 +8,7 @@
   <source>source</source>
   <scope>Public</scope>
   <restriction>restriction</restriction>
-  <addresses>address1 address2 address3</addresses>
+  <addresses>"address 1" address2 " address 3" address4</addresses>
   <code>code</code>
   <note>note</note>
   <references>references</references>

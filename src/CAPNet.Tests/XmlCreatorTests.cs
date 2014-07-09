@@ -133,11 +133,12 @@ namespace CAPNet.Tests
                 References = "references"
             };
 
-            //<addresses>address1 address2 address3</addresses>
-            orangeAlert.Addresses.Add("address1");
+            //<addresses>"address 1" address2 " address 3" address4</addresses>
+            orangeAlert.Addresses.Add("address 1");
             orangeAlert.Addresses.Add("address2");
-            orangeAlert.Addresses.Add("address3");
-
+            orangeAlert.Addresses.Add(" address 3");
+            orangeAlert.Addresses.Add("address4");
+            
             //<incidents>incident1 incident2</incidents>
             orangeAlert.Incidents.Add("incident1");
             orangeAlert.Incidents.Add("incident2");
