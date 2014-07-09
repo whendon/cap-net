@@ -53,6 +53,8 @@
     <Compile Include="Validator\Alert\Area\AreaDescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Area\AreaValidator.cs" />
     <Compile Include="Validator\Alert\Area\CeilingExistanceValidator.cs" />
+    <Compile Include="Validator\Alert\Area\GeoCodesValidator.cs" />
+    <Compile Include="Validator\Alert\Area\GeoCodeValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonCoordinatePairsFirstLastValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonMinCoordinatesValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonsValidator.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
     <Compile Include="Validator\Errors\DigestError.cs" />
     <Compile Include="Validator\Errors\EventCodeError.cs" />
+    <Compile Include="Validator\Errors\GeocodeError.cs" />
     <Compile Include="Validator\Errors\HeadlineError.cs" />
     <Compile Include="Validator\Errors\IdentifierError.cs" />
     <Compile Include="Validator\Errors\LanguageError.cs" />

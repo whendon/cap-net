@@ -54,6 +54,8 @@
     <Compile Include="ValidatorTests\DigestValidatorTests.cs" />
     <Compile Include="ValidatorTests\EventCodesValidatorTests.cs" />
     <Compile Include="ValidatorTests\EventCodeValidatorTests.cs" />
+    <Compile Include="ValidatorTests\GeoCodesValidatorTests.cs" />
+    <Compile Include="ValidatorTests\GeoCodeValidatorTests.cs" />
     <Compile Include="ValidatorTests\HeadlineValidatorTests.cs" />
     <Compile Include="ValidatorTests\IdentifierRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\InfoValidatorTests.cs" />
