@@ -12,11 +12,7 @@ namespace CAPNet
         /// 
         /// </summary>
         public static readonly IEnumerable<char> restrictedCharacters =
-                                               new[] { ',', ':', '>', '<',
-                                                       '-', '+', '=', ']', 
-                                                       '[', ')', '(', '*', 
-                                                       '&', '^', '%', '$', 
-                                                       '#', '!' };
+                                               new[] { ' ', ',', '<', '&' };
 
         /// <summary>
         /// 
