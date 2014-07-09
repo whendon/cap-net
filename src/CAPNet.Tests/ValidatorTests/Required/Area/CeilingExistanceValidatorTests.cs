@@ -27,5 +27,16 @@ namespace CAPNet
             var ceilingExistanceValidator = new CeilingExistanceValidator(area);
             Assert.True(ceilingExistanceValidator.IsValid);
         }
+
+        [Fact]
+        public void AreaWithCeilingNullAndWithAltitudeNullIsValid()
+        {
+            var area = new Area();
+            area.Ceiling = null;
+            area.Altitude = null;
+
+            var ceilingExistanceValidator = new CeilingExistanceValidator(area);
+            Assert.True(ceilingExistanceValidator.IsValid);
+        }
     }
 }
