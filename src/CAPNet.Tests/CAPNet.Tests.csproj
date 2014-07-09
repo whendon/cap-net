@@ -54,7 +54,6 @@
     <Compile Include="ValidatorTests\IdentifierRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\InfoValidatorTests.cs" />
     <Compile Include="ValidatorTests\MsgTypeRejectionValidatorTests.cs" />
-    <Compile Include="ValidatorTests\MultipleAddressesValidatorTests.cs" />
     <Compile Include="ValidatorTests\NoteValidatorTests.cs" />
     <Compile Include="ValidatorTests\PolygonCoordinatePairsFirstLastValidatorTests.cs" />
     <Compile Include="ValidatorTests\PolygonMinCoordinatesValidatorTests.cs" />

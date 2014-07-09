@@ -33,7 +33,10 @@ namespace CAPNet
         {
             get
             {
-                return !Entity.MessageType.Equals(MessageType.Error) || (!string.IsNullOrEmpty(Entity.Note));
+                var messageTypeIsNotError = !Entity.MessageType.Equals(MessageType.Error);
+                var noteIsNotNullOrEmpty = !string.IsNullOrEmpty(Entity.Note);
+
+                return messageTypeIsNotError || noteIsNotNullOrEmpty;
             }
         }
     }

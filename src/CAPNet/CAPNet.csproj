@@ -78,7 +78,6 @@
     <Compile Include="Validator\Alert\Info\ResponseTypesValidator.cs" />
     <Compile Include="Validator\Alert\Info\ResponseTypeValidator.cs" />
     <Compile Include="Validator\Alert\MessageTypeRequiredValidator.cs" />
-    <Compile Include="Validator\Alert\MultipleAddressesValidator.cs" />
     <Compile Include="Validator\Alert\NoteValidator.cs" />
     <Compile Include="Validator\Alert\Resource\DescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Resource\MimeTypeRequiredValidator.cs" />
@@ -95,7 +94,6 @@
     <Compile Include="Validator\Errors\IdentifierError.cs" />
     <Compile Include="Validator\Errors\MessageTypeRequiredError.cs" />
     <Compile Include="Validator\Errors\MsgTypeRejectionError.cs" />
-    <Compile Include="Validator\Errors\MultipleAddressesError.cs" />
     <Compile Include="Validator\Errors\NoteError.cs" />
     <Compile Include="Validator\Errors\PolygonCoordinatePairsFirstLastError.cs" />
     <Compile Include="Validator\Errors\PolygonMinCoordinatesError.cs" />
