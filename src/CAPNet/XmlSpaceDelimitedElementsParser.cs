@@ -54,7 +54,7 @@ namespace CAPNet
                 }
             }
 
-            addresses.RemoveAll(content=>content.Equals(""));
+            addresses.RemoveAll(content => content.Equals(""));
             return addresses;
         }
 
