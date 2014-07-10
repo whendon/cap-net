@@ -10,9 +10,9 @@ namespace CAPNet
         public void CircleWithInvalidCoordinatesIsInvalid()
         {
             var area = new Area();
-            var coordinate = new Coordinate(400, 400);
-            var circle = new Circle(coordinate, 14);
-            area.Circles.Add(circle);
+            var invalidCoordinate = new Coordinate(400, 400);
+            var invalidCircle = new Circle(invalidCoordinate, 14);
+            area.Circles.Add(invalidCircle);
 
             var circleValidator = new CircleValidator(area);
             Assert.False(circleValidator.IsValid);
@@ -27,9 +27,9 @@ namespace CAPNet
         public void CircleWithValidCoordinatesIsValid()
         {
             var area = new Area();
-            var coordinate = new Coordinate(50, 50);
-            var circle = new Circle(coordinate, 55);
-            area.Circles.Add(circle);
+            var validCoordinate = new Coordinate(50, 50);
+            var validCircle = new Circle(validCoordinate, 55);
+            area.Circles.Add(validCircle);
 
             var circleValidator = new CircleValidator(area);
             Assert.True(circleValidator.IsValid);

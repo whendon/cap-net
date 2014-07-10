@@ -32,13 +32,14 @@ namespace CAPNet
         /// </summary>
         public override bool IsValid
         {
-            get 
+            get
             {
                 if (Entity.Digest == null) return true;
 
-                var DigestLengthIs40 = Entity.Digest.Length == 40;
-                var validSymbols = Regex.Matches(Entity.Digest, @"[a-fA-F0-9]").Count;
-                return DigestLengthIs40 && validSymbols == 40;
+                var digestLengthIs40 = Entity.Digest.Length == 40;
+                var digestMatchesHexaDigits = Regex.Match(Entity.Digest, "^[a-fA-F0-9]*$");
+
+                return digestLengthIs40 && digestMatchesHexaDigits.Success;
             }
         }
     }
