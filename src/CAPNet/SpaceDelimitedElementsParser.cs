@@ -9,7 +9,7 @@ namespace CAPNet
     /// <summary>
     /// 
     /// </summary>
-    public static class XmlSpaceDelimitedElementsParser
+    public static class SpaceDelimitedElementsParser
     {
 
         private const int decisionState = 0;
