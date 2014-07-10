@@ -89,6 +89,7 @@
     <Compile Include="Validator\Alert\Resource\DescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Resource\DigestValidator.cs" />
     <Compile Include="Validator\Alert\Resource\MimeTypeRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\Resource\MimeTypeValidator.cs" />
     <Compile Include="Validator\Alert\Resource\SizeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\IdentifierValidator.cs" />
     <Compile Include="Validator\Alert\RestrictionValidator.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Validator\Errors\IdentifierError.cs" />
     <Compile Include="Validator\Errors\LanguageError.cs" />
     <Compile Include="Validator\Errors\MessageTypeRequiredError.cs" />
+    <Compile Include="Validator\Errors\MimeTypeError.cs" />
     <Compile Include="Validator\Errors\MsgTypeRejectionError.cs" />
     <Compile Include="Validator\Errors\NoteError.cs" />
     <Compile Include="Validator\Errors\ParameterError.cs" />

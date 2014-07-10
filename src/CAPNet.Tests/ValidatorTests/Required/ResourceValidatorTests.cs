@@ -27,7 +27,7 @@ namespace CAPNet
         [Fact]
         public void ResourceWithDescriptionAndMimeTypeIsValid()
         {
-            var info = CreateInfoWithResourceWithDescriptionAndMimeType("Description", "MimeType");
+            var info = CreateInfoWithResourceWithDescriptionAndMimeType("Description", "image/jpeg");
 
             var resourceValidator = new ResourceValidator(info);
             Assert.True(resourceValidator.IsValid);
@@ -41,7 +41,6 @@ namespace CAPNet
 
             var resourceValidator = new ResourceValidator(alert);
             Assert.False(resourceValidator.IsValid);
-            Assert.Equal(1, resourceValidator.Errors.Count());
         }
 
         [Fact]
@@ -51,7 +50,6 @@ namespace CAPNet
 
             var resourceValidator = new ResourceValidator(alert);
             Assert.False(resourceValidator.IsValid);
-            Assert.Equal(2, resourceValidator.Errors.Count());
         }
 
         private static Info CreateInfoWithResourceWithDescriptionAndMimeType(string description, string mimeType)
