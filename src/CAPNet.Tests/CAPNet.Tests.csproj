@@ -133,7 +133,9 @@
     <None Include="Resources\circleXml.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\OrangeAlertXml.xml" />
+    <None Include="Resources\OrangeAlertXml.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Thunderstorm12AllDatesXml.xml" />
