@@ -53,6 +53,7 @@
     <Compile Include="Validator\Alert\Area\AreaDescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Area\AreaValidator.cs" />
     <Compile Include="Validator\Alert\Area\CeilingExistanceValidator.cs" />
+    <Compile Include="Validator\Alert\Area\CircleValidator.cs" />
     <Compile Include="Validator\Alert\Area\GeoCodesValidator.cs" />
     <Compile Include="Validator\Alert\Area\GeoCodeValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonCoordinatePairsFirstLastValidator.cs" />
