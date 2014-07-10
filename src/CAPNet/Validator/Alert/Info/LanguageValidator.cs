@@ -37,7 +37,7 @@ namespace CAPNet
         {
             get 
             {
-                if (Entity.Language == null) return true;
+                if (string.IsNullOrEmpty(Entity.Language)) return true;
 
                 try
                 {
