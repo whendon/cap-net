@@ -34,10 +34,10 @@ namespace CAPNet
         {
             get
             {
-                var latitudeIsValid = -180 <= Entity.Longitude && Entity.Longitude <= 180;
-                var longitudeIsValid = -90 <= Entity.Latitude && Entity.Latitude <= 90;
+                var longitudeIsValid = -180 <= Entity.Longitude && Entity.Longitude <= 180;
+                var latitudeIsValid = -90 <= Entity.Latitude && Entity.Latitude <= 90;
 
-                return latitudeIsValid && longitudeIsValid;
+                return longitudeIsValid && latitudeIsValid;
             }
         }
     }
