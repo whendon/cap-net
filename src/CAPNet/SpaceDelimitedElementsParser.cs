@@ -11,7 +11,6 @@ namespace CAPNet
     /// </summary>
     public static class SpaceDelimitedElementsParser
     {
-
         private const int betweenAddressesState = 0;
         private const int InSpaceContainingAddress = 1;
         private const int InAddressWithNoSpace = 2;
