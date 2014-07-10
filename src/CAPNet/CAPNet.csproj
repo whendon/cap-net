@@ -134,6 +134,7 @@
     <Compile Include="Validator\AlertValidator.cs" />
     <Compile Include="Version.cs" />
     <Compile Include="XmlCreator.cs" />
+    <Compile Include="XmlElementsParser.cs" />
     <Compile Include="XmlParser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

@@ -30,7 +30,8 @@ namespace CAPNet
         /// <returns></returns>
         public static string ElementsDelimitedBySpace(this IEnumerable<string> elements)
         {
-            elements = elements.Select(element => element.Contains(" ") ? element = "\"" + element + "\"" : element);
+            elements = elements.Select(
+                element => element.Contains(" ") ? element = "\"" + element + "\"" : element);
 
             return string.Join(" ", elements);
         }
