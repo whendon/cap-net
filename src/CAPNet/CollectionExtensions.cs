@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace CAPNet
 {
@@ -23,5 +20,15 @@ namespace CAPNet
                 collection.Add(item);
             }
         }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns></returns>
+        public static string ElementsDelimitedBySpace(this IEnumerable<string> collection)
+        {
+            return string.Join(" ", collection);
+        }
+
     }
 }

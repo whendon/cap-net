@@ -226,14 +226,14 @@ namespace CAPNet.Tests
         {
             var alert = XmlParser.Parse(Xml.MultipleThunderstorm12Xml).First();
             var polygon = alert.Info.ElementAt(0).Areas.First().Polygons.First();
-            var coordonates = polygon.Coordinates;
+            var coordinates = polygon.Coordinates.ToList();
 
             //<polygon>38.47,-120.14 38.34,-119.95 38.52,-119.74 38.62,-119.89 38.47,-120.14</polygon>
-            Assert.Equal(coordonates.ElementAt(0).ToString(), "38.47,-120.14");
-            Assert.Equal(coordonates.ElementAt(1).ToString(), "38.34,-119.95");
-            Assert.Equal(coordonates.ElementAt(2).ToString(), "38.52,-119.74");
-            Assert.Equal(coordonates.ElementAt(3).ToString(), "38.62,-119.89");
-            Assert.Equal(coordonates.ElementAt(4).ToString(), "38.47,-120.14");
+            Assert.Equal(coordinates.ElementAt(0).ToString(), "38.47,-120.14");
+            Assert.Equal(coordinates.ElementAt(1).ToString(), "38.34,-119.95");
+            Assert.Equal(coordinates.ElementAt(2).ToString(), "38.52,-119.74");
+            Assert.Equal(coordinates.ElementAt(3).ToString(), "38.62,-119.89");
+            Assert.Equal(coordinates.ElementAt(4).ToString(), "38.47,-120.14");
 
         }
 

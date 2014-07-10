@@ -9,7 +9,9 @@ namespace CAPNet
         public void AlertWithAddressAndNoScopeIsValid()
         {
             var alert = new Alert();
-            alert.Addresses = "list1 list2 list3";
+            alert.Addresses.Add("list1");
+            alert.Addresses.Add("list2");
+            alert.Addresses.Add("list3");
 
             var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopePrivateValidator(alert);
             Assert.True(addressesRequiredWhenScopeValidator.IsValid);
@@ -19,7 +21,9 @@ namespace CAPNet
         public void AlertWithAddressesAndScopePrivateIsValid()
         {
             var alert = new Alert();
-            alert.Addresses = "list1 list2 list3";
+            alert.Addresses.Add("list1");
+            alert.Addresses.Add("list2");
+            alert.Addresses.Add("list3");
             alert.Scope = Scope.Private;
 
             var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopePrivateValidator(alert);
@@ -30,7 +34,9 @@ namespace CAPNet
         public void AlertWithAddressesAndScopeNoPrivateIsValid()
         {
             var alert = new Alert();
-            alert.Addresses = "list1 list2 list3";
+            alert.Addresses.Add("list1");
+            alert.Addresses.Add("list2");
+            alert.Addresses.Add("list3");
             alert.Scope = Scope.Public;
 
             var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopePrivateValidator(alert);
@@ -41,7 +47,6 @@ namespace CAPNet
         public void AlertWithEmptyAddressesAndScopePrivateIsInvalid()
         {
             var alert = new Alert();
-            alert.Addresses = string.Empty;
             alert.Scope = Scope.Private;
 
             var addressesRequiredWhenScopeValidator = new AddressesRequiredWhenScopePrivateValidator(alert);

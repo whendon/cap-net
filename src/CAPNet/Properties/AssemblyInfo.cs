@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("cap-net")]
 [assembly: AssemblyDescription("A Common Alerting Protocol serialization library for the .NET framework.")]

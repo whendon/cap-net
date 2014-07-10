@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CAPNet.Models
+﻿namespace CAPNet.Models
 {
     /// <summary>
-    /// 
+    /// The paired values of a point and radius delineating the affected area of the alert message
     /// </summary>
     public class Circle
     {
@@ -33,7 +28,7 @@ namespace CAPNet.Models
         }
 
         /// <summary>
-        /// 
+        /// radius value in kilometers
         /// </summary>
         public double Radius 
         {
@@ -42,7 +37,7 @@ namespace CAPNet.Models
         }
 
         /// <summary>
-        /// 
+        /// [WGS 84] coordinate pair 
         /// </summary>
         public Coordinate Center 
         { 
@@ -53,10 +48,10 @@ namespace CAPNet.Models
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>central point given as a [WGS 84] coordinate pair followed by a space character and a radius value in kilometers</returns>
         public override string ToString()
         {
-            return Center + " " + Radius.ToString();
+            return string.Format("{0} {1}", Center, Radius);
         }
 
     }

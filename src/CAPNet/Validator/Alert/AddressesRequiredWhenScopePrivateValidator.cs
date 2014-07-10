@@ -22,9 +22,9 @@ namespace CAPNet
             get
             {
                 var scopeIsNotPrivate = Entity.Scope != Scope.Private;
-                var addressesIsNotNull = !string.IsNullOrEmpty(Entity.Addresses);
+                var addressesIsNotEmpty = Entity.Addresses.Count != 0;
 
-                return scopeIsNotPrivate || addressesIsNotNull;
+                return scopeIsNotPrivate || addressesIsNotEmpty;
             }
         }
 

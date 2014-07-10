@@ -27,15 +27,15 @@ namespace CAPNet.Tests
             TimeSpan.FromHours(-3));
 
         private static readonly Alert Alert = new Alert
-                                                  {
-                                                      Identifier = Guid.NewGuid().ToString(),
-                                                      Sender = Sender,
-                                                      Sent = Sent,
-                                                      Status = Status.Test,
-                                                      MessageType = MessageType.Alert,
-                                                      Scope = Scope.Private
+        {
+            Identifier = Guid.NewGuid().ToString(),
+            Sender = Sender,
+            Sent = Sent,
+            Status = Status.Test,
+            MessageType = MessageType.Alert,
+            Scope = Scope.Private
 
-                                                  };
+        };
 
         [Fact]
         public void XmlNodeReturnedHasCAP12Namespace()
@@ -125,18 +125,22 @@ namespace CAPNet.Tests
                 Source = "source",
                 //   <restriction>restriction</restriction>
                 Restriction = "restriction",
-                //   <addresses>addresses</addresses>
-                Addresses = "addresses",
                 //   <code>code</code>
                 Code = "code",
                 //   <note>note</note>
                 Note = "note",
                 //   <references>references</references>
-                References = "references",
-                //   <incidents>incidents</incidents>
-                Incidents = "incidents"
-
+                References = "references"
             };
+
+            //<addresses>address1 address2 address3</addresses>
+            orangeAlert.Addresses.Add("address1");
+            orangeAlert.Addresses.Add("address2");
+            orangeAlert.Addresses.Add("address3");
+
+            //<incidents>incident1 incident2</incidents>
+            orangeAlert.Incidents.Add("incident1");
+            orangeAlert.Incidents.Add("incident2");
 
             //  <info>
             var info = new Info();
@@ -201,11 +205,11 @@ namespace CAPNet.Tests
                 DereferencedUri = Convert.FromBase64String("ZGVyZWZVcmk="),
                 //      <digest>digest</digest>
                 Digest = "digest",
-            //    </resource>
+                //    </resource>
 
             });
 
-                //  <area>
+            //  <area>
             var area = new Area
             {
                 //  <areaDesc>U.S. nationwide and interests worldwide</areaDesc>
@@ -213,7 +217,7 @@ namespace CAPNet.Tests
                 //  <altitude>altitude</altitude>
                 Altitude = 100,
                 //  <ceiling>ceiling</ceiling>
-                Ceiling = 120,        
+                Ceiling = 120,
             };
 
             //<polygon>1 2 3 4</polygon>
@@ -222,8 +226,8 @@ namespace CAPNet.Tests
             area.Polygons.Add(new Polygon("1,1 22,1 33,1 1,1"));
             //<circle>1 2</circle>
             //<circle>1 22</circle>
-            area.Circles.Add(new Circle("1,2 2"));
-            area.Circles.Add(new Circle("1,2 22"));
+            area.Circles.Add(new Circle(new Coordinate(1, 2), 2));
+            area.Circles.Add(new Circle(new Coordinate(1, 2), 22));
             //<geocode>
             //  <valueName>valN</valueName>
             //  <value>val</value>

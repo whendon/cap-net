@@ -1,13 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
-
 using CAPNet.Models;
-using System;
-using System.Globalization;
-using System.Collections.Generic;
-using System.Xml;
-using System.IO;
-using System.Text;
 
 namespace CAPNet
 {
@@ -54,11 +49,13 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "source", alert.Source);
             AddElementIfHasContent(alertElement, "scope", alert.Scope);
             AddElementIfHasContent(alertElement, "restriction", alert.Restriction);
-            AddElementIfHasContent(alertElement, "addresses", alert.Addresses);
+            string addressesContent = alert.Addresses.ElementsDelimitedBySpace();
+            AddElementIfHasContent(alertElement, "addresses", addressesContent);
             AddElementIfHasContent(alertElement, "code", alert.Code);
             AddElementIfHasContent(alertElement, "note", alert.Note);
             AddElementIfHasContent(alertElement, "references", alert.References);
-            AddElementIfHasContent(alertElement, "incidents", alert.Incidents);
+            string incidentsContent = alert.Incidents.ElementsDelimitedBySpace();
+            AddElementIfHasContent(alertElement, "incidents", incidentsContent);
             AddElements(alertElement, Create(alert.Info));
 
             return alertElement;

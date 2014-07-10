@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CAPNet.Models
 {
     /// <summary>
-    /// 
+    ///  [WGS 84] coordinate pair 
     /// </summary>
     public sealed class Coordinate
     {
@@ -56,7 +53,7 @@ namespace CAPNet.Models
         /// <returns></returns>
         public override string ToString()
         {
-            return Latitude.ToString() + "," + Longitude.ToString();
+            return string.Format("{0},{1}", this.Latitude, this.Longitude);
         }
 
         /// <summary>
@@ -68,6 +65,7 @@ namespace CAPNet.Models
         {
             if (obj == null || GetType() != obj.GetType())
                 return false;
+
             Coordinate p = (Coordinate)obj;
             return (this.Latitude == p.Latitude && this.Longitude == p.Longitude);
         }
