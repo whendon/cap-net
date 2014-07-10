@@ -153,6 +153,43 @@ namespace CAPNet.Tests
         }
 
         [Fact]
+        public void CanParseSingleAddress()
+        {
+            string usedAddress = "address";
+            var elements = usedAddress.GetElements();
+            Assert.Equal("address",elements.ElementAt(0));
+            Assert.Equal(1, elements.Count());
+        }
+
+        [Fact]
+        public void CanParseSingleAddressUntrimmed()
+        {
+            string usedAddress = "  address  ";
+            var elements = usedAddress.GetElements();
+            Assert.Equal("address", elements.ElementAt(0));
+            Assert.Equal(1, elements.Count());
+        }
+
+        [Fact]
+        public void CanParseSingleCharactedAddresses()
+        {
+            string usedAddress = "a b";
+            var elements = usedAddress.GetElements();
+            Assert.Equal("a", elements.ElementAt(0));
+            Assert.Equal("b", elements.ElementAt(1));
+            Assert.Equal(2, elements.Count());
+        }
+
+        [Fact]
+        public void CanParseSingleSpaceContainingAddress()
+        {
+            string usedAddress = "\" address 1\"";
+            var elements = usedAddress.GetElements();
+            Assert.Equal(" address 1", elements.ElementAt(0));
+            Assert.Equal(1, elements.Count());
+        }
+
+        [Fact]
         public void CanParseWithAddress()
         {
             string usedAddress = "\" \" adress addr \"bs \" \"long\" \"one two three \"";
