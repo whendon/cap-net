@@ -93,6 +93,7 @@
     <Compile Include="ValidatorTests\ResponseTypeValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\StatusRequiredValidatorTests.cs" />
     <Compile Include="ValidatorTests\SenderValidatorTests.cs" />
+    <Compile Include="ValidatorTests\WGS84ValidatorTests.cs" />
     <Compile Include="Xml.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

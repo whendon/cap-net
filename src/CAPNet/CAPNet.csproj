@@ -98,6 +98,7 @@
     <Compile Include="Validator\Alert\SenderValidator.cs" />
     <Compile Include="Validator\Alert\SentRequiredValidator.cs" />
     <Compile Include="Validator\Alert\StatusRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\WGS84Validator.cs" />
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
     <Compile Include="Validator\Errors\DigestError.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Validator\Errors\SenderRequiredError.cs" />
     <Compile Include="Validator\Errors\SentRequiredError.cs" />
     <Compile Include="Validator\Errors\StatusRequiredError.cs" />
+    <Compile Include="Validator\Errors\WGS84Error.cs" />
     <Compile Include="Validator\IValidator.cs" />
     <Compile Include="Validator\Errors\Required\RequiredFieldError.cs" />
     <Compile Include="Validator\Errors\Required\SeverityRequiredError.cs" />
