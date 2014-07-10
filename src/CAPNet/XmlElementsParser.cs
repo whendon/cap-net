@@ -16,52 +16,102 @@ namespace CAPNet
         /// </summary>
         /// <param name="representation"></param>
         /// <returns></returns>
-        public static List<string> GetElements(this string representation)
+        public static IEnumerable<string> GetElements(this string representation)
         {
-            representation = representation.Trim();
-            var spaceContainingElements = GetSpaceContainingElements(representation);
-            string spaceContainingElementsMarked = representation.MarkElements(spaceContainingElements);
-            var elementsWithNoSpace = spaceContainingElementsMarked.Split(' ');
-            var addresses = FillSpaceContainingElements(spaceContainingElements, elementsWithNoSpace);
+            var addresses = new List<string>();
+            char[] representationChars = representation.ToCharArray();
+            const string decisionState = "spaceState";
+            const string addCharInSpaceContainingAddress = "addCharInSpaceContainingAddress";
+            const string addCharInAddressWithNoSpace = "addCharInAddressWithNoSpace";
 
-            return addresses;
-        }
 
-        private static string MarkElements(this string representation, IEnumerable<string> spaceContainingElements)
-        {
-            foreach (var element in spaceContainingElements)
-                representation = representation.Replace(element.ToString(), "\"\"");
+            string state = decisionState;
+            string partialElement = "";
 
-            return representation;
-        }
-
-        private static IEnumerable<string> GetSpaceContainingElements(string representation)
-        {
-            string pattern = "\"[\\w ]*\"";
-            Regex regexObject = new Regex(pattern);
-            var spaceContainingElements = from Match match in regexObject.Matches(representation)
-                                          select match.Value;
-
-            return spaceContainingElements;
-        }
-
-        private static List<string> FillSpaceContainingElements(IEnumerable<string> spaceContainingElements, IEnumerable<string> elementsWithNoSpace)
-        {
-
-            var addresses = elementsWithNoSpace.ToList();
-
-            int indexOfSpaceContainingElement = 0;
-            for (int index = 0; index < addresses.Count(); index++)
+            for (int i = 0; i < representationChars.Count(); i++)
             {
-                var currentAddress = addresses.ElementAt(index);
-                if (currentAddress.Equals("\"\""))
+                char currentChar = representationChars[i];
+                switch (state)
                 {
-                    addresses[index] = spaceContainingElements.ElementAt(indexOfSpaceContainingElement).Replace("\"", "");
-                    indexOfSpaceContainingElement++;
+                    case decisionState:
+                        if (currentChar.IsSpace())
+                        {
+                            state = addCharInAddressWithNoSpace;
+                        }
+                        else if (currentChar.IsQuote())
+                        {
+                            state = addCharInSpaceContainingAddress;
+                        }
+                        else if (currentChar.IsElementCaracter())
+                        {
+                            state = addCharInAddressWithNoSpace;
+                            partialElement += currentChar;
+                        }
+                        break;
+
+                    case addCharInAddressWithNoSpace:
+                        if (currentChar.IsElementCaracter())
+                        {
+                            state = addCharInAddressWithNoSpace;
+                            partialElement += currentChar;
+                            if (i == representationChars.Count() - 1)
+                            {
+                                addresses.Add(partialElement);
+                            }
+                        }
+                        else if (currentChar.IsSpace())
+                        {
+                            addresses.Add(partialElement);
+                            partialElement = "";
+                            state = decisionState;
+                        }
+                        else if (currentChar.IsQuote())
+                        {
+                            state = addCharInSpaceContainingAddress;
+                        }
+                        break;
+
+                    case addCharInSpaceContainingAddress:
+
+                        if (currentChar.IsElementCaracter() || currentChar.IsSpace())
+                        {
+                            state = addCharInSpaceContainingAddress;
+                            partialElement += currentChar;
+                            if (i == representationChars.Count() - 1)
+                            {
+                                addresses.Add(partialElement);
+                            }
+                        }
+                        else if (currentChar.IsQuote())
+                        {
+                            addresses.Add(partialElement);
+                            partialElement = "";
+                            state = decisionState;
+                        }
+                        break;
                 }
             }
 
             return addresses;
+
+
         }
+
+        private static bool IsElementCaracter(this char tested)
+        {
+            return tested.CompareTo('"') != 0 && tested.CompareTo(' ') != 0;
+        }
+
+        private static bool IsSpace(this char tested)
+        {
+            return tested.CompareTo(' ') == 0;
+        }
+
+        private static bool IsQuote(this char tested)
+        {
+            return tested.CompareTo('"') == 0;
+        }
+
     }
+
 }

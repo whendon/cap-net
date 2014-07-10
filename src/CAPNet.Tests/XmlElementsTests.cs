@@ -65,7 +65,7 @@ namespace CAPNet.Tests
             string usedAddress = "address1 address2 address3";
             var elements = usedAddress.GetElements();
 
-            Assert.Equal(3, elements.Count);
+            Assert.Equal(3, elements.Count());
             Assert.Equal(elements.ElementAt(0), "address1");
             Assert.Equal(elements.ElementAt(1), "address2");
             Assert.Equal(elements.ElementAt(2), "address3");
@@ -78,11 +78,28 @@ namespace CAPNet.Tests
             string usedAddress = "address1 \"address 2\" address3 \"address4\"";
             var elements = usedAddress.GetElements();
 
-            Assert.Equal(4, elements.Count);
+            Assert.Equal(4, elements.Count());
             Assert.Equal("address1", elements.ElementAt(0));
             Assert.Equal("address 2", elements.ElementAt(1));
             Assert.Equal("address3", elements.ElementAt(2));
             Assert.Equal("address4", elements.ElementAt(3));
+        }
+
+        [Fact]
+        public void CanParseWithSpaceAddress()
+        {
+           
+            string usedAddress = "\" \" adress addr \"bs \" \"long\" \"one two three \"";
+            
+            var elements = usedAddress.GetElements();
+
+            Assert.Equal(6, elements.Count());
+            Assert.Equal(" ", elements.ElementAt(0));
+            Assert.Equal("adress", elements.ElementAt(1));
+            Assert.Equal("addr", elements.ElementAt(2));
+            Assert.Equal("bs ", elements.ElementAt(3));
+            Assert.Equal("long", elements.ElementAt(4));
+            Assert.Equal("one two three ", elements.ElementAt(5));
         }
 
         [Fact]
@@ -95,5 +112,7 @@ namespace CAPNet.Tests
             Assert.Equal("incident", incidents.ElementAt(1));
             Assert.Equal("another incident", incidents.ElementAt(2));
         }
+
+
     }
 }
