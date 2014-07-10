@@ -67,6 +67,7 @@
     <Compile Include="ValidatorTests\ParametersValidatorTests.cs" />
     <Compile Include="ValidatorTests\ParameterValidatorTests.cs" />
     <Compile Include="ValidatorTests\PolygonCoordinatePairsFirstLastValidatorTests.cs" />
+    <Compile Include="ValidatorTests\PolygonCoordinatesValidatorTests.cs" />
     <Compile Include="ValidatorTests\PolygonMinCoordinatesValidatorTests.cs" />
     <Compile Include="ValidatorTests\PolygonsValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\AddressesRequiredWhenScopeIsPrivateValidatorTests.cs" />

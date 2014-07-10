@@ -17,9 +17,9 @@ namespace CAPNet
         [Fact]
         public void CoordinatesWithValidLatitudeAndLongitudeIsValid()
         {
-            var coordinate = new Coordinate(70, 120);
+            var coordinate = new Coordinate(50, 50);
             var wgs84Validator = new WGS84Validator(coordinate);
-            Assert.False(wgs84Validator.IsValid);
+            Assert.True(wgs84Validator.IsValid);
         }
     }
 }

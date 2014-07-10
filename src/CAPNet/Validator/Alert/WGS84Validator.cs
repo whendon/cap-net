@@ -34,8 +34,8 @@ namespace CAPNet
         {
             get
             {
-                var latitudeIsValid = Entity.Y >= -90 && Entity.Y <= 90;
-                var longitudeIsValid = Entity.X >= -180 && Entity.X <= 180;
+                var latitudeIsValid = Entity.Y >= -180 && Entity.Y <= 180;
+                var longitudeIsValid = Entity.X >= -90 && Entity.X <= 90;
 
                 return latitudeIsValid && longitudeIsValid;
             }
