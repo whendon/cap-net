@@ -9,13 +9,13 @@ namespace CAPNet
     /// <summary>
     /// 
     /// </summary>
-    public class CircleValidator : Validator<Area>
+    public class CircleValidator : Validator<Circle>
     {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="area"></param>
-        public CircleValidator(Area area) : base(area) { }
+        /// <param name="circle"></param>
+        public CircleValidator(Circle circle) : base(circle) { }
 
         /// <summary>
         /// 
@@ -24,12 +24,8 @@ namespace CAPNet
         {
             get
             {
-                var wgs84Validators = from circle in Entity.Circles
-                                      select new WGS84Validator(circle.Center);
-
-                return from wgs84Validator in wgs84Validators
-                       from error in wgs84Validator.Errors
-                       select error;
+                if (!IsValid)
+                    yield return new CircleError();
             }
         }
 
@@ -40,7 +36,8 @@ namespace CAPNet
         {
             get
             {
-                return !Errors.Any();
+                var wgs84Validator = new WGS84Validator(Entity.Center);
+                return !wgs84Validator.Errors.Any();
             }
         }
     }

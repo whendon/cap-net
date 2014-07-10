@@ -53,6 +53,7 @@
     <Compile Include="Validator\Alert\Area\AreaDescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Area\AreaValidator.cs" />
     <Compile Include="Validator\Alert\Area\CeilingExistanceValidator.cs" />
+    <Compile Include="Validator\Alert\Area\CirclesValidator.cs" />
     <Compile Include="Validator\Alert\Area\CircleValidator.cs" />
     <Compile Include="Validator\Alert\Area\GeoCodesValidator.cs" />
     <Compile Include="Validator\Alert\Area\GeoCodeValidator.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Validator\Alert\WGS84Validator.cs" />
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
+    <Compile Include="Validator\Errors\CircleError.cs" />
     <Compile Include="Validator\Errors\DigestError.cs" />
     <Compile Include="Validator\Errors\EventCodeError.cs" />
     <Compile Include="Validator\Errors\GeocodeError.cs" />

@@ -9,16 +9,14 @@ namespace CAPNet
         [Fact]
         public void CircleWithInvalidCoordinatesIsInvalid()
         {
-            var area = new Area();
             var invalidCoordinate = new Coordinate(400, 400);
             var invalidCircle = new Circle(invalidCoordinate, 14);
-            area.Circles.Add(invalidCircle);
 
-            var circleValidator = new CircleValidator(area);
+            var circleValidator = new CircleValidator(invalidCircle);
             Assert.False(circleValidator.IsValid);
 
             var errors = from error in circleValidator.Errors
-                         where error.GetType() == typeof(WGS84Error)
+                         where error.GetType() == typeof(CircleError)
                          select error;
             Assert.NotEmpty(errors);
         }
@@ -26,12 +24,10 @@ namespace CAPNet
         [Fact]
         public void CircleWithValidCoordinatesIsValid()
         {
-            var area = new Area();
             var validCoordinate = new Coordinate(50, 50);
             var validCircle = new Circle(validCoordinate, 55);
-            area.Circles.Add(validCircle);
 
-            var circleValidator = new CircleValidator(area);
+            var circleValidator = new CircleValidator(validCircle);
             Assert.True(circleValidator.IsValid);
         }
     }

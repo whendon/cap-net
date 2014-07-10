@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidatorTests\AlertValidatorTests.cs" />
     <Compile Include="ValidatorTests\AreaValidatorTests.cs" />
+    <Compile Include="ValidatorTests\CirclesValidatorTests.cs" />
     <Compile Include="ValidatorTests\CircleValidatorTests.cs" />
     <Compile Include="ValidatorTests\DigestValidatorTests.cs" />
     <Compile Include="ValidatorTests\EventCodesValidatorTests.cs" />
