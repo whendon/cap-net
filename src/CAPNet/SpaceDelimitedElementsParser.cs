@@ -12,9 +12,9 @@ namespace CAPNet
     public static class SpaceDelimitedElementsParser
     {
 
-        private const int decisionState = 0;
-        private const int addCharInSpaceContainingAddress = 1;
-        private const int addCharInAddressWithNoSpace = 2;
+        private const int betweenAddressesState = 0;
+        private const int InSpaceContainingAddress = 1;
+        private const int InAddressWithNoSpace = 2;
 
         private static int state;
         private static string partialElement;
@@ -31,7 +31,7 @@ namespace CAPNet
         {
             addresses = new List<string>();
             representationChars = representation.ToCharArray();
-            state = decisionState;
+            state = betweenAddressesState;
             partialElement = "";
 
             for (currentPosition = 0; currentPosition < representationChars.Count(); currentPosition++)
@@ -39,17 +39,17 @@ namespace CAPNet
                 char currentChar = representationChars[currentPosition];
                 switch (state)
                 {
-                    case decisionState:
-                        DecisionState(currentChar);
+                    case betweenAddressesState:
+                        BetweenAddressesState(currentChar);
                         break;
 
-                    case addCharInAddressWithNoSpace:
-                        AddCharInAddressWithNoSpaceState(currentChar);
+                    case InAddressWithNoSpace:
+                        InAddressWithNoSpaceState(currentChar);
                         break;
 
-                    case addCharInSpaceContainingAddress:
+                    case InSpaceContainingAddress:
 
-                        AddCharInSpaceContainingAddressState(currentChar);
+                        InSpaceContainingAddressState(currentChar);
                         break;
                 }
             }
@@ -58,11 +58,11 @@ namespace CAPNet
             return addresses;
         }
 
-        private static void AddCharInSpaceContainingAddressState(char currentChar)
+        private static void InSpaceContainingAddressState(char currentChar)
         {
             if (currentChar.IsElementCaracter() || currentChar.IsSpace())
             {
-                state = addCharInSpaceContainingAddress;
+                state = InSpaceContainingAddress;
                 partialElement += currentChar;
                 if (currentPosition == representationChars.Count() - 1)
                 {
@@ -73,15 +73,15 @@ namespace CAPNet
             {
                 addresses.Add(partialElement);
                 partialElement = "";
-                state = decisionState;
+                state = betweenAddressesState;
             }
         }
 
-        private static void AddCharInAddressWithNoSpaceState(char currentChar)
+        private static void InAddressWithNoSpaceState(char currentChar)
         {
             if (currentChar.IsElementCaracter())
             {
-                state = addCharInAddressWithNoSpace;
+                state = InAddressWithNoSpace;
                 partialElement += currentChar;
                 if (currentPosition == representationChars.Count() - 1)
                 {
@@ -92,27 +92,27 @@ namespace CAPNet
             {
                 addresses.Add(partialElement);
                 partialElement = "";
-                state = decisionState;
+                state = betweenAddressesState;
             }
             else if (currentChar.IsQuote())
             {
-                state = addCharInSpaceContainingAddress;
+                state = InSpaceContainingAddress;
             }
         }
 
-        private static void DecisionState(char currentChar)
+        private static void BetweenAddressesState(char currentChar)
         {
             if (currentChar.IsSpace())
             {
-                state = addCharInAddressWithNoSpace;
+                state = InAddressWithNoSpace;
             }
             else if (currentChar.IsQuote())
             {
-                state = addCharInSpaceContainingAddress;
+                state = InSpaceContainingAddress;
             }
             else if (currentChar.IsElementCaracter())
             {
-                state = addCharInAddressWithNoSpace;
+                state = InAddressWithNoSpace;
                 partialElement += currentChar;
             }
         }
