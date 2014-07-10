@@ -7,7 +7,7 @@ using Xunit;
 
 namespace CAPNet.Tests
 {
-    public class XmlElementsTests
+    public class ElementsTests
     {
         [Fact]
         public void CanParseWithStringInsteadOfInt()
