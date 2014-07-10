@@ -15,12 +15,12 @@ namespace CAPNet
         private const string decisionState = "spaceState";
         private const string addCharInSpaceContainingAddress = "addCharInSpaceContainingAddress";
         private const string addCharInAddressWithNoSpace = "addCharInAddressWithNoSpace";
+
         private static string state;
         private static string partialElement;
-        private static int i;
+        private static int currentPosition;
         private static char[] representationChars;
         private static List<string> addresses;
-
 
         /// <summary>
         /// 
@@ -34,9 +34,9 @@ namespace CAPNet
             state = decisionState;
             partialElement = "";
 
-            for (i = 0; i < representationChars.Count(); i++)
+            for (currentPosition = 0; currentPosition < representationChars.Count(); currentPosition++)
             {
-                char currentChar = representationChars[i];
+                char currentChar = representationChars[currentPosition];
                 switch (state)
                 {
                     case decisionState:
@@ -63,7 +63,7 @@ namespace CAPNet
             {
                 state = addCharInSpaceContainingAddress;
                 partialElement += currentChar;
-                if (i == representationChars.Count() - 1)
+                if (currentPosition== representationChars.Count() - 1)
                 {
                     addresses.Add(partialElement);
                 }
@@ -82,7 +82,7 @@ namespace CAPNet
             {
                 state = addCharInAddressWithNoSpace;
                 partialElement += currentChar;
-                if (i == representationChars.Count() - 1)
+                if (currentPosition== representationChars.Count() - 1)
                 {
                     addresses.Add(partialElement);
                 }
