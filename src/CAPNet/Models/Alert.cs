@@ -78,7 +78,6 @@ namespace CAPNet.Models
         /// <summary>
         /// The code denoting the appropriate handling of the alert message 
         /// </summary>
-        
         public Status Status { get; set; }
 
         /// <summary>
