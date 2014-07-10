@@ -72,25 +72,90 @@ namespace CAPNet.Tests
         }
 
         [Fact]
-        public void CanParseAddressesWithQuotes()
+        public void CanParseAddressesWithQuotesAndNoSpaces()
         {
-            //<addresses>address1 "address 2" address3 "address4"</addresses>
-            string usedAddress = "address1 \"address 2\" address3 \"address4\"";
+            //<addresses>address1 "address2" address3 "address4"</addresses>
+            string usedAddress = "address1 \"address2\" address3 \"address4\"";
             var elements = usedAddress.GetElements();
 
             Assert.Equal(4, elements.Count());
             Assert.Equal("address1", elements.ElementAt(0));
-            Assert.Equal("address 2", elements.ElementAt(1));
+            Assert.Equal("address2", elements.ElementAt(1));
             Assert.Equal("address3", elements.ElementAt(2));
             Assert.Equal("address4", elements.ElementAt(3));
         }
 
         [Fact]
+        public void CanParseAddressesWithQuotesAndSpaces()
+        {
+            //<addresses>address1 "address 2 " "address 3" "address 4"</addresses>
+            string usedAddress = "address1 \"address 2 \" \"address 3\" \"address 4\"";
+            var elements = usedAddress.GetElements();
+
+            Assert.Equal(4, elements.Count());
+            Assert.Equal("address1", elements.ElementAt(0));
+            Assert.Equal("address 2 ", elements.ElementAt(1));
+            Assert.Equal("address 3", elements.ElementAt(2));
+            Assert.Equal("address 4", elements.ElementAt(3));
+        }
+
+        [Fact]
+        public void CanParseSerialAddressesWithQuotes()
+        {
+            //<addresses>"address1 " "address 3 " "address 4 "</addresses>
+            string usedAddress = "\"address1 \" \"address 3 \" \"address 4 \"";
+            var elements = usedAddress.GetElements();
+
+            Assert.Equal(3, elements.Count());
+            Assert.Equal("address1 ", elements.ElementAt(0));
+            Assert.Equal("address 3 ", elements.ElementAt(1));
+            Assert.Equal("address 4 ", elements.ElementAt(2));
+            
+        }
+
+        [Fact]
+        public void CanParseAddressesWithUntrimmedRepresentation()
+        {
+            //<addresses>  "address1 " "address 3 " "address 4 "    </addresses>
+            string usedAddress = "   \"address1 \" \"address 3 \" \"address 4 \"   ";
+            var elements = usedAddress.GetElements();
+
+            Assert.Equal(3, elements.Count());
+            Assert.Equal("address1 ", elements.ElementAt(0));
+            Assert.Equal("address 3 ", elements.ElementAt(1));
+            Assert.Equal("address 4 ", elements.ElementAt(2));
+        }
+
+        [Fact]
+        public void CanParseAddressesWithMultipleSpaces()
+        {
+            //<addresses>"address1 "    "address 3 " "address 4      "</addresses>
+            string usedAddress = "   \"address1 \"    \"address 3 \" \"address 4      \"";
+            var elements = usedAddress.GetElements();
+
+            Assert.Equal(3, elements.Count());
+            Assert.Equal("address1 ", elements.ElementAt(0));
+            Assert.Equal("address 3 ", elements.ElementAt(1));
+            Assert.Equal("address 4      ", elements.ElementAt(2));
+        }
+
+        [Fact]
         public void CanParseWithSpaceAddress()
         {
-           
+            //<addresses>" " "address 3 " "address 4 "    </addresses>
+            string usedAddress = "\" \" \"address 3 \" \"address 4 \"   ";
+            var elements = usedAddress.GetElements();
+
+            Assert.Equal(3, elements.Count());
+            Assert.Equal(" ", elements.ElementAt(0));
+            Assert.Equal("address 3 ", elements.ElementAt(1));
+            Assert.Equal("address 4 ", elements.ElementAt(2));
+        }
+
+        [Fact]
+        public void CanParseWithAddress()
+        {
             string usedAddress = "\" \" adress addr \"bs \" \"long\" \"one two three \"";
-            
             var elements = usedAddress.GetElements();
 
             Assert.Equal(6, elements.Count());

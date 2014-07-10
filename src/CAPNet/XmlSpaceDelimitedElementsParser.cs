@@ -12,11 +12,11 @@ namespace CAPNet
     public static class XmlSpaceDelimitedElementsParser
     {
 
-        private const string decisionState = "spaceState";
-        private const string addCharInSpaceContainingAddress = "addCharInSpaceContainingAddress";
-        private const string addCharInAddressWithNoSpace = "addCharInAddressWithNoSpace";
+        private const int decisionState = 0;
+        private const int addCharInSpaceContainingAddress = 1;
+        private const int addCharInAddressWithNoSpace = 2;
 
-        private static string state;
+        private static int state;
         private static string partialElement;
         private static int currentPosition;
         private static char[] representationChars;
@@ -54,6 +54,7 @@ namespace CAPNet
                 }
             }
 
+            addresses.RemoveAll(content=>content.Equals(""));
             return addresses;
         }
 
@@ -63,7 +64,7 @@ namespace CAPNet
             {
                 state = addCharInSpaceContainingAddress;
                 partialElement += currentChar;
-                if (currentPosition== representationChars.Count() - 1)
+                if (currentPosition == representationChars.Count() - 1)
                 {
                     addresses.Add(partialElement);
                 }
@@ -82,7 +83,7 @@ namespace CAPNet
             {
                 state = addCharInAddressWithNoSpace;
                 partialElement += currentChar;
-                if (currentPosition== representationChars.Count() - 1)
+                if (currentPosition == representationChars.Count() - 1)
                 {
                     addresses.Add(partialElement);
                 }
