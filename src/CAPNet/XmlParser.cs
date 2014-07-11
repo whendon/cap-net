@@ -161,7 +161,6 @@ namespace CAPNet
         private static Info ParseInfo(XElement infoElement)
         {
             var info = new Info();
-
             var capNamespace = infoElement.Name.Namespace;
 
             var languageNode = infoElement.Element(capNamespace + "language");
@@ -347,6 +346,7 @@ namespace CAPNet
             var ceilingNode = areaElement.Element(capNamespace + "ceiling");
             if (ceilingNode != null)
                 area.Ceiling = TryParseInt(ceilingNode.Value);
+
             return area;
         }
 
@@ -407,6 +407,7 @@ namespace CAPNet
             bool canBeParsed = int.TryParse(tested, out parsed);
             if (canBeParsed)
                 return parsed;
+
             return null;
         }
 
@@ -425,7 +426,7 @@ namespace CAPNet
         }
 
         private static IEnumerable<string> GetElements(this string representation)
-        { 
+        {
             var spaceContainingElements = GetSpaceContainingElements(representation);
             string spaceContainingElementsMarked = representation.MarkElements(spaceContainingElements);
 
