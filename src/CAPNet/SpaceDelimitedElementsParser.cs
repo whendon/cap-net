@@ -11,10 +11,12 @@ namespace CAPNet
     /// </summary>
     public static class SpaceDelimitedElementsParser
     {
-        private const int BETWEEN_ELEMENTS = 0;
-        private const int IN_SPACE_CONTAINING_ELEMENTS = 1;
-        private const int IN_ELEMENTS_WITH_NO_SPACE = 2;
-    
+        enum States
+        {
+            BETWEEN_ELEMENTS = 0,
+            IN_SPACE_CONTAINING_ELEMENTS = 1,
+            IN_ELEMENTS_WITH_NO_SPACE = 2
+        }
         private static int state;
         private static string partialElement;
         private static int currentPosition;
@@ -32,22 +34,22 @@ namespace CAPNet
             representation = value;
             elements = new List<string>();
             partialElement = "";
-            state = BETWEEN_ELEMENTS;
+            state = (int) States.BETWEEN_ELEMENTS;
 
             for (currentPosition = 0; currentPosition < representation.Length; currentPosition++)
             {
                 char currentChar = representation[currentPosition];
                 switch (state)
                 {
-                    case BETWEEN_ELEMENTS:
+                    case (int) States.BETWEEN_ELEMENTS:
                         BetweenElementsState(currentChar);
                         break;
 
-                    case IN_ELEMENTS_WITH_NO_SPACE:
+                    case (int) States.IN_ELEMENTS_WITH_NO_SPACE:
                         InAddressWithNoSpaceState(currentChar);
                         break;
 
-                    case IN_SPACE_CONTAINING_ELEMENTS:
+                    case (int) States.IN_SPACE_CONTAINING_ELEMENTS:
                         InSpaceContainingAddressState(currentChar);
                         break;
                 }
@@ -70,7 +72,7 @@ namespace CAPNet
             {
                 elements.Add(partialElement);
                 partialElement = "";
-                state = BETWEEN_ELEMENTS;
+                state = (int) States.BETWEEN_ELEMENTS;
             }
         }
 
@@ -88,7 +90,7 @@ namespace CAPNet
             {
                 elements.Add(partialElement);
                 partialElement = "";
-                state = BETWEEN_ELEMENTS;
+                state = (int) States.BETWEEN_ELEMENTS;
             }
             
         }
@@ -97,11 +99,11 @@ namespace CAPNet
         {
             if (currentChar.IsQuote())
             {
-                state = IN_SPACE_CONTAINING_ELEMENTS;
+                state = (int) States.IN_SPACE_CONTAINING_ELEMENTS;
             }
             else if (currentChar.IsElementCharacter())
             {
-                state = IN_ELEMENTS_WITH_NO_SPACE;
+                state = (int) States.IN_ELEMENTS_WITH_NO_SPACE;
                 partialElement += currentChar;
                 if (currentPosition == representation.Length - 1)
                 {
