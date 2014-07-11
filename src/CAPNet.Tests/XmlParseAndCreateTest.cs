@@ -163,7 +163,7 @@ namespace CAPNet.Tests
             IEnumerable<XElement> createdElements = XmlCreator.Create(alerts);
 
             XDocument createdDocument = new XDocument();
-            createdDocument.Add(new XElement(originalDocument.Root.Name.ToString(), createdElements));
+            createdDocument.Add(new XElement(originalDocument.Root.Name, createdElements));
 
             Assert.Equal(createdDocument.ToString(), originalDocument.ToString());
         }
@@ -179,7 +179,7 @@ namespace CAPNet.Tests
             IEnumerable<XElement> createdElements = XmlCreator.Create(alerts);
 
             XDocument createdDocument = new XDocument();
-            createdDocument.Add(new XElement(originalDocument.Root.Name.ToString(), createdElements));
+            createdDocument.Add(new XElement(originalDocument.Root.Name, createdElements));
 
             Assert.Equal(createdDocument.ToString(), originalDocument.ToString());
         }

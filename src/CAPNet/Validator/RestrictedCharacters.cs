@@ -6,12 +6,12 @@ namespace CAPNet
     /// <summary>
     /// 
     /// </summary>
-    public static class RestrictedCharacters
+    public static class RestrictedCharactersExtensions
     {
         /// <summary>
         /// 
         /// </summary>
-        public static readonly IEnumerable<char> restrictedCharacters =
+        private static readonly IEnumerable<char> RestrictedCharacters =
                                                new[] { ' ', ',', '<', '&' };
 
         /// <summary>
@@ -21,7 +21,10 @@ namespace CAPNet
         /// <returns></returns>
         public static bool DoesNotContainsRestrictedChars(this string str)
         {
-            return !restrictedCharacters.Any(wrongChar => str.Contains(wrongChar.ToString()));
+            // in PCL, string implements only IEnumerable, not IEnumerable<char>
+            // https://stackoverflow.com/questions/11557690/
+            var chars = str.Cast<char>();
+            return !RestrictedCharacters.Any(chars.Contains);
         }
     }
 }

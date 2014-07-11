@@ -46,7 +46,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="responseType"></param>
         /// <returns></returns>
-        public IEnumerable<Error> GetErrors(ResponseType responseType)
+        private static IEnumerable<Error> GetErrors(ResponseType responseType)
         {
             var responseTypeValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
                                         where typeof(IValidator<ResponseType>).IsAssignableFrom(type)
