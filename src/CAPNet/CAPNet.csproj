@@ -104,7 +104,6 @@
     <Compile Include="Validator\Alert\WGS84Validator.cs" />
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
     <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
-    <Compile Include="Validator\Errors\CircleError.cs" />
     <Compile Include="Validator\Errors\DigestError.cs" />
     <Compile Include="Validator\Errors\EventCodeError.cs" />
     <Compile Include="Validator\Errors\GeocodeError.cs" />

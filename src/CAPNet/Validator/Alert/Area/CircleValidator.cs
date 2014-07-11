@@ -25,7 +25,7 @@ namespace CAPNet
             get
             {
                 if (!IsValid)
-                    yield return new CircleError();
+                    yield return new WGS84Error();
             }
         }
 

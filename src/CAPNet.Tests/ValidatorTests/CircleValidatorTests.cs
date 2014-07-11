@@ -16,7 +16,7 @@ namespace CAPNet
             Assert.False(circleValidator.IsValid);
 
             var errors = from error in circleValidator.Errors
-                         where error.GetType() == typeof(CircleError)
+                         where error.GetType() == typeof(WGS84Error)
                          select error;
             Assert.NotEmpty(errors);
         }

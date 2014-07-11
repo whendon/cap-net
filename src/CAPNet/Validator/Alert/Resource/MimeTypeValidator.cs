@@ -12,17 +12,7 @@ namespace CAPNet
         /// 
         /// </summary>
         /// <param name="resource"></param>
-        public MimeTypeValidator(Resource resource) : base(resource) 
-        {
-            topLevelMediaType = new List<string>();
-            topLevelMediaType.Add("text");
-            topLevelMediaType.Add("image");
-            topLevelMediaType.Add("audio");
-            topLevelMediaType.Add("video");
-            topLevelMediaType.Add("application");
-            topLevelMediaType.Add("multipart");
-            topLevelMediaType.Add("message");
-        }
+        public MimeTypeValidator(Resource resource) : base(resource) { }
 
         /// <summary>
         /// 
@@ -36,7 +26,7 @@ namespace CAPNet
             }
         }
 
-        private static ICollection<string> topLevelMediaType;
+        private static readonly ICollection<string> topLevelMediaType = new List<string>() { "text", "image", "audio", "video", "application", "multipart", "message" };
 
         /// <summary>
         /// 
