@@ -36,10 +36,9 @@ namespace CAPNet
             {
                 if (Entity.Digest == null) return true;
 
-                var digestLengthIs40 = Entity.Digest.Length == 40;
-                var digestMatchesHexaDigits = Regex.Match(Entity.Digest, "^[a-fA-F0-9]*$");
+                var digestMatchesHexaDigits = Regex.Match(Entity.Digest, "^[a-fA-F0-9]{40}$");
 
-                return digestLengthIs40 && digestMatchesHexaDigits.Success;
+                return digestMatchesHexaDigits.Success;
             }
         }
     }
