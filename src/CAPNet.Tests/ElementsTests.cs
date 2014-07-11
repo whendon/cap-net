@@ -190,6 +190,18 @@ namespace CAPNet.Tests
         }
 
         [Fact]
+        public void CanParseWithEmptyStringInBetweenQuotes()
+        {
+            string usedAddress = "\" address 1\" address2 \"\" address4";
+            var elements = usedAddress.GetElements();
+            Assert.Equal(" address 1", elements.ElementAt(0));
+            Assert.Equal("address2", elements.ElementAt(1));
+            Assert.Equal("", elements.ElementAt(2));
+            Assert.Equal("address4", elements.ElementAt(3));
+            Assert.Equal(4, elements.Count());
+        }
+
+        [Fact]
         public void CanParseWithAddress()
         {
             string usedAddress = "\" \" adress addr \"bs \" \"long\" \"one two three \"";
@@ -214,7 +226,6 @@ namespace CAPNet.Tests
             Assert.Equal("incident", incidents.ElementAt(1));
             Assert.Equal("another incident", incidents.ElementAt(2));
         }
-
 
     }
 }

@@ -34,22 +34,22 @@ namespace CAPNet
             representation = value;
             elements = new List<string>();
             partialElement = new StringBuilder();
-            currentState = (int) States.BETWEEN_ELEMENTS;
+            currentState = (int)States.BETWEEN_ELEMENTS;
 
             for (currentPosition = 0; currentPosition < representation.Length; currentPosition++)
             {
                 char currentChar = representation[currentPosition];
                 switch (currentState)
                 {
-                    case (int) States.BETWEEN_ELEMENTS:
+                    case (int)States.BETWEEN_ELEMENTS:
                         BetweenElementsState(currentChar);
                         break;
 
-                    case (int) States.IN_ELEMENTS_WITH_NO_SPACE:
+                    case (int)States.IN_ELEMENTS_WITH_NO_SPACE:
                         InAddressWithNoSpaceState(currentChar);
                         break;
 
-                    case (int) States.IN_SPACE_CONTAINING_ELEMENTS:
+                    case (int)States.IN_SPACE_CONTAINING_ELEMENTS:
                         InSpaceContainingAddressState(currentChar);
                         break;
                 }
@@ -72,7 +72,7 @@ namespace CAPNet
             {
                 elements.Add(partialElement.ToString());
                 partialElement.Clear();
-                currentState = (int) States.BETWEEN_ELEMENTS;
+                currentState = (int)States.BETWEEN_ELEMENTS;
             }
         }
 
@@ -90,20 +90,20 @@ namespace CAPNet
             {
                 elements.Add(partialElement.ToString());
                 partialElement.Clear();
-                currentState = (int) States.BETWEEN_ELEMENTS;
+                currentState = (int)States.BETWEEN_ELEMENTS;
             }
-            
+
         }
 
         private static void BetweenElementsState(char currentChar)
         {
             if (currentChar.IsQuote())
             {
-                currentState = (int) States.IN_SPACE_CONTAINING_ELEMENTS;
+                currentState = (int)States.IN_SPACE_CONTAINING_ELEMENTS;
             }
             else if (currentChar.IsElementCharacter())
             {
-                currentState = (int) States.IN_ELEMENTS_WITH_NO_SPACE;
+                currentState = (int)States.IN_ELEMENTS_WITH_NO_SPACE;
                 partialElement.Append(currentChar);
                 if (currentPosition == representation.Length - 1)
                 {
