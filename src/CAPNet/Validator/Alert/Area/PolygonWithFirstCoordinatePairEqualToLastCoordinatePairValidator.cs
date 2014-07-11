@@ -36,7 +36,7 @@ namespace CAPNet
             get
             {
                 if (!IsValid)
-                    yield return new PolygonCoordinatePairsFirstLastError();
+                    yield return new PolygonWithFirstCoordinatePairEqualToLastCoordinatePairError();
             }
         }
     }

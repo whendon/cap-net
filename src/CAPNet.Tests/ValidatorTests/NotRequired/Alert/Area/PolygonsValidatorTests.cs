@@ -27,7 +27,7 @@ namespace CAPNet
             var polygonValidator = new PolygonsValidator(area);
             Assert.False(polygonValidator.IsValid);
             var polygonsErrors = from error in polygonValidator.Errors
-                                 where error.GetType() == typeof(PolygonCoordinatePairsFirstLastError)
+                                 where error.GetType() == typeof(PolygonWithFirstCoordinatePairEqualToLastCoordinatePairError)
                                  select error;
             Assert.NotEmpty(polygonsErrors);
         }

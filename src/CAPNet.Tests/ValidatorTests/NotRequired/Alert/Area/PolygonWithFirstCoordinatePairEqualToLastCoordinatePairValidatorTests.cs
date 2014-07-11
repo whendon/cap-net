@@ -14,7 +14,7 @@ namespace CAPNet
             Assert.False(polygonCoordinatePairsFirstLastValidator.IsValid);
 
             var pairErrors = from error in polygonCoordinatePairsFirstLastValidator.Errors
-                             where error.GetType() == typeof(PolygonCoordinatePairsFirstLastError)
+                             where error.GetType() == typeof(PolygonWithFirstCoordinatePairEqualToLastCoordinatePairError)
                              select error;
             Assert.NotEmpty(pairErrors);
         }
@@ -27,7 +27,7 @@ namespace CAPNet
             Assert.True(polygonCoordinatePairsFirstLastValidator.IsValid);
 
             var pairErrors = from error in polygonCoordinatePairsFirstLastValidator.Errors
-                             where error.GetType() == typeof(PolygonCoordinatePairsFirstLastError)
+                             where error.GetType() == typeof(PolygonWithFirstCoordinatePairEqualToLastCoordinatePairError)
                              select error;
             Assert.Empty(pairErrors);
         }

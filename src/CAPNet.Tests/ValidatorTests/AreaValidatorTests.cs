@@ -84,7 +84,7 @@ namespace CAPNet
             var areaValidator = new AreaValidator(info);
             Assert.False(areaValidator.IsValid);
             var polygonsErrors = from error in areaValidator.Errors
-                                 where error.GetType() == typeof(PolygonCoordinatePairsFirstLastError)
+                                 where error.GetType() == typeof(PolygonWithFirstCoordinatePairEqualToLastCoordinatePairError)
                                  select error;
             Assert.NotEmpty(polygonsErrors);
         }
