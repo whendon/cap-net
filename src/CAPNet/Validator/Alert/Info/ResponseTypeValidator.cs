@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The code denoting the type of action recommended for the target audience must have certain code values !
     /// </summary>
     public class ResponseTypeValidator : Validator<ResponseType>
     {
@@ -22,7 +22,7 @@ namespace CAPNet
         {
             get
             {
-                return Enum.IsDefined(typeof(ResponseType), Entity); 
+                return Enum.IsDefined(typeof(ResponseType), Entity);
             }
         }
 

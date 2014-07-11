@@ -5,7 +5,7 @@ using System.Linq;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    ///  Multiple instances MAY occur within an info block. At least one valid category is required ! 
     /// </summary>
     public class CategoryRequiredValidator : Validator<Info>
     {

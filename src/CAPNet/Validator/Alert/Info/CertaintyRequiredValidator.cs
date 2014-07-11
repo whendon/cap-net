@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The code denoting the certainty of the subject event of the alert message is REQUIRED and should have certain code values !
     /// </summary>
     public class CertaintyRequiredValidator : Validator<Info>
     {

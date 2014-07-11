@@ -4,7 +4,7 @@ using CAPNet.Models;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The identifier of the sender is always required !
     /// </summary>
     public class SenderRequiredValidator : Validator<Alert>
     {

@@ -7,7 +7,7 @@ using System.Reflection;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Validator of the multiple instances that MAY occur within an area block.
     /// </summary>
     public class GeoCodesValidator : Validator<Area>
     {

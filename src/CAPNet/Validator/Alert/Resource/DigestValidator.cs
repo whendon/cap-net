@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The code representing the digital digest is calculated using the SHA-1
     /// </summary>
     public class DigestValidator : Validator<Resource>
     {

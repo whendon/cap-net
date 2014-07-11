@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Verifies if a set of coordinates respect the WGS 84 standard !
     /// </summary>
     public class WGS84Validator : Validator<Coordinate>
     {

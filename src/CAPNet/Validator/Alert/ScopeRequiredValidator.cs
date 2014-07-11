@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Scope is always required and must have certain values !
     /// </summary>
     public class ScopeRequiredValidator : Validator<Alert>
     {

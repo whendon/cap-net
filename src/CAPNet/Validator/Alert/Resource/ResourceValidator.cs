@@ -7,7 +7,7 @@ using System.Reflection;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Validates all the subelements of the Resource
     /// </summary>
     public class ResourceValidator : Validator<Info>
     {

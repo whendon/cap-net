@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// Required Component of Resource
+    /// The text describing the type and content of the resource file is Required!
     /// </summary>
     public class ResourceDescriptionRequiredValidator : Validator<Resource>
     {

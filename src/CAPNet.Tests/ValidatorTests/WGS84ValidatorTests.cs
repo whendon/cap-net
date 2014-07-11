@@ -10,6 +10,7 @@ namespace CAPNet
         public void CoordinatesWithInvalidLatitudeIsInvalid()
         {
             var coordinate = new Coordinate(120,280);
+
             var wgs84Validator = new WGS84Validator(coordinate);
             Assert.False(wgs84Validator.IsValid);
         }
@@ -18,6 +19,7 @@ namespace CAPNet
         public void CoordinatesWithValidLatitudeAndLongitudeIsValid()
         {
             var coordinate = new Coordinate(50, 50);
+
             var wgs84Validator = new WGS84Validator(coordinate);
             Assert.True(wgs84Validator.IsValid);
         }

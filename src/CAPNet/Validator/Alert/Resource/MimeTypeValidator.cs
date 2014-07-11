@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// MIME content type and sub-type are described as in [RFC 2046]
     /// </summary>
     public class MimeTypeValidator : Validator<Resource>
     {

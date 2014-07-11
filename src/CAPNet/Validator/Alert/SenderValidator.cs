@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The identifier of sender must not include spaces , commas or restricted characters ! 
     /// </summary>
     public class SenderValidator : Validator<Alert>
     {

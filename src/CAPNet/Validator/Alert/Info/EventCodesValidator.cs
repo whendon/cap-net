@@ -7,7 +7,7 @@ using System.Reflection;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Multiple instances MAY occur within an info block.
     /// </summary>
     public class EventCodesValidator : Validator<Info>
     {

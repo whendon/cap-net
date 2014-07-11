@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The identifier of the MIME content type and sub-type is always required !
     /// </summary>
     public class MimeTypeRequiredValidator : Validator<Resource>
     {

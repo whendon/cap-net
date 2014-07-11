@@ -5,7 +5,7 @@ using System.Linq;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Any geographically-based code to describe a message must have value and valueName not null
     /// </summary>
     public class GeoCodeValidator : Validator<GeoCode>
     {
@@ -34,10 +34,7 @@ namespace CAPNet
         {
             get
             {
-                var valueIsNotNull = Entity.Value != null;
-                var valueNameIsNotNull = Entity.ValueName != null;
-
-                return valueIsNotNull && valueNameIsNotNull;
+                return Entity.Value != null && Entity.ValueName != null;
             }
         }
     }

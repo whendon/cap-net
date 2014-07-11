@@ -7,7 +7,7 @@ using CAPNet.Models;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The circular area is represented by a central point given as a [WGS 84] coordinate pair followed by a space character and a radius value in kilometers.
     /// </summary>
     public class CircleValidator : Validator<Circle>
     {

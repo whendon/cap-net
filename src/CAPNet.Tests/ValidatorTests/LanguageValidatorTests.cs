@@ -21,6 +21,7 @@ namespace CAPNet
         {
             var info = new Info();
             info.Language = "en-uss";
+
             var languageValidator = new LanguageValidator(info);
             Assert.False(languageValidator.IsValid);
         }

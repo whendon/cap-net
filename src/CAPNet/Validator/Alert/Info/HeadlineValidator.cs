@@ -7,7 +7,7 @@ using System.Reflection;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The text headline of the alert message is not required , but IT MUST have length less than 160 characters
     /// </summary>
     public class HeadlineValidator : Validator<Info>
     {

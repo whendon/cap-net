@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Status is always required and must have certain values !
     /// </summary>
     public class StatusRequiredValidator : Validator<Alert>
     {

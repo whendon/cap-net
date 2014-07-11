@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Explanation of the MsgType Error SHOULD appear in note !
     /// </summary>
     public class MsgTypeRejectionValidator : Validator<Alert>
     {

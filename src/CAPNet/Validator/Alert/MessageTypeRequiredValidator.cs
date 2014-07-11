@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// MessageType is required and must have certain values ! 
     /// </summary>
     public class MessageTypeRequiredValidator : Validator<Alert>
     {

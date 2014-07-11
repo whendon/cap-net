@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// A system-specific code identifying the event type of the alert message mut have value and valueName not null !
     /// </summary>
     public class EventCodeValidator : Validator<EventCode>
     {
@@ -33,10 +33,7 @@ namespace CAPNet
         {
             get
             {
-                var valueIsNotNull = Entity.Value != null;
-                var valueNameIsNotNull = Entity.ValueName != null;
-
-                return valueIsNotNull && valueNameIsNotNull;
+                return Entity.Value != null && Entity.ValueName != null;
             }
         }
     }

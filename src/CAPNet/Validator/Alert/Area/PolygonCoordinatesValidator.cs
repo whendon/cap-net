@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    ///  The geographic polygon is represented by a whitespace-delimited list of [WGS 84] coordinate pairs. 
     /// </summary>
     public class PolygonCoordinatesValidator : Validator<Polygon>
     {

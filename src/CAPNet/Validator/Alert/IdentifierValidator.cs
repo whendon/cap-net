@@ -5,7 +5,7 @@ using System.Linq;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The identifier of the alert message MUST NOT include spaces , commas or restricted characters !
     /// </summary>
     public class IdentifierValidator : Validator<Alert>
     {

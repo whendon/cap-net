@@ -21,8 +21,9 @@ namespace CAPNet
         public void AlertWithoutSentIsInvalid()
         {
             var alert = new Alert();
-            var sentRequiredValidator = new SentRequiredValidator(alert);
             alert.Sent = null;
+
+            var sentRequiredValidator = new SentRequiredValidator(alert);
             Assert.False(sentRequiredValidator.IsValid);
         }
     }

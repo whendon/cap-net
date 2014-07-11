@@ -7,7 +7,7 @@ using System.Reflection;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Validates component parts of the area sub-element of the info sub-element of the alert message 
     /// </summary>
     public class AreaValidator : Validator<Info>
     {

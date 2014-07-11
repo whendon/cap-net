@@ -8,7 +8,7 @@ using System.Text;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The code denoting the language of the info sub-element of the alert message validator!
     /// </summary>
     public class LanguageValidator : Validator<Info>
     {
@@ -31,11 +31,13 @@ namespace CAPNet
         }
 
         /// <summary>
-        /// 
+        /// Conditions of validity : 
+        ///     1.Code Values: Natural language identifier per [RFC 3066].
+        ///     2.A null value in this element SHALL be considered equivalent to “en-US.”
         /// </summary>
         public override bool IsValid
         {
-            get 
+            get
             {
                 if (string.IsNullOrEmpty(Entity.Language)) return true;
 

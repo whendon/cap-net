@@ -5,7 +5,7 @@ using System.Linq;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The first and last pairs of coordinates MUST be the same.
     /// </summary>
     public class PolygonCoordinatePairsFirstLastValidator : Validator<Polygon>
     {
