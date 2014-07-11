@@ -11,7 +11,7 @@
   <addresses>"address 1" address2 " address 3" address4</addresses>
   <code>code</code>
   <note>note</note>
-  <references>references</references>
+  <references>reference1 reference2 reference3</references>
   <incidents>incident1 "very bad incident" "very very bad  incident "</incidents>
   <info>
     <language>romanian</language>

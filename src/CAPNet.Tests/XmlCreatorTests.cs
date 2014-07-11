@@ -130,8 +130,12 @@ namespace CAPNet.Tests
                 //   <note>note</note>
                 Note = "note",
                 //   <references>references</references>
-                References = "references"
+                
             };
+
+            //<references>references reference2</references>
+            orangeAlert.References.Add("references");
+            orangeAlert.References.Add("reference2");
 
             //<addresses>"address 1" address2 " address 3" address4</addresses>
             orangeAlert.Addresses.Add("address 1");

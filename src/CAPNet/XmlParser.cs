@@ -77,7 +77,12 @@ namespace CAPNet
             var referencesNode = alertElement.Element(capNamespace + "references");
             if (referencesNode != null)
             {
-                alert.References = referencesNode.Value;
+                var referencesNodeValue = referencesNode.Value;
+                if (!string.IsNullOrEmpty(referencesNodeValue))
+                {
+                    var references = referencesNodeValue.GetElements();
+                    alert.References.AddRange(references);
+                }
             }
 
             var noteNode = alertElement.Element(capNamespace + "note");

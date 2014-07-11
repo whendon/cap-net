@@ -58,7 +58,8 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "addresses", addressesContent);
             AddElementIfHasContent(alertElement, "code", alert.Code);
             AddElementIfHasContent(alertElement, "note", alert.Note);
-            AddElementIfHasContent(alertElement, "references", alert.References);
+            string referencesContent = alert.References.ElementsDelimitedBySpace();
+            AddElementIfHasContent(alertElement, "references", referencesContent);
             string incidentsContent = alert.Incidents.ElementsDelimitedBySpace();
             AddElementIfHasContent(alertElement, "incidents", incidentsContent);
             AddElements(alertElement, Create(alert.Info));

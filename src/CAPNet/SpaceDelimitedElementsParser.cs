@@ -24,7 +24,7 @@ namespace CAPNet
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">Multiple space-delimited elements MAY be included. Elements including whitespace MUST be enclosed in double-quotes.</param>
         /// <returns></returns>
         public static IEnumerable<string> GetElements(this string value)
         {
@@ -57,7 +57,7 @@ namespace CAPNet
 
         private static void InSpaceContainingAddressState(char currentChar)
         {
-            if (currentChar.IsElementCaracter() || currentChar.IsSpace())
+            if (currentChar.IsElementCharacterOrSpace())
             {
                 partialElement += currentChar;
                 if (currentPosition == representation.Length - 1)
@@ -75,7 +75,7 @@ namespace CAPNet
 
         private static void InAddressWithNoSpaceState(char currentChar)
         {
-            if (currentChar.IsElementCaracter())
+            if (currentChar.IsElementCharacter())
             {
                 partialElement += currentChar;
                 if (currentPosition == representation.Length - 1)
@@ -98,7 +98,7 @@ namespace CAPNet
             {
                 state = IN_SPACE_CONTAINING_ELEMENTS;
             }
-            else if (currentChar.IsElementCaracter())
+            else if (currentChar.IsElementCharacter())
             {
                 state = IN_ELEMENTS_WITH_NO_SPACE;
                 partialElement += currentChar;
@@ -109,7 +109,7 @@ namespace CAPNet
             }
         }
 
-        private static bool IsElementCaracter(this char tested)
+        private static bool IsElementCharacter(this char tested)
         {
             return !tested.IsQuote() && !tested.IsSpace();
         }
@@ -122,6 +122,11 @@ namespace CAPNet
         private static bool IsQuote(this char tested)
         {
             return tested == '"';
+        }
+
+        private static bool IsElementCharacterOrSpace(this char tested)
+        {
+            return tested.IsElementCharacter() || tested.IsSpace();
         }
     }
 
