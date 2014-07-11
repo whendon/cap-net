@@ -93,21 +93,80 @@ namespace CAPNet.Models
         /// <summary>
         /// The code denoting the appropriate handling of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Code Values:
+        ///            “Actual” - Actionable by all targeted recipients
+        ///            “Exercise” - Actionable only by designated exercise participants; exercise identifier SHOULD appear in &lt;note>
+        ///            “System” - For messages that support alert network internal functions
+        ///            “Test” - Technical testing only, all recipients disregard
+        ///            “Draft” – A preliminary template or draft, not actionable in its current form
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public Status Status { get; set; }
 
         /// <summary>
         /// The code denoting the nature of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Code Values:
+        ///            “Alert” - Initial information requiring attention by targeted recipients
+        ///            “Update” - Updates and supercedes the earlier message(s) identified in &lt;references>
+        ///            “Cancel” - Cancels the earlier message(s) identified in &lt;references>
+        ///            “Ack” - Acknowledges receipt and acceptance of the message(s) identified in &lt;references>
+        ///            “Error” - Indicates rejection of the message(s) identified in &lt;references>; explanation SHOULD appear in &lt;note>
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public MessageType MessageType { get; set; }
 
         /// <summary>
         /// The text identifying the source of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Code Values: Natural language identifier per [RFC 3066].
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          If not present, an implicit default value of "en-US" SHALL be assumed. 
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          A null value in this element SHALL be considered equivalent to “en-US.”
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public string Source { get; set; }
 
         /// <summary>
         /// The code denoting the intended distribution of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Code Values:
+        ///            “Public” - For general dissemination to unrestricted audiences
+        ///            “Restricted” - For dissemination only to users with a known operational requirement (see &lt;restriction>, below)
+        ///            “Private” - For dissemination only to specified addresses (see &lt;addresses>, below)
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public Scope Scope { get; set; }
 
         /// <summary>
@@ -225,8 +284,24 @@ namespace CAPNet.Models
         private readonly ICollection<string> incidents;
 
         /// <summary>
-        /// 
+        /// The container for all component parts of the info sub-element of the alert message.
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Multiple occurrences are permitted within a single &lt;alert>.
+        ///          If targeting of multiple &lt;info> blocks in the same language overlaps, information in later blocks may expand but may not override the corresponding values in earlier ones. 
+        ///          Each set of &lt;info> blocks containing the same language identifier SHALL be treated as a separate sequence.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///         In addition to the specified sub-elements, MAY contain one or more &lt;resource> blocks and/or one or more &lt;area> blocks.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public ICollection<Info> Info
         {
             get { return info; }
