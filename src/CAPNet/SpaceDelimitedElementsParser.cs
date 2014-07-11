@@ -17,8 +17,8 @@ namespace CAPNet
             IN_SPACE_CONTAINING_ELEMENTS = 1,
             IN_ELEMENTS_WITH_NO_SPACE = 2
         }
-        private static int state;
-        private static string partialElement;
+        private static int currentState;
+        private static StringBuilder partialElement;
         private static int currentPosition;
         private static List<string> elements;
         private static string representation;
@@ -33,13 +33,13 @@ namespace CAPNet
         {
             representation = value;
             elements = new List<string>();
-            partialElement = "";
-            state = (int) States.BETWEEN_ELEMENTS;
+            partialElement = new StringBuilder();
+            currentState = (int) States.BETWEEN_ELEMENTS;
 
             for (currentPosition = 0; currentPosition < representation.Length; currentPosition++)
             {
                 char currentChar = representation[currentPosition];
-                switch (state)
+                switch (currentState)
                 {
                     case (int) States.BETWEEN_ELEMENTS:
                         BetweenElementsState(currentChar);
@@ -62,17 +62,17 @@ namespace CAPNet
         {
             if (currentChar.IsElementCharacterOrSpace())
             {
-                partialElement += currentChar;
+                partialElement.Append(currentChar);
                 if (currentPosition == representation.Length - 1)
                 {
-                    elements.Add(partialElement);
+                    elements.Add(partialElement.ToString());
                 }
             }
             else if (currentChar.IsQuote())
             {
-                elements.Add(partialElement);
-                partialElement = "";
-                state = (int) States.BETWEEN_ELEMENTS;
+                elements.Add(partialElement.ToString());
+                partialElement.Clear();
+                currentState = (int) States.BETWEEN_ELEMENTS;
             }
         }
 
@@ -80,17 +80,17 @@ namespace CAPNet
         {
             if (currentChar.IsElementCharacter())
             {
-                partialElement += currentChar;
+                partialElement.Append(currentChar);
                 if (currentPosition == representation.Length - 1)
                 {
-                    elements.Add(partialElement);
+                    elements.Add(partialElement.ToString());
                 }
             }
             else if (currentChar.IsSpace())
             {
-                elements.Add(partialElement);
-                partialElement = "";
-                state = (int) States.BETWEEN_ELEMENTS;
+                elements.Add(partialElement.ToString());
+                partialElement.Clear();
+                currentState = (int) States.BETWEEN_ELEMENTS;
             }
             
         }
@@ -99,15 +99,15 @@ namespace CAPNet
         {
             if (currentChar.IsQuote())
             {
-                state = (int) States.IN_SPACE_CONTAINING_ELEMENTS;
+                currentState = (int) States.IN_SPACE_CONTAINING_ELEMENTS;
             }
             else if (currentChar.IsElementCharacter())
             {
-                state = (int) States.IN_ELEMENTS_WITH_NO_SPACE;
-                partialElement += currentChar;
+                currentState = (int) States.IN_ELEMENTS_WITH_NO_SPACE;
+                partialElement.Append(currentChar);
                 if (currentPosition == representation.Length - 1)
                 {
-                    elements.Add(partialElement);
+                    elements.Add(partialElement.ToString());
                 }
             }
         }
