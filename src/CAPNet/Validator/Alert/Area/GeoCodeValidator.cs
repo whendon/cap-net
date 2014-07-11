@@ -23,7 +23,7 @@ namespace CAPNet
             get
             {
                 if (!IsValid)
-                    yield return new GeocodeError();
+                    yield return new GeoCodeError();
             }
         }
 

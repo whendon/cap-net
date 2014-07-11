@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public class GeocodeError : Error
+    public class GeoCodeError : Error
     {
     }
 }

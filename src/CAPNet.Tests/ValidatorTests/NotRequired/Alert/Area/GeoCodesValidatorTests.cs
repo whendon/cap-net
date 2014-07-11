@@ -1,4 +1,5 @@
 ﻿using CAPNet.Models;
+using System.Linq;
 using Xunit;
 
 namespace CAPNet.Tests.ValidatorTests
@@ -17,6 +18,7 @@ namespace CAPNet.Tests.ValidatorTests
 
             var geoCodesValidator = new GeoCodesValidator(area);
             Assert.False(geoCodesValidator.IsValid);
+            Assert.Equal(typeof(GeoCodeError), geoCodesValidator.Errors.ElementAt(0).GetType());
         }
 
         [Fact]
