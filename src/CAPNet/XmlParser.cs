@@ -1,11 +1,10 @@
-﻿using CAPNet.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using CAPNet.Models;
 
 namespace CAPNet
 {
@@ -53,7 +52,7 @@ namespace CAPNet
 
         private static Alert ParseAlert(XElement alertElement)
         {
-            Alert alert = new Alert();
+            var alert = new Alert();
             var capNamespace = alertElement.Name.Namespace;
 
             var infoNodes = alertElement.Elements(capNamespace + "info");

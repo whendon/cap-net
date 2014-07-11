@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CAPNet.Models
 {
@@ -56,7 +53,7 @@ namespace CAPNet.Models
         /// <returns></returns>
         public override string ToString()
         {
-            return X.ToString() + "," + Y.ToString();
+            return string.Format("{0},{1}", this.X, this.Y);
         }
 
         /// <summary>
@@ -68,8 +65,8 @@ namespace CAPNet.Models
         {
             if (obj == null || GetType() != obj.GetType())
                 return false;
-            Coordinate p = (Coordinate)obj;
-            return (this.X == p.X && this.Y == p.Y);
+            var p = (Coordinate)obj;
+            return (X == p.X && Y == p.Y);
         }
 
         /// <summary>

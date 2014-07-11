@@ -22,7 +22,7 @@ namespace CAPNet
         {
             get
             {
-                return Entity.Coordinates.Count() >= 4 ? true : false;
+                return Entity.Coordinates.Count() >= 4;
             }
         }
 

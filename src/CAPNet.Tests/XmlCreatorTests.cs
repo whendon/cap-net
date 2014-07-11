@@ -230,8 +230,8 @@ namespace CAPNet.Tests
             area.Polygons.Add(new Polygon("1,1 22,1 33,1 1,1"));
             //<circle>1 2</circle>
             //<circle>1 22</circle>
-            area.Circles.Add(new Circle("1,2 2"));
-            area.Circles.Add(new Circle("1,2 22"));
+            area.Circles.Add(new Circle(new Coordinate(1, 2), 2));
+            area.Circles.Add(new Circle(new Coordinate(1, 2), 22));
             //<geocode>
             //  <valueName>valN</valueName>
             //  <value>val</value>

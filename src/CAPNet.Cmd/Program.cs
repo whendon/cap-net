@@ -13,7 +13,7 @@ namespace CAPNet.Cmd
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             ReadNWS();
         }
@@ -31,7 +31,7 @@ namespace CAPNet.Cmd
                          select alert;
             }
 
-            if (alerts.Count() == 0)
+            if (!alerts.Any())
                 Console.WriteLine("No alerts");
             else if(alerts.Count() == 1)
                 Console.WriteLine("1 alert");
@@ -48,16 +48,13 @@ namespace CAPNet.Cmd
                 {
                     Console.WriteLine("  *******");
                     Console.WriteLine("  " + info.Headline);
-                    Console.WriteLine("  Effective: " + info.Effective.ToString());
-                    Console.WriteLine("  Expires: " + info.Expires.ToString());
-                    Console.WriteLine("  Severity: " + info.Severity.ToString());
-
-                    string areas = String.Empty;
+                    Console.WriteLine("  Effective: " + info.Effective);
+                    Console.WriteLine("  Expires: " + info.Expires);
+                    Console.WriteLine("  Severity: " + info.Severity);
 
                     foreach (var area in info.Areas)
                     {
                         Console.WriteLine("  Area: " + area.Description);
-                        areas += area.Description;
                     }
 
                 }

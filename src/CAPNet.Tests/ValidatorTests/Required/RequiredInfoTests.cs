@@ -12,11 +12,11 @@ namespace CAPNet
             var alert = new Alert();
             var info = InfoCreator.CreateValidInfo();
 
-            ///one info in alert
+            // one info in alert
             alert.Info.Add(info);
             var singleAlertValidator = new InfoValidator(alert);
             var singleErrorsValidation = singleAlertValidator.Errors;
-            //the info should be valid
+            // the info should be valid
             Assert.True(singleAlertValidator.IsValid);
             Assert.Equal(0, singleErrorsValidation.Count());
         }
@@ -26,7 +26,7 @@ namespace CAPNet
         {
             var alert = new Alert();
 
-            /// one info in alert
+            // one info in alert
             alert.Info.Add(new Info());
             var alertValidatorSingle = new InfoValidator(alert);
             var validationErrorsSingle = alertValidatorSingle.Errors;
@@ -41,12 +41,11 @@ namespace CAPNet
             var alert = new Alert();
             var info = InfoCreator.CreateValidInfo();
 
-            ///two infos in alert
+            // two infos in alert
             alert.Info.Add(info);
             alert.Info.Add(info);
             var doubleAlertValidator = new InfoValidator(alert);
-            var doubleErrorsValidation = doubleAlertValidator.Errors;
-            //the info should be valid
+            // the info should be valid
             Assert.True(doubleAlertValidator.IsValid);
             Assert.Equal(0, doubleAlertValidator.Errors.Count());
         }
@@ -55,7 +54,7 @@ namespace CAPNet
         public void TwoInfosInAnAlertWithNoneOfTheRequiredElementsAreInvalid()
         {
             var alert = new Alert();
-            /// two infos in alert
+            // two infos in alert
             alert.Info.Add(new Info());
             alert.Info.Add(new Info());
             var alertValidatorDouble = new InfoValidator(alert);

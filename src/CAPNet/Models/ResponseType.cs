@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CAPNet.Models
+﻿namespace CAPNet.Models
 {
     /// <summary>
     /// The code denoting the type of action recommended for the target audience 
