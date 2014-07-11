@@ -464,12 +464,12 @@ namespace CAPNet.Models
         ///  <list type="number">
         ///    <item>
         ///      <description>
-        ///         Refers to an additional file with supplemental information related to this <info> element; e.g., an image or audio file.
+        ///         Refers to an additional file with supplemental information related to this &lt;info> element; e.g., an image or audio file.
         ///      </description>
         ///    </item>
         ///    <item>
         ///      <description>
-        ///         Multiple instances MAY occur within an <info> block.
+        ///         Multiple instances MAY occur within an &lt;info> block.
         ///      </description>
         ///    </item>
         ///  </list>
