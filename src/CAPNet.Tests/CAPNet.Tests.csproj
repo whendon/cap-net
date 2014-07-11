@@ -67,7 +67,7 @@
     <Compile Include="ValidatorTests\NotRequired\Alert\NoteValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\Info\ParametersValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\Info\ParameterValidatorTests.cs" />
-    <Compile Include="ValidatorTests\NotRequired\Alert\Area\PolygonCoordinatePairsFirstLastValidatorTests.cs" />
+    <Compile Include="ValidatorTests\NotRequired\Alert\Area\PolygonWithFirstCoordinatePairEqualToLastCoordinatePairValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\Area\PolygonCoordinatesValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\Area\PolygonMinCoordinatesValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\Area\PolygonsValidatorTests.cs" />

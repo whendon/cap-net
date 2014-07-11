@@ -7,13 +7,13 @@ namespace CAPNet
     /// <summary>
     /// The first and last pairs of coordinates MUST be the same.
     /// </summary>
-    public class PolygonCoordinatePairsFirstLastValidator : Validator<Polygon>
+    public class PolygonWithFirstCoordinatePairEqualToLastCoordinatePairValidator : Validator<Polygon>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="polygon"></param>
-        public PolygonCoordinatePairsFirstLastValidator(Polygon polygon) : base(polygon) { }
+        public PolygonWithFirstCoordinatePairEqualToLastCoordinatePairValidator(Polygon polygon) : base(polygon) { }
 
         /// <summary>
         /// 

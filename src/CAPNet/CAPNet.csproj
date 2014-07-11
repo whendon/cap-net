@@ -57,7 +57,7 @@
     <Compile Include="Validator\Alert\Area\CircleValidator.cs" />
     <Compile Include="Validator\Alert\Area\GeoCodesValidator.cs" />
     <Compile Include="Validator\Alert\Area\GeoCodeValidator.cs" />
-    <Compile Include="Validator\Alert\Area\PolygonCoordinatePairsFirstLastValidator.cs" />
+    <Compile Include="Validator\Alert\Area\PolygonWithFirstCoordinatePairEqualToLastCoordinatePairValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonCoordinatesValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonMinCoordinatesValidator.cs" />
     <Compile Include="Validator\Alert\Area\PolygonsValidator.cs" />
