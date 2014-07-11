@@ -194,19 +194,19 @@ namespace CAPNet
             return areaElement;
         }
 
-        private static IEnumerable<XElement> Create(IEnumerable<Polygon> elements)
+        private static IEnumerable<XElement> Create(IEnumerable<Polygon> polygons)
         {
-            return from element in elements
+            return from polygon in polygons
                    select new XElement(
-                       CAP12Namespace + "polygon", element);
+                       CAP12Namespace + "polygon", polygon);
             
         }
 
-        private static IEnumerable<XElement> Create(IEnumerable<Circle> elements)
+        private static IEnumerable<XElement> Create(IEnumerable<Circle> circles)
         {
-            return from element in elements
+            return from circle in circles
                    select new XElement(
-                       CAP12Namespace + "circle", element);
+                       CAP12Namespace + "circle", circle);
 
         }
 
