@@ -1,9 +1,6 @@
-﻿using System;
+﻿using CAPNet.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CAPNet.Models;
-
 
 namespace CAPNet
 {
@@ -15,7 +12,7 @@ namespace CAPNet
     {
         private static readonly Dictionary<Type, int> typeDictionary = new Dictionary<Type, int>
                     {
-                        {typeof(GeoCode),0},
+                        {typeof(GeoCode), 0},
                         {typeof(Parameter), 1},
                         {typeof(EventCode), 2}
                     };
