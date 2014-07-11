@@ -43,7 +43,8 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "identifier", alert.Identifier);
             AddElementIfHasContent(alertElement, "sender", alert.Sender);
             // set milliseconds to 0
-            AddElementIfHasContent(alertElement, "sent", AddMilliseconds(alert.Sent));
+            if(alert.Sent != null)
+                AddElementIfHasContent(alertElement, "sent", StripMiliseconds(alert.Sent));
             AddElementIfHasContent(alertElement, "status", alert.Status);
             AddElementIfHasContent(alertElement, "msgType", alert.MessageType);
             AddElementIfHasContent(alertElement, "source", alert.Source);
@@ -58,11 +59,11 @@ namespace CAPNet
             string incidentsContent = alert.Incidents.ElementsDelimitedBySpace();
             AddElementIfHasContent(alertElement, "incidents", incidentsContent);
             AddElements(alertElement, Create(alert.Info));
-
+         
             return alertElement;
         }
 
-        private static DateTimeOffset AddMilliseconds(DateTimeOffset? date)
+        private static DateTimeOffset StripMiliseconds(DateTimeOffset? date)
         {
             return date.Value.AddMilliseconds(-date.Value.Millisecond);
         }
@@ -89,7 +90,8 @@ namespace CAPNet
             AddElementIfHasContent(infoElement, "certainty", info.Certainty);
             AddElementIfHasContent(infoElement, "audience", info.Audience);
             AddElements(infoElement, Create(info.EventCodes));
-            AddElementIfHasContent(infoElement, "effective", info.Effective);
+            if(info.Effective != null)
+                AddElementIfHasContent(infoElement, "effective", StripMiliseconds(info.Effective));
             AddElementIfHasContent(infoElement, "onset", info.Onset);
             AddElementIfHasContent(infoElement, "expires", info.Expires);
             AddElementIfHasContent(infoElement, "senderName", info.SenderName);
@@ -226,10 +228,10 @@ namespace CAPNet
                 parent.Add(element);
         }
 
-        private static void AddElementIfHasContent(XElement element, string name, string content)
+        private static void AddElementIfHasContent(XElement parent, string name, string content)
         {
             if (!string.IsNullOrEmpty(content))
-                element.Add(new XElement(CAP12Namespace + name, content));
+                parent.Add(new XElement(CAP12Namespace + name, content));
         }
 
     }

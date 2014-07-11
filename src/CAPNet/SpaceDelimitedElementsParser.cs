@@ -11,7 +11,7 @@ namespace CAPNet
     /// </summary>
     public static class SpaceDelimitedElementsParser
     {
-        enum States
+        private enum States
         {
             BETWEEN_ELEMENTS = 0,
             IN_SPACE_CONTAINING_ELEMENTS = 1,
@@ -28,7 +28,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="value">Multiple space-delimited elements MAY be included.
         /// Elements including whitespace MUST be enclosed in double-quotes.</param>
-        /// <returns></returns>
+        /// <returns>Elements in a IEnumerable&lt;string></returns>
         public static IEnumerable<string> GetElements(this string value)
         {
             representation = value;
