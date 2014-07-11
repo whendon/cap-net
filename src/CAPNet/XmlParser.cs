@@ -50,7 +50,7 @@ namespace CAPNet
 
         private static Alert ParseAlert(XElement alertElement)
         {
-            Alert alert = new Alert();
+            var alert = new Alert();
             var capNamespace = alertElement.Name.Namespace;
 
             var infoNodes = alertElement.Elements(capNamespace + "info");
