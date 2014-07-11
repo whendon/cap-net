@@ -63,7 +63,7 @@
     <Compile Include="ValidatorTests\InfoValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\Info\LanguageValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\Resource\MimeTypeValidatorTests.cs" />
-    <Compile Include="ValidatorTests\NotRequired\Alert\MsgTypeRejectionValidatorTests.cs" />
+    <Compile Include="ValidatorTests\NotRequired\Alert\MessageTypeRejectionValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\NoteValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\Info\ParametersValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\Info\ParameterValidatorTests.cs" />

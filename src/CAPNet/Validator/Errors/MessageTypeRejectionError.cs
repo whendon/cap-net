@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public class MsgTypeRejectionError:Error
+    public class MessageTypeRejectionError : Error
     {
     }
 }

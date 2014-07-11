@@ -1,4 +1,5 @@
 ﻿using CAPNet.Models;
+using System.Linq;
 using Xunit;
 
 namespace CAPNet.Tests.ValidatorTests
@@ -9,6 +10,7 @@ namespace CAPNet.Tests.ValidatorTests
         public void ResponseTypeWithValidElementIsValid()
         {
             var responseType = ResponseType.Evacuate;
+
             var responseTypeOptionalValidator = new ResponseTypeValidator(responseType);
             Assert.True(responseTypeOptionalValidator.IsValid);
         }
@@ -17,8 +19,10 @@ namespace CAPNet.Tests.ValidatorTests
         public void ResponseTypeWithInvalidElementIsinvalid()
         {
             var responseType = (ResponseType)123;
+
             var responseTypeOptionalValidator = new ResponseTypeValidator(responseType);
             Assert.False(responseTypeOptionalValidator.IsValid);
+            Assert.Equal(typeof(ResponseTypeError), responseTypeOptionalValidator.Errors.ElementAt(0).GetType());
         }
     }
 }

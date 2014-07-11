@@ -6,13 +6,13 @@ namespace CAPNet
     /// <summary>
     /// Explanation of the MsgType Error SHOULD appear in note !
     /// </summary>
-    public class MsgTypeRejectionValidator : Validator<Alert>
+    public class MessageTypeRejectionValidator : Validator<Alert>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="alert"></param>
-        public MsgTypeRejectionValidator(Alert alert) : base(alert) { }
+        public MessageTypeRejectionValidator(Alert alert) : base(alert) { }
 
         /// <summary>
         /// 
@@ -22,7 +22,7 @@ namespace CAPNet
             get
             {
                 if (!IsValid)
-                    yield return new MsgTypeRejectionError();
+                    yield return new MessageTypeRejectionError();
             }
         }
 

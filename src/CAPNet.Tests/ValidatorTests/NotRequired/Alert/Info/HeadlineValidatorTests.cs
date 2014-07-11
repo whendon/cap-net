@@ -11,6 +11,7 @@ namespace CAPNet
         {
             var info = new Info();
             info.Headline = "SEVERE THUNDERSTORM WARNING SEVERE THUNDERSTORM WARNING SEVERE THUNDERSTORM WARNING SEVERE THUNDERSTORM WARNING SEVERE THUNDERSTORM WARNING SEVERE THUNDERSTORM WARNING SEVERE THUNDERSTORM WARNING SEVERE THUNDERSTORM WARNING SEVERE THUNDERSTORM WARNING ";
+            
             var headlineValidator = new HeadlineValidator(info);
             Assert.False(headlineValidator.IsValid);
             Assert.Equal(typeof(HeadlineError), headlineValidator.Errors.ElementAt(0).GetType());
@@ -21,6 +22,7 @@ namespace CAPNet
         {
             var info = new Info();
             info.Headline = "SEVERE THUNDERSTORM WARNING ";
+            
             var headlineValidator = new HeadlineValidator(info);
             Assert.True(headlineValidator.IsValid);
         }

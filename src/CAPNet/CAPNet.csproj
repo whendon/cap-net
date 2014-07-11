@@ -112,7 +112,7 @@
     <Compile Include="Validator\Errors\LanguageError.cs" />
     <Compile Include="Validator\Errors\MessageTypeRequiredError.cs" />
     <Compile Include="Validator\Errors\MimeTypeError.cs" />
-    <Compile Include="Validator\Errors\MsgTypeRejectionError.cs" />
+    <Compile Include="Validator\Errors\MessageTypeRejectionError.cs" />
     <Compile Include="Validator\Errors\NoteError.cs" />
     <Compile Include="Validator\Errors\ParameterError.cs" />
     <Compile Include="Validator\Alert\Info\ParameterValidator.cs" />
@@ -150,7 +150,7 @@
     <Compile Include="Validator\Alert\Info\SeverityRequiredValidator.cs" />
     <Compile Include="Validator\Errors\Required\UrgencyRequiredError.cs" />
     <Compile Include="Validator\Alert\Info\UrgencyRequiredValidator.cs" />
-    <Compile Include="Validator\Alert\MsgTypeRejectionValidator.cs" />
+    <Compile Include="Validator\Alert\MessageTypeRejectionValidator.cs" />
     <Compile Include="Validator\RestrictedCharacters.cs" />
     <Compile Include="Validator\Validator.cs" />
     <Compile Include="Validator\AlertValidator.cs" />

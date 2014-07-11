@@ -28,6 +28,7 @@ namespace CAPNet.Tests.ValidatorTests
             string value = "SVR";
             var eventCode = new EventCode(valueName, value);
             info.EventCodes.Add(eventCode);
+
             var eventCodesValidator = new EventCodesValidator(info);
             Assert.True(eventCodesValidator.IsValid);
         }
