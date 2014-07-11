@@ -180,24 +180,34 @@ namespace CAPNet
 
         private static XElement Create(Area area)
         {
-            var areaElement = new XElement(
-                CAP12Namespace + "area",
-                new XElement(CAP12Namespace + "areaDesc", area.Description),
-
-                from polygon in area.Polygons
-                select new XElement(
-                    CAP12Namespace + "polygon", polygon),
-
-                from circle in area.Circles
-                select new XElement(
-                    CAP12Namespace + "circle", circle),
-
-                Create(area.GeoCodes));
-
+            var areaElement = new XElement(CAP12Namespace + "area");
+            AddElementIfHasContent(areaElement, "areaDesc", area.Description);
+            var polygons = Create(area.Polygons);
+            AddElements(areaElement, polygons);
+            var circles = Create(area.Circles);
+            AddElements(areaElement, circles);
+            var geoCodes = Create(area.GeoCodes);
+            AddElements(areaElement, geoCodes);
             AddElementIfHasContent(areaElement, "altitude", area.Altitude);
             AddElementIfHasContent(areaElement, "ceiling", area.Ceiling);
 
             return areaElement;
+        }
+
+        private static IEnumerable<XElement> Create(IEnumerable<Polygon> elements)
+        {
+            return from element in elements
+                   select new XElement(
+                       CAP12Namespace + "polygon", element);
+            
+        }
+
+        private static IEnumerable<XElement> Create(IEnumerable<Circle> elements)
+        {
+            return from element in elements
+                   select new XElement(
+                       CAP12Namespace + "circle", element);
+
         }
 
         private static void AddElementIfHasContent(XElement parent, string name, byte[] content)
