@@ -6,35 +6,12 @@ namespace CAPNet
     /// <summary>
     /// Parameter must have value and valueName not null
     /// </summary>
-    public class ParameterValidator : Validator<Parameter>
+    public class ParameterValidator : GeneralNamedValueValidator<Parameter>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="parameter"></param>
         public ParameterValidator(Parameter parameter) : base(parameter) { }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override IEnumerable<Error> Errors
-        {
-            get
-            {
-                if (!IsValid)
-                    yield return new ParameterError();
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override bool IsValid
-        {
-            get
-            {
-                return Entity.Value != null && Entity.ValueName != null;
-            }
-        }
     }
 }

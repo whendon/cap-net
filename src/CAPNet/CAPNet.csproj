@@ -88,6 +88,7 @@
     <Compile Include="Validator\Alert\Info\ResponseTypesValidator.cs" />
     <Compile Include="Validator\Alert\Info\ResponseTypeValidator.cs" />
     <Compile Include="Validator\Alert\MessageTypeRequiredValidator.cs" />
+    <Compile Include="Validator\Alert\GeneralNamedValueValidator.cs" />
     <Compile Include="Validator\Alert\NoteValidator.cs" />
     <Compile Include="Validator\Alert\Resource\DescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Resource\DigestValidator.cs" />
