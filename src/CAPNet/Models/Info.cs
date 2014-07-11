@@ -147,7 +147,6 @@ namespace CAPNet.Models
         ///     </item>
         ///   </list>
         /// </remarks>
-        
         public ICollection<Category> Categories
         {
             get { return categories; }
@@ -161,16 +160,78 @@ namespace CAPNet.Models
         /// <summary>
         /// The code denoting the urgency of the subject event of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          The &lt;urgency>, &lt;severity>, and &lt;certainty> elements collectively distinguish less emphatic from more emphatic messages.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///           Code Values:
+        ///            “Immediate” - Responsive action SHOULD be taken immediately
+        ///            “Expected” - Responsive action SHOULD be taken soon (within next hour)
+        ///            “Future” - Responsive action SHOULD be taken in the near future
+        ///            “Past” - Responsive action is no longer required
+        ///            “Unknown” - Urgency not known 
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public Urgency Urgency { get; set; }
 
         /// <summary>
         /// The code denoting the severity of the subject event of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          The &lt;urgency>, &lt;severity>, and &lt;certainty> elements collectively distinguish less emphatic from more emphatic messages.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          Code Values:
+        ///            “Extreme” - Extraordinary threat to life or property
+        ///            “Severe” - Significant threat to life or property
+        ///            “Moderate” - Possible threat to life or property
+        ///            “Minor” – Minimal to no known threat to life or property
+        ///            “Unknown” - Severity unknown
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public Severity Severity { get; set; }
 
         /// <summary>
         /// The code denoting the certainty of the subject event of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          The &lt;urgency>, &lt;severity>, and &lt;lcertainty> elements collectively distinguish less emphatic from more emphatic messages.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          Code Values:
+        ///            “Observed” – Determined to have occurred or to be ongoing
+        ///            “Likely” - Likely (p > ~50%)
+        ///            “Possible” - Possible but not likely 
+        ///            “Unlikely” - Not expected to occur (p ~ 0)
+        ///            “Unknown” - Certainty unknown
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          A null value in this element SHALL be considered equivalent to “en-US.”
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public Certainty Certainty { get; set; }
 
         /// <summary>
@@ -181,41 +242,147 @@ namespace CAPNet.Models
         /// <summary>
         /// The effective time of the information of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          The date and time SHALL be represented in the DateTime Data Type (See Implementation Notes) 
+        ///          format (e.g., “2002-05-24T16:49:00-07:00” for 24 May 2002 at 16: 49 PDT).
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///           Alphabetic timezone designators such as “Z” MUST NOT be used. 
+        ///           The timezone for UTC MUST be represented as “-00:00”.
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///           If this item is not included, the effective time SHALL be assumed to be the same as in &lt;sent>.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public DateTimeOffset? Effective { get; set; }
 
         /// <summary>
         /// The expected time of the beginning of the subject event of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          The date and time SHALL be represented in the DateTime Data Type (See Implementation Notes)
+        ///          format (e.g., “2002-05-24T16:49:00-07:00” for 24 May 2002 at 16: 49 PDT).
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          Alphabetic timezone designators such as “Z” MUST NOT be used. 
+        ///          The timezone for UTC MUST be represented as “-00:00”.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public DateTimeOffset? Onset { get; set; }
 
         /// <summary>
         /// The expiry time of the information of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          The date and time SHALL be represented in the DateTime Data Type (See Implementation Notes)
+        ///          format (e.g., “2002-05-24T16:49:00-07:00” for 24 May 2002 at 16:49 PDT).
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///           Alphabetic timezone designators such as “Z” MUST NOT be used. 
+        ///           The timezone for UTC MUST be represented as “-00:00”. 
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          If this item is not provided, each recipient is free to set its own policy as to when the message is no longer in effect.
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public DateTimeOffset? Expires { get; set; }
 
         /// <summary>
         /// The text naming the originator of the alert message 
         /// </summary>
+        /// <remarks>
+        ///  <list type="number">
+        ///    <item>
+        ///      <description>
+        ///         The human-readable name of the agency or authority issuing this alert.
+        ///      </description>
+        ///    </item>
+        ///  </list>
+        /// </remarks>
         public string SenderName { get; set; }
 
         /// <summary>
         /// The text headline of the alert message 
         /// </summary>
+        /// <remarks>
+        ///  <list type="number">
+        ///    <item>
+        ///      <description>
+        ///         A brief human-readable headline.  Note that some displays (for example, short messaging service devices) may only present this headline;
+        ///         it SHOULD be made as direct and actionable as possible while remaining short.
+        ///         160 characters MAY be a useful target limit for headline length.
+        ///      </description>
+        ///    </item>
+        ///  </list>
+        /// </remarks>
         public string Headline { get; set; }
 
         /// <summary>
         /// The text describing the subject event of the alert message 
         /// </summary>
+        /// <remarks>
+        ///  <list type="number">
+        ///    <item>
+        ///      <description>
+        ///         An extended human readable description of the hazard or event that occasioned this message.
+        ///      </description>
+        ///    </item>
+        ///  </list>
+        /// </remarks>
         public string Description { get; set; }
 
         /// <summary>
         /// The text describing the recommended action to be taken by recipients of the alert message 
         /// </summary>
+        /// <remarks>
+        ///  <list type="number">
+        ///    <item>
+        ///      <description>
+        ///         An extended human readable instruction to targeted recipients. 
+        ///         If different instructions are intended for different recipients, they should be represented by use of multiple &lt;info> blocks.
+        ///      </description>
+        ///    </item>
+        ///  </list>
+        /// </remarks>
         public string Instruction { get; set; }
 
         /// <summary>
         /// The identifier of the hyperlink associating additional information with the alert message 
         /// </summary>
+        /// <remarks>
+        ///  <list type="number">
+        ///    <item>
+        ///      <description>
+        ///         A full, absolute URI for an HTML page or other text resource with additional or reference information regarding this alert.
+        ///      </description>
+        ///    </item>
+        ///  </list>
+        /// </remarks>
         public Uri Web { get; set; }
 
         /// <summary>
@@ -227,14 +394,64 @@ namespace CAPNet.Models
         /// System-specific additional parameters associated
         /// with the alert message (OPTIONAL)
         /// </summary>
+        /// <remarks>
+        ///  <list type="number">
+        ///    <item>
+        ///      <description>
+        ///         Any system-specific datum, in the form:
+        ///            &lt;parameter>
+        ///              &lt;valueName>valueName&lt;/valueName>
+        ///              &lt;value>value&lt;/value>
+        ///            &lt;/parameter>
+        ///            where the content of “valueName” is a user-assigned string designating the domain of the code,
+        ///            and the content of “value” is a string (which may represent a number) denoting the value itself (e.g., valueName ="SAME" and value="CIV").
+        ///      </description>
+        ///    </item>
+        ///    <item>
+        ///      <description>
+        ///         Values of “valueName” that are acronyms SHOULD be represented in all capital letters without periods (e.g., SAME, FIPS, ZIP).
+        ///      </description>
+        ///    </item>
+        ///     <item>
+        ///      <description>
+        ///         Multiple instances MAY occur within an &lt;info> block.
+        ///      </description>
+        ///    </item>
+        ///  </list>
+        /// </remarks>
         public ICollection<Parameter> Parameters
         {
             get { return parameters; }
         }
-
+        
         /// <summary>
         /// A system-specific codes identifying the event type of the alert message 
         /// </summary>
+        /// <remarks>
+        ///  <list type="number">
+        ///    <item>
+        ///      <description>
+        ///         Any system-specific datum, in the form:
+        ///            &lt;parameter>
+        ///              &lt;valueName>valueName&lt;/valueName>
+        ///              &lt;value>value&lt;/value>
+        ///            &lt;/parameter>
+        ///            where the content of “valueName” is a user-assigned string designating the domain of the code,
+        ///            and the content of “value” is a string (which may represent a number) denoting the value itself (e.g., valueName ="SAME" and value="CEM").
+        ///      </description>
+        ///    </item>
+        ///    <item>
+        ///      <description>
+        ///         Values of “valueName” that are acronyms SHOULD be represented in all capital letters without periods (e.g., SAME, FIPS, ZIP)..
+        ///      </description>
+        ///    </item>
+        ///     <item>
+        ///      <description>
+        ///         Multiple instances MAY occur within an &lt;info> block.
+        ///      </description>
+        ///    </item>
+        ///  </list>
+        /// </remarks>
         public ICollection<EventCode> EventCodes
         {
             get { return eventCodes; }
@@ -243,14 +460,44 @@ namespace CAPNet.Models
         /// <summary>
         /// Refers to additional files with supplemental information related to this info element
         /// </summary>
+        /// <remarks>
+        ///  <list type="number">
+        ///    <item>
+        ///      <description>
+        ///         Refers to an additional file with supplemental information related to this <info> element; e.g., an image or audio file.
+        ///      </description>
+        ///    </item>
+        ///    <item>
+        ///      <description>
+        ///         Multiple instances MAY occur within an <info> block.
+        ///      </description>
+        ///    </item>
+        ///  </list>
+        /// </remarks>
         public ICollection<Resource> Resources
         {
             get { return resources; }
         }
 
         /// <summary>
-        /// 
+        /// The container for all component parts of the area sub-element of the info sub-element of the alert message 
         /// </summary>
+        /// <remarks>
+        ///  <list type="number">
+        ///    <item>
+        ///      <description>
+        ///         Multiple occurrences permitted, in which case the target area for the &lt;info> block is the union of all the included &lt;area> blocks.
+        ///      </description>
+        ///    </item>
+        ///    <item>
+        ///      <description>
+        ///          MAY contain one or multiple instances of &lt;polygon>, &lt;circle> or &lt;geocode>.  
+        ///          If multiple &lt;polygon>, &lt;circle> or &lt;geocode>  elements are included, 
+        ///          the area described by this &lt;area> block is represented by the union of all the included elements.
+        ///      </description>
+        ///    </item>
+        ///  </list>
+        /// </remarks>
         public ICollection<Area> Areas
         {
             get { return areas; }
