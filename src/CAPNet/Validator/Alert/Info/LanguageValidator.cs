@@ -41,18 +41,23 @@ namespace CAPNet
             {
                 if (string.IsNullOrEmpty(Entity.Language)) return true;
 
-                try
-                {
-                    var cultureInfo = new CultureInfo(Entity.Language);
-                }
-                catch
-                {
-                    // if the exception is caught , it means that the Language is not valid
-                    return false;
-                }
-                //if the exception was not caught , everything is ok
-                return true;
+                return CultureIsValid();
             }
+        }
+
+        private bool CultureIsValid()
+        {
+            try
+            {
+                var cultureInfo = new CultureInfo(Entity.Language);
+            }
+            catch
+            {
+                // if the exception is caught , it means that the Language is not valid
+                return false;
+            }
+            //if the exception was not caught , everything is ok
+            return true;
         }
     }
 }
