@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using CAPNet.Models;
 
@@ -65,18 +63,23 @@ namespace CAPNet
             var incidentsNode = alertElement.Element(capNamespace + "incidents");
             if (incidentsNode != null)
             {
-                var incidentsNodeValue = incidentsNode.Value.Trim();
+                var incidentsNodeValue = incidentsNode.Value;
                 if (!string.IsNullOrEmpty(incidentsNodeValue))
                 {
-                    var addresses = incidentsNodeValue.GetElements();
-                    alert.Incidents.AddRange(addresses);
+                    var incidents = incidentsNodeValue.GetElements();
+                    alert.Incidents.AddRange(incidents);
                 }
             }
 
             var referencesNode = alertElement.Element(capNamespace + "references");
             if (referencesNode != null)
             {
-                alert.References = referencesNode.Value;
+                var referencesNodeValue = referencesNode.Value;
+                if (!string.IsNullOrEmpty(referencesNodeValue))
+                {
+                    var references = referencesNodeValue.GetElements();
+                    alert.References.AddRange(references);
+                }
             }
 
             var noteNode = alertElement.Element(capNamespace + "note");
@@ -94,7 +97,7 @@ namespace CAPNet
             var addressesNode = alertElement.Element(capNamespace + "addresses");
             if (addressesNode != null)
             {
-                var addressNodeValue = addressesNode.Value.Trim();
+                var addressNodeValue = addressesNode.Value;
                 if (!string.IsNullOrEmpty(addressNodeValue))
                 {
                     var addresses = addressNodeValue.GetElements();
@@ -161,6 +164,7 @@ namespace CAPNet
         private static Info ParseInfo(XElement infoElement)
         {
             var info = new Info();
+
             var capNamespace = infoElement.Name.Namespace;
 
             var languageNode = infoElement.Element(capNamespace + "language");
@@ -346,7 +350,6 @@ namespace CAPNet
             var ceilingNode = areaElement.Element(capNamespace + "ceiling");
             if (ceilingNode != null)
                 area.Ceiling = TryParseInt(ceilingNode.Value);
-
             return area;
         }
 
@@ -407,7 +410,6 @@ namespace CAPNet
             bool canBeParsed = int.TryParse(tested, out parsed);
             if (canBeParsed)
                 return parsed;
-
             return null;
         }
 
@@ -423,56 +425,6 @@ namespace CAPNet
                 return false;
             }
 
-        }
-
-        private static IEnumerable<string> GetElements(this string representation)
-        {
-            var spaceContainingElements = GetSpaceContainingElements(representation);
-            string spaceContainingElementsMarked = representation.MarkElements(spaceContainingElements);
-
-            var elementsWithNoSpace = from address in spaceContainingElementsMarked.Split(' ')
-                                      select address;
-
-            var addresses = FillSpaceContainingElements(spaceContainingElements, elementsWithNoSpace);
-
-            return addresses;
-        }
-
-        private static string MarkElements(this string representation, IEnumerable<string> spaceContainingElements)
-        {
-            foreach (var element in spaceContainingElements)
-                representation = representation.Replace(element.ToString(), "\"\"");
-
-            return representation;
-        }
-
-        private static IEnumerable<string> GetSpaceContainingElements(string representation)
-        {
-            string pattern = "\"[\\w ]*\"";
-            Regex regexObject = new Regex(pattern);
-            var spaceContainingElements = from Match match in regexObject.Matches(representation)
-                                          select match.Value;
-
-            return spaceContainingElements;
-        }
-
-        private static List<string> FillSpaceContainingElements(IEnumerable<string> spaceContainingElements, IEnumerable<string> elementsWithNoSpace)
-        {
-
-            var addresses = elementsWithNoSpace.ToList();
-
-            int indexOfSpaceContainingElement = 0;
-            for (int index = 0; index < addresses.Count(); index++)
-            {
-                var currentAddress = addresses.ElementAt(index);
-                if (currentAddress.Equals("\"\""))
-                {
-                    addresses[index] = spaceContainingElements.ElementAt(indexOfSpaceContainingElement).Replace("\"", "");
-                    indexOfSpaceContainingElement++;
-                }
-            }
-
-            return addresses;
         }
 
     }

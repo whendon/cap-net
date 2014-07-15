@@ -31,6 +31,7 @@ namespace CAPNet.Models
             info = new List<Info>();
             addresses = new List<string>();
             incidents = new List<string>();
+            references = new List<string>();
         }
 
         /// <summary>
@@ -252,7 +253,7 @@ namespace CAPNet.Models
         ///     </item>
         ///   </list>
         /// </remarks>
-        public string References { get; set; }
+        public ICollection<string> References { get; set; }
 
         /// <summary>
         /// The group listing naming the referent incident(s) of the alert message 
@@ -282,6 +283,7 @@ namespace CAPNet.Models
         private readonly ICollection<Info> info;
         private readonly ICollection<string> addresses;
         private readonly ICollection<string> incidents;
+        private readonly ICollection<string> references;
 
         /// <summary>
         /// The container for all component parts of the info sub-element of the alert message.
