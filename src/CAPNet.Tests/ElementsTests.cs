@@ -52,7 +52,7 @@ namespace CAPNet.Tests
         public void CanParseWithEmptyAddress()
         {
             //<addresses> </addresses>
-            string usedXml = Xml.WrongData.Replace("<addresses>addresses</addresses>", "<addresses> </addresses>");
+            var usedXml = Xml.WrongData.Replace("<addresses>addresses</addresses>", "<addresses> </addresses>");
             var alert = XmlParser.Parse(usedXml).First();
             var addresses = alert.Addresses;
             Assert.Equal(0, addresses.Count);
@@ -62,7 +62,7 @@ namespace CAPNet.Tests
         public void CanParseAddressesWithNoQuotes()
         {
             //<addresses>address1 address2 address3</addresses>
-            string usedAddress = "address1 address2 address3";
+            var usedAddress = "address1 address2 address3";
             var elements = usedAddress.GetElements();
 
             Assert.Equal(3, elements.Count());
@@ -75,7 +75,7 @@ namespace CAPNet.Tests
         public void CanParseAddressesWithQuotesAndNoSpaces()
         {
             //<addresses>address1 "address2" address3 "address4"</addresses>
-            string usedAddress = "address1 \"address2\" address3 \"address4\"";
+            var usedAddress = "address1 \"address2\" address3 \"address4\"";
             var elements = usedAddress.GetElements();
 
             Assert.Equal(4, elements.Count());
@@ -89,7 +89,7 @@ namespace CAPNet.Tests
         public void CanParseAddressesWithQuotesAndSpaces()
         {
             //<addresses>address1 "address 2 " "address 3" "address 4"</addresses>
-            string usedAddress = "address1 \"address 2 \" \"address 3\" \"address 4\"";
+            var usedAddress = "address1 \"address 2 \" \"address 3\" \"address 4\"";
             var elements = usedAddress.GetElements();
 
             Assert.Equal(4, elements.Count());
@@ -103,7 +103,7 @@ namespace CAPNet.Tests
         public void CanParseSerialAddressesWithQuotes()
         {
             //<addresses>"address1 " "address 3 " "address 4 "</addresses>
-            string usedAddress = "\"address1 \" \"address 3 \" \"address 4 \"";
+            var usedAddress = "\"address1 \" \"address 3 \" \"address 4 \"";
             var elements = usedAddress.GetElements();
 
             Assert.Equal(3, elements.Count());
@@ -117,7 +117,7 @@ namespace CAPNet.Tests
         public void CanParseAddressesWithUntrimmedRepresentation()
         {
             //<addresses>  "address1 " "address 3 " "address 4 "    </addresses>
-            string usedAddress = "   \"address1 \" \"address 3 \" \"address 4 \"   ";
+            var usedAddress = "   \"address1 \" \"address 3 \" \"address 4 \"   ";
             var elements = usedAddress.GetElements();
 
             Assert.Equal(3, elements.Count());
@@ -130,7 +130,7 @@ namespace CAPNet.Tests
         public void CanParseAddressesWithMultipleSpaces()
         {
             //<addresses>"address1 "    "address 3 " "address 4      "</addresses>
-            string usedAddress = "   \"address1 \"    \"address 3 \" \"address 4      \"";
+            var usedAddress = "   \"address1 \"    \"address 3 \" \"address 4      \"";
             var elements = usedAddress.GetElements();
 
             Assert.Equal(3, elements.Count());
@@ -143,7 +143,7 @@ namespace CAPNet.Tests
         public void CanParseWithSpaceAddress()
         {
             //<addresses>" " "address 3 " "address 4 "    </addresses>
-            string usedAddress = "\" \" \"address 3 \" \"address 4 \"   ";
+            var usedAddress = "\" \" \"address 3 \" \"address 4 \"   ";
             var elements = usedAddress.GetElements();
 
             Assert.Equal(3, elements.Count());
@@ -155,7 +155,7 @@ namespace CAPNet.Tests
         [Fact]
         public void CanParseSingleAddress()
         {
-            string usedAddress = "address";
+            var usedAddress = "address";
             var elements = usedAddress.GetElements();
             Assert.Equal("address",elements.ElementAt(0));
             Assert.Equal(1, elements.Count());
@@ -164,7 +164,7 @@ namespace CAPNet.Tests
         [Fact]
         public void CanParseSingleAddressUntrimmed()
         {
-            string usedAddress = "  address  ";
+            var usedAddress = "  address  ";
             var elements = usedAddress.GetElements();
             Assert.Equal("address", elements.ElementAt(0));
             Assert.Equal(1, elements.Count());
@@ -173,7 +173,7 @@ namespace CAPNet.Tests
         [Fact]
         public void CanParseSingleCharactedAddresses()
         {
-            string usedAddress = "a b";
+            var usedAddress = "a b";
             var elements = usedAddress.GetElements();
             Assert.Equal("a", elements.ElementAt(0));
             Assert.Equal("b", elements.ElementAt(1));
@@ -183,7 +183,7 @@ namespace CAPNet.Tests
         [Fact]
         public void CanParseSingleSpaceContainingAddress()
         {
-            string usedAddress = "\" address 1\"";
+            var usedAddress = "\" address 1\"";
             var elements = usedAddress.GetElements();
             Assert.Equal(" address 1", elements.ElementAt(0));
             Assert.Equal(1, elements.Count());
@@ -192,7 +192,7 @@ namespace CAPNet.Tests
         [Fact]
         public void CanParseWithEmptyStringInBetweenQuotes()
         {
-            string usedAddress = "\" address 1\" address2 \"\" address4";
+            var usedAddress = "\" address 1\" address2 \"\" address4";
             var elements = usedAddress.GetElements();
             Assert.Equal(" address 1", elements.ElementAt(0));
             Assert.Equal("address2", elements.ElementAt(1));
@@ -204,7 +204,7 @@ namespace CAPNet.Tests
         [Fact]
         public void CanParseWithAddress()
         {
-            string usedAddress = "\" \" adress addr \"bs \" \"long\" \"one two three \"";
+            var usedAddress = "\" \" adress addr \"bs \" \"long\" \"one two three \"";
             var elements = usedAddress.GetElements();
 
             Assert.Equal(6, elements.Count());
@@ -219,7 +219,7 @@ namespace CAPNet.Tests
         [Fact]
         public void CanParseIncidentsWithQuotes()
         {
-            string usedXml = Xml.WrongData.Replace("<incidents></incidents>", "<incidents>\"nasty incident \" incident \"another incident\"</incidents>");
+            var usedXml = Xml.WrongData.Replace("<incidents></incidents>", "<incidents>\"nasty incident \" incident \"another incident\"</incidents>");
             var alert = XmlParser.Parse(usedXml).First();
             var incidents = alert.Incidents;
             Assert.Equal("nasty incident ", incidents.ElementAt(0));
