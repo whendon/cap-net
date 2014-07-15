@@ -98,6 +98,20 @@ namespace CAPNet.Models
         /// <summary>
         /// The code denoting the nature of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Code Values:
+        ///            “Alert” - Initial information requiring attention by targeted recipients
+        ///            “Update” - Updates and supercedes the earlier message(s) identified in &lt;references>
+        ///            “Cancel” - Cancels the earlier message(s) identified in &lt;references>
+        ///            “Ack” - Acknowledges receipt and acceptance of the message(s) identified in &lt;references>
+        ///            “Error” - Indicates rejection of the message(s) identified in &lt;references>; explanation SHOULD appear in &lt;note>
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public MessageType MessageType { get; set; }
 
         /// <summary>
