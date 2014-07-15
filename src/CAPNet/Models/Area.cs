@@ -45,7 +45,7 @@ namespace CAPNet.Models
         /// <summary>
         /// The text describing the affected area of the alert message (REQUIRED)
         /// </summary>
-        /// <remarks>A text description of the affected area.</remarks>
+        /// <remarks>An extended human readable description of the hazard or event that occasioned this message.</remarks>
         public string Description { get; set; }
 
         /// <summary>
