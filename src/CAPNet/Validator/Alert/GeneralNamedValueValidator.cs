@@ -10,26 +10,21 @@ namespace CAPNet
     /// <typeparam name="T"></typeparam>
     public class GeneralNamedValueValidator<T> : Validator<T>
     {
-        private static readonly Dictionary<Type, int> typeDictionary = new Dictionary<Type, int>
+        private static readonly Dictionary<Type, Error> typeDictionary = new Dictionary<Type, Error>
                     {
-                        {typeof(GeoCode), 0},
-                        {typeof(Parameter), 1},
-                        {typeof(EventCode), 2}
+                        {typeof(GeoCode), new GeoCodeError() },
+                        {typeof(Parameter), new ParameterError() },
+                        {typeof(EventCode), new EventCodeError() }
                     };
 
         private Error getErrorType(Type type)
         {
-            switch (typeDictionary[type])
+            if (!typeDictionary.ContainsKey(type))
             {
-                case 0:
-                    return new GeoCodeError();
-                case 1:
-                    return new ParameterError();
-                case 2:
-                    return new EventCodeError();
-                default:
-                    throw new ArgumentOutOfRangeException();
+                throw new KeyNotFoundException();
             }
+
+            return typeDictionary[type];
         }
 
         /// <summary>
