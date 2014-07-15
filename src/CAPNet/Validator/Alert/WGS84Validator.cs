@@ -1,5 +1,4 @@
 ﻿using CAPNet.Models;
-using System;
 using System.Collections.Generic;
 
 namespace CAPNet
@@ -9,6 +8,11 @@ namespace CAPNet
     /// </summary>
     public class WGS84Validator : Validator<Coordinate>
     {
+        private const int minLongitude = -180;
+        private const int maxLongitude = 180;
+        private const int minLatitude = -90;
+        private const int maxLatitude = 90;
+
         /// <summary>
         /// 
         /// </summary>
@@ -34,8 +38,8 @@ namespace CAPNet
         {
             get
             {
-                var longitudeIsValid = -180 <= Entity.Longitude && Entity.Longitude <= 180;
-                var latitudeIsValid = -90 <= Entity.Latitude && Entity.Latitude <= 90;
+                var longitudeIsValid = minLongitude <= Entity.Longitude && Entity.Longitude <= maxLongitude;
+                var latitudeIsValid = minLatitude <= Entity.Latitude && Entity.Latitude <= maxLatitude;
 
                 return longitudeIsValid && latitudeIsValid;
             }
