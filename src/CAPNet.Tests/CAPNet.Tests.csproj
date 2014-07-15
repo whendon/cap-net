@@ -89,6 +89,7 @@
       <DependentUpon>Xml.resx</DependentUpon>
     </Compile>
     <Compile Include="XmlCreatorTests.cs" />
+    <Compile Include="ElementsTests.cs" />
     <Compile Include="XmlParseAndCreateTest.cs" />
     <Compile Include="XmlParserTests.cs" />
   </ItemGroup>

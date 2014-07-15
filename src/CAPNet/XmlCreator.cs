@@ -43,7 +43,7 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "identifier", alert.Identifier);
             AddElementIfHasContent(alertElement, "sender", alert.Sender);
             // set milliseconds to 0
-            AddElementIfHasContent(alertElement, "sent", AddMilliseconds(alert.Sent));
+            AddElementIfHasContent(alertElement, "sent", StripMiliseconds(alert.Sent));
             AddElementIfHasContent(alertElement, "status", alert.Status);
             AddElementIfHasContent(alertElement, "msgType", alert.MessageType);
             AddElementIfHasContent(alertElement, "source", alert.Source);
@@ -53,17 +53,21 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "addresses", addressesContent);
             AddElementIfHasContent(alertElement, "code", alert.Code);
             AddElementIfHasContent(alertElement, "note", alert.Note);
-            AddElementIfHasContent(alertElement, "references", alert.References);
+            string referencesContent = alert.References.ElementsDelimitedBySpace();
+            AddElementIfHasContent(alertElement, "references", referencesContent);
             string incidentsContent = alert.Incidents.ElementsDelimitedBySpace();
             AddElementIfHasContent(alertElement, "incidents", incidentsContent);
             AddElements(alertElement, Create(alert.Info));
-
+         
             return alertElement;
         }
 
-        private static DateTimeOffset AddMilliseconds(DateTimeOffset? date)
+        private static DateTimeOffset? StripMiliseconds(DateTimeOffset? date)
         {
-            return date.Value.AddMilliseconds(-date.Value.Millisecond);
+            if(date!=null)
+                return date.Value.AddMilliseconds(-date.Value.Millisecond);
+
+            return null;
         }
 
         private static IEnumerable<XElement> Create(IEnumerable<Info> infos)
@@ -88,7 +92,7 @@ namespace CAPNet
             AddElementIfHasContent(infoElement, "certainty", info.Certainty);
             AddElementIfHasContent(infoElement, "audience", info.Audience);
             AddElements(infoElement, Create(info.EventCodes));
-            AddElementIfHasContent(infoElement, "effective", info.Effective);
+            AddElementIfHasContent(infoElement, "effective", StripMiliseconds(info.Effective));
             AddElementIfHasContent(infoElement, "onset", info.Onset);
             AddElementIfHasContent(infoElement, "expires", info.Expires);
             AddElementIfHasContent(infoElement, "senderName", info.SenderName);
@@ -174,24 +178,34 @@ namespace CAPNet
 
         private static XElement Create(Area area)
         {
-            var areaElement = new XElement(
-                CAP12Namespace + "area",
-                new XElement(CAP12Namespace + "areaDesc", area.Description),
-
-                from polygon in area.Polygons
-                select new XElement(
-                    CAP12Namespace + "polygon", polygon),
-
-                from circle in area.Circles
-                select new XElement(
-                    CAP12Namespace + "circle", circle),
-
-                Create(area.GeoCodes));
-
+            var areaElement = new XElement(CAP12Namespace + "area");
+            AddElementIfHasContent(areaElement, "areaDesc", area.Description);
+            var polygons = Create(area.Polygons);
+            AddElements(areaElement, polygons);
+            var circles = Create(area.Circles);
+            AddElements(areaElement, circles);
+            var geoCodes = Create(area.GeoCodes);
+            AddElements(areaElement, geoCodes);
             AddElementIfHasContent(areaElement, "altitude", area.Altitude);
             AddElementIfHasContent(areaElement, "ceiling", area.Ceiling);
 
             return areaElement;
+        }
+
+        private static IEnumerable<XElement> Create(IEnumerable<Polygon> polygons)
+        {
+            return from polygon in polygons
+                   select new XElement(
+                       CAP12Namespace + "polygon", polygon);
+            
+        }
+
+        private static IEnumerable<XElement> Create(IEnumerable<Circle> circles)
+        {
+            return from circle in circles
+                   select new XElement(
+                       CAP12Namespace + "circle", circle);
+
         }
 
         private static void AddElementIfHasContent(XElement parent, string name, byte[] content)
@@ -215,11 +229,10 @@ namespace CAPNet
                 parent.Add(element);
         }
 
-        private static void AddElementIfHasContent(XElement element, string name, string content)
+        private static void AddElementIfHasContent(XElement parent, string name, string content)
         {
             if (!string.IsNullOrEmpty(content))
-                element.Add(new XElement(CAP12Namespace + name, content));
+                parent.Add(new XElement(CAP12Namespace + name, content));
         }
-
     }
 }
