@@ -117,6 +117,25 @@ namespace CAPNet.Models
         /// <summary>
         /// The text identifying the source of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Code Values: Natural language identifier per [RFC 3066].
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          If not present, an implicit default value of "en-US" SHALL be assumed. 
+        ///       </description>
+        ///     </item>
+        ///     <item>
+        ///       <description>
+        ///          A null value in this element SHALL be considered equivalent to “en-US.”
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public string Source { get; set; }
 
         /// <summary>
