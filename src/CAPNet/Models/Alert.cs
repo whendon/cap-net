@@ -253,7 +253,13 @@ namespace CAPNet.Models
         ///     </item>
         ///   </list>
         /// </remarks>
-        public ICollection<string> References { get; set; }
+        public ICollection<string> References 
+        {
+            get
+            {
+                return references;
+            }
+        }
 
         /// <summary>
         /// The group listing naming the referent incident(s) of the alert message 
