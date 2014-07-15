@@ -36,12 +36,18 @@ namespace CAPNet
             get
             {
                 if (Entity.MimeType == null) return false;
-                if (!Entity.MimeType.Contains("/")) return false;
 
-                var splittedMimeType = Entity.MimeType.Split('/');
-
-                return topLevelMediaType.Contains(splittedMimeType[0]);
+                return MimeTypeIsValid();
             }
+        }
+
+        private bool MimeTypeIsValid()
+        {
+            if (!Entity.MimeType.Contains("/")) return false;
+
+            var splittedMimeType = Entity.MimeType.Split('/');
+
+            return topLevelMediaType.Contains(splittedMimeType[0]);
         }
     }
 }
