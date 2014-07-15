@@ -1,9 +1,11 @@
 ﻿using CAPNet.Models;
 using Xunit;
 
+using System.Linq;
+
 namespace CAPNet.Tests.ValidatorTests
 {
-    public class MsgTypeRejectionValidatorTests
+    public class MessageTypeRejectionValidatorTests
     {
         [Fact]
         public void MsgTypeWithErrorThatHasExplanationInNoteIsValid()
@@ -12,7 +14,7 @@ namespace CAPNet.Tests.ValidatorTests
             alert.MessageType = MessageType.Error;
             alert.Note = "DescriptiveError";
 
-            var msgTypeRejectionValidator = new MsgTypeRejectionValidator(alert);
+            var msgTypeRejectionValidator = new MessageTypeRejectionValidator(alert);
             Assert.True(msgTypeRejectionValidator.IsValid);
         }
 
@@ -23,8 +25,9 @@ namespace CAPNet.Tests.ValidatorTests
             alert.MessageType = MessageType.Error;
             alert.Note = null;
 
-            var msgTypeRejectionValidator = new MsgTypeRejectionValidator(alert);
+            var msgTypeRejectionValidator = new MessageTypeRejectionValidator(alert);
             Assert.False(msgTypeRejectionValidator.IsValid);
+            Assert.Equal(typeof(MessageTypeRejectionError), msgTypeRejectionValidator.Errors.ElementAt(0).GetType());
         }
 
         [Fact]
@@ -34,7 +37,7 @@ namespace CAPNet.Tests.ValidatorTests
             alert.MessageType = MessageType.Cancel;
             alert.Note = "Descriptive Explanation";
 
-            var msgTypeRejectionValidator = new MsgTypeRejectionValidator(alert);
+            var msgTypeRejectionValidator = new MessageTypeRejectionValidator(alert);
             Assert.True(msgTypeRejectionValidator.IsValid);
         }
 
@@ -45,7 +48,7 @@ namespace CAPNet.Tests.ValidatorTests
             alert.MessageType = MessageType.Cancel;
             alert.Note = null;
 
-            var msgTypeRejectionValidator = new MsgTypeRejectionValidator(alert);
+            var msgTypeRejectionValidator = new MessageTypeRejectionValidator(alert);
             Assert.True(msgTypeRejectionValidator.IsValid);
         }
     }

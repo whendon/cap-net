@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Urgency is always required and must have certain code values !
     /// </summary>
     public class UrgencyRequiredValidator : Validator<Info>
     {

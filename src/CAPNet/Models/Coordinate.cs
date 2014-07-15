@@ -14,25 +14,25 @@ namespace CAPNet.Models
         public Coordinate(string stringRepresentation)
         {
             var splitCoordinate = stringRepresentation.Split(',');
-            this.X = double.Parse(splitCoordinate[0]);
-            this.Y = double.Parse(splitCoordinate[1]);
+            this.Latitude = double.Parse(splitCoordinate[0]);
+            this.Longitude = double.Parse(splitCoordinate[1]);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        public Coordinate(double x, double y)
+        /// <param name="latitude"></param>
+        /// <param name="longitude"></param>
+        public Coordinate(double latitude, double longitude)
         {
-            X = x;
-            Y = y;
+            Latitude = latitude;
+            Longitude = longitude;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public double X
+        public double Latitude
         {
             get;
             private set;
@@ -41,7 +41,7 @@ namespace CAPNet.Models
         /// <summary>
         /// 
         /// </summary>
-        public double Y
+        public double Longitude
         {
             get;
             private set;
@@ -53,7 +53,7 @@ namespace CAPNet.Models
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("{0},{1}", this.X, this.Y);
+            return string.Format("{0},{1}", this.Latitude, this.Longitude);
         }
 
         /// <summary>
@@ -65,8 +65,9 @@ namespace CAPNet.Models
         {
             if (obj == null || GetType() != obj.GetType())
                 return false;
-            var p = (Coordinate)obj;
-            return (X == p.X && Y == p.Y);
+
+            Coordinate p = (Coordinate)obj;
+            return (this.Latitude == p.Latitude && this.Longitude == p.Longitude);
         }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace CAPNet.Models
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return X.GetHashCode() ^ Y.GetHashCode();
+            return Latitude.GetHashCode() ^ Longitude.GetHashCode();
         }
     }
 }

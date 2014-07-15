@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Addresses is required when scope is Private !
     /// </summary>
     public class AddressesRequiredWhenScopePrivateValidator : Validator<Alert>
     {

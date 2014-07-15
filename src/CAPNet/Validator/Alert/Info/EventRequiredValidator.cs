@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The text denoting the type of the subject event of the alert message is required
     /// </summary>
     public class EventRequiredValidator : Validator<Info>
     {

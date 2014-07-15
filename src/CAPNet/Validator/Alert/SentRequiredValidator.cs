@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The time and date of the origination of the alert message is always required !
     /// </summary>
     public class SentRequiredValidator : Validator<Alert>
     {

@@ -6,18 +6,18 @@ using System.Linq;
 namespace CAPNet
 {
     /// <summary>
-    /// Verifies if all elements of category are ok
+    /// The code denoting the category of the subject event of the alert message must have certain code values!
     /// </summary>
     public class InvalidCategoryValidator : Validator<Info>
     {
         /// <summary>
-        /// Constructor with info parameter
+        /// 
         /// </summary>
         /// <param name="info"></param>
         public InvalidCategoryValidator(Info info) : base(info) { }
 
         /// <summary>
-        /// Validation Method
+        /// 
         /// </summary>
         public override bool IsValid
         {

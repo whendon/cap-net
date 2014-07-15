@@ -7,7 +7,7 @@ using System.Reflection;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Must validate the container for all component parts of the info sub-element of the alert message !
     /// </summary>
     public class InfoValidator : Validator<Alert>
     {

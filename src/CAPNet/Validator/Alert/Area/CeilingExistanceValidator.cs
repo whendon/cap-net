@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// ceiling MUST NOT be used except in combination with the altitude element.
+    /// Ceiling MUST NOT be used except in combination with the altitude element.
     /// </summary>
     public class CeilingExistanceValidator : Validator<Area>
     {

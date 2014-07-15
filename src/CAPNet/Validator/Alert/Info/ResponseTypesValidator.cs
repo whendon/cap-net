@@ -7,7 +7,7 @@ using System.Reflection;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// Multiple instances MAY occur within an info block.
     /// </summary>
     public class ResponseTypesValidator : Validator<Info>
     {
@@ -49,8 +49,8 @@ namespace CAPNet
         private static IEnumerable<Error> GetErrors(ResponseType responseType)
         {
             var responseTypeValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
-                                        where typeof(IValidator<ResponseType>).IsAssignableFrom(type)
-                                        select (IValidator<ResponseType>)Activator.CreateInstance(type, responseType);
+                                         where typeof(IValidator<ResponseType>).IsAssignableFrom(type)
+                                         select (IValidator<ResponseType>)Activator.CreateInstance(type, responseType);
 
             return from validator in responseTypeValidators
                    from error in validator.Errors

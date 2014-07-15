@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CAPNet
 {
     /// <summary>
-    /// Validator for Note 
+    ///The message note is primarily intended for use with status “Exercise” and msgType “Error”
     /// </summary>
     public class NoteValidator : Validator<Alert>
     {
@@ -39,8 +39,7 @@ namespace CAPNet
 
                 if (statusIsNotExercise && messageTypeIsNotError) return true;
 
-                var noteIsNotNullOrEmpty = !string.IsNullOrEmpty(Entity.Note);
-                return noteIsNotNullOrEmpty;
+                return !string.IsNullOrEmpty(Entity.Note);
             }
         }
     }

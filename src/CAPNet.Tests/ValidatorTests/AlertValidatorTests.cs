@@ -74,7 +74,7 @@ namespace CAPNet.Tests.ValidatorTests
         }
 
         [Fact]
-        public void GeneralAlertWithNoInfoIsInvalid()
+        public void GeneralAlertWithNoCategoryAndCertaintyWrongSetAndSentNullIsInvalid()
         {
             var alert = new Alert();
             alert.Identifier = "KSTO1055887203";
@@ -84,16 +84,38 @@ namespace CAPNet.Tests.ValidatorTests
             alert.Note = "DescriptiveError";
             alert.Scope = Scope.Restricted;
             alert.Restriction = "Draft";
-            alert.Sent = new System.DateTimeOffset();
+            alert.Sent = null;
 
             var info = new Info();
+            //info.Categories Is Empty
+            //Certainty is not well set;
+            info.Certainty = (Certainty)123;
+            //Event is also required
+            info.Event = "Important Event";
+            //Severity Required
+            info.Severity = Severity.Minor;
+            //Urgency Required
+            info.Urgency = Urgency.Future;
+
             alert.Info.Add(info);
+
             var alertValidator = new AlertValidator(alert);
             Assert.False(alertValidator.IsValid);
-            var categoryErrors = from error in alertValidator.Errors
-                                 where typeof(CategoryRequiredError) == error.GetType() || typeof(CertaintyRequiredError) == error.GetType() || typeof(EventRequiredError) == error.GetType() || typeof(SeverityRequiredError) == error.GetType() || typeof(UrgencyRequiredError) == error.GetType()
-                                 select error;
-            Assert.NotEmpty(categoryErrors);
+
+            var categoryRequiredErrors = from error in alertValidator.Errors
+                                         where typeof(CategoryRequiredError) == error.GetType()
+                                         select error;
+            Assert.NotEmpty(categoryRequiredErrors);
+
+            var certaintyRequiredErrors = from error in alertValidator.Errors
+                                          where typeof(CertaintyRequiredError) == error.GetType()
+                                          select error;
+            Assert.NotEmpty(certaintyRequiredErrors);
+
+            var sentRequiredErrors = from error in alertValidator.Errors
+                             where typeof(SentRequiredError) == error.GetType()
+                             select error;
+            Assert.NotEmpty(sentRequiredErrors);
         }
     }
 }

@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public class PolygonCoordinatePairsFirstLastError : Error
+    public class WGS84Error : Error
     {
     }
 }

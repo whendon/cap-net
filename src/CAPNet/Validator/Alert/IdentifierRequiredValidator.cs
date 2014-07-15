@@ -4,7 +4,7 @@ using CAPNet.Models;
 namespace CAPNet
 {
     /// <summary>
-    /// 
+    /// The identifier of the alert message is always required !
     /// </summary>
     public class IdentifierRequiredValidator : Validator<Alert>
     {
