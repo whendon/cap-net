@@ -79,6 +79,20 @@ namespace CAPNet.Models
         /// <summary>
         /// The code denoting the appropriate handling of the alert message 
         /// </summary>
+        /// <remarks>
+        ///   <list type="number">
+        ///     <item>
+        ///       <description>
+        ///          Code Values:
+        ///            “Actual” - Actionable by all targeted recipients
+        ///            “Exercise” - Actionable only by designated exercise participants; exercise identifier SHOULD appear in &lt;note>
+        ///            “System” - For messages that support alert network internal functions
+        ///            “Test” - Technical testing only, all recipients disregard
+        ///            “Draft” – A preliminary template or draft, not actionable in its current form
+        ///       </description>
+        ///     </item>
+        ///   </list>
+        /// </remarks>
         public Status Status { get; set; }
 
         /// <summary>
