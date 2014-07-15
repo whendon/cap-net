@@ -63,14 +63,23 @@ namespace CAPNet
             var incidentsNode = alertElement.Element(capNamespace + "incidents");
             if (incidentsNode != null)
             {
-                var incidents = incidentsNode.Value.Split(' ').ToList();
-                alert.Incidents.AddRange(incidents);
+                var incidentsNodeValue = incidentsNode.Value;
+                if (!string.IsNullOrEmpty(incidentsNodeValue))
+                {
+                    var incidents = incidentsNodeValue.GetElements();
+                    alert.Incidents.AddRange(incidents);
+                }
             }
 
             var referencesNode = alertElement.Element(capNamespace + "references");
             if (referencesNode != null)
             {
-                alert.References = referencesNode.Value;
+                var referencesNodeValue = referencesNode.Value;
+                if (!string.IsNullOrEmpty(referencesNodeValue))
+                {
+                    var references = referencesNodeValue.GetElements();
+                    alert.References.AddRange(references);
+                }
             }
 
             var noteNode = alertElement.Element(capNamespace + "note");
@@ -88,8 +97,12 @@ namespace CAPNet
             var addressesNode = alertElement.Element(capNamespace + "addresses");
             if (addressesNode != null)
             {
-                var addresses = addressesNode.Value.Split(' ').ToList();
-                alert.Addresses.AddRange(addresses);
+                var addressNodeValue = addressesNode.Value;
+                if (!string.IsNullOrEmpty(addressNodeValue))
+                {
+                    var addresses = addressNodeValue.GetElements();
+                    alert.Addresses.AddRange(addresses);
+                }
             }
 
             var restrictionNode = alertElement.Element(capNamespace + "restriction");

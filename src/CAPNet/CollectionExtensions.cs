@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CAPNet
 {
@@ -25,9 +26,12 @@ namespace CAPNet
         ///
         /// </summary>
         /// <returns></returns>
-        public static string ElementsDelimitedBySpace(this IEnumerable<string> collection)
+        public static string ElementsDelimitedBySpace(this IEnumerable<string> elements)
         {
-            return string.Join(" ", collection);
+            elements = elements.Select(
+                element => element.Contains(" ") ? element = "\"" + element + "\"" : element);
+
+            return string.Join(" ", elements);
         }
 
     }

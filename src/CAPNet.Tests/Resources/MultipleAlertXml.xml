@@ -8,11 +8,11 @@
   <source>source</source>
   <scope>Public</scope>
   <restriction>restriction</restriction>
-  <addresses>address1 address2 address3</addresses>
+  <addresses>"address 1" address2 " address 3" address4</addresses>
   <code>code</code>
   <note>note</note>
-  <references>references</references>
-  <incidents>incident1 incident2</incidents>
+  <references>references reference2</references>
+  <incidents>" incident0" incident1 incident2 "bad incident" "another bad incident"</incidents>
   <info>
     <category>Security</category>
     <event>Homeland Security Advisory System Update</event>

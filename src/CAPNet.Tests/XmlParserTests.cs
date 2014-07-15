@@ -327,44 +327,6 @@ namespace CAPNet.Tests
             //    </parameter>
         }
 
-        [Fact]
-        public void CanParseWithStringInsteadOfInt()
-        {
-            var alert = XmlParser.Parse(Xml.WrongData).First();
-            var size = alert.Info.First().Resources.First().Size;
-            var area = alert.Info.First().Areas.First();
-            var altitude = area.Altitude;
-            var ceiling = area.Ceiling;
-
-            Assert.Null(altitude);
-            Assert.Null(ceiling);
-            Assert.Null(size);
-        }
-
-        [Fact]
-        public void CanParseWithWrongDateTime()
-        {
-            var alert = XmlParser.Parse(Xml.WrongData).First();
-            var sent = alert.Sent;
-            var info = alert.Info.First();
-            var effective = info.Effective;
-            var onset = info.Onset;
-            var expires = info.Expires;
-
-            Assert.Null(sent);
-            Assert.Null(effective);
-            Assert.Null(expires);
-            Assert.Null(onset);
-        }
-
-        [Fact]
-        public void CanParseWithWrongDerefUri()
-        {
-            //<derefUri>abc123</derefUri> not a valid base64
-            var alert = XmlParser.Parse(Xml.WrongData).First();
-            var derefUri = alert.Info.First().Resources.First().DereferencedUri;
-            Assert.Null(derefUri);
-        }
         
         [Fact]
         public void MultipleAlertXmlIsParsedCorrectly()

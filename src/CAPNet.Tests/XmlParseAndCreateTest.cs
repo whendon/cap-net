@@ -183,5 +183,6 @@ namespace CAPNet.Tests
 
             Assert.Equal(createdDocument.ToString(), originalDocument.ToString());
         }
+        
     }
 }
