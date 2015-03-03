@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>cap-net</id>
+    <version>1.0.0</version>
+    <title>CAPNet</title>
+    <authors>Matt Chandler, Teamnet</authors>
+    <owners>Teamnet</owners>
+    <projectUrl>https://github.com/TeamnetGroup/cap-net</projectUrl>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Common Alerting Protocol serialization library for the .NET framework.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <tags>CAP</tags>
+  </metadata>
+</package>
