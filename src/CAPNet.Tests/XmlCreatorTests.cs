@@ -86,7 +86,7 @@ namespace CAPNet.Tests
             var document = new XDocument(orangeAlertElement);
 
             string alertAsString;
-            var writerSettings = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8, NewLineChars = "\r\n" };
+            var writerSettings = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8, NewLineChars = "\n" };
             using (var memoryStream = new MemoryStream())
             {
                 var streamWriter = new StreamWriter(memoryStream, Encoding.UTF8);
@@ -99,28 +99,9 @@ namespace CAPNet.Tests
                 alertAsString = new StreamReader(memoryStream, Encoding.UTF8).ReadToEnd();
             }
 
-            Console.WriteLine("Expected char at 37 is {0}",
-                Convert.ToInt32(
-                    Xml.MultipleAlertXml.ToCharArray()[37]));
-            Console.WriteLine("Actual char at 37 is {0}",
-                Convert.ToInt32(
-                    alertAsString.ToCharArray()[37]));
+            var expectedResult = Xml.MultipleAlertXml.Replace("\r\n", "\n");
 
-            Console.WriteLine("Expected char at 38 is {0}",
-                Convert.ToInt32(
-                    Xml.MultipleAlertXml.ToCharArray()[38]));
-            Console.WriteLine("Actual char at 38 is {0}",
-                Convert.ToInt32(
-                    alertAsString.ToCharArray()[38]));
-
-            Console.WriteLine("Expected char at 39 is {0}",
-                Convert.ToInt32(
-                    Xml.MultipleAlertXml.ToCharArray()[39]));
-            Console.WriteLine("Actual char at 39 is {0}",
-                Convert.ToInt32(
-                    alertAsString.ToCharArray()[39]));
-
-            Assert.Equal(Xml.MultipleAlertXml, alertAsString);
+            Assert.Equal(expectedResult, alertAsString);
 
         }
 
