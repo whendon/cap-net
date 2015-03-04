@@ -86,7 +86,7 @@ namespace CAPNet.Tests
             var document = new XDocument(orangeAlertElement);
 
             string alertAsString;
-            var writerSettings = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8 };
+            var writerSettings = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8, NewLineChars = "\r\n" };
             using (var memoryStream = new MemoryStream())
             {
                 var streamWriter = new StreamWriter(memoryStream, Encoding.UTF8);
