@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace CAPNet.Models
 {
@@ -14,8 +15,8 @@ namespace CAPNet.Models
         public Coordinate(string stringRepresentation)
         {
             var splitCoordinate = stringRepresentation.Split(',');
-            this.Latitude = double.Parse(splitCoordinate[0]);
-            this.Longitude = double.Parse(splitCoordinate[1]);
+            this.Latitude = double.Parse(splitCoordinate[0], CultureInfo.InvariantCulture);
+            this.Longitude = double.Parse(splitCoordinate[1], CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -53,7 +54,11 @@ namespace CAPNet.Models
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("{0},{1}", this.Latitude, this.Longitude);
+            return string.Format(
+                CultureInfo.InvariantCulture,
+                "{0},{1}",
+                Latitude,
+                Longitude);
         }
 
         /// <summary>

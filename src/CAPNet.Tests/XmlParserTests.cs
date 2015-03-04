@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -229,11 +230,11 @@ namespace CAPNet.Tests
             var coordinates = polygon.Coordinates.ToList();
 
             //<polygon>38.47,-120.14 38.34,-119.95 38.52,-119.74 38.62,-119.89 38.47,-120.14</polygon>
-            Assert.Equal(coordinates.ElementAt(0).ToString(), "38.47,-120.14");
-            Assert.Equal(coordinates.ElementAt(1).ToString(), "38.34,-119.95");
-            Assert.Equal(coordinates.ElementAt(2).ToString(), "38.52,-119.74");
-            Assert.Equal(coordinates.ElementAt(3).ToString(), "38.62,-119.89");
-            Assert.Equal(coordinates.ElementAt(4).ToString(), "38.47,-120.14");
+            Assert.Equal("38.47,-120.14", coordinates.ElementAt(0).ToString());
+            Assert.Equal("38.34,-119.95", coordinates.ElementAt(1).ToString());
+            Assert.Equal("38.52,-119.74", coordinates.ElementAt(2).ToString());
+            Assert.Equal("38.62,-119.89", coordinates.ElementAt(3).ToString());
+            Assert.Equal("38.47,-120.14", coordinates.ElementAt(4).ToString());
 
         }
 
