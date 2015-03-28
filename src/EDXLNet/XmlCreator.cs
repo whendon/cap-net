@@ -11,10 +11,16 @@ namespace EDXLNet
         /// The xml namespace for EDXL-DE 2.0
         /// </summary>
         public static readonly XNamespace EdxlDe20Namespace = "urn:oasis:names:tc:emergency:EDXL:DE:2.0";
-        
+
+        /// <summary>
+        /// The xml namespace for EDXL Common Types 1.0
+        /// </summary>
+        public static readonly XNamespace EdxlCt10Namespace = "urn:oasis:names:tc:emergency:edxl:ct:1.0";
+
         public static XElement ToXElement(this EdxlDistribution edxlDistribution)
         {
             var result = new XElement(EdxlDe20Namespace + "EDXLDistribution",
+                new XAttribute(XNamespace.Xmlns + "ct", EdxlCt10Namespace.ToString()),
                 new XElement(EdxlDe20Namespace + "DistributionID", edxlDistribution.DistributionId),
                 new XElement(EdxlDe20Namespace + "SenderID", edxlDistribution.SenderId),
                 new XElement(EdxlDe20Namespace + "DateTimeSent", StripMiliseconds(edxlDistribution.DateTimeSent)),
@@ -32,7 +38,16 @@ namespace EDXLNet
 
         private static XElement ToXElement(this DistributionStatus distributionStatus)
         {
-            return new XElement(EdxlDe20Namespace + "DistributionStatus");
+            return new XElement(EdxlDe20Namespace + "DistributionStatus",
+                distributionStatus.StatusKindDefault.ToXElement());
+        }
+
+        private static XElement ToXElement(this StatusKindDefault statusKindDefault)
+        {
+            return new XElement(EdxlDe20Namespace + "StatusKindDefault",
+                new XElement(EdxlCt10Namespace + "ValueListURI",
+                    statusKindDefault.ValueListUri),
+                new XElement(EdxlCt10Namespace + "Value", statusKindDefault.Value));
         }
 
         private static XElement ToXElement(this DistributionKind distributionKind)
