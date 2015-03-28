@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Emergency Data Exchange Language (EDXL) Distribution Element Version 2.0
+     Committee Specification 01
+     11 April 2013
+     Copyright (c) OASIS Open 2013. All Rights Reserved.
+	 Source: http://docs.oasis-open.org/emergency/edxl-de/v2.0/cs01/examples/
+-->
+<EDXLDistribution   xlink:type="extended" xsi:schemaLocation="urn:oasis:names:tc:emergency:EDXL:DE:2.0 ../schema/edxl-de-v2.0-wd09.xsd" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="urn:oasis:names:tc:emergency:EDXL:DE:2.0"
+  xmlns:edxl-gsf="urn:oasis:names:tc:emergency:edxl:gsf:1.0"
+  xmlns:ct="urn:oasis:names:tc:emergency:edxl:ct:1.0"
+  xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <DistributionID>http://myhost.com/packages/17</DistributionID>
+  <SenderID>mary.thompson@myagency.gov</SenderID>
+  <DateTimeSent>2009-11-15T16:53:00-05:00</DateTimeSent>
+  <DateTimeExpires>2009-11-15T17:53:00-05:00</DateTimeExpires>
+  <DistributionStatus>
+    <StatusKindDefault>
+      <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:StatusKind</ct:ValueListURI>
+      <ct:Value>Exercise</ct:Value>
+    </StatusKindDefault>
+   </DistributionStatus>
+  <DistributionKind>
+    <DistributionKindDefault>
+    <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:DistributionType</ct:ValueListURI>
+    <ct:Value>Report</ct:Value>
+    </DistributionKindDefault>
+  </DistributionKind>
+  
+  <Descriptor xlink:type="resource">
+    <CombinedConfidentiality>
+      <ConfidentialityDefault>
+        <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:ConfidentialityType</ct:ValueListURI>
+        <ct:Value>Unclassified</ct:Value>
+      </ConfidentialityDefault>
+    </CombinedConfidentiality>
+    <Language>EN</Language>
+    <SenderRole>
+      <ct:ValueListURI>urn:myagency:gov:sensors:senderRole</ct:ValueListURI>
+      <ct:Value>Search and Rescue</ct:Value>
+    </SenderRole>
+    <RecipientRole>
+      <ct:ValueListURI>urn:myagency:gov:sensors:recipientRole</ct:ValueListURI>
+      <ct:Value>Situational Awareness Apps</ct:Value>
+      <ct:Value>Warning Devices</ct:Value>
+    </RecipientRole>
+    <Keyword>
+      <ct:ValueListURI>urn:myagency:gov:sensors:keywords</ct:ValueListURI>
+      <ct:Value>SNM Detection</ct:Value>
+      <ct:Value>XYZ</ct:Value>
+    </Keyword>
+    <ExplicitAddress>
+      <ExplicitAddressScheme>e-mail</ExplicitAddressScheme>
+      <ExplicitAddressValue>joe.smith@myagency.gov</ExplicitAddressValue>
+    </ExplicitAddress>
+    <TargetAreas>
+      <AreaKind>
+        <AreaKindDefault>
+          <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:AreaKindType</ct:ValueListURI>
+          <ct:Value>DistributionTargetArea</ct:Value>
+        </AreaKindDefault>
+      </AreaKind>
+      <AreaGrouping>Union</AreaGrouping>
+      <TargetArea>
+        <GeoPoliticalLocation>
+          <ct:GeoCode>
+            <ct:ValueListURI>http://www.unece.org/fileadmin/DAM/cefact/locode/usk.htm</ct:ValueListURI>
+            <ct:Value>USNYC</ct:Value>
+          </ct:GeoCode>
+        </GeoPoliticalLocation>
+      </TargetArea>
+    </TargetAreas>
+    <TargetAreas>
+      <AreaKind>
+        <AreaKindDefault>
+          <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:AreaKindType</ct:ValueListURI>
+          <ct:Value>SourceTargetArea</ct:Value>
+        </AreaKindDefault>
+      </AreaKind>
+      <AreaGrouping>Union</AreaGrouping>
+      <TargetArea>
+        <edxl-gsf:EDXLGeoLocation>
+          <gml:Polygon gml:id="myPolygon">
+            <gml:exterior>
+              <gml:LinearRing>
+                <gml:pos>33.4745 -112.1174</gml:pos>
+                <gml:pos>33.4238 -112.0238</gml:pos>
+                <gml:pos>33.4238 -112.1174</gml:pos>
+                <gml:pos>33.4745 -112.1174</gml:pos>
+              </gml:LinearRing>     
+            </gml:exterior>
+          </gml:Polygon>
+        </edxl-gsf:EDXLGeoLocation> 
+      </TargetArea>
+      <TargetArea>
+        <edxl-gsf:EDXLGeoLocation>
+          <gml:CircleByCenterPoint numArc="1">
+            <gml:pos>33.4745 -112.1174</gml:pos>
+            <gml:radius uom="urn:ogc:def:uom:UCUM:km">3</gml:radius>
+          </gml:CircleByCenterPoint>
+        </edxl-gsf:EDXLGeoLocation>
+      </TargetArea>
+    </TargetAreas>
+    <Urgency>
+      <UrgencyValueList>
+        <ct:ValueListURI>urn:myorg:names:emergency:defaults:severity</ct:ValueListURI>
+        <ct:Value>Low</ct:Value>
+      </UrgencyValueList>
+    </Urgency>
+    <Severity>
+      <SeverityDefault>
+        <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:Severity</ct:ValueListURI>
+        <ct:Value>Minor</ct:Value>
+      </SeverityDefault>
+    </Severity>
+    <Certainty>
+      <CertaintyDefault>
+        <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:Certainty</ct:ValueListURI>
+        <ct:Value>Observed</ct:Value>
+      </CertaintyDefault>
+    </Certainty>
+ 
+  </Descriptor>
+  
+  <Content xlink:type="resource">
+    <ContentObject xlink:type="resource">
+      <ContentXML>
+        <EmbeddedXMLContent><test xmlns="urn:test"></test></EmbeddedXMLContent>
+      </ContentXML>
+    </ContentObject>
+    <ContentObject xlink:type="resource">
+      <OtherContent>
+        <MimeType>image/jpeg</MimeType>
+        <Uri>http://www.myhost.com/pictures/pic333</Uri>
+      </OtherContent>
+    </ContentObject>
+  <ContentObject  xlink:type="resource">
+    <ContentXML>
+      <EmbeddedXMLContent>
+        <alert xmlns = "urn:oasis:names:tc:emergency:cap:1.1">
+          <identifier>http://www.myagency.gov/alerts/25</identifier>
+          <sender>mary.smith@myagency.gov</sender>
+          <sent>2005-11-15T16:58:00-05:00</sent>
+          <status>Exercise</status>
+          <msgType>Update</msgType>
+          <scope>Public</scope>
+          <info>
+            <category>Transport</category>
+            <event>Traffic Routes</event>
+            <urgency>Immediate</urgency>
+            <severity>Moderate</severity>
+            <certainty>Likely</certainty>
+            <description>Traffic adjustments ensure clear routes to St. Josephs Hospital and Phoenix Childrens Hospital on Thomas Rd. </description>
+            <area>
+              <areaDesc>Best Routes</areaDesc>
+              <polygon>38.91655012246089,-77.02016267943407 38.91655012246089,-77.0117098391165 38.907662564641285,-77.0117098391165 38.907662564641285,-77.02016267943407  38.91655012246089,
+                -77.02016267943407</polygon>
+            </area>
+          </info>
+        </alert>     
+       </EmbeddedXMLContent>
+    </ContentXML>
+  </ContentObject>
+  <ContentObject xlink:type="resource">
+      <ContentXML>
+        <EmbeddedXMLContent>
+          <alert xmlns = "urn:oasis:names:tc:emergency:cap:1.1">
+            <identifier>http://www.myagency.gov/alerts/26</identifier>
+            <sender>joe.smith@myagency.gov</sender>
+            <sent>2005-11-15T17:00:00-05:00</sent>
+            <status>Exercise</status>
+            <msgType>Update</msgType>
+            <scope>Public</scope>
+            <info>
+              <category>Transport</category>
+              <event>Traffic Routes</event>
+              <urgency>Immediate</urgency>
+              <severity>Moderate</severity>
+              <certainty>Likely</certainty>
+              <description>Traffic adjustments ensure clear routes to St. Josephs Hospital and Phoenix Childrens Hospital on Thomas Rd. </description>
+              <area>
+                <areaDesc>Best Routes</areaDesc>
+                <polygon>38.91655012246089,-77.02016267943407 38.91655012246089,-77.0117098391165 38.907662564641285,-77.0117098391165 38.907662564641285,-77.02016267943407  38.91655012246089,
+                  -77.02016267943407 </polygon>
+              </area>
+            </info>
+          </alert>
+        </EmbeddedXMLContent>
+      </ContentXML>
+    </ContentObject>
+    </Content>
+</EDXLDistribution>

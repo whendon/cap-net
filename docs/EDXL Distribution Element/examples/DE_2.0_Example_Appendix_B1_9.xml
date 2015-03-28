@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Emergency Data Exchange Language (EDXL) Distribution Element Version 2.0
+     Committee Specification 01
+     11 April 2013
+     Copyright (c) OASIS Open 2013. All Rights Reserved.
+	 Source: http://docs.oasis-open.org/emergency/edxl-de/v2.0/cs01/examples/
+-->
+<EDXLDistribution xlink:type="extended"
+  xsi:schemaLocation="urn:oasis:names:tc:emergency:EDXL:DE:2.0 ../schema/edxl-de-v2.0-wd09.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="urn:oasis:names:tc:emergency:EDXL:DE:2.0"
+  xmlns:edxl-gsf="urn:oasis:names:tc:emergency:edxl:gsf:1.0"
+  xmlns:ct="urn:oasis:names:tc:emergency:edxl:ct:1.0" xmlns:gml="http://www.opengis.net/gml/3.2"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <DistributionID>ieam_e3_2</DistributionID>
+  <SenderID>XML2005</SenderID>
+  <DateTimeSent>2005-11-15T16:53:00-05:00</DateTimeSent>
+  <DateTimeExpires>2005-11-15T17:53:00-05:00</DateTimeExpires>
+  <DistributionStatus>
+    <StatusKindDefault>
+      <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:StatusKind</ct:ValueListURI>
+      <ct:Value>Exercise</ct:Value>
+    </StatusKindDefault>
+  </DistributionStatus>
+  <DistributionKind>
+    <DistributionKindDefault>
+      <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:DistributionType</ct:ValueListURI>
+      <ct:Value>Update</ct:Value>
+    </DistributionKindDefault>
+  </DistributionKind>
+  <Descriptor xlink:type="resource">
+    <Keyword>
+      <ct:ValueListURI>http://www.niem.gov/EventTypeList</ct:ValueListURI>
+      <ct:Value>Explosion</ct:Value>
+    </Keyword>
+    <TargetAreas>
+      <AreaKind>
+        <AreaKindDefault>
+          <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:AreaKindType</ct:ValueListURI>
+          <ct:Value>DistributionTargetArea</ct:Value>
+        </AreaKindDefault>
+      </AreaKind>
+      <AreaGrouping>Union</AreaGrouping>
+      <TargetArea>
+        <edxl-gsf:EDXLGeoLocation>
+          <gml:Polygon gml:id="WG84">
+            <gml:exterior>
+              <gml:LinearRing>
+                <gml:pos>33.4745 -112.1174</gml:pos>
+                <gml:pos>33.4745 -112.0238</gml:pos>
+                <gml:pos>33.4238 -112.0238</gml:pos>
+                <gml:pos>33.4238 -112.1174</gml:pos>
+                <gml:pos>33.4745 -112.1174</gml:pos>
+              </gml:LinearRing>
+            </gml:exterior>
+          </gml:Polygon>
+        </edxl-gsf:EDXLGeoLocation>
+      </TargetArea>
+    </TargetAreas>
+  </Descriptor>
+  <Content xlink:type="resource">
+    <ContentObject xlink:type="resource">
+      <ContentDescriptor>
+        <ContentDescription>CAP message from DOT advising best alternate Routes
+        </ContentDescription>
+      </ContentDescriptor>
+      <ContentXML>
+        <EmbeddedXMLContent>
+          <alert xmlns="urn:oasis:names:tc:emergency:cap:1.1">
+            <identifier>Vendor generated</identifier>
+            <sender>AZ DOT</sender>
+            <sent>2005-11-15T16:58:00-05:00</sent>
+            <status>Exercise</status>
+            <msgType>Update</msgType>
+            <scope>Public</scope>
+            <info>
+              <category>Transport</category>
+              <event>Traffic Routes</event>
+              <urgency>Immediate</urgency>
+              <severity>Moderate</severity>
+              <certainty>Likely</certainty>
+              <description>Traffic adjustments ensure clear routes to St. Josephs Hospital and
+                Phoenix Childrens Hospital on Thomas Rd. </description>
+              <area>
+                <areaDesc>Best Routes</areaDesc>
+                <polygon>38.91655012246089,-77.02016267943407 38.91655012246089,- 77.0117098391165
+                  38.907662564641285,-77.0117098391165 38.907662564641285,-77.02016267943407
+                  38.91655012246089,-77.02016267943407 </polygon>
+              </area>
+            </info>
+          </alert>
+        </EmbeddedXMLContent>
+      </ContentXML>
+    </ContentObject>
+  </Content>
+</EDXLDistribution>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Emergency Data Exchange Language (EDXL) Distribution Element Version 2.0
+     Committee Specification 01
+     11 April 2013
+     Copyright (c) OASIS Open 2013. All Rights Reserved.
+	 Source: http://docs.oasis-open.org/emergency/edxl-de/v2.0/cs01/schema/
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:edxl-gsf="urn:oasis:names:tc:emergency:edxl:gsf:1.0" 
+	xmlns:ct="urn:oasis:names:tc:emergency:edxl:ct:1.0" xmlns="urn:oasis:names:tc:emergency:EDXL:DE:2.0" 
+	xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="urn:oasis:names:tc:emergency:EDXL:DE:2.0" 
+	elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0CD">
+	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="./other-supporting-schema/xlink.xsd"/>
+	<xs:import namespace="urn:oasis:names:tc:emergency:edxl:gsf:1.0" schemaLocation="./other-supporting-schema/EDXLCT_wd05/edxl-gsf.v1.0.xsd"/>
+	<xs:import namespace="urn:oasis:names:tc:emergency:edxl:ct:1.0" schemaLocation="./edxl-de-dvl-v2.0-wd09.xsd"/>
+	<xs:element name="EDXLDistribution" type="DEDistributionType"/>
+	<xs:complexType name="DEDistributionType">
+		<xs:complexContent>
+		 <xs:extension base="DEEnvelopeType">
+				<xs:sequence>
+					<xs:element ref="Descriptor" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="Content" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="Other" type="AnyXMLType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="xlink:extendedAttrs"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DEEnvelopeType">
+		<xs:sequence>
+			<xs:element name="DistributionID" type="ct:EDXLStringType" minOccurs="1"/>
+			<xs:element name="SenderID" type="ct:EDXLStringType" minOccurs="1"/>
+			<xs:element name="DateTimeSent" type="ct:EDXLDateTimeType" minOccurs="1"/>
+			<xs:element name="DateTimeExpires" type="ct:EDXLDateTimeType" minOccurs="1"/>
+			<xs:element name="DistributionStatus" type="DistributionStatusType" minOccurs="1"/>
+			<xs:element name="DistributionKind" type="DistributionType" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Descriptor" type="DEDescriptorType"/>
+	<xs:complexType name="DEDescriptorType">
+		<xs:sequence>
+			<xs:element name="CombinedConfidentiality" type="ConfidentialityType" minOccurs="0"/>
+			<xs:element name="Language" type="xs:language" minOccurs="0"/>
+		  <xs:element name="SenderRole" type="ct:ValueListType" minOccurs="0" maxOccurs="unbounded"/>
+		  <xs:element name="RecipientRole" type="ct:ValueListType" minOccurs="0" maxOccurs="unbounded"/>
+		  <xs:element name="Keyword" type="ct:ValueListType" minOccurs="0" maxOccurs="unbounded"/>
+		  <xs:element name="ExplicitAddress" type="ValueSchemeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="TargetAreas" type="TargetAreasType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Urgency" type="UrgencyType" minOccurs="0"/>
+			<xs:element name="Severity" type="SeverityType" minOccurs="0"/>
+			<xs:element name="Certainty" type="CertaintyType" minOccurs="0"/>
+		  <xs:element name="IncidentID" type="ct:EDXLStringType" minOccurs="0" maxOccurs="unbounded"/>
+		  <xs:element name="IncidentDescription" type="ct:EDXLStringType" minOccurs="0" maxOccurs="unbounded"/>
+		  <xs:element ref="Link" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xlink:resourceAttrs"/>
+	</xs:complexType>
+	<xs:element name="Content" type="DEContentType"/>
+	<xs:complexType name="DEContentType">
+		<xs:sequence>
+			<xs:element ref="ContentObject" minOccurs="1" maxOccurs="unbounded"/>
+		  <xs:element ref="Link" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xlink:resourceAttrs"/>
+	</xs:complexType>
+	<xs:element name="Link" type="DELinkType"/>
+	<xs:complexType name="DELinkType">
+		<xs:attributeGroup ref="xlink:arcAttrs"/>
+	</xs:complexType>
+	<xs:element name="ContentDescriptor" type="DEContentDescriptorType"/>
+	<xs:complexType name="DEContentDescriptorType">
+		<xs:sequence>
+			<xs:element name="ContentDescription" type="ct:EDXLStringType" minOccurs="0" maxOccurs="1"/>
+		  <xs:element name="ContentKeyword" type="ct:ValueListType" minOccurs="0" maxOccurs="unbounded"/>
+		  <xs:element name="OriginatorRole" type="ct:ValueListType" minOccurs="0" maxOccurs="unbounded"/>
+		  <xs:element name="ConsumerRole" type="ct:ValueListType" minOccurs="0" maxOccurs="unbounded"/>
+		  <xs:element name="ContentID" type="ct:EDXLStringType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Confidentiality" type="ConfidentialityType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ContentLanguage" type="xs:language" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ContentObject" type="DEContentObjectType"/>
+	<xs:complexType name="DEContentObjectType">
+		<xs:sequence>
+			<xs:element ref="ContentDescriptor" minOccurs="0" maxOccurs="1"/>
+			<xs:choice minOccurs="1" maxOccurs="1">
+				<xs:element name="ContentXML" type="ContentXmlType"/>
+				<xs:element name="OtherContent" type="OtherContentType"/>
+			</xs:choice>
+			<xs:element name="Other" type="AnyXMLType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xlink:resourceAttrs"/>
+	</xs:complexType>
+	<xs:complexType name="OtherContentType" mixed="false">
+		<xs:sequence>
+			<xs:element name="MimeType" type="ct:EDXLStringType" minOccurs="1"/>
+			<xs:element name="Size" type="xs:integer" minOccurs="0"/>
+			<xs:element name="Digest" type="xs:base64Binary" minOccurs="0"/>
+			<xs:element name="Uri" type="xs:anyURI" minOccurs="0"/>
+			<xs:element name="ContentData" type="xs:base64Binary" minOccurs="0" />		
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContentXmlType" mixed="false">
+		<xs:sequence>
+			<xs:element name="KeyXMLContent" type="AnyXMLType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="EmbeddedXMLContent" type="AnyXMLType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AnyXMLType">
+		<xs:sequence>
+			<xs:any namespace="##other" processContents="lax" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="TargetAreasType">
+		<xs:sequence>
+			<xs:element name="AreaKind" type="AreaKindType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="AreaGrouping" type="AreaGroupingType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="TargetArea" type="TargetAreaType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TargetAreaType">
+			<xs:choice>
+				<xs:element ref="edxl-gsf:EDXLGeoLocation" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="GeoPoliticalLocation" type="ct:EDXLGeoPoliticalLocationType" minOccurs="1" maxOccurs="1"/>
+			</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ValueSchemeType">
+		<xs:sequence>
+			<xs:element name="ExplicitAddressScheme" type="ct:EDXLStringType"/>
+			<xs:element name="ExplicitAddressValue" type="ct:EDXLStringType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+  <xs:complexType name="AreaKindType">
+    <xs:choice>
+      <xs:element name="AreaKindValueList" type="ct:ValueKeyType"/>
+      <xs:element name="AreaKindDefault" type="ct:AreaKindDefaultType"/>
+    </xs:choice>
+  </xs:complexType>
+	<xs:simpleType name="AreaGroupingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Intersection"/>
+			<xs:enumeration value="Union"/>
+			<xs:enumeration value="ExclusiveOr"/>
+			<xs:enumeration value="Complement"/>
+			<xs:enumeration value="OtherGroupingType"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ConfidentialityType">
+		<xs:choice>
+			<xs:element name="ConfidentialityValueList" type="ct:ValueKeyType"/>
+			<xs:element name="ConfidentialityDefault" type="ct:ConfidentialityDefaultType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="CertaintyType">
+		<xs:choice>
+			<xs:element name="CertaintyValueList" type="ct:ValueKeyType"/>
+			<xs:element name="CertaintyDefault" type="ct:CertaintyDefaultType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DistributionType">
+		<xs:choice>
+			<xs:element name="DistributionKindValueList" type="ct:ValueKeyType"/>
+			<xs:element name="DistributionKindDefault" type="ct:DistributionDefaultType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="DistributionStatusType">
+		<xs:choice>
+			<xs:element name="StatusKindValueList" type="ct:ValueKeyType"/>
+			<xs:element name="StatusKindDefault" type="ct:StatusKindDefaultType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="SeverityType">
+		<xs:choice>
+			<xs:element name="SeverityValueList" type="ct:ValueKeyType"/>
+			<xs:element name="SeverityDefault" type="ct:SeverityDefaultType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="UrgencyType">
+		<xs:choice>
+			<xs:element name="UrgencyValueList" type="ct:ValueKeyType"/>
+			<xs:element name="UrgencyDefault" type="ct:UrgencyDefaultType"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

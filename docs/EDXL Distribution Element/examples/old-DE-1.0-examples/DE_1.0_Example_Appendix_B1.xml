@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This DE 1.0 Example is only included for comparison. See DE_2.0_Example_Appendix_B1.xml for this example converted 
+    into the new DE 2.0 format -->
+<!--
+     Emergency Data Exchange Language (EDXL) Distribution Element Version 2.0
+     Committee Specification 01
+     11 April 2013
+     Copyright (c) OASIS Open 2013. All Rights Reserved.
+	 Source: http://docs.oasis-open.org/emergency/edxl-de/v2.0/cs01/examples/
+-->
+<EDXLDistribution xmlns="urn:oasis:names:tc:emergency:EDXL:DE:1.0"> 
+    <distributionID>ieam_e3_2</distributionID> 
+    <senderID>XML2005</senderID> 
+    <dateTimeSent>2005-11-15T16:53:00-05:00</dateTimeSent> 
+    <distributionStatus>Exercise</distributionStatus> 
+    <distributionType>Update</distributionType>
+    <keyword> 
+        <valueListUrn>http://www.niem.gov/EventTypeList</valueListUrn> 
+        <value>Explosion</value>
+    </keyword>
+    <targetArea>
+        <polygon>33.4745,-112.1174 33.4745,-112.0238 33.4238,-112.0238 33.4238,-112.1174 33.4745,- 112.1174 </polygon>
+    </targetArea>
+    <contentObject>
+        <contentDescription>CAP message from DOT advising best alternate Routes </contentDescription>
+        <xmlContent>
+            <embeddedXMLContent>
+                <alert xmlns = "urn:oasis:names:tc:emergency:cap:1.1">
+                    <identifier>Vendor generated</identifier>
+                    <sender>AZ DOT</sender>
+                    <sent>2005-11-15T16:58:00-05:00</sent>
+                    <status>Exercise</status>
+                    <msgType>Update</msgType>
+                    <scope>Public</scope>
+                    <info>
+                        <category>Transport</category>
+                        <event>Traffic Routes</event>
+                        <urgency>Immediate</urgency>
+                        <severity>Moderate</severity>
+                        <certainty>Likely</certainty>
+                        <description>Traffic adjustments ensure clear routes to St. Josephs Hospital
+                            and Phoenix Childrens Hospital on Thomas Rd. </description>
+                        <area>
+                            <areaDesc>Best Routes</areaDesc>
+                            <polygon>38.91655012246089,-77.02016267943407 38.91655012246089,- 77.0117098391165 38.907662564641285,-77.0117098391165 38.907662564641285,-77.02016267943407 38.91655012246089,-77.02016267943407 </polygon>
+                        </area>
+                    </info>
+                </alert>
+            </embeddedXMLContent>
+        </xmlContent>
+    </contentObject>
+</EDXLDistribution>
