@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>edxl-net</id>
+    <version>0.0.1-alpha</version>
+    <title>EDXLNet</title>
+    <authors>Teamnet</authors>
+    <owners>Teamnet</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/TeamnetGroup/cap-net</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A library for creating EDXL messages. Currently the bare minimum of EDXL Distribution Element is implemented</description>
+    <releaseNotes>First version</releaseNotes>
+    <copyright>Copyright © 2015 Teamnet Group</copyright>
+    <tags>EDXL EDXL-DE</tags>
+  </metadata>
+</package>

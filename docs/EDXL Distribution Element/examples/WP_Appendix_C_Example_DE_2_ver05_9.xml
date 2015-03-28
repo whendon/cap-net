@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Emergency Data Exchange Language (EDXL) Distribution Element Version 2.0
+     Committee Specification 01
+     11 April 2013
+     Copyright (c) OASIS Open 2013. All Rights Reserved.
+	 Source: http://docs.oasis-open.org/emergency/edxl-de/v2.0/cs01/examples/
+-->
+<EDXLDistribution   xlink:type="extended" xsi:schemaLocation="urn:oasis:names:tc:emergency:EDXL:DE:2.0 ../schema/edxl-de-v2.0-wd09.xsd" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="urn:oasis:names:tc:emergency:EDXL:DE:2.0"
+  xmlns:de="urn:oasis:names:tc:emergency:EDXL:DE:2.0"
+  xmlns:edxl-gsf="urn:oasis:names:tc:emergency:edxl:gsf:1.0"
+  xmlns:ct="urn:oasis:names:tc:emergency:edxl:ct:1.0"
+  xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <DistributionID>http://myhost.com/packages/17</DistributionID>
+  <SenderID>mary.thompson@myagency.gov</SenderID>
+  <DateTimeSent>2009-11-15T16:53:00-05:00</DateTimeSent>
+  <DateTimeExpires>2009-11-15T17:53:00-05:00</DateTimeExpires>
+  <DistributionStatus>
+    <StatusKindValueList>
+      <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:StatusType</ct:ValueListURI>
+      <ct:Value>Exercise</ct:Value>
+    </StatusKindValueList>
+   </DistributionStatus>
+  <DistributionKind>
+    <DistributionKindDefault>
+    <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:DistributionType</ct:ValueListURI>
+    <ct:Value>Report</ct:Value>
+    </DistributionKindDefault>
+  </DistributionKind>
+  
+  <Descriptor xlink:type="resource">
+    <CombinedConfidentiality>
+      <ConfidentialityDefault>
+        <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:ConfidentialityType</ct:ValueListURI>
+        <ct:Value>Unclassified</ct:Value>
+      </ConfidentialityDefault>
+    </CombinedConfidentiality>
+    <Language>EN</Language>
+    <RecipientRole>
+      <ct:ValueListURI>urn:myagency:gov:sensors:recipientRole</ct:ValueListURI>
+      <ct:Value>Situational Awareness Apps</ct:Value>
+      <ct:Value>Warning Devices</ct:Value>
+    </RecipientRole>
+    <Keyword>
+      <ct:ValueListURI>urn:myagency:gov:sensors:keywords</ct:ValueListURI>
+      <ct:Value>SNM Detection</ct:Value>
+      <ct:Value>XYZ</ct:Value>
+    </Keyword>
+    <TargetAreas>
+      <AreaKind>
+        <AreaKindDefault>
+          <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:AreaKindType</ct:ValueListURI>
+          <ct:Value>SourceTargetArea</ct:Value>
+        </AreaKindDefault>
+      </AreaKind>
+      <AreaGrouping>Union</AreaGrouping>
+      <TargetArea>
+        <edxl-gsf:EDXLGeoLocation>
+          <gml:Polygon gml:id="myPolygon">
+            <gml:exterior>
+              <gml:LinearRing>
+                <gml:pos>33.4745 -112.1174</gml:pos>
+                <gml:pos>33.4238 -112.0238</gml:pos>
+                <gml:pos>33.4238 -112.1174</gml:pos>
+                <gml:pos>33.4745 -112.1174</gml:pos>
+              </gml:LinearRing>     
+            </gml:exterior>
+          </gml:Polygon>
+        </edxl-gsf:EDXLGeoLocation>
+      </TargetArea>
+    </TargetAreas>
+    <Urgency>
+      <UrgencyValueList>
+        <ct:ValueListURI>urn:myorg:names:emergency:defaults:severity</ct:ValueListURI>
+        <ct:Value>Low</ct:Value>
+      </UrgencyValueList>
+    </Urgency>
+    <Severity>
+      <SeverityDefault>
+        <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:Severity</ct:ValueListURI>
+        <ct:Value>Minor</ct:Value>
+      </SeverityDefault>
+    </Severity>
+    <Certainty>
+      <CertaintyDefault>
+        <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:Certainty</ct:ValueListURI>
+        <ct:Value>Observed</ct:Value>
+      </CertaintyDefault>
+    </Certainty>
+ 
+  </Descriptor>
+  
+  <Content xlink:type="resource">
+    <ContentObject xlink:type="resource" xlink:role="http://www.oasis.org/roles/de/hospitalStatus" 
+      xlink:title="Hosptial Status" xlink:label="contentObject_1">
+    <ContentXML>
+      <EmbeddedXMLContent>
+
+<have:HospitalStatus xsi:schemaLocation="urn:oasis:names:tc:emergency:EDXL:HAVE:1.0 ./example-supporting-schema/edxl-have.xsd" 
+  xmlns="urn:oasis:names:tc:emergency:EDXL:HAVE:1.0"
+xmlns:n3="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xal="urn:oasis:names:tc:emergency:edxl:ciq:1.0:xal"
+xmlns:xnl="urn:oasis:names:tc:emergency:edxl:ciq:1.0:xnl"
+xmlns:xpil="urn:oasis:names:tc:emergency:edxl:ciq:1.0:xpil"
+    xmlns:have="urn:oasis:names:tc:emergency:EDXL:HAVE:1.0">
+
+<have:Hospital>
+
+<have:Organization>
+<have:OrganizationInformation>
+<xnl:OrganisationName>
+<xnl:NameElement>ABC Hospital</xnl:NameElement>
+</xnl:OrganisationName>
+
+<xpil:Addresses>
+<xpil:Address>
+<xal:FreeTextAddress>
+<xal:AddressLine>
+P O Box 455, Billerica, MA 0182, USA
+</xal:AddressLine>
+</xal:FreeTextAddress>
+</xpil:Address>
+</xpil:Addresses>
+<xpil:OrganisationInfo xpil:Type="Hospital"
+        xpil:OperatingHourStartTime="09:00:00.0Z"
+        xpil:OperatingHourEndTime="18:00:00.0Z"/>
+</have:OrganizationInformation>
+<have:OrganizationGeoLocation>
+<gml:Point>
+<gml:pos>33.3 -118.25</gml:pos>
+</gml:Point>
+</have:OrganizationGeoLocation>
+</have:Organization>
+
+
+<have:EmergencyDepartmentStatus>
+<have:EMSTraffic>
+<have:EMSTrafficStatus>Normal</have:EMSTrafficStatus>
+</have:EMSTraffic>
+<have:EMSCapacity>
+<have:TriageCodeListURN>oasis:names:tc:emergency:have:1.0:triagecolorcode
+</have:TriageCodeListURN>
+<have:TriageCode>
+<have:TriageCodeValue>Red</have:TriageCodeValue>
+<have:TriageCountQuantity>20</have:TriageCountQuantity>
+</have:TriageCode>
+<have:TriageCode>
+<have:TriageCodeValue>Yellow</have:TriageCodeValue>
+<have:TriageCountQuantity>30</have:TriageCountQuantity>
+</have:TriageCode>
+<have:TriageCode>
+<have:TriageCodeValue>Green</have:TriageCodeValue>
+<have:TriageCountQuantity>40</have:TriageCountQuantity>
+</have:TriageCode>
+<have:TriageCode>
+<have:TriageCodeValue>Black</have:TriageCodeValue>
+<have:TriageCountQuantity>10</have:TriageCountQuantity>
+</have:TriageCode>
+</have:EMSCapacity>
+<have:EMSAmbulanceStatus>
+<have:EMSOffloadStatus>Normal</have:EMSOffloadStatus>
+<have:EMSOffloadMinutes>20</have:EMSOffloadMinutes>
+</have:EMSAmbulanceStatus>
+</have:EmergencyDepartmentStatus>
+
+<have:HospitalBedCapacityStatus>
+<have:BedCapacity>
+<have:BedType>AdultICU</have:BedType>
+<have:Capacity>
+<have:CapacityStatus>Vacant/Available</have:CapacityStatus>
+<have:AvailableCount>40</have:AvailableCount>
+<have:BaselineCount>60</have:BaselineCount>
+</have:Capacity>
+</have:BedCapacity>
+
+<have:BedCapacity>
+<have:BedType>Burn</have:BedType>
+<have:Capacity>
+<have:CapacityStatus>Vacant/Available</have:CapacityStatus>
+<have:AvailableCount>30</have:AvailableCount>
+<have:BaselineCount>50</have:BaselineCount>
+</have:Capacity>
+</have:BedCapacity>
+
+<have:BedCapacity>
+<have:BedType>MedicalSurgical</have:BedType>
+<have:Capacity>
+<have:CapacityStatus>Vacant/Available</have:CapacityStatus>
+<have:AvailableCount>20</have:AvailableCount>
+<have:BaselineCount>30</have:BaselineCount>
+</have:Capacity>
+</have:BedCapacity>
+</have:HospitalBedCapacityStatus>
+
+
+<have:ServiceCoverageStatus>
+<have:Burn>true</have:Burn>
+
+<have:CardiologyIndicator>
+<have:Cardiology>true</have:Cardiology>
+</have:CardiologyIndicator>
+
+<have:Dialysis>true</have:Dialysis>
+<have:EmergencyDepartment>true</have:EmergencyDepartment>
+<have:HyperbaricChamber>false</have:HyperbaricChamber>
+<have:InfectiousDisease>false</have:InfectiousDisease>
+<have:Neonatology>true</have:Neonatology>
+
+<have:NeurologyIndicator>
+<have:Neurology>true</have:Neurology>
+</have:NeurologyIndicator>
+<have:OBGYNIndicator>
+<have:OBGYN>true</have:OBGYN>
+</have:OBGYNIndicator>
+
+<have:Ophthalmology>true</have:Ophthalmology>
+<have:Orthopedic>true</have:Orthopedic>
+<have:Pediatrics>true</have:Pediatrics>
+
+<have:PsychiatricIndicator>
+<have:Psychiatric>true</have:Psychiatric>
+</have:PsychiatricIndicator>
+
+<have:SurgeryIndicator>
+<have:SurgerySubType>
+<have:AdultGeneralSurgery>true</have:AdultGeneralSurgery>
+<have:CardioThoracic>true</have:CardioThoracic>
+</have:SurgerySubType>
+</have:SurgeryIndicator>
+
+<have:TransportServicesIndicator>
+<have:TransportServices>true</have:TransportServices>
+</have:TransportServicesIndicator>
+
+<have:TraumaCenterServicesIndicator>
+<have:TraumaCenterServices>true</have:TraumaCenterServices>
+<have:TraumaCenterServicesLevel>Level2</have:TraumaCenterServicesLevel>
+</have:TraumaCenterServicesIndicator>
+</have:ServiceCoverageStatus>
+
+
+<have:HospitalFacilityStatus>
+<have:ClinicalStatus>Normal</have:ClinicalStatus>
+<have:FacilityStatus>Normal</have:FacilityStatus>
+<have:SecurityStatus>Normal</have:SecurityStatus>
+</have:HospitalFacilityStatus>
+
+
+<have:HospitalResourcesStatus>
+<have:Staffing>Adequate</have:Staffing>
+<have:FacilityOperations>Adequate</have:FacilityOperations>
+<have:ClinicalOperations>Adequate</have:ClinicalOperations>
+<have:ResourcesInformationText>
+20 ventilators are available
+</have:ResourcesInformationText>
+<have:ResourcesInformationText>
+Atropine - 20 caches are available
+</have:ResourcesInformationText>
+</have:HospitalResourcesStatus>
+
+
+<have:LastUpdateTime>2001-12-17T09:30:47Z</have:LastUpdateTime>
+
+
+</have:Hospital>
+</have:HospitalStatus>
+       </EmbeddedXMLContent>
+    </ContentXML>
+  </ContentObject>
+    <ContentObject  xlink:type="resource" xlink:role="http://www.oasis.org/roles/de/image" 
+      xlink:title="Image" xlink:label="contentObject_2">
+      <ContentDescriptor>
+        <ContentDescription>Photo image from Sensor: RADDET-01, Site: Golden Gate Bridge, having a
+        Detection class of SNM</ContentDescription>
+        <ContentKeyword>
+          <ct:ValueListURI>urn:sandia:gov:sensor:detection.event.id</ct:ValueListURI>
+          <ct:Value>10.2.2.1:2005-08-07T18:00:00Z</ct:Value>
+        </ContentKeyword>
+        <Confidentiality>
+          <ConfidentialityDefault>
+            <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:ConfidentialityType</ct:ValueListURI>
+            <ct:Value>Unclassified</ct:Value>
+          </ConfidentialityDefault>
+        </Confidentiality>
+      </ContentDescriptor>
+      <OtherContent>
+        <MimeType>image/jpeg</MimeType>
+        <Uri>http://sentry/photoCapture/10.2.2.1:2005-08-07T18:00:00Z</Uri>
+      </OtherContent>
+      <Other>
+        <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+          <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+            <Reference>
+              <Transforms>
+                <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"
+                />
+              </Transforms>
+              <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+              <DigestValue>io7Katgoo77YNfQYdZMB8taoeKg=</DigestValue>
+            </Reference>
+          </SignedInfo>
+          <SignatureValue>AjQXGgp9h5TC2D+bh9w59sbmtUpgE/IeZVdDQM+zi58XT2RPb7OXAAABni78WduA
+            uP6nxL6k+BBo4G+TgaqWvCQIqdlDO+qyMnM0ExPui5eg00jstbwiSeYxSt2VQqS2
+            RD2vR811at0XwIkMpugSftKNJBZgB9mhRqQgP+E0nDJJPNYDz0bLJjp0J/EDxn4H
+            6qx6GpDKgDc//53jVhOb4zZPIERsTLjPxpOOnBK31cs5Rf6vU9MyOOBTHZgpvoza
+            muhejW1CIJfYjd/OoKQ9Hiv4MCX4v/dX7n6ePHZaDxNeCccDIjoVYrAHEWxQ9hE6
+            rqriugNLZ3Lh8sUzhZLTyg==</SignatureValue>
+          <KeyInfo>
+            <KeyName>rsakey.pem</KeyName>
+          </KeyInfo>
+        </Signature>
+      </Other>
+    </ContentObject>
+    <de:Link  xlink:type="arc" xlink:from="contentObject_2" xlink:to="contentObject_1" xlink:arcrole="http://www.oasis.org/de/arcroles/isImageOf" xlink:title="is Image of"/>
+    
+    </Content>
+</EDXLDistribution>

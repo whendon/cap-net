@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Emergency Data Exchange Language (EDXL) Distribution Element Version 2.0
+     Committee Specification 01
+     11 April 2013
+     Copyright (c) OASIS Open 2013. All Rights Reserved.
+	 Source: http://docs.oasis-open.org/emergency/edxl-de/v2.0/cs01/schema/
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="urn:oasis:names:tc:emergency:edxl:ct:1.0" 
+  targetNamespace="urn:oasis:names:tc:emergency:edxl:ct:1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="./other-supporting-schema/EDXLCT_wd05/edxl-ct-v1.0-wd05.xsd"/>
+	<!--Default ValueLists-->
+  <!-- *************** AREA KIND ******************* -->
+  <xs:simpleType name="AreaKindTypeDefaultURI">
+    <xs:restriction base="ct:ValueListURIType">
+      <xs:enumeration value="urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:AreaKindType"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AreaKindTypeDefaultValues">
+    <xs:restriction base="ct:ValueType">
+      <xs:enumeration value="SourceTargetArea"/>
+      <xs:enumeration value="DistributionTargetArea"/>
+      <xs:enumeration value="OtherTargetArea"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AreaKindDefaultType">
+    <xs:complexContent>
+      <xs:restriction base="ct:ValueKeyType">
+        <xs:sequence maxOccurs="1">
+          <xs:element name="ValueListURI" type="ct:AreaKindTypeDefaultURI"/>
+          <xs:element name="Value" type="ct:AreaKindTypeDefaultValues"/>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  
+	<!-- *************** DISTRIBUTION TYPE ******************* -->
+	<xs:simpleType name="DisTypeDefaultURI">
+		<xs:restriction base="ct:ValueListURIType">
+			<xs:enumeration value="urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:DistributionType"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DistTypeDefaultValues">
+		<xs:restriction base="ct:ValueType">
+			<xs:enumeration value="Report"/>
+			<xs:enumeration value="Update"/>
+			<xs:enumeration value="Cancel"/>
+			<xs:enumeration value="Request"/>
+			<xs:enumeration value="Response"/>
+			<xs:enumeration value="Dispatch"/>
+			<xs:enumeration value="Ack"/>
+			<xs:enumeration value="Error"/>
+			<xs:enumeration value="SensorConfiguration"/>
+			<xs:enumeration value="SensorControl"/>
+			<xs:enumeration value="SensorStatus"/>
+			<xs:enumeration value="SensorDetection"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="DistributionDefaultType">
+		<xs:complexContent>
+			<xs:restriction base="ct:ValueKeyType">
+				<xs:sequence maxOccurs="1">
+					<xs:element name="ValueListURI" type="ct:DisTypeDefaultURI"/>
+					<xs:element name="Value" type="ct:DistTypeDefaultValues"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- *************** CONFIDENTIALITY ******************* -->
+	<xs:simpleType name="ConfidentialityTypeDefaultURI">
+		<xs:restriction base="ct:ValueListURIType">
+			<xs:enumeration value="urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:ConfidentialityType"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ConfidentialityTypeDefaultValues">
+		<xs:restriction base="ct:ValueType">
+			<xs:enumeration value="Unclassified"/>
+			<xs:enumeration value="Classified"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ConfidentialityDefaultType">
+		<xs:complexContent>
+			<xs:restriction base="ct:ValueKeyType">
+				<xs:sequence maxOccurs="1">
+					<xs:element name="ValueListURI" type="ct:ConfidentialityTypeDefaultURI"/>
+					<xs:element name="Value" type="ct:ConfidentialityTypeDefaultValues"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- *************** STATUS ******************* -->
+	<xs:simpleType name="StatusKindDefaultURI">
+		<xs:restriction base="ct:ValueListURIType">
+			<xs:enumeration value="urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:StatusKind"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StatusKindDefaultValues">
+		<xs:restriction base="ct:ValueType">
+			<xs:enumeration value="Actual"/>
+			<xs:enumeration value="Exercise"/>
+			<xs:enumeration value="System"/>
+			<xs:enumeration value="Test"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="StatusKindDefaultType">
+		<xs:complexContent>
+			<xs:restriction base="ct:ValueKeyType">
+				<xs:sequence maxOccurs="1">
+					<xs:element name="ValueListURI" type="ct:StatusKindDefaultURI"/>
+					<xs:element name="Value" type="ct:StatusKindDefaultValues"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- *************** CERTAINTY ******************* -->
+	<xs:simpleType name="CertaintyTypeDefaultURI">
+		<xs:restriction base="ct:ValueListURIType">
+			<xs:enumeration value="urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:Certainty"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CertaintyTypeDefaultValues">
+		<xs:restriction base="ct:ValueType">
+			<xs:enumeration value="Observed"/>
+			<xs:enumeration value="Likely"/>
+			<xs:enumeration value="Possible"/>
+			<xs:enumeration value="Unlikely"/>
+			<xs:enumeration value="Unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CertaintyDefaultType">
+		<xs:complexContent>
+			<xs:restriction base="ct:ValueKeyType">
+				<xs:sequence maxOccurs="1">
+					<xs:element name="ValueListURI" type="ct:CertaintyTypeDefaultURI"/>
+					<xs:element name="Value" type="ct:CertaintyTypeDefaultValues"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- *************** SEVERITY ******************* -->
+	<xs:simpleType name="SeverityTypeDefaultURI">
+		<xs:restriction base="ct:ValueListURIType">
+			<xs:enumeration value="urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:Severity"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SeverityTypeDefaultValues">
+		<xs:restriction base="ct:ValueType">
+			<xs:enumeration value="Extreme"/>
+			<xs:enumeration value="Severe"/>
+			<xs:enumeration value="Moderate"/>
+			<xs:enumeration value="Minor"/>
+			<xs:enumeration value="Unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="SeverityDefaultType">
+		<xs:complexContent>
+			<xs:restriction base="ct:ValueKeyType">
+				<xs:sequence maxOccurs="1">
+					<xs:element name="ValueListURI" type="ct:SeverityTypeDefaultURI"/>
+					<xs:element name="Value" type="ct:SeverityTypeDefaultValues"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- *************** URGENCY ******************* -->
+	<xs:simpleType name="UrgencyTypeDefaultURI">
+		<xs:restriction base="ct:ValueListURIType">
+			<xs:enumeration value="urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:Urgency"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UrgencyTypeDefaultValues">
+		<xs:restriction base="ct:ValueType">
+			<xs:enumeration value="Immediate"/>
+			<xs:enumeration value="Expected"/>
+			<xs:enumeration value="Future"/>
+			<xs:enumeration value="Past"/>
+			<xs:enumeration value="Unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="UrgencyDefaultType">
+		<xs:complexContent>
+			<xs:restriction base="ct:ValueKeyType">
+				<xs:sequence maxOccurs="1">
+					<xs:element name="ValueListURI" type="ct:UrgencyTypeDefaultURI"/>
+					<xs:element name="Value" type="ct:UrgencyTypeDefaultValues"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--/Default ValueLists-->
+</xs:schema>
