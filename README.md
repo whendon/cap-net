@@ -11,10 +11,7 @@ More information on CAP can be found here: http://docs.oasis-open.org/emergency/
 Usage
 --
 
-The following frameworks/libraries are required to build and test CAPNet:
-
-* .NET Framework 4.0
-* xUnit 1.9
+    Install-Package cap-net
 
 Versioning
 --
