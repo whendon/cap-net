@@ -25,6 +25,13 @@ namespace EDXLNet.Tests
                         Value = StatusKindDefaultValues.Test
                     }
                 },
+                DistributionKind = new DistributionKind
+                {
+                    DistributionKindDefault = new DistributionKindDefault
+                    {
+                        Value = DistTypeDefaultValues.Report
+                    }
+                },
                 Content = new Content()
             };
             edxlDistribution.Content.ContentObjects.Add(new ContentObject
@@ -56,7 +63,12 @@ namespace EDXLNet.Tests
       <ct:Value>Test</ct:Value>
     </StatusKindDefault>
   </DistributionStatus>
-  <DistributionKind />
+  <DistributionKind>
+    <DistributionKindDefault>
+      <ct:ValueListURI>urn:oasis:names:tc:emergency:EDXL:DE:2.0:Defaults:DistributionType</ct:ValueListURI>
+      <ct:Value>Report</ct:Value>
+    </DistributionKindDefault>
+  </DistributionKind>
   <Content>
     <ContentObject>
       <ContentXML>

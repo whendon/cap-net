@@ -52,7 +52,16 @@ namespace EDXLNet
 
         private static XElement ToXElement(this DistributionKind distributionKind)
         {
-            return new XElement(EdxlDe20Namespace + "DistributionKind");
+            return new XElement(EdxlDe20Namespace + "DistributionKind",
+                distributionKind.DistributionKindDefault.ToXElement());
+        }
+
+        private static XElement ToXElement(this DistributionKindDefault distributionKindDefault)
+        {
+            return new XElement(EdxlDe20Namespace + "DistributionKindDefault",
+                new XElement(EdxlCt10Namespace + "ValueListURI",
+                    distributionKindDefault.ValueListUri),
+                new XElement(EdxlCt10Namespace + "Value", distributionKindDefault.Value));
         }
 
         private static XElement ToXElement(this Content content)

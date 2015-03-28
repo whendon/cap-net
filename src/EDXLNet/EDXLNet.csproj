@@ -41,7 +41,9 @@
     <Compile Include="Models\ContentObject.cs" />
     <Compile Include="Models\ContentXml.cs" />
     <Compile Include="Models\DistributionKind.cs" />
+    <Compile Include="Models\DistributionKindDefault.cs" />
     <Compile Include="Models\DistributionStatus.cs" />
+    <Compile Include="Models\DistTypeDefaultValues.cs" />
     <Compile Include="Models\EdxlDistribution.cs" />
     <Compile Include="Models\StatusKindDefault.cs" />
     <Compile Include="Models\StatusKindDefaultValues.cs" />
