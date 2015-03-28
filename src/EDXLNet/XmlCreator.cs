@@ -20,7 +20,7 @@ namespace EDXLNet
         public static XElement ToXElement(this EdxlDistribution edxlDistribution)
         {
             var result = new XElement(EdxlDe20Namespace + "EDXLDistribution",
-                new XAttribute(XNamespace.Xmlns + "ct", EdxlCt10Namespace.ToString()),
+                new XAttribute(XNamespace.Xmlns + "ct", EdxlCt10Namespace),
                 new XElement(EdxlDe20Namespace + "DistributionID", edxlDistribution.DistributionId),
                 new XElement(EdxlDe20Namespace + "SenderID", edxlDistribution.SenderId),
                 new XElement(EdxlDe20Namespace + "DateTimeSent", StripMiliseconds(edxlDistribution.DateTimeSent)),

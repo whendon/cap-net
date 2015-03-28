@@ -43,6 +43,8 @@
     <Compile Include="Models\DistributionKind.cs" />
     <Compile Include="Models\DistributionStatus.cs" />
     <Compile Include="Models\EdxlDistribution.cs" />
+    <Compile Include="Models\StatusKindDefault.cs" />
+    <Compile Include="Models\StatusKindDefaultValues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlCreator.cs" />
   </ItemGroup>
