@@ -1,7 +1,5 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/kvnwx7gjk77d3nbl)](https://ci.appveyor.com/project/vgrigoriu/cap-net)
 
-**NOTE: CAPNet is currently in the early stages of development. Proceed with caution.**
-
 CAPNet
 ==
 
