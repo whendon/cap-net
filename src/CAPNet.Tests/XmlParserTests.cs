@@ -493,7 +493,7 @@ namespace CAPNet.Tests
             //  <identifier></identifier>
             Assert.Equal("", alert.Identifier);
             //  <sender></sender>
-            Assert.Equal("\nw-nws.webmaster@noaa.gov\n", alert.Sender);
+            Assert.Equal("w-nws.webmaster@noaa.gov", alert.Sender);
             //  <sent>2015-05-25T04:59:55+00:00</sent>
             Assert.Equal(new DateTimeOffset(2015, 5, 25, 4, 59, 55, TimeSpan.FromHours(0)), alert.Sent);
             //  <status>Actual</status>

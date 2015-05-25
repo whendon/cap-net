@@ -144,7 +144,9 @@ namespace CAPNet
             var senderNode = alertElement.Element(capNamespace + "sender");
             if (senderNode != null)
             {
-                alert.Sender = senderNode.Value;
+                // the standard says: "MUST NOT include spaces, commas or 
+                // restricted characters (< and &)", so we trim it
+                alert.Sender = senderNode.Value.Trim();
             }
 
             var identifierNode = alertElement.Element(capNamespace + "identifier");
