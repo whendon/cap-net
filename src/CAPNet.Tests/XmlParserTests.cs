@@ -482,5 +482,69 @@ namespace CAPNet.Tests
             //  </info>
             //</alert>
         }
+
+        [Fact]
+        public void ExpiredAlertExampleIsParsedCorrectly()
+        {
+            var alert = XmlParser.Parse(Xml.ExpiredAlertXml).First();
+            //<?xml version="1.0" encoding="utf-8"?>
+            //<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+            Assert.NotNull(alert);
+            //  <identifier></identifier>
+            Assert.Equal("", alert.Identifier);
+            //  <sender></sender>
+            Assert.Equal("\nw-nws.webmaster@noaa.gov\n", alert.Sender);
+            //  <sent>2015-05-25T04:59:55+00:00</sent>
+            Assert.Equal(new DateTimeOffset(2015, 5, 25, 4, 59, 55, TimeSpan.FromHours(0)), alert.Sent);
+            //  <status>Actual</status>
+            Assert.Equal(Status.Actual, alert.Status);
+            //  <msgType>Alert</msgType>
+            Assert.Equal(MessageType.Alert, alert.MessageType);
+            //  <scope>Public</scope>
+            Assert.Equal(Scope.Public, alert.Scope);
+            //  <info>
+            Assert.Equal(1, alert.Info.Count);
+            var info = alert.Info.ElementAt(0);
+            //    <category>Met</category>
+            Assert.Equal(1, info.Categories.Count);
+            Assert.Contains(Category.Met, info.Categories);
+            //    <event></event>
+            Assert.Equal("", info.Event);
+            //    <urgency></urgency>
+            Assert.Equal(Urgency.Unknown, info.Urgency);
+            //    <severity></severity>
+            Assert.Equal(Severity.Unknown, info.Severity);
+            //    <certainty></certainty>
+            Assert.Equal(Certainty.Unknown, info.Certainty);
+            //    <senderName></senderName>
+            Assert.Equal("", info.SenderName);
+            //    <headline></headline>
+            Assert.Equal("", info.Headline);
+            //    <description>This alert has expired</description>
+            Assert.Equal("\nThis alert has expired\n", info.Description);
+            //    <instruction></instruction>
+            Assert.Null(info.Instruction);
+            //    <web></web>
+            Assert.Null(info.Web);
+            //    <parameter>
+            Assert.Equal(5, info.Parameters.Count);
+            var parameter = info.Parameters.First();
+            //      <valueName>SAME</valueName>
+            Assert.Equal("\nSAME\n", parameter.ValueName);
+            //      <value></value>
+            Assert.Equal("", parameter.Value);
+            //    </parameter>
+            //    <resource>
+            Assert.Equal(0, info.Resources.Count);
+            //    </resource>
+            //    <area>
+            Assert.Equal(1, info.Areas.Count);
+            var area = info.Areas.First();
+            //      <areaDesc></areaDesc>
+            Assert.Equal("", area.Description);
+            //    </area>
+            //  </info>
+            //</alert>
+        }
     }
 }

@@ -194,13 +194,24 @@ namespace CAPNet
             var urgencyNode = infoElement.Element(capNamespace + "urgency");
             if (urgencyNode != null)
             {
-                info.Urgency = EnumParse<Urgency>(urgencyNode.Value);
+                if (string.IsNullOrWhiteSpace(urgencyNode.Value))
+                {
+                    info.Urgency = Urgency.Unknown;
+                }
+                else
+                {
+                    info.Urgency = EnumParse<Urgency>(urgencyNode.Value);
+                }
             }
 
             var certaintyNode = infoElement.Element(capNamespace + "certainty");
             if (certaintyNode != null)
             {
-                if (certaintyNode.Value == "Very Likely")
+                if (string.IsNullOrWhiteSpace(certaintyNode.Value))
+                {
+                    info.Certainty = Certainty.Unknown;
+                }
+                else if (certaintyNode.Value == "Very Likely")
                 {
                     info.Certainty = Certainty.Likely;
                 }
@@ -234,7 +245,14 @@ namespace CAPNet
             var severityNode = infoElement.Element(capNamespace + "severity");
             if (severityNode != null)
             {
-                info.Severity = EnumParse<Severity>(severityNode.Value);
+                if (string.IsNullOrWhiteSpace(severityNode.Value))
+                {
+                    info.Severity = Severity.Unknown;
+                }
+                else
+                {
+                    info.Severity = EnumParse<Severity>(severityNode.Value);
+                }
             }
 
             var onsetNode = infoElement.Element(capNamespace + "onset");
