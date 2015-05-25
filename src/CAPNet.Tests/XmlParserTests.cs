@@ -490,8 +490,10 @@ namespace CAPNet.Tests
             //<?xml version="1.0" encoding="utf-8"?>
             //<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
             Assert.NotNull(alert);
-            //  <identifier></identifier>
-            Assert.Equal("", alert.Identifier);
+            //  <identifier>NOAA-NWS-ALERTS-MS1253A8E3B1C0.SevereWeatherStatement.1253A8E3C354MS.MOBSVSMOB.e3f91f7ee21c093b9f77b6573d666b47</identifier>
+            Assert.Equal(
+                "NOAA-NWS-ALERTS-MS1253A8E3B1C0.SevereWeatherStatement.1253A8E3C354MS.MOBSVSMOB.e3f91f7ee21c093b9f77b6573d666b47",
+                alert.Identifier);
             //  <sender></sender>
             Assert.Equal("w-nws.webmaster@noaa.gov", alert.Sender);
             //  <sent>2015-05-25T04:59:55+00:00</sent>

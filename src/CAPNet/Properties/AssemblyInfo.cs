@@ -6,6 +6,6 @@
 [assembly: AssemblyCopyright("Copyright © 2015 Matt Chandler and contributors")]
 
 [assembly: AssemblyCompany("Teamnet")]
-[assembly: AssemblyVersion("1.0.2.0")]
-[assembly: AssemblyFileVersion("1.0.2.0")]
-[assembly: AssemblyInformationalVersion("1.0.2-beta")]
+[assembly: AssemblyVersion("1.0.3.0")]
+[assembly: AssemblyFileVersion("1.0.3.0")]
+[assembly: AssemblyInformationalVersion("1.0.3-beta")]

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>cap-net</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>CAPNet</title>
     <authors>Matt Chandler, Teamnet</authors>
     <owners>Teamnet</owners>
@@ -10,7 +10,7 @@
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A Common Alerting Protocol serialization library for the .NET framework.</description>
-    <releaseNotes>Handle empty urgency, severity and certainty when parsing.</releaseNotes>
+    <releaseNotes>Trim identifier and sender.</releaseNotes>
     <tags>CAP</tags>
   </metadata>
 </package>

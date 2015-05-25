@@ -152,7 +152,9 @@ namespace CAPNet
             var identifierNode = alertElement.Element(capNamespace + "identifier");
             if (identifierNode != null)
             {
-                alert.Identifier = identifierNode.Value;
+                // the standard says: "MUST NOT include spaces, commas or 
+                // restricted characters (< and &)", so we trim it
+                alert.Identifier = identifierNode.Value.Trim();
             }
 
             return alert;
