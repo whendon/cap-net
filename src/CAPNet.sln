@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAPNet", "CAPNet\CAPNet.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7AD66BB8-9A97-4EEE-99D9-FA283DA9F159}"
 	ProjectSection(SolutionItems) = preProject
+		CAPNet\CAPNet.nuspec = CAPNet\CAPNet.nuspec
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
