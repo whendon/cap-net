@@ -49,15 +49,14 @@ namespace CAPNet
         {
             try
             {
-                var cultureInfo = new CultureInfo(Entity.Language);
+                var resultingLanguage = new CultureInfo(Entity.Language).Name;
+                return resultingLanguage.Equals(Entity.Language, StringComparison.OrdinalIgnoreCase);
             }
-            catch
+            catch (CultureNotFoundException)
             {
                 // if the exception is caught , it means that the Language is not valid
                 return false;
             }
-            //if the exception was not caught , everything is ok
-            return true;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace CAPNet
             get
             {
                 // if Status is Exercise or MessageType Error , Note should be not null or not empty in order the overall condition is true;  
-                var statusIsNotExercise = Entity.Status != Status.Excercise;
+                var statusIsNotExercise = Entity.Status != Status.Exercise;
                 var messageTypeIsNotError = Entity.MessageType != MessageType.Error;
 
                 if (statusIsNotExercise && messageTypeIsNotError) return true;

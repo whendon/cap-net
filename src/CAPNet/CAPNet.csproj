@@ -27,6 +27,8 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\CAPNet.XML</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,7 +54,7 @@
     <Compile Include="Validator\Alert\AddressesRequiredWhenScopePrivateValidator.cs" />
     <Compile Include="Validator\Alert\Area\AreaDescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Area\AreaValidator.cs" />
-    <Compile Include="Validator\Alert\Area\CeilingExistanceValidator.cs" />
+    <Compile Include="Validator\Alert\Area\CeilingExistenceValidator.cs" />
     <Compile Include="Validator\Alert\Area\CirclesValidator.cs" />
     <Compile Include="Validator\Alert\Area\CircleValidator.cs" />
     <Compile Include="Validator\Alert\Area\GeoCodesValidator.cs" />
@@ -104,7 +106,7 @@
     <Compile Include="Validator\Alert\StatusRequiredValidator.cs" />
     <Compile Include="Validator\Alert\WGS84Validator.cs" />
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
-    <Compile Include="Validator\Errors\CeilingExistanceError.cs" />
+    <Compile Include="Validator\Errors\CeilingExistenceError.cs" />
     <Compile Include="Validator\Errors\DigestError.cs" />
     <Compile Include="Validator\Errors\EventCodeError.cs" />
     <Compile Include="Validator\Errors\GeoCodeError.cs" />

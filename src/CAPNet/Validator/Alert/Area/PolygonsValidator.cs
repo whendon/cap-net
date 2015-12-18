@@ -46,7 +46,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="polygon"></param>
         /// <returns></returns>
-        private IEnumerable<Error> GetErrors(Polygon polygon)
+        private static IEnumerable<Error> GetErrors(Polygon polygon)
         {
             var polygonValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
                                     where typeof(IValidator<Polygon>).IsAssignableFrom(type)

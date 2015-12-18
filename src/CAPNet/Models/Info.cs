@@ -41,7 +41,7 @@ namespace CAPNet.Models
         /// <summary>
         /// 
         /// </summary>
-        public readonly string DefaultLanguage = "en-US";
+        public const string DefaultLanguage = "en-US";
 
         /// <summary>
         /// 

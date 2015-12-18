@@ -46,7 +46,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public IEnumerable<Error> GetErrors(Parameter parameter)
+        private static IEnumerable<Error> GetErrors(Parameter parameter)
         {
             var parametersValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
                                        where typeof(IValidator<Parameter>).IsAssignableFrom(type)

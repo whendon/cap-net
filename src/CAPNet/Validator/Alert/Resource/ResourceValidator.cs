@@ -46,7 +46,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="resource"></param>
         /// <returns></returns>
-        private IEnumerable<Error> GetErrors(Resource resource)
+        private static IEnumerable<Error> GetErrors(Resource resource)
         {
             var resourceValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
                                      where typeof(IValidator<Resource>).IsAssignableFrom(type)

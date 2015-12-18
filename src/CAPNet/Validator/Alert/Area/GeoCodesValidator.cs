@@ -46,7 +46,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="geoCode"></param>
         /// <returns></returns>
-        private IEnumerable<Error> GetErrors(GeoCode geoCode)
+        private static IEnumerable<Error> GetErrors(GeoCode geoCode)
         {
             var geocodeValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
                                     where typeof(IValidator<GeoCode>).IsAssignableFrom(type)

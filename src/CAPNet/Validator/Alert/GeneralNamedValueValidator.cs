@@ -17,7 +17,7 @@ namespace CAPNet
                         {typeof(EventCode), new EventCodeError() }
                     };
 
-        private Error getErrorType(Type type)
+        private static Error GetErrorType(Type type)
         {
             if (!typeDictionary.ContainsKey(type))
             {
@@ -42,7 +42,7 @@ namespace CAPNet
             {
                 if (!IsValid)
                 {
-                    yield return getErrorType(Entity.GetType());
+                    yield return GetErrorType(Entity.GetType());
                 }
             }
         }

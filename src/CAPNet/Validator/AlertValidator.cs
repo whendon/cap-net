@@ -59,7 +59,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="alert"></param>
         /// <returns></returns>
-        private IEnumerable<Error> GetErrors(Alert alert)
+        private static IEnumerable<Error> GetErrors(Alert alert)
         {
             var alertValidator = from type in Assembly.GetExecutingAssembly().GetTypes()
                                  where typeof(Validator<Alert>).IsAssignableFrom(type)

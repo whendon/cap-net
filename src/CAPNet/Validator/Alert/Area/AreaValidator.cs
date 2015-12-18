@@ -35,7 +35,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="area"></param>
         /// <returns></returns>
-        private IEnumerable<Error> GetErrors(Area area)
+        private static IEnumerable<Error> GetErrors(Area area)
         {
             var areaValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
                                  where typeof(IValidator<Area>).IsAssignableFrom(type)

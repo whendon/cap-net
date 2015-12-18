@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CAPNet
@@ -16,6 +17,9 @@ namespace CAPNet
         /// <param name="newItems"></param>
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> newItems)
         {
+            if (collection == null) { throw new ArgumentNullException(nameof(collection)); }
+            if (newItems == null) { throw new ArgumentNullException(nameof(newItems)); }
+
             foreach (T item in newItems)
             {
                 collection.Add(item);

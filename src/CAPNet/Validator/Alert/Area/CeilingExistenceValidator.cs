@@ -6,13 +6,13 @@ namespace CAPNet
     /// <summary>
     /// Ceiling MUST NOT be used except in combination with the altitude element.
     /// </summary>
-    public class CeilingExistanceValidator : Validator<Area>
+    public class CeilingExistenceValidator : Validator<Area>
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="area"></param>
-        public CeilingExistanceValidator(Area area) : base(area) { }
+        public CeilingExistenceValidator(Area area) : base(area) { }
 
         /// <summary>
         /// 
@@ -22,7 +22,7 @@ namespace CAPNet
             get
             {
                 if (!IsValid)
-                    yield return new CeilingExistanceError();
+                    yield return new CeilingExistenceError();
             }
         }
 

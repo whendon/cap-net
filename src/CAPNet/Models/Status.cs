@@ -12,7 +12,7 @@
         /// <summary>
         /// Actionable only by designated exercise participants; exercise identifier SHOULD appear in note
         /// </summary>
-        Excercise,
+        Exercise,
         /// <summary>
         /// For messages that support alert network internal functions
         /// </summary>

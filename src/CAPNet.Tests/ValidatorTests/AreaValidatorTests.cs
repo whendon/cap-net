@@ -52,7 +52,7 @@ namespace CAPNet
             Assert.False(areaValidator.IsValid);
 
             var ceilingExistanceErrors = from error in areaValidator.Errors
-                                         where error.GetType() == typeof(CeilingExistanceError)
+                                         where error.GetType() == typeof(CeilingExistenceError)
                                          select error;
             Assert.NotEmpty(ceilingExistanceErrors);
         }

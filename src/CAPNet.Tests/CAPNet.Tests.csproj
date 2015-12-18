@@ -77,7 +77,7 @@
     <Compile Include="ValidatorTests\NotRequired\Alert\Area\PolygonsValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\Alert\AddressesRequiredWhenScopeIsPrivateValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\Alert\Area\AreaDescriptionRequiredValidatorTests.cs" />
-    <Compile Include="ValidatorTests\Required\Alert\Area\CeilingExistanceValidatorTests.cs" />
+    <Compile Include="ValidatorTests\Required\Alert\Area\CeilingExistenceValidatorTests.cs" />
     <Compile Include="ValidatorTests\NotRequired\Alert\IdentifierValidatorTests.cs" />
     <Compile Include="ValidatorTests\Required\Alert\Info\RequiredCategoriesTests.cs" />
     <Compile Include="ValidatorTests\Required\Alert\Info\RequiredCertaintyTests.cs" />

@@ -14,6 +14,7 @@ namespace CAPNet.Models
         /// <param name="stringRepresentation"></param>
         public Coordinate(string stringRepresentation)
         {
+            if (stringRepresentation == null) { throw new ArgumentNullException(nameof(stringRepresentation)); }
             var splitCoordinate = stringRepresentation.Split(',');
             this.Latitude = double.Parse(splitCoordinate[0], CultureInfo.InvariantCulture);
             this.Longitude = double.Parse(splitCoordinate[1], CultureInfo.InvariantCulture);

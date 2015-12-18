@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public class CeilingExistanceError : Error
+    public class CeilingExistenceError : Error
     {
     }
 }

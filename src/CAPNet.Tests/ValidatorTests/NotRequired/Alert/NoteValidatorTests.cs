@@ -11,7 +11,7 @@ namespace CAPNet.Tests.ValidatorTests
         {
             var alert = new Alert();
             alert.Note = "maxOccurs";
-            alert.Status = Status.Excercise;
+            alert.Status = Status.Exercise;
 
             var noteValidator = new NoteValidator(alert);
             Assert.True(noteValidator.IsValid);
@@ -45,7 +45,7 @@ namespace CAPNet.Tests.ValidatorTests
         {
             var alert = new Alert();
             alert.Note = null;
-            alert.Status = Status.Excercise;
+            alert.Status = Status.Exercise;
 
             var noteValidator = new NoteValidator(alert);
             Assert.False(noteValidator.IsValid);

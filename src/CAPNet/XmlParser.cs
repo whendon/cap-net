@@ -442,7 +442,7 @@ namespace CAPNet
                 Convert.FromBase64String(base64);
                 return true;
             }
-            catch (Exception)
+            catch (FormatException)
             {
                 return false;
             }

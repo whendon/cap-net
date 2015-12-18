@@ -46,7 +46,7 @@ namespace CAPNet
         /// </summary>
         /// <param name="eventCode"></param>
         /// <returns></returns>
-        public IEnumerable<Error> GetErrors(EventCode eventCode)
+        private static IEnumerable<Error> GetErrors(EventCode eventCode)
         {
             var eventCodeValidators = from type in Assembly.GetExecutingAssembly().GetTypes()
                                       where typeof(IValidator<EventCode>).IsAssignableFrom(type)

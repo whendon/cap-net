@@ -19,7 +19,6 @@ namespace CAPNet.Models
         public IEnumerable<Coordinate> Coordinates
         {
             get { return coordinates; }
-            private set { coordinates = value; }
         }
 
 
@@ -29,6 +28,7 @@ namespace CAPNet.Models
         /// <param name="stringRepresentation">The geographic polygon is represented by a whitespace-delimited list of [WGS 84] coordinate pairs</param>
         public Polygon(string stringRepresentation)
         {
+            if (stringRepresentation == null) { throw new ArgumentNullException(nameof(stringRepresentation)); }
             var stringCoordinates = stringRepresentation.Split(' ');
 
             coordinates = from coordinate in stringCoordinates
