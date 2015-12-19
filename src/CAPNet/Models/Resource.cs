@@ -119,6 +119,7 @@ namespace CAPNet.Models
         ///     </item>
         ///   </list>
         /// </remarks>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays")]
         public byte[] DereferencedUri { get; set; }
 
         /// <summary>

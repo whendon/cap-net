@@ -14,12 +14,12 @@ namespace CAPNet
         /// <summary>
         /// The xml namespace for CAP 1.1
         /// </summary>
-        public static readonly XNamespace CAP11Namespace = "urn:oasis:names:tc:emergency:cap:1.1";
+        public static XNamespace CAP11Namespace { get; } = "urn:oasis:names:tc:emergency:cap:1.1";
 
         /// <summary>
         /// The xml namespace for CAP 1.2
         /// </summary>
-        public static readonly XNamespace CAP12Namespace = "urn:oasis:names:tc:emergency:cap:1.2";
+        public static XNamespace CAP12Namespace { get; } = "urn:oasis:names:tc:emergency:cap:1.2";
 
         /// <summary>
         /// 
