@@ -20,25 +20,26 @@ namespace CAPNet.Cmd
 
         static void ReadNWS()
         {
-            IEnumerable<Alert> alerts;
+            List<Alert> alerts;
 
-            using (var reader = XmlReader.Create("http://alerts.weather.gov/cap/ok.atom"))
+            using (var reader = XmlReader.Create("http://alerts.weather.gov/cap/us.php?x=0"))
             {
                 var feed = SyndicationFeed.Load(reader);
 
-                alerts = from item in feed.Items
-                         from alert in GetAlerts(item.Id)
-                         select alert;
+                alerts = (from item in feed.Items
+                          from alert in GetAlerts(item.Id)
+                          select alert)
+                         .ToList();
             }
 
             if (!alerts.Any())
                 Console.WriteLine("No alerts");
-            else if(alerts.Count() == 1)
+            else if(alerts.Count == 1)
                 Console.WriteLine("1 alert");
             else
-                Console.WriteLine("{0} alerts", alerts.Count());
+                Console.WriteLine("{0} alerts", alerts.Count);
 
-            foreach (var alert in alerts)
+            foreach (var alert in alerts.Where(a => a.Info.Any(i => i.Severity <= Severity.Severe)))
             {
                 Console.WriteLine("------------------------------");
                 Console.WriteLine("Sender: " + alert.Sender);

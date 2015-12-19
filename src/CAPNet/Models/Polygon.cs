@@ -9,16 +9,12 @@ namespace CAPNet.Models
     /// </summary>
     public class Polygon
     {
-
-        private IEnumerable<Coordinate> coordinates;
+        private readonly List<Coordinate> coordinates;
 
         /// <summary>
         /// list of [WGS 84] coordinate pairs
         /// </summary>
-        public IEnumerable<Coordinate> Coordinates
-        {
-            get { return coordinates; }
-        }
+        public IEnumerable<Coordinate> Coordinates => coordinates;
 
 
         /// <summary>
@@ -28,10 +24,11 @@ namespace CAPNet.Models
         public Polygon(string stringRepresentation)
         {
             if (stringRepresentation == null) { throw new ArgumentNullException(nameof(stringRepresentation)); }
-            var stringCoordinates = stringRepresentation.Split(' ');
+            var stringCoordinates = stringRepresentation.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
-            coordinates = from coordinate in stringCoordinates
-                          select new Coordinate(coordinate);
+            coordinates = (from coordinate in stringCoordinates
+                           select new Coordinate(coordinate))
+                          .ToList();
         }
 
         /// <summary>
