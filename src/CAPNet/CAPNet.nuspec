@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>cap-net</id>
-    <version>2.0.1</version>
+    <version>3.0.0</version>
     <title>CAPNet</title>
     <authors>Matt Chandler, Teamnet</authors>
     <owners>Teamnet</owners>
@@ -11,7 +11,7 @@
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A Common Alerting Protocol serialization library for the .NET framework.</description>
-    <releaseNotes>Add logo</releaseNotes>
+    <releaseNotes>Breaking change: replace double properties by decimals</releaseNotes>
     <tags>CAP</tags>
   </metadata>
 </package>

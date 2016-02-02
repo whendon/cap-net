@@ -165,6 +165,7 @@
     <Compile Include="XmlParser.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CAPNet.nuspec" />
     <None Include="CAPNet.ruleset">
       <SubType>Designer</SubType>
     </None>
