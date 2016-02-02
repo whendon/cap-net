@@ -14,10 +14,14 @@ namespace CAPNet.Models
         /// <param name="stringRepresentation"></param>
         public Coordinate(string stringRepresentation)
         {
-            if (stringRepresentation == null) { throw new ArgumentNullException(nameof(stringRepresentation)); }
+            if (stringRepresentation == null)
+            {
+                throw new ArgumentNullException(nameof(stringRepresentation));
+            }
+
             var splitCoordinate = stringRepresentation.Split(',');
-            this.Latitude = decimal.Parse(splitCoordinate[0], CultureInfo.InvariantCulture);
-            this.Longitude = decimal.Parse(splitCoordinate[1], CultureInfo.InvariantCulture);
+            Latitude = decimal.Parse(splitCoordinate[0], CultureInfo.InvariantCulture);
+            Longitude = decimal.Parse(splitCoordinate[1], CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -32,22 +36,14 @@ namespace CAPNet.Models
         }
 
         /// <summary>
-        /// 
+        /// The latitude part of this coordinate, in WGS 84.
         /// </summary>
-        public decimal Latitude
-        {
-            get;
-            private set;
-        }
+        public decimal Latitude { get; }
 
         /// <summary>
-        /// 
+        /// The longitude part of this coordinate, in WGS 84.
         /// </summary>
-        public decimal Longitude
-        {
-            get;
-            private set;
-        }
+        public decimal Longitude { get; }
 
         /// <summary>
         /// 
@@ -67,13 +63,13 @@ namespace CAPNet.Models
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
                 return false;
 
-            Coordinate p = (Coordinate)obj;
-            return (this.Latitude == p.Latitude && this.Longitude == p.Longitude);
+            var other = (Coordinate)obj;
+            return Latitude == other.Latitude && Longitude == other.Longitude;
         }
 
         /// <summary>
