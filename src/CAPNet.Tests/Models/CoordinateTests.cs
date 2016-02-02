@@ -19,7 +19,7 @@ namespace CAPNet.Tests.Models
 
             var coordinate = new Coordinate("38.47,-120.14");
 
-            Assert.Equal(38.47, coordinate.Latitude);
+            Assert.Equal(38.47m, coordinate.Latitude);
         }
     }
 }

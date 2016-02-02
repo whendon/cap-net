@@ -128,9 +128,9 @@ namespace CAPNet.Tests
             Coordinate centralPoint = circle.Center;
             var radius = circle.Radius;
             //<circle>32.9525,-115.5527 0</circle>  
-            Assert.Equal(centralPoint.Latitude, 32.9525);
-            Assert.Equal(centralPoint.Longitude, -115.5527);
-            Assert.Equal(radius, 0);
+            Assert.Equal(32.9525m, centralPoint.Latitude);
+            Assert.Equal(-115.5527m, centralPoint.Longitude);
+            Assert.Equal(0, radius);
         }
 
         [Fact]
@@ -155,7 +155,7 @@ namespace CAPNet.Tests
             var alert = XmlParser.Parse(Xml.MultipleInfoThunderstorm).First();
             var infos = alert.Info;
 
-            Assert.Equal(infos.Count, 2);
+            Assert.Equal(2, infos.Count);
         }
 
         [Fact]

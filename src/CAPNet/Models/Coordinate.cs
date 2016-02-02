@@ -16,8 +16,8 @@ namespace CAPNet.Models
         {
             if (stringRepresentation == null) { throw new ArgumentNullException(nameof(stringRepresentation)); }
             var splitCoordinate = stringRepresentation.Split(',');
-            this.Latitude = double.Parse(splitCoordinate[0], CultureInfo.InvariantCulture);
-            this.Longitude = double.Parse(splitCoordinate[1], CultureInfo.InvariantCulture);
+            this.Latitude = decimal.Parse(splitCoordinate[0], CultureInfo.InvariantCulture);
+            this.Longitude = decimal.Parse(splitCoordinate[1], CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace CAPNet.Models
         /// </summary>
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
-        public Coordinate(double latitude, double longitude)
+        public Coordinate(decimal latitude, decimal longitude)
         {
             Latitude = latitude;
             Longitude = longitude;
@@ -34,7 +34,7 @@ namespace CAPNet.Models
         /// <summary>
         /// 
         /// </summary>
-        public double Latitude
+        public decimal Latitude
         {
             get;
             private set;
@@ -43,7 +43,7 @@ namespace CAPNet.Models
         /// <summary>
         /// 
         /// </summary>
-        public double Longitude
+        public decimal Longitude
         {
             get;
             private set;
