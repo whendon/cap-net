@@ -17,7 +17,7 @@ namespace CAPNet.Models
             if (stringRepresentation == null) { throw new ArgumentNullException(nameof(stringRepresentation)); }
             var circleCenterAndRadius = stringRepresentation.Split(' ');
             this.Center = new Coordinate(circleCenterAndRadius[0]);
-            this.Radius = double.Parse(circleCenterAndRadius[1], CultureInfo.InvariantCulture);
+            this.Radius = decimal.Parse(circleCenterAndRadius[1], CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace CAPNet.Models
         /// </summary>
         /// <param name="coordinate"></param>
         /// <param name="radius"></param>
-        public Circle(Coordinate coordinate, double radius)
+        public Circle(Coordinate coordinate, decimal radius)
         {
             this.Center = coordinate;
             this.Radius = radius;
@@ -34,7 +34,7 @@ namespace CAPNet.Models
         /// <summary>
         /// radius value in kilometers
         /// </summary>
-        public double Radius 
+        public decimal Radius 
         {
             get; 
             private set; 
