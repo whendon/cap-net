@@ -16,38 +16,30 @@ namespace CAPNet.Models
         {
             if (stringRepresentation == null) { throw new ArgumentNullException(nameof(stringRepresentation)); }
             var circleCenterAndRadius = stringRepresentation.Split(' ');
-            this.Center = new Coordinate(circleCenterAndRadius[0]);
-            this.Radius = decimal.Parse(circleCenterAndRadius[1], CultureInfo.InvariantCulture);
+            Center = new Coordinate(circleCenterAndRadius[0]);
+            Radius = decimal.Parse(circleCenterAndRadius[1], CultureInfo.InvariantCulture);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="coordinate"></param>
+        /// <param name="center"></param>
         /// <param name="radius"></param>
-        public Circle(Coordinate coordinate, decimal radius)
+        public Circle(Coordinate center, decimal radius)
         {
-            this.Center = coordinate;
-            this.Radius = radius;
+            Center = center;
+            Radius = radius;
         }
 
         /// <summary>
         /// radius value in kilometers
         /// </summary>
-        public decimal Radius 
-        {
-            get; 
-            private set; 
-        }
+        public decimal Radius { get; }
 
         /// <summary>
         /// [WGS 84] coordinate pair 
         /// </summary>
-        public Coordinate Center 
-        { 
-            get; 
-            private set; 
-        }
+        public Coordinate Center { get; }
 
         /// <summary>
         /// 
