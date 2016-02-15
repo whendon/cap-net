@@ -1,5 +1,6 @@
 ﻿using CAPNet.Models;
 using System.Linq;
+using CAPNet.Validator.Errors;
 using Xunit;
 
 namespace CAPNet.Tests.ValidatorTests
@@ -15,7 +16,7 @@ namespace CAPNet.Tests.ValidatorTests
 
             var eventCodeValidator = new EventCodeValidator(eventCode);
             Assert.False(eventCodeValidator.IsValid);
-            Assert.Equal(typeof(EventCodeError), eventCodeValidator.Errors.ElementAt(0).GetType());
+            Assert.Equal(typeof(NamedValueError<EventCode>), eventCodeValidator.Errors.ElementAt(0).GetType());
         }
 
         [Fact]
@@ -27,7 +28,7 @@ namespace CAPNet.Tests.ValidatorTests
 
             var eventCodeValidator = new EventCodeValidator(eventCode);
             Assert.False(eventCodeValidator.IsValid);
-            Assert.Equal(typeof(EventCodeError), eventCodeValidator.Errors.ElementAt(0).GetType());
+            Assert.Equal(typeof(NamedValueError<EventCode>), eventCodeValidator.Errors.ElementAt(0).GetType());
         }
 
         [Fact]

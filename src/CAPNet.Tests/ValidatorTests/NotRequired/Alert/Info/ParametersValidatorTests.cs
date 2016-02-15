@@ -1,7 +1,7 @@
 ﻿using CAPNet.Models;
 using Xunit;
-
 using System.Linq;
+using CAPNet.Validator.Errors;
 
 namespace CAPNet.Tests.ValidatorTests
 {
@@ -18,7 +18,7 @@ namespace CAPNet.Tests.ValidatorTests
 
             var parametersValidator = new ParametersValidator(info);
             Assert.False(parametersValidator.IsValid);
-            Assert.Equal(typeof(ParameterError), parametersValidator.Errors.ElementAt(0).GetType());
+            Assert.Equal(typeof(NamedValueError<Parameter>), parametersValidator.Errors.ElementAt(0).GetType());
         }
 
         [Fact]

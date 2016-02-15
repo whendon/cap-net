@@ -1,30 +1,19 @@
-﻿using CAPNet.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using CAPNet.Models;
+using CAPNet.Validator.Errors;
 
-namespace CAPNet
+namespace CAPNet.Validator.Alert
 {
     /// <summary>
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class GeneralNamedValueValidator<T> : Validator<T>
+        where T : NamedValue
     {
-        private static readonly Dictionary<Type, Error> typeDictionary = new Dictionary<Type, Error>
-                    {
-                        {typeof(GeoCode), new GeoCodeError() },
-                        {typeof(Parameter), new ParameterError() },
-                        {typeof(EventCode), new EventCodeError() }
-                    };
-
-        private static Error GetErrorType(Type type)
+        private static Error GetError()
         {
-            if (!typeDictionary.ContainsKey(type))
-            {
-                throw new KeyNotFoundException();
-            }
-
-            return typeDictionary[type];
+            return new NamedValueError<T>();
         }
 
         /// <summary>
@@ -42,7 +31,7 @@ namespace CAPNet
             {
                 if (!IsValid)
                 {
-                    yield return GetErrorType(Entity.GetType());
+                    yield return GetError();
                 }
             }
         }
@@ -50,13 +39,6 @@ namespace CAPNet
         /// <summary>
         /// 
         /// </summary>
-        public override bool IsValid
-        {
-            get
-            {
-                var generalNamedValue = (NamedValue)(object)Entity;
-                return generalNamedValue.Value != null && generalNamedValue.ValueName != null;
-            }
-        }
+        public override bool IsValid => Entity.Value != null && Entity.ValueName != null;
     }
 }

@@ -95,6 +95,7 @@
     <Compile Include="Validator\Alert\Info\ResponseTypeValidator.cs" />
     <Compile Include="Validator\Alert\MessageTypeRequiredValidator.cs" />
     <Compile Include="Validator\Alert\GeneralNamedValueValidator.cs" />
+    <Compile Include="Validator\Errors\NamedValueError.cs" />
     <Compile Include="Validator\Alert\NoteValidator.cs" />
     <Compile Include="Validator\Alert\Resource\DescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Resource\DigestValidator.cs" />
@@ -112,8 +113,6 @@
     <Compile Include="Validator\Errors\AddressesRequiredWhenScopeError.cs" />
     <Compile Include="Validator\Errors\CeilingExistenceError.cs" />
     <Compile Include="Validator\Errors\DigestError.cs" />
-    <Compile Include="Validator\Errors\EventCodeError.cs" />
-    <Compile Include="Validator\Errors\GeoCodeError.cs" />
     <Compile Include="Validator\Errors\HeadlineError.cs" />
     <Compile Include="Validator\Errors\IdentifierError.cs" />
     <Compile Include="Validator\Errors\LanguageError.cs" />
@@ -121,7 +120,6 @@
     <Compile Include="Validator\Errors\MimeTypeError.cs" />
     <Compile Include="Validator\Errors\MessageTypeRejectionError.cs" />
     <Compile Include="Validator\Errors\NoteError.cs" />
-    <Compile Include="Validator\Errors\ParameterError.cs" />
     <Compile Include="Validator\Alert\Info\ParameterValidator.cs" />
     <Compile Include="Validator\Errors\PolygonWithFirstCoordinatePairEqualToLastCoordinatePairError.cs" />
     <Compile Include="Validator\Errors\PolygonMinCoordinatesError.cs" />
