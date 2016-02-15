@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+﻿using System.Globalization;
 using System.Threading;
-using System.Threading.Tasks;
 using CAPNet.Models;
 using Xunit;
 
@@ -19,7 +14,7 @@ namespace CAPNet.Tests.Models
 
             var coordinate = new Coordinate("38.47,-120.14");
 
-            Assert.Equal(38.47, coordinate.Latitude);
+            Assert.Equal(38.47m, coordinate.Latitude);
         }
     }
 }

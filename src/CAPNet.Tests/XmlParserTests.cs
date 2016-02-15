@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
 using System.Collections.Generic;
 
 using CAPNet.Models;
 
 using Xunit;
-using System.Xml.Linq;
 
 namespace CAPNet.Tests
 {
     public class XmlParserTests
     {
         [Fact]
-        public void CanReadMultipleAlertsFromXML()
+        public void CanReadMultipleAlertsFromXml()
         {
             var alertList = XmlParser.Parse(Xml.MultipleThunderstorm12Xml);
             Assert.Equal(2, alertList.Count());
@@ -113,7 +111,7 @@ namespace CAPNet.Tests
             Assert.NotNull(alert);
 
             var circles = alert.Info.ElementAt(0).Areas.ElementAt(0).Circles;
-            Assert.Equal(1, circles.Count());
+            Assert.Equal(1, circles.Count);
 
             //<circle>32.9525,-115.5527 0</circle>
             Assert.Equal("32.9525,-115.5527 0", circles.First().ToString());
@@ -128,9 +126,9 @@ namespace CAPNet.Tests
             Coordinate centralPoint = circle.Center;
             var radius = circle.Radius;
             //<circle>32.9525,-115.5527 0</circle>  
-            Assert.Equal(centralPoint.Latitude, 32.9525);
-            Assert.Equal(centralPoint.Longitude, -115.5527);
-            Assert.Equal(radius, 0);
+            Assert.Equal(32.9525m, centralPoint.Latitude);
+            Assert.Equal(-115.5527m, centralPoint.Longitude);
+            Assert.Equal(0, radius);
         }
 
         [Fact]
@@ -140,7 +138,7 @@ namespace CAPNet.Tests
             Assert.NotNull(alert);
 
             var circles = alert.Info.ElementAt(0).Areas.ElementAt(0).Circles;
-            Assert.Equal(2, circles.Count());
+            Assert.Equal(2, circles.Count);
 
             //<circle>32.9525,-115.5527 0</circle>  
             Assert.Equal("32.9525,-115.5527 0", circles.First().ToString());
@@ -155,7 +153,7 @@ namespace CAPNet.Tests
             var alert = XmlParser.Parse(Xml.MultipleInfoThunderstorm).First();
             var infos = alert.Info;
 
-            Assert.Equal(infos.Count, 2);
+            Assert.Equal(2, infos.Count);
         }
 
         [Fact]
@@ -165,7 +163,7 @@ namespace CAPNet.Tests
             Assert.NotNull(alert);
 
             var polygons = alert.Info.ElementAt(0).Areas.ElementAt(0).Polygons;
-            Assert.Equal(1, polygons.Count());
+            Assert.Equal(1, polygons.Count);
 
             //<polygon>38.47,-120.14 38.34,-119.95 38.52,-119.74 38.62,-119.89 38.47,-120.14</polygon>
             Assert.Equal("38.47,-120.14 38.34,-119.95 38.52,-119.74 38.62,-119.89 38.47,-120.14", polygons.First().ToString());
@@ -178,7 +176,7 @@ namespace CAPNet.Tests
             Assert.NotNull(alert);
 
             ICollection<GeoCode> geoCodes = alert.Info.ElementAt(0).Areas.ElementAt(0).GeoCodes;
-            Assert.Equal(3, geoCodes.Count());
+            Assert.Equal(3, geoCodes.Count);
 
 
             //<geocode>
@@ -211,7 +209,7 @@ namespace CAPNet.Tests
             Assert.NotNull(alert);
 
             var polygons = alert.Info.ElementAt(0).Areas.ElementAt(0).Polygons;
-            Assert.Equal(2, polygons.Count());
+            Assert.Equal(2, polygons.Count);
 
             //<polygon>38.47,-120.14 38.34,-119.95 38.52,-119.74 38.62,-119.89 38.47,-120.14</polygon>
             var firstPolygon = polygons.First();

@@ -7,8 +7,8 @@ using System.Reflection;
 [assembly: AssemblyCopyright("Copyright © 2015 Matt Chandler and contributors")]
 
 [assembly: AssemblyCompany("Teamnet")]
-[assembly: AssemblyVersion("2.0.1.0")]
-[assembly: AssemblyFileVersion("2.0.1.0")]
-[assembly: AssemblyInformationalVersion("2.0")]
+[assembly: AssemblyVersion("3.0.0.0")]
+[assembly: AssemblyFileVersion("3.0.0.0")]
+[assembly: AssemblyInformationalVersion("3.0")]
 
 [assembly: CLSCompliant(true)]
