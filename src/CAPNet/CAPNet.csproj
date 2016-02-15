@@ -40,6 +40,8 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\CAPNet.XML</DocumentationFile>
     <CodeAnalysisRuleSet>CAPNet.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -168,6 +170,11 @@
     <None Include="CAPNet.ruleset">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarLint.1.8.0\analyzers\SonarLint.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarLint.1.8.0\analyzers\SonarLint.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

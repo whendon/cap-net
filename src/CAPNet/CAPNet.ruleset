@@ -297,4 +297,7 @@
     <Rule Id="CS8073" Action="Error" />
     <Rule Id="CS8094" Action="Error" />
   </Rules>
+  <Rules AnalyzerId="SonarLint.CSharp" RuleNamespace="SonarLint.CSharp">
+    <Rule Id="S100" Action="Warning" />
+  </Rules>
 </RuleSet>
