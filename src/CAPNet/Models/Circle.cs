@@ -11,7 +11,9 @@ namespace CAPNet.Models
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="stringRepresentation">The circular area is represented by a central point given as a [WGS 84] coordinate pair followed by a space character and a radius value in kilometers.</param>
+        /// <param name="stringRepresentation">The circular area is represented by a central point
+        ///  given as a [WGS 84] coordinate pair followed by a space character and a radius value
+        ///  in kilometers.</param>
         public Circle(string stringRepresentation)
         {
             if (stringRepresentation == null) { throw new ArgumentNullException(nameof(stringRepresentation)); }

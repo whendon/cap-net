@@ -55,6 +55,7 @@
     <Compile Include="Models\Coordinate.cs" />
     <Compile Include="Models\Polygon.cs" />
     <Compile Include="Models\ResponseType.cs" />
+    <Compile Include="SpaceDelimitedElementsParserException.cs" />
     <Compile Include="Validator\Alert\AddressesRequiredWhenScopePrivateValidator.cs" />
     <Compile Include="Validator\Alert\Area\AreaDescriptionRequiredValidator.cs" />
     <Compile Include="Validator\Alert\Area\AreaValidator.cs" />

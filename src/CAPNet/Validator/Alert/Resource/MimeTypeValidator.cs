@@ -26,7 +26,16 @@ namespace CAPNet
             }
         }
 
-        private static readonly ICollection<string> topLevelMediaType = new List<string>() { "text", "image", "audio", "video", "application", "multipart", "message" };
+        private static readonly ICollection<string> topLevelMediaType = new List<string>
+        {
+            "text",
+            "image",
+            "audio",
+            "video",
+            "application",
+            "multipart",
+            "message"
+        };
 
         /// <summary>
         /// 

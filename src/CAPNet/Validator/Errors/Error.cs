@@ -3,7 +3,13 @@
     /// <summary>
     /// 
     /// </summary>
-    public abstract class Error
+    public class Error
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        protected Error()
+        {
+        }
     }
 }

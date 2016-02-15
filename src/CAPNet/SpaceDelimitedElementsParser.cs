@@ -14,7 +14,7 @@ namespace CAPNet
             IN_SPACE_CONTAINING_ELEMENTS = 1,
             IN_ELEMENTS_WITH_NO_SPACE = 2
         }
-        private static int currentState;
+        private static States currentState;
         private static StringBuilder partialElement;
         private static int currentPosition;
         private static List<string> elements;
@@ -31,24 +31,26 @@ namespace CAPNet
             representation = value;
             elements = new List<string>();
             partialElement = new StringBuilder();
-            currentState = (int)States.BETWEEN_ELEMENTS;
+            currentState = States.BETWEEN_ELEMENTS;
 
             for (currentPosition = 0; currentPosition < representation.Length; currentPosition++)
             {
                 char currentChar = representation[currentPosition];
                 switch (currentState)
                 {
-                    case (int)States.BETWEEN_ELEMENTS:
+                    case States.BETWEEN_ELEMENTS:
                         BetweenElementsState(currentChar);
                         break;
 
-                    case (int)States.IN_ELEMENTS_WITH_NO_SPACE:
+                    case States.IN_ELEMENTS_WITH_NO_SPACE:
                         InAddressWithNoSpaceState(currentChar);
                         break;
 
-                    case (int)States.IN_SPACE_CONTAINING_ELEMENTS:
+                    case States.IN_SPACE_CONTAINING_ELEMENTS:
                         InSpaceContainingAddressState(currentChar);
                         break;
+                    default:
+                        throw new SpaceDelimitedElementsParserException($"Invalid parser state: {currentState}");
                 }
             }
 
@@ -69,7 +71,7 @@ namespace CAPNet
             {
                 elements.Add(partialElement.ToString());
                 partialElement.Clear();
-                currentState = (int)States.BETWEEN_ELEMENTS;
+                currentState = States.BETWEEN_ELEMENTS;
             }
         }
 
@@ -87,7 +89,7 @@ namespace CAPNet
             {
                 elements.Add(partialElement.ToString());
                 partialElement.Clear();
-                currentState = (int)States.BETWEEN_ELEMENTS;
+                currentState = States.BETWEEN_ELEMENTS;
             }
 
         }
@@ -96,11 +98,11 @@ namespace CAPNet
         {
             if (currentChar.IsQuote())
             {
-                currentState = (int)States.IN_SPACE_CONTAINING_ELEMENTS;
+                currentState = States.IN_SPACE_CONTAINING_ELEMENTS;
             }
             else if (currentChar.IsElementCharacter())
             {
-                currentState = (int)States.IN_ELEMENTS_WITH_NO_SPACE;
+                currentState = States.IN_ELEMENTS_WITH_NO_SPACE;
                 partialElement.Append(currentChar);
                 if (currentPosition == representation.Length - 1)
                 {

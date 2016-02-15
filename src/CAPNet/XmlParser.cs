@@ -48,7 +48,9 @@ namespace CAPNet
                    select ParseAlert(alertElement);
         }
 
+#pragma warning disable S1541 // Methods should not be too complex
         private static Alert ParseAlert(XElement alertElement)
+#pragma warning restore S1541 // Methods should not be too complex
         {
             var alert = new Alert();
             var capNamespace = alertElement.Name.Namespace;
@@ -61,25 +63,19 @@ namespace CAPNet
             alert.Info.AddRange(infos);
 
             var incidentsNode = alertElement.Element(capNamespace + "incidents");
-            if (incidentsNode != null)
+            var incidentsNodeValue = incidentsNode?.Value;
+            if (!string.IsNullOrEmpty(incidentsNodeValue))
             {
-                var incidentsNodeValue = incidentsNode.Value;
-                if (!string.IsNullOrEmpty(incidentsNodeValue))
-                {
-                    var incidents = incidentsNodeValue.GetElements();
-                    alert.Incidents.AddRange(incidents);
-                }
+                var incidents = incidentsNodeValue.GetElements();
+                alert.Incidents.AddRange(incidents);
             }
 
             var referencesNode = alertElement.Element(capNamespace + "references");
-            if (referencesNode != null)
+            var referencesNodeValue = referencesNode?.Value;
+            if (!string.IsNullOrEmpty(referencesNodeValue))
             {
-                var referencesNodeValue = referencesNode.Value;
-                if (!string.IsNullOrEmpty(referencesNodeValue))
-                {
-                    var references = referencesNodeValue.GetElements();
-                    alert.References.AddRange(references);
-                }
+                var references = referencesNodeValue.GetElements();
+                alert.References.AddRange(references);
             }
 
             var noteNode = alertElement.Element(capNamespace + "note");
@@ -95,14 +91,11 @@ namespace CAPNet
             }
 
             var addressesNode = alertElement.Element(capNamespace + "addresses");
-            if (addressesNode != null)
+            var addressNodeValue = addressesNode?.Value;
+            if (!string.IsNullOrEmpty(addressNodeValue))
             {
-                var addressNodeValue = addressesNode.Value;
-                if (!string.IsNullOrEmpty(addressNodeValue))
-                {
-                    var addresses = addressNodeValue.GetElements();
-                    alert.Addresses.AddRange(addresses);
-                }
+                var addresses = addressNodeValue.GetElements();
+                alert.Addresses.AddRange(addresses);
             }
 
             var restrictionNode = alertElement.Element(capNamespace + "restriction");
@@ -165,7 +158,9 @@ namespace CAPNet
             return (T)Enum.Parse(typeof(T), nodeValue, true);
         }
 
+#pragma warning disable S1541 // Methods should not be too complex
         private static Info ParseInfo(XElement infoElement)
+#pragma warning restore S1541 // Methods should not be too complex
         {
             var info = new Info();
 
@@ -198,14 +193,9 @@ namespace CAPNet
             var urgencyNode = infoElement.Element(capNamespace + "urgency");
             if (urgencyNode != null)
             {
-                if (string.IsNullOrWhiteSpace(urgencyNode.Value))
-                {
-                    info.Urgency = Urgency.Unknown;
-                }
-                else
-                {
-                    info.Urgency = EnumParse<Urgency>(urgencyNode.Value);
-                }
+                info.Urgency = string.IsNullOrWhiteSpace(urgencyNode.Value)
+                    ? Urgency.Unknown
+                    : EnumParse<Urgency>(urgencyNode.Value);
             }
 
             var certaintyNode = infoElement.Element(capNamespace + "certainty");
@@ -249,14 +239,9 @@ namespace CAPNet
             var severityNode = infoElement.Element(capNamespace + "severity");
             if (severityNode != null)
             {
-                if (string.IsNullOrWhiteSpace(severityNode.Value))
-                {
-                    info.Severity = Severity.Unknown;
-                }
-                else
-                {
-                    info.Severity = EnumParse<Severity>(severityNode.Value);
-                }
+                info.Severity = string.IsNullOrWhiteSpace(severityNode.Value)
+                    ? Severity.Unknown
+                    : EnumParse<Severity>(severityNode.Value);
             }
 
             var onsetNode = infoElement.Element(capNamespace + "onset");

@@ -46,10 +46,10 @@ namespace CAPNet
             AddElementIfHasContent(alertElement, "sender", alert.Sender);
             // set milliseconds to 0
             AddElementIfHasContent(alertElement, "sent", StripMiliseconds(alert.Sent));
-            AddElementIfHasContent(alertElement, "status", alert.Status);
-            AddElementIfHasContent(alertElement, "msgType", alert.MessageType);
+            AddElement(alertElement, "status", alert.Status);
+            AddElement(alertElement, "msgType", alert.MessageType);
             AddElementIfHasContent(alertElement, "source", alert.Source);
-            AddElementIfHasContent(alertElement, "scope", alert.Scope);
+            AddElement(alertElement, "scope", alert.Scope);
             AddElementIfHasContent(alertElement, "restriction", alert.Restriction);
             string addressesContent = alert.Addresses.ElementsDelimitedBySpace();
             AddElementIfHasContent(alertElement, "addresses", addressesContent);
@@ -89,9 +89,9 @@ namespace CAPNet
             infoElement.Add(info.Categories.Select(cat => new XElement(CAP12Namespace + "category", cat)));
             AddElementIfHasContent(infoElement, "event", info.Event);
             infoElement.Add(info.ResponseTypes.Select(res => new XElement(CAP12Namespace + "responseType", res)));
-            AddElementIfHasContent(infoElement, "urgency", info.Urgency);
-            AddElementIfHasContent(infoElement, "severity", info.Severity);
-            AddElementIfHasContent(infoElement, "certainty", info.Certainty);
+            AddElement(infoElement, "urgency", info.Urgency);
+            AddElement(infoElement, "severity", info.Severity);
+            AddElement(infoElement, "certainty", info.Certainty);
             AddElementIfHasContent(infoElement, "audience", info.Audience);
             AddElements(infoElement, Create(info.EventCodes));
             AddElementIfHasContent(infoElement, "effective", StripMiliseconds(info.Effective));
@@ -219,7 +219,23 @@ namespace CAPNet
             }
         }
 
+        private static void AddElementIfHasContent<T>(XElement element, string name, T? content)
+            where T : struct 
+        {
+            if (content.HasValue)
+            {
+                element.Add(new XElement(CAP12Namespace + name, content.Value));
+            }
+        }
+
+        private static void AddElement<T>(XElement element, string name, T content)
+            where T : struct 
+        {
+            element.Add(new XElement(CAP12Namespace + name, content));
+        }
+
         private static void AddElementIfHasContent<T>(XElement element, string name, T content)
+            where T : class
         {
             if (content != null)
                 element.Add(new XElement(CAP12Namespace + name, content));

@@ -3,12 +3,8 @@ namespace CAPNet.Models
     /// <summary>
     /// Base class for values with names (e.g. EventCode, GeoCode)
     /// </summary>
-    public abstract class NamedValue
+    public class NamedValue
     {
-        private readonly string value;
-
-        private readonly string valueName;
-
         /// <summary>
         /// 
         /// </summary>
@@ -16,30 +12,18 @@ namespace CAPNet.Models
         /// <param name="value"></param>
         protected NamedValue(string valueName, string value)
         {
-            this.valueName = valueName;
-            this.value = value;
+            ValueName = valueName;
+            Value = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Value
-        {
-            get
-            {
-                return this.value;
-            }
-        }
+        public string Value { get; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string ValueName
-        {
-            get
-            {
-                return this.valueName;
-            }
-        }
+        public string ValueName { get; }
     }
 }
