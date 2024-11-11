@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug Test Project",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/src/CAPNet/bin/Debug/net8.0/DotNet.CommonAlertingProtocol.dll", // Replace with the actual path
+        "args": [],
+        "cwd": "${workspaceFolder}/src/CAPNet",
+        "stopAtEntry": false,
+        "console": "internalConsole",
+        "internalConsoleOptions": "openOnSessionStart"
+      }
+    ]
+  }

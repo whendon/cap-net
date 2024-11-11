@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+          "build",
+          "${workspaceFolder}/src/CAPNet/CAPNet.csproj" // Replace with the actual test project path
+        ],
+        "problemMatcher": "$msCompile"
+      }
+    ]
+  }

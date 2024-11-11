@@ -23,8 +23,8 @@ namespace EDXLNet
                 new XAttribute(XNamespace.Xmlns + "ct", EdxlCt10Namespace),
                 new XElement(EdxlDe20Namespace + "DistributionID", edxlDistribution.DistributionId),
                 new XElement(EdxlDe20Namespace + "SenderID", edxlDistribution.SenderId),
-                new XElement(EdxlDe20Namespace + "DateTimeSent", StripMiliseconds(edxlDistribution.DateTimeSent)),
-                new XElement(EdxlDe20Namespace + "DateTimeExpires", StripMiliseconds(edxlDistribution.DateTimeExpires)),
+                new XElement(EdxlDe20Namespace + "DateTimeSent", FormatDateForCap(edxlDistribution.DateTimeSent)),
+                new XElement(EdxlDe20Namespace + "DateTimeExpires", FormatDateForCap(edxlDistribution.DateTimeExpires)),
                 edxlDistribution.DistributionStatus.ToXElement(),
                 edxlDistribution.DistributionKind.ToXElement());
 
@@ -82,7 +82,7 @@ namespace EDXLNet
                 new XElement(EdxlDe20Namespace + "EmbeddedXMLContent", contentXml.EmbeddedXml));
         }
 
-        private static DateTimeOffset StripMiliseconds(DateTimeOffset date)
+        private static DateTimeOffset FormatDateForCap(DateTimeOffset date)
         {
             return date.AddMilliseconds(-date.Millisecond);
         }

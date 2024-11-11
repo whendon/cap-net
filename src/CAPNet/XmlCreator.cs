@@ -41,11 +41,11 @@ namespace CAPNet
             if (alert == null) { throw new ArgumentNullException(nameof(alert)); }
 
             var alertElement = new XElement(Cap12Namespace + "alert");
-
+            var formattedSentDate = FormatDateForCap(alert.Sent);
             AddElementIfHasContent(alertElement, "identifier", alert.Identifier);
             AddElementIfHasContent(alertElement, "sender", alert.Sender);
             // set milliseconds to 0
-            AddElementIfHasContent(alertElement, "sent", StripMiliseconds(alert.Sent));
+            AddElementIfHasContent(alertElement, "sent", formattedSentDate);
             AddElement(alertElement, "status", alert.Status);
             AddElement(alertElement, "msgType", alert.MessageType);
             AddElementIfHasContent(alertElement, "source", alert.Source);
@@ -64,12 +64,17 @@ namespace CAPNet
             return alertElement;
         }
 
-        private static DateTimeOffset? StripMiliseconds(DateTimeOffset? date)
+        private static string FormatDateForCap(DateTimeOffset? date)
         {
-            if(date!=null)
-                return date.Value.AddMilliseconds(-date.Value.Millisecond);
+            if (date != null)
+            {
+                var formattedDate = date.Value.DateTime
+                    .AddMilliseconds(-date.Value.Millisecond);
 
-            return null;
+                return formattedDate.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            }
+
+            return string.Empty;
         }
 
         private static IEnumerable<XElement> Create(IEnumerable<Info> infos)
@@ -94,9 +99,9 @@ namespace CAPNet
             AddElement(infoElement, "certainty", info.Certainty);
             AddElementIfHasContent(infoElement, "audience", info.Audience);
             AddElements(infoElement, Create(info.EventCodes));
-            AddElementIfHasContent(infoElement, "effective", StripMiliseconds(info.Effective));
+            AddElementIfHasContent(infoElement, "effective", FormatDateForCap(info.Effective));
             AddElementIfHasContent(infoElement, "onset", info.Onset);
-            AddElementIfHasContent(infoElement, "expires", info.Expires);
+            AddElementIfHasContent(infoElement, "expires", FormatDateForCap(info.Expires));
             AddElementIfHasContent(infoElement, "senderName", info.SenderName);
             AddElementIfHasContent(infoElement, "headline", info.Headline);
             AddElementIfHasContent(infoElement, "description", info.Description);

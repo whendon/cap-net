@@ -24,7 +24,7 @@ namespace CAPNet.Tests
             35,
             23,
             512,
-            TimeSpan.FromHours(-3));
+            TimeSpan.FromHours(-5));
 
         private static readonly Alert Alert = new Alert
         {
@@ -75,7 +75,7 @@ namespace CAPNet.Tests
             var sentElement = alertElement.Element(XmlCreator.Cap12Namespace + "sent");
 
             Assert.NotNull(sentElement);
-            Assert.Equal("2014-06-10T10:35:23-03:00", sentElement.Value);
+            Assert.Equal("2014-06-10T10:35:23-05:00", sentElement.Value);
         }
 
         [Fact]
