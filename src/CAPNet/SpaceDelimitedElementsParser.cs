@@ -26,7 +26,7 @@ namespace CAPNet
         /// <param name="value">Multiple space-delimited elements MAY be included.
         /// Elements including whitespace MUST be enclosed in double-quotes.</param>
         /// <returns>Elements in a IEnumerable&lt;string></returns>
-        public static IEnumerable<string> GetElements(this string value)
+        public static IEnumerable<string> GetSpaceDelimitedElements(this string value)
         {
             representation = value;
             elements = new List<string>();
