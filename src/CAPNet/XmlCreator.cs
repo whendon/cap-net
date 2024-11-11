@@ -68,10 +68,11 @@ namespace CAPNet
         {
             if (date != null)
             {
-                var formattedDate = date.Value.DateTime
-                    .AddMilliseconds(-date.Value.Millisecond);
+                var formattedDate = date.Value.UtcDateTime
+                    .AddMilliseconds(-date.Value.Millisecond)
+                    .ToUniversalTime();
 
-                return formattedDate.ToString("yyyy-MM-ddTHH:mm:sszzz");
+                return formattedDate.ToString("yyyy-MM-ddTHH:mm:ss+00:00");
             }
 
             return string.Empty;
