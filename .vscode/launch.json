@@ -6,7 +6,7 @@
         "type": "coreclr",
         "request": "launch",
         "preLaunchTask": "build",
-        "program": "${workspaceFolder}/src/CAPNet/bin/Debug/net8.0/DotNet.CommonAlertingProtocol.dll", // Replace with the actual path
+        "program": "${workspaceFolder}/src/CAPNet/bin/Debug/net8.0/DotNet.CommonAlertingProtocol.dll",
         "args": [],
         "cwd": "${workspaceFolder}/src/CAPNet",
         "stopAtEntry": false,

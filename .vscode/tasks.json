@@ -7,7 +7,7 @@
         "type": "process",
         "args": [
           "build",
-          "${workspaceFolder}/src/CAPNet/CAPNet.csproj" // Replace with the actual test project path
+          "${workspaceFolder}/src/CAPNet/CAPNet.csproj"
         ],
         "problemMatcher": "$msCompile"
       }
